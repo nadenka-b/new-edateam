@@ -8,18 +8,30 @@
         "sourceMap": true,
         "esModuleInterop": true,
         "noImplicitAny": false,
-        "module": "esnext",
-        "moduleResolution": "node",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
         "target": "es6",
         "jsx": "react",
-        "typeRoots": ["node_modules/@types", "src/typings"],
-        "types" : ["webpack-env", "node"],
-        "resolveJsonModule": true
+        "typeRoots": [
+            "node_modules/@types",
+            "src/typings"
+        ],
+        "types": [
+            "webpack-env",
+            "node"
+        ],
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
     },
     "exclude": [
         "node_modules",
         "**/*.test.ts",
         "**/*.test.tsx",
         "node_modules/@types/jest"
-    ]        
+    ]
 }

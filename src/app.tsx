@@ -1,8 +1,16 @@
 import React from 'react';
+import { Global } from '@emotion/react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { defaultSystem } from "@chakra-ui/react"
+import { globalStyles } from './global.style';
+import HomePage from './pages/home-page';
 
 const App = () => {
   return (
-    <h1>Hello world для проекта - edateam</h1>
+    <ChakraProvider value={defaultSystem}>
+      <Global styles={globalStyles} />
+      <HomePage />
+    </ChakraProvider>
   );
 };
 
