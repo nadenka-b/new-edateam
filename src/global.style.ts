@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 export const globalStyles = css`
- @import url('https://fonts.google.com/share?selection.family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900');
+ @import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
  
  * {
         margin: 0;
@@ -10,6 +10,13 @@ export const globalStyles = css`
 
     :root {
         --main-font: "Literata", "sans-serif";
+        --background-color: #FFF0DA;
+        --color-text-main: #FF6701;
+        --color-brown:#7E4925;
+        --color-text-greetings: #FFF0DA; //совпадает с фоном
+        
+
+
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,

@@ -5,19 +5,15 @@ import { ImageLogo } from "../image-logo";
 
 export const Header = () => {
     return (
-        <Box py={4} px={8}>
-            <Flex align="center">
-                <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="600" fontStyle="Italic" color="orange.500">
-                    Главная
-                </Text>
-                <Spacer />
-                <ImageLogo />
-                <Spacer />
-                <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="600" fontStyle="Italic" color="orange.500">
-                    Регистрация / Вход
-                </Text>
+        <Box py={4} px={8} position="relative" h="100px">
+            <Flex align="center" justify="space-between" h="100%">
+                <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="600" fontStyle="Italic" color="var(--color-text-main)">Главная</Text>
+                <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="600" fontStyle="Italic" color="var(--color-text-main)">Регистрация / Вход</Text>
             </Flex>
-            <Box borderBottom="3px solid orange" width="1400px" mx="auto" />
+            <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" mt={1}>
+                <ImageLogo />
+            </Box>
+            <Box borderBottom="3px solid" borderColor="var(--color-text-main)" width="95%" mx="auto" mt={4} />
         </Box>
     );
 }

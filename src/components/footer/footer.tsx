@@ -1,13 +1,14 @@
 import React from "react";
-import { Box, Flex, Text, IconButton, Button, HStack, Divider } from "@chakra-ui/react";
+import { Box, Flex, Text, Button, HStack, Image, Link } from "@chakra-ui/react";
 import { ImageLogo } from "../image-logo";
-
+import { FaTelegram } from "react-icons/fa6";
+import { HiOutlineEnvelope } from "react-icons/hi2";
 
 export const Footer = () => {
     return (
-        <Box bg="peachpuff" p="6">
+        <Box position="relative" p="6">
             {/* Верхняя линия */}
-            <Divider borderColor="brown" mb="6" />
+            <Box borderBottom="3px solid" borderColor="var(--color-brown)" width="95%" mx="auto" mb={5} />
 
             {/* Основной контент */}
             <Flex
@@ -16,58 +17,43 @@ export const Footer = () => {
                 direction={["column", "row"]}
             >
                 {/* Логотип */}
-                <Text
-                    fontFamily="'Literata', serif"
-                    fontWeight="bold"
-                    fontSize="lg"
-                    color="orange"
-                >
-                    ГотовимЛегко
-                </Text>
+                <ImageLogo />
 
                 {/* Кнопка */}
-                <Button
-                    leftIcon={<Box as="span" fontSize="20px">📧</Box>}
-                    color="brown"
-                    variant="outline"
-                    borderColor="brown"
-                    fontSize="lg"
-                    px="6"
-                    mt={["4", "0"]}
-                >
-                    Написать нам
-                </Button>
-
+                {/* <Button border="3px solid" borderColor="var(--color-brown)" variant="plain" borderRadius="20px" px={5} py={6}>
+                    <Flex align="center">
+                        <Image src={iconLetter} mr={4} />
+                        <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="800" color="var(--color-brown)">Написать нам</Text>
+                    </Flex>
+                </Button> */}
                 {/* Социальные сети */}
                 <Box textAlign={["center", "right"]} mt={["4", "0"]}>
-                    <Text fontWeight="bold" color="brown" mb="2">
+                    <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="900" color="var(--color-brown)" mb={4}>
                         МЫ В СОЦИАЛЬНЫХ СЕТЯХ
                     </Text>
-                    <HStack justify="center" spacing="4">
-                        <IconButton
-                            aria-label="Telegram"
-                            icon={<FaTelegramPlane />}
-                            colorScheme="blue"
-                            variant="ghost"
-                            fontSize="24px"
-                        />
-                        <IconButton
-                            aria-label="Telegram"
-                            icon={<FaTelegramPlane />}
-                            colorScheme="blue"
-                            variant="ghost"
-                            fontSize="24px"
-                        />
-                        <IconButton
-                            aria-label="Telegram"
-                            icon={<FaTelegramPlane />}
-                            colorScheme="blue"
-                            variant="ghost"
-                            fontSize="24px"
-                        />
+                    <HStack justify="left">
+                        <Link href="https://t.me/someoneswm">
+                            <FaTelegram size="40" color="#11AADC" />
+                        </Link>
+                        <Link href="https://t.me/nadenka_b">
+                            <FaTelegram size="40" color="#11AADC" />
+                        </Link>
+                        <Link href="https://t.me/AdelinaSattarova">
+                            <FaTelegram size="40" color="#11AADC" />
+                        </Link>
                     </HStack>
                 </Box>
             </Flex>
+            <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" mt={1}>
+                <Button border="3px solid" borderColor="var(--color-brown)" variant="plain" borderRadius="20px" px={5} py={6}>
+                    <Flex align="center">
+                        <Box boxSize="40px" display="flex" alignItems="center" justifyContent="center">
+                            <HiOutlineEnvelope style={{ width: "100%", height: "100%", color: "var(--color-brown)" }} />
+                        </Box>
+                        <Text fontFamily="var(--main-font)" ml={4} fontSize="lg" fontWeight="800" color="var(--color-brown)">Написать нам</Text>
+                    </Flex>
+                </Button>
+            </Box>
         </Box>
     );
 }
