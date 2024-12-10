@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, IconButton, HStack, VStack, Image } from "@chakra-ui/react";
+import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import { RiHourglassLine } from "react-icons/ri";
 import { CiBookmark } from "react-icons/ci";
 
@@ -46,6 +46,5 @@ export const CardRecipe = () => {
         </Flex>
       </Box>
     </Box>
-
   );
 }

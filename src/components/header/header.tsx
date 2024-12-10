@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Spacer } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { ImageLogo } from "../image-logo";
 
 
@@ -13,7 +13,8 @@ export const Header = () => {
             <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" mt={1}>
                 <ImageLogo />
             </Box>
-            <Box borderBottom="3px solid" borderColor="var(--color-text-main)" width="95%" mx="auto" mt={4} />
+            {/* Полоска снизу для страничек рецепта и пользователя */}
+            {/* <Box borderBottom="3px solid" borderColor="var(--color-text-main)" width="95%" mx="auto" mt={4} /> */}
         </Box>
     );
 }

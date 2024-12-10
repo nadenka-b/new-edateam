@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Button, HStack, Image, Link } from "@chakra-ui/react";
+import { Box, Flex, Text, Button, HStack, Link } from "@chakra-ui/react";
 import { ImageLogo } from "../image-logo";
 import { FaTelegram } from "react-icons/fa6";
 import { HiOutlineEnvelope } from "react-icons/hi2";
@@ -19,13 +19,6 @@ export const Footer = () => {
                 {/* Логотип */}
                 <ImageLogo />
 
-                {/* Кнопка */}
-                {/* <Button border="3px solid" borderColor="var(--color-brown)" variant="plain" borderRadius="20px" px={5} py={6}>
-                    <Flex align="center">
-                        <Image src={iconLetter} mr={4} />
-                        <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="800" color="var(--color-brown)">Написать нам</Text>
-                    </Flex>
-                </Button> */}
                 {/* Социальные сети */}
                 <Box textAlign={["center", "right"]} mt={["4", "0"]}>
                     <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="900" color="var(--color-brown)" mb={4}>
