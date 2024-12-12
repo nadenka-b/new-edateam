@@ -24,11 +24,11 @@ export const globalStyles = css`
     figure, figcaption, footer, header, hgroup,
     menu, nav, output, ruby, section, summary,
     time, mark, audio, video, button{
-        border:0;
+        /* border:0; */
         margin:0;
         outline:0;
         padding:0;
-        text-decoration:none;
+        /* text-decoration:none; */
         box-sizing:border-box;
         -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
     }

@@ -1,0 +1,1 @@
+export {ListOfIngredients} from './list-of-ingredients'
