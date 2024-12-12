@@ -1,1 +1,0 @@
-export { CardRecipe } from './card-recipe';

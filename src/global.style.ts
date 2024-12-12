@@ -15,7 +15,8 @@ export const globalStyles = css`
         --color-brown:#7E4925;
         --color-text-greetings: #FFF0DA; //совпадает с фоном
         --background-greetings:#FF9F5F;
-        
+        --background-card: #ffe6c3;
+        --color-tags: #dc8d57;
 
 
     }

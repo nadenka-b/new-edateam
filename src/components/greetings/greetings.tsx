@@ -16,7 +16,7 @@ export const Greetings = () => {
                     </HStack>
                 </Box>
                 <Box ml={18} mt={120}>
-                    <Button w={215} h={75} color="var(--background-color)" fontFamily="var(--main-font)" bg="var(--color-text-main)" fontSize={24} fontWeight="900" borderRadius={50}>
+                    <Button boxShadow="md" w={215} h={75} color="var(--background-color)" fontFamily="var(--main-font)" bg="var(--color-text-main)" fontSize={24} fontWeight="900" borderRadius={50}>
                         К рецептам
                         <FaArrowRight />
                     </Button>
