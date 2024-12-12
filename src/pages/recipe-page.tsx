@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, VStack, HStack, Icon, Image, IconButton, useStepsContext } from "@chakra-ui/react";
+import { Box, Text, VStack, HStack, Icon, Image, IconButton, useStepsContext} from "@chakra-ui/react";
 import { HiHeart } from "react-icons/hi"
 
 import { Header } from '../components/header'
@@ -37,24 +37,28 @@ import { ListOfIngredients } from '../components/recipe-page-list-of-ingredients
 //         />
 //     </Icon>
 // );
+import step1 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step1.jpg'
+import step2 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step2.jpg'
+import step3 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step3.jpg'
+
 
 const stepsData = [
     {
         title: "Шаг №1",
         description: "Яйца, сахар и соль взбить венчиком до однородной массы.",
-        image: "../assets/images/Eggs.svg", // Замените на реальный путь к изображению
+        image: step1, // Замените на реальный путь к изображению
     },
     {
         title: "Шаг №2",
         description:
             "Добавить молоко и муку, хорошо перемешать до однородного состояния.",
-        image: "../assets/images/step2.jpg", // Замените на реальный путь к изображению
+        image: step2, // Замените на реальный путь к изображению
     },
     {
         title: "Шаг №3",
         description:
             "Добавить воду и растительное масло. Тщательно перемешать блинное тесто и оставить на 1 час.",
-        image: "/step3.png", // Замените на реальный путь к изображению
+        image: step3, // Замените на реальный путь к изображению
     }
     // {
     //     title: "Шаг №4",
@@ -118,18 +122,20 @@ const RecipePage = () => {
                 w="100%"
                 h="auto"
             >
-
                 <SectionHeader title='Пошаговый рецепт' />
 
-                <StepsRoot defaultValue={0} count={stepsData.length}>
+                <StepsRoot defaultValue={0} count={stepsData.length} colorPalette="orange">
                     {/* Список шагов */}
                     <StepsList>
                         {stepsData.map((step, index) => (
                             <StepsItem
                                 key={index}
                                 index={index}
-                                title={step.title}
-                               
+                                // title={step.title}
+                                // style={{
+                                //     backgroundColor: "#FF9F5F",  // Изменение фона
+                                //     color: "#fff",  // Цвет текста
+                                //   }}
                             />
                         ))}
                     </StepsList>
@@ -151,12 +157,13 @@ const RecipePage = () => {
                             >
                                 <Image
                                     src={step.image}
-                                    borderRadius="md"
-                                    boxSize="300px"
-                                    objectFit="cover"
+                                    borderRadius={30}
+                                    w="545px"
+                                    h="350px"
                                     alt={step.title}
-                                    mb="4"
-                                    // fallbackSrc="https://via.placeholder.com/300" // Показываем заглушку, если картинка недоступна
+                                    borderColor="#7E4925"
+                                    borderWidth="5px"
+                                    borderStyle="solid"
                                 />
                                 <Text
                                     fontFamily="var(--main-font)"
@@ -198,8 +205,8 @@ const RecipePage = () => {
                             </Button>
                         </StepsNextTrigger>
                     </HStack>
+
                 </StepsRoot>
-                console.log(stepsData)
 
 
 
