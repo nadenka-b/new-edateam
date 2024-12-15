@@ -8,17 +8,41 @@ export const Greetings = () => {
         <Box position="relative" bg="var(--background-greetings)" h={320} w="100%" mt={2} px={100} py={5}>
             <Flex>
                 <Box>
-                    <Heading size="5xl" fontFamily="var(--main-font)" fontWeight="800" fontStyle="Italic" color="var(--background-color)">Простые рецепты<br />на каждый день!</Heading>
-                    <Heading size="xl" fontFamily="var(--main-font)" fontWeight="400" color="var(--background-color)">Готовить с нами — это легко и вкусно!</Heading>
-                    <HStack bg="var(--background-color)" w={550} borderRadius={50} mt={4} pl={3} fontFamily=" var(--main-font)" h={50}>
-                        <Input color="var(--color-brown)" placeholder="Чего желаете?" border="1px" size="md" _placeholder={{ color: "#979797" }} />
-                        <Button color="var(--background-color)" bg="var(--color-text-main)" fontSize={20} borderRadius={50} w={166}>Найти</Button>
+                    <Heading fontSize={60} fontFamily="var(--main-font)" fontWeight="800" fontStyle="Italic" color="var(--background-color)">Простые рецепты<br />на каждый день!</Heading>
+                    <Heading fontSize={20} fontFamily="var(--main-font)" fontWeight="400" color="var(--background-color)">Готовить с нами — это легко и вкусно!</Heading>
+                    <HStack bg="var(--background-color)" w={550} borderRadius={50} mt={4} pl={2} fontFamily=" var(--main-font)" h={50}>
+                        <Input
+                            borderRadius={50}
+                            border="none"
+                            focusBorderColor="transparent"
+                            color="var(--color-brown)"
+                            placeholder="Чего желаете?"
+                            size="md"
+                            _placeholder={{ color: "#979797" }} />
+                        <Button
+                            color="var(--background-color)"
+                            bg="var(--color-text-main)"
+                            fontSize={20}
+                            borderRadius={50}
+                            w={166}
+                            _hover={{ bg: "var(--color-text-main)" }}
+                        >Найти</Button>
                     </HStack>
                 </Box>
                 <Box ml={18} mt={120}>
-                    <Button boxShadow="md" w={215} h={75} color="var(--background-color)" fontFamily="var(--main-font)" bg="var(--color-text-main)" fontSize={24} fontWeight="900" borderRadius={50}>
+                    <Button
+                        _hover={{ bg: "var(--color-text-main)" }}
+                        rightIcon={<FaArrowRight />}
+                        boxShadow="md"
+                        w={215}
+                        h={75}
+                        color="var(--background-color)"
+                        fontFamily="var(--main-font)"
+                        bg="var(--color-text-main)"
+                        fontSize={24}
+                        fontWeight="900"
+                        borderRadius={50}>
                         К рецептам
-                        <FaArrowRight />
                     </Button>
                 </Box>
             </Flex>

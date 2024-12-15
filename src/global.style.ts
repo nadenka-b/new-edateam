@@ -17,6 +17,7 @@ export const globalStyles = css`
         --background-greetings:#FF9F5F;
         --background-card: #ffe6c3;
         --color-tags: #dc8d57;
+        --color-arrow: #FF9F5F; //совпадает с фоном greetings
 
 
     }
