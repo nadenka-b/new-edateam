@@ -1,19 +1,20 @@
 import React from 'react';
-import { Box, Text, VStack, HStack, Icon, Image, IconButton, useStepsContext, Circle } from "@chakra-ui/react";
-import { HiChevronLeft } from "react-icons/hi"
+import {
+    Box, Text, VStack, HStack, Image, createIcon, Circle, Button,
+    useSteps,
+    Step,
+    StepIcon,
+    StepIndicator,
+    StepNumber,
+    StepSeparator,
+    StepStatus,
+    StepTitle,
+    Stepper,
+
+} from "@chakra-ui/react";
 
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { Button } from '../components/ui/button';
-import {
-    StepsCompletedContent,
-    StepsContent,
-    StepsItem,
-    StepsList,
-    StepsNextTrigger,
-    StepsPrevTrigger,
-    StepsRoot,
-} from "../components/ui/steps";
 
 
 import { Title } from "../components/recipe-page-title/title"
@@ -24,19 +25,35 @@ import { AddToMyBook } from '../components/recipe-page-add-to-my-book/add-to-my-
 import { SectionHeader } from '../components/recipe-page-section-header/section-header'
 import { ListOfIngredients } from '../components/recipe-page-list-of-ingredients/list-of-ingredients'
 
-// const ArrowRight = (props) => (
-//     <Icon viewBox="0 0 50 80" {...props}>
-//         <path
-//             d="M5 75L45 39.6367L5 5"
-//             stroke="#FF9F5F"
-//             strokeWidth="10"
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             fill="none"
+const CustomArrowLeftIcon = createIcon({
+    displayName: 'ArrowIcon',
+    viewBox: '0 0 50 80',
+    path: (
+        <path
+            d="M45 5L5 40.3633L45 75"
+            stroke="#FF9F5F"
+            strokeWidth="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+        />
+    ),
+});
 
-//         />
-//     </Icon>
-// );
+const CustomArrowRightIcon = createIcon({
+    displayName: 'ArrowIcon',
+    viewBox: '0 0 50 80',
+    path: (
+        <path
+            d="M5 75L45 39.6367L5 5"
+            stroke="#FF9F5F"
+            strokeWidth="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+        />
+    ),
+});
 import step1 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step1.jpg'
 import step2 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step2.jpg'
 import step3 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step3.jpg'
@@ -45,6 +62,7 @@ import step5 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step5.jpg
 import step6 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step6.jpg'
 import step7 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step7.jpg'
 import step8 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step8.jpg'
+
 
 
 const stepsData = [
@@ -95,9 +113,11 @@ const stepsData = [
     },
 ];
 
-
-
 const RecipePage = () => {
+    const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
+        index: 0,
+        count: stepsData.length,
+    });
     return (
         <>
             <Header />
@@ -128,125 +148,148 @@ const RecipePage = () => {
                 h="auto"
             >
                 <SectionHeader title='Пошаговый рецепт' />
-
-                <StepsRoot defaultValue={0} count={stepsData.length} colorPalette="orange">
-                    {/* Список шагов */}
-                    <StepsList>
+                <VStack >
+                    {/* Stepper Component */}
+                    <Stepper index={activeStep} colorScheme="orange" size="lg" w="100%">
                         {stepsData.map((step, index) => (
-                            <StepsItem
-                                key={index}
-                                index={index}
-                            // title={step.title}
-                            // style={{
-                            //     backgroundColor: "#FF9F5F",  // Изменение фона
-                            //     color: "#fff",  // Цвет текста
-                            //   }}
-                            />
-                        ))}
-                    </StepsList>
+                            <Step key={index} onClick={() => setActiveStep(index)} mb={10}>
+                                <StepIndicator
+                                    ml={index === 0 ? 10 : 0}  // Отступ слева для первого шага
 
-                    <HStack mt="6" justify="space-between">
-                        <StepsPrevTrigger asChild>
-                            <Button variant="unstyled" boxSize="100px">
-                                <svg viewBox="0 0 50 80" xmlns="http://www.w3.org/2000/svg" boxSize="100px">
-                                    <path
-                                        d="M45 5L5 40.3633L45 75"
-                                        stroke="#FF9F5F"
-                                        strokeWidth="10"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        fill="none"
+                                >
+                                    <StepStatus
+                                        complete={<StepIcon />}
+                                        incomplete={<StepNumber color="#7E4925" fontSize={25} />}
+                                        active={<StepNumber />}
                                     />
-                                </svg>
-                            </Button>
-                        </StepsPrevTrigger>
-                        {/* Карточка для текущего шага */}
-                        {stepsData.map((step, index) => (
-                            <StepsContent key={index} index={index}>
-                                <HStack
-                                    align="center"
-                                    mr="31px">
-                                    <Circle
-                                        size="70px" // Размер кружка
-                                        bg="#FFE6C3" // Цвет фона кружка
-                                        color="#7E4925" // Цвет текста
-                                        fontWeight="bold"
-                                        fontSize={40}
+                                </StepIndicator>
+
+                                <Box flexShrink="0"
+                                    mr={index === stepsData.length - 1 ? 10 : 0}  // Отступ справа для последнего шага
+                                >
+                                    <StepTitle
+                                        fontFamily="var(--main-font)"
+                                        fontSize={25}
+                                        fontWeight={900}
                                         fontStyle="italic"
-                                        border="5px solid #7E4925"
-                                        mr="20px" // Отступ справа от кружка
-                                    >
-                                        {index + 1}
-                                    </Circle>
-                                    <HStack
-                                        align="center"
-                                        p="6"
-                                        borderWidth="5px"
-                                        borderRadius="lg"
-                                        borderColor="#7E4925"
-                                        bg="#FFE6C3"
-                                        mx="auto"
-                                        textAlign="center"
-                                        h="453px"
-                                        w="1441px"
-                                    >
+                                        color="#7E4925"
+                                    >{step.title}</StepTitle>
+                                </Box>
 
-                                        <Image
-                                            src={step.image}
-                                            borderRadius={30}
-                                            w="545px"
-                                            h="350px"
-                                            alt={step.title}
-                                            borderColor="#7E4925"
-                                            borderWidth="5px"
-                                            borderStyle="solid"
-                                        />
-                                        <Text
-                                            fontFamily="var(--main-font)"
-                                            fontSize="calc(35px * 1.1)"
-                                            fontWeight={900}
-                                            fontStyle="italic"
-                                            color="#7E4925"
-                                        >
-                                            {step.description}
-                                        </Text>
-                                    </HStack>
-                                </HStack>
-                            </StepsContent>
+                                <StepSeparator />
+                            </Step>
                         ))}
+                    </Stepper>
 
-                        {/* Сообщение о завершении шагов */}
-                        <StepsCompletedContent>
-                            <VStack>
-                                <Text fontSize="xl" fontWeight="bold" color="green.600">
-                                    Все готово!
+
+
+                    {/* Navigation Buttons */}
+                    <HStack spacing={6} justify="space-between" w="full" align="center">
+                        <Button
+                            variant="unstyled"
+                            boxSize="9px"
+                            onClick={goToPrevious}
+                            isDisabled={activeStep === 0}
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                            ml="52px"
+                        >
+                            <CustomArrowLeftIcon boxSize="70px" />
+                        </Button>
+
+                        <Circle
+                            size="100px"
+                            bg="#FFE6C3"
+                            color="#7E4925"
+                            fontWeight="bold"
+                            fontSize="40px"
+                            fontStyle="italic"
+                            border="5px solid #7E4925"
+                        >
+                            {activeStep + 1}
+                        </Circle>
+                        <Box
+                            borderWidth="5px"
+                            borderColor="#7E4925"
+                            borderRadius={30}
+                            p="6"
+                            bg="#FFE6C3"
+                            w="1441px"
+                            h="453px"
+                            textAlign="center"
+                        >
+
+                            <HStack justify="center" align="center" spacing={8}>
+
+                                <Image
+                                    src={stepsData[activeStep].image}
+                                    borderRadius={30}
+                                    w="545px"
+                                    h="350px"
+                                    alt={stepsData[activeStep].title}
+                                    borderColor="#7E4925"
+                                    borderWidth="5px"
+                                />
+                                <Text
+                                    fontFamily="var(--main-font)"
+                                    fontSize="calc(35px * 1.1)"
+                                    fontWeight={900}
+                                    fontStyle="italic"
+                                    color="#7E4925"
+                                >
+                                    {stepsData[activeStep].description}
                                 </Text>
-                                <Text>Приятного аппетита!</Text>
-                            </VStack>
-                        </StepsCompletedContent>
+                            </HStack>
+                        </Box>
 
-                        {/* Кнопка управления */}
-
-                        <StepsNextTrigger asChild>
-                            <Button variant="unstyled" boxSize="100px">
-                                <svg viewBox="0 0 50 80" xmlns="http://www.w3.org/2000/svg" boxSize="100px">
-                                    <path
-                                        d="M5 75L45 39.6367L5 5"
-                                        stroke="#FF9F5F"
-                                        strokeWidth="10"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        fill="none"
-                                    />
-                                </svg>
-                            </Button>
-                        </StepsNextTrigger>
+                        <Button
+                            variant="unstyled"
+                            boxSize="9px"
+                            onClick={goToNext}
+                            isDisabled={activeStep === stepsData.length - 1}
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                            mr="52px"
+                        >
+                            <CustomArrowRightIcon boxSize="70px" />
+                        </Button>
                     </HStack>
 
-                </StepsRoot>
+                    {/* Completion Message */}
+                    {/* {activeStep === stepsData.length - 1 && (
+                        <Box
+                            textAlign="center"
+                            mt="20px"
+                            p="20px"
+                            bg="orange.50"
+                            borderRadius="16px"
+                            boxShadow="0 8px 20px rgba(255, 159, 95, 0.3)"
+                            border="2px solid"
+                            borderColor="orange.200"
+                        >
+                            <Text
+                                fontSize="3xl"
+                                fontWeight="extrabold"
+                                fontFamily="Caveat, cursive" // Декоративный шрифт
+                                color="orange.600"
+                                mb="12px"
+                            >
+                                Всё готово! 🥳🍽️
+                            </Text>
+                            <Text
+                                fontSize="2xl"
+                                fontWeight="medium"
+                                fontFamily="Caveat, cursive"
+                                color="orange.500"
+                            >
+                                Приятного аппетита!
+                            </Text>
+                        </Box>
 
-
-
+                    )} */}
+                </VStack>
             </Box>
 
         </>

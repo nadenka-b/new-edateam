@@ -21,10 +21,9 @@ export const ListOfIngredients = () => {
             maxW="1000px"
             mx="auto"
             my="100px"
-            // spacing="0" // Убираем отступы между строками
             borderRadius="16px" // Закругление только внешних углов таблицы
             overflow="hidden" // Обрезка содержимого для строгих краев
-
+            spacing={0} // Убираем отступы между строками
         >
             {ingredients.map((ingredient, index) => (
                 <Box
@@ -35,6 +34,7 @@ export const ListOfIngredients = () => {
                     px="16px"
                     py="12px"
                     bg={index % 2 === 0 ? "#FFF0DA" : "#FFE6C3"} // Чередование цветов строк
+                    m={0} // Убираем margin между строками
                 >
                     <Text
                         fontFamily="var(--main-font)"
@@ -65,5 +65,6 @@ export const ListOfIngredients = () => {
                 </Box>
             ))}
         </VStack>
+
     )
 }
