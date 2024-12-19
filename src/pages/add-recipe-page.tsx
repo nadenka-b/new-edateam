@@ -12,7 +12,7 @@ import { default as Plus } from "../assets/images/Plus.svg";
 import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
 const AddRecipePage = () => {
-
+    const [photoPreview, setPhotoPreview] = useState(null)
     const [steps, setSteps] = useState([]);
     const [currentDescription, setCurrentDescription] = useState("");
     const [currentPhoto, setCurrentPhoto] = useState(null);
@@ -21,18 +21,21 @@ const AddRecipePage = () => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onloadend = () => {
-                setCurrentPhoto(reader.result);
+            reader.onload = (e) => {
+                setPhotoPreview(e.target.result); // Сохраняем превью
             };
             reader.readAsDataURL(file);
         }
     };
 
     const addStep = () => {
-        if (currentDescription || currentPhoto) {
-            setSteps([...steps, { description: currentDescription, photo: currentPhoto }]);
-            setCurrentDescription("");
-            setCurrentPhoto(null);
+        if (photoPreview || currentDescription.trim()) {
+            setSteps((prevSteps) => [
+                ...prevSteps,
+                { photo: photoPreview, description: currentDescription },
+            ]);
+            setPhotoPreview(null); // Сброс фото
+            setCurrentDescription(""); // Сброс описания
         }
     };
 
@@ -163,7 +166,7 @@ const AddRecipePage = () => {
                         >
                             <Image
                                 src={addPhoto}
-                                alt="Часы"
+                                alt="Фотоаппарат"
                                 boxSize="50px"
                                 mb={2}
                             />
@@ -210,15 +213,16 @@ const AddRecipePage = () => {
                         </Box>
                     </VStack>
 
-                    <HStack spacing={8} align="center" justifyContent="space-between" w="100%">
+                    <HStack spacing={8} align="flex-start" justifyContent="space-between" w="100%">
                         {/* Секция с текстом "Категория блюда" */}
-                        <VStack align="center" >
+                        <VStack align="flex-start" >
                             <Text
                                 fontFamily="var(--main-font)"
                                 fontStyle="italic"
                                 fontSize={32}
                                 fontWeight="bold"
                                 color="#7E4925"
+                                ml={10}
                             >
                                 Категория блюда
                             </Text>
@@ -228,10 +232,12 @@ const AddRecipePage = () => {
                                 placeholder="Выберите категорию"
                                 size="lg"
                                 w="300px"
-                                fontFamily="var(--main-font)"
-                                fontStyle="italic"
-                                fontWeight="bold"
+                                ml={10}
                                 borderColor="#7E4925"
+                                fontFamily="var(--main-font)"
+                                fontSize={22}
+                                fontWeight="bold"
+                                color="#7E4925"
                                 borderRadius={15}
                                 onChange={(e) => addCategory(e.target.value)} // Добавление категории
                             >
@@ -239,15 +245,11 @@ const AddRecipePage = () => {
                                 <option value="Гарнир">Гарнир</option>
                                 <option value="Десерт">Десерт</option>
                                 <option value="Основное блюдо">Основное блюдо</option>
-                                <option value="Основное блюдо2">Основное блюдо1</option>
-
-                                <option value="Основное блюдо1">Основное блюдо2</option>
-
                             </Select>
                         </VStack>
 
                         {/* Секция с выбранными категориями справа */}
-                        <VStack align="start" w="100%">
+                        <VStack align="start" w="100%" maxWidth={400}>
                             <Text
                                 fontFamily="var(--main-font)"
                                 fontSize={32}
@@ -275,7 +277,7 @@ const AddRecipePage = () => {
                                         >
                                             <Text
                                                 fontFamily="var(--main-font)"
-                                                fontSize={28}
+                                                fontSize={22}
                                                 fontWeight="bold"
                                                 color="#7E4925"
                                             >
@@ -408,6 +410,7 @@ const AddRecipePage = () => {
                             ))}
                         </List>
                     </VStack>
+                    (
                     <VStack spacing={6} align="center" w="100%" p={6}>
                         {/* Заголовок */}
                         <Text fontFamily="var(--main-font)" fontSize={32} fontWeight="bold" fontStyle="italic" color="#7E4925">
@@ -420,25 +423,42 @@ const AddRecipePage = () => {
                             <Box
                                 w="150px"
                                 h="150px"
-                                bg="gray.300"
-                                borderRadius="md"
+                                bg={photoPreview ? "transparent" : "#F2F2F2"} // Фон исчезает при наличии фото
+                                cursor="pointer"
+                                overflow="hidden"
+
+                                borderRadius="15px"
+                                border="2px dashed #7E4925"
                                 display="flex"
                                 justifyContent="center"
                                 alignItems="center"
-                                cursor="pointer"
+
+                                _hover={{ bg: "#FFF4E0" }}
                                 onClick={() => document.getElementById("photoInput").click()}
                             >
+                                <VStack >
+                                    <Image
+                                        src={addPhoto}
+                                        alt="Фотоаппарат"
+                                        boxSize="50px"
+                                        mb={2}
+                                    />
+                                    {photoPreview ? (
+                                        <Image src={photoPreview} alt="Превью фото" boxSize="100%" objectFit="cover" />
+                                    ) : (
+                                        <Text fontFamily="var(--main-font)" fontWeight="bold" color="#7E4925">
+                                            Добавить фото
+                                        </Text>
+                                    )}
+                                    <input
+                                        id="photoInput"
+                                        type="file"
+                                        accept="image/*"
+                                        style={{ display: "none" }}
+                                        onChange={handlePhotoChange}
+                                    />
+                                </VStack>
 
-                                <Text fontFamily="var(--main-font)" fontWeight="bold" color="gray.600">
-                                    Добавить фото
-                                </Text>
-                                <input
-                                    id="photoInput"
-                                    type="file"
-                                    accept="image/*"
-                                    style={{ display: "none" }}
-                                    onChange={handlePhotoChange}
-                                />
                             </Box>
 
                             {/* Инпут для описания шага */}
@@ -447,6 +467,7 @@ const AddRecipePage = () => {
                                 value={currentDescription}
                                 onChange={(e) => setCurrentDescription(e.target.value)}
                                 flex="1"
+                                h={20}
                                 border="2px solid #7E4925"
                                 borderRadius="15px"
                                 fontFamily="var(--main-font)"
@@ -462,16 +483,15 @@ const AddRecipePage = () => {
                             _hover={{
                                 ".hover-effect": { color: "#FF9901", filter: "brightness(1.2)" }, // Единый стиль
                             }}
+                        // alignItems="center"
+                        // _hover={{ color: "#FF9901" }}
                         >
-
-
                             <Image
                                 src={Plus} // Укажите путь к вашему изображению
                                 alt="Добавить"
                                 boxSize="30px"
                                 mr={2}
-                                className="hover-effect" // Класс для стилизации при наведении
-
+                                className='hover-effect'
                             />
 
                             <Text
@@ -479,12 +499,12 @@ const AddRecipePage = () => {
                                 fontSize="lg"
                                 fontWeight="bold"
                                 color="#FF6601"
-                                className="hover-effect" // Класс для стилизации при наведении
-
+                                className='hover-effect'
                             >
                                 Добавить ингредиент
                             </Text>
                         </Button>
+
                         {/* Отображение шагов */}
                         <VStack spacing={4} align="start" w="100%" maxW="800px">
                             {steps.map((step, index) => (
@@ -499,6 +519,7 @@ const AddRecipePage = () => {
                                         display="flex"
                                         justifyContent="center"
                                         alignItems="center"
+                                        border="2px solid #7E4925"
                                     >
                                         {step.photo ? (
                                             <Image src={step.photo} alt={`Шаг ${index + 1}`} boxSize="100%" objectFit="cover" />
@@ -526,7 +547,7 @@ const AddRecipePage = () => {
 
                     <Button
                         bg="#FF6601"
-                        
+
                         _hover={{ bg: "#FF9901" }} // Цвет при наведении
                         fontFamily="var(--main-font)"
                         fontStyle="italic"
