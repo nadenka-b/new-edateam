@@ -4,9 +4,11 @@ import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import { default as addPhoto } from "../assets/images/AddPhoto.svg";
-import { default as Plus } from "../assets/images/Plus.svg";
+import { TimeInput } from '../components/add-rp-time-input/time-input';
 
+// import { default as addPhoto } from "../assets/images/AddPhoto.svg";
+import { default as Plus } from "../assets/images/Plus.svg";
+import { DishPhoto } from '../components/add-rp-dish-photo';
 
 const AddRecipePage = () => {
     const [photoPreview, setPhotoPreview] = useState(null)
@@ -51,21 +53,21 @@ const AddRecipePage = () => {
     };
 
 
-    const fileInputRef = useRef(null);
-    const [fileName, setFileName] = useState(null); // Состояние для хранения имени файла
+    // const fileInputRef = useRef(null);
+    // const [fileName, setFileName] = useState(null); // Состояние для хранения имени файла
 
-    // Функция для обработки изменения файла
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            // Извлекаем имя файла и его расширение
-            const name = file.name;
-            const fileExtension = name.split('.').pop(); // Получаем расширение файла
+    // // Функция для обработки изменения файла
+    // const handleFileChange = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         // Извлекаем имя файла и его расширение
+    //         const name = file.name;
+    //         const fileExtension = name.split('.').pop(); // Получаем расширение файла
 
-            // Сохраняем полное имя файла (включая расширение)
-            setFileName(`${name} (${fileExtension})`);
-        }
-    };
+    //         // Сохраняем полное имя файла (включая расширение)
+    //         setFileName(`${name} (${fileExtension})`);
+    //     }
+    // };
     const [selectedCategories, setSelectedCategories] = useState([]);
     const addCategory = (category) => {
         if (!selectedCategories.includes(category)) {
@@ -101,106 +103,9 @@ const AddRecipePage = () => {
                         fontStyle="italic"
                     />
 
-                    <HStack spacing={8} align="center" w="100%">
-                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontSize={32} fontWeight="bold" color="var(--color-brown)" mr={10}>
-                            Время приготовления
-                        </Text>
-
-                        <Input
-                            placeholder="0"
-                            size="sm"
-                            borderRadius={15}
-                            w="100px"
-                            textAlign="right"
-                            border="2px solid var(--color-brown)"
-                            _placeholder={{ color: "var(--color-brown)" }}
-                            fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28}
-                        />
-                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28} color="var(--color-brown)">
-                            час(ов)
-                        </Text>
-
-                        <Input
-                            placeholder="0"
-                            size="sm"
-                            borderRadius={15}
-                            w="100px"
-                            textAlign="right"
-                            border="2px solid var(--color-brown)"
-                            _placeholder={{ color: "var(--color-brown)" }}
-                            fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28}
-                        />
-                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28} color="var(--color-brown)">
-                            минут
-                        </Text>
-                    </HStack>
-
-                    <VStack spacing={4} align="center" w="100%">
-                        <Text
-                            fontFamily="var(--main-font)"
-                            fontSize={32}
-                            fontWeight="bold"
-                            color="var(--color-brown)"
-                            fontStyle="italic"
-                        >
-                            Фото готового блюда
-                        </Text>
-                        <Box
-                            w="918px"
-                            h="353px"
-                            borderRadius="15px"
-                            border="2px dashed var(--color-brown)"
-                            display="flex"
-                            justifyContent="center"
-                            alignItems="center"
-                            bg="var(--color-add-photo)"
-                            cursor="pointer"
-                            _hover={{ bg: "var(--color--add-photo2)" }}
-                            flexDirection="column"
-                            onClick={() => fileInputRef.current.click()} // Trigger the file input click
-                        >
-                            <Image
-                                src={addPhoto}
-                                alt="Фотоаппарат"
-                                boxSize="50px"
-                                mb={2}
-                            />
-                            {/* Если файл выбран, отображаем его имя */}
-                            {fileName ? (
-                                <Text
-                                    fontFamily="var(--main-font)"
-                                    fontSize={16}
-                                    fontWeight={600}
-                                    color="var(--color-brown)"
-                                    mb={2}
-                                >
-                                    Выбран файл: {fileName}
-                                </Text>
-                            ) : (
-
-                                <Text
-                                    fontFamily="var(--main-font)"
-                                    fontSize={20}
-                                    fontWeight={600}
-                                    // fontStyle="italic"
-                                    color="var(--color-brown)"
-                                    mb={2}
-                                >
-                                    Нажмите, чтобы добавить фото
-                                </Text>
-                            )}
-
-                            {/* Скрытый input для загрузки файла */}
-                            <input
-                                ref={fileInputRef}
-                                type="file"
-                                style={{ display: 'none' }} // Скрыть элемент
-                                onChange={handleFileChange} // Обработчик изменения файла
-                            />
-
-                        </Box>
-                    </VStack>
-
+                    <TimeInput />
+                    
+                    <DishPhoto />
                     <HStack spacing={8} align="flex-start" justifyContent="space-between" w="100%">
                         {/* Секция с текстом "Категория блюда" */}
                         <VStack align="flex-start" >
@@ -465,7 +370,7 @@ const AddRecipePage = () => {
                             _hover={{
                                 ".hover-effect": { color: "var(--color--sent)", filter: "brightness(1.2)" }, // Единый стиль
                             }}
-                        
+
                         >
                             <Image
                                 src={Plus} // Укажите путь к вашему изображению
