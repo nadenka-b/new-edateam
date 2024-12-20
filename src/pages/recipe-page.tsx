@@ -110,6 +110,7 @@ const RecipePage = () => {
                 <SectionHeader title='Пошаговый рецепт' />
                 <StepperComponent  activeStep={activeStep} stepsData={stepsData} setActiveStep={setActiveStep} goToPrevious={goToPrevious} goToNext={goToNext} />
             </Box >
+            <Footer/>
         </>
     );
 };

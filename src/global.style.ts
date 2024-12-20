@@ -18,8 +18,10 @@ export const globalStyles = css`
         --background-card: #ffe6c3;
         --color-tags: #dc8d57;
         --color-arrow: #FF9F5F; //совпадает с фоном greetings
-
-
+        --color-add-photo: #F2F2F2;
+        --color--add-photo2: #FFF4E0;
+        --color--add-step-and-photo: #FF6601;
+        --color--sent: #FF9901;
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,

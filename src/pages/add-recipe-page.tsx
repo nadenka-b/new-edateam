@@ -1,15 +1,12 @@
 import React, { useRef, useState } from 'react';
-
 import { Box, Input, VStack, HStack, IconButton, Wrap, WrapItem, Text, Image, Select, ListItem, List, Button } from "@chakra-ui/react";
-
+import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { default as addPhoto } from "../assets/images/AddPhoto.svg";
 import { default as Plus } from "../assets/images/Plus.svg";
 
-// export { default as addPhoto} from '../../assets/images/'
-import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
 const AddRecipePage = () => {
     const [photoPreview, setPhotoPreview] = useState(null)
@@ -85,29 +82,27 @@ const AddRecipePage = () => {
         <>
             <Header />
             <Box
-                bg="#FFE6C3"
+                bg="var(--background-card)"
                 w="1419px"
                 h="auto"
                 mx="auto"
                 p={6}
-                borderRadius="md"
-                boxShadow="md"
                 display="flex"
                 justifyContent="center"
 
             >
-                <VStack spacing="25px" align="center">
+                <VStack spacing={25} align="center">
                     <Input
                         placeholder="Название рецепта"
                         size="lg"
-                        maxW="550px"
+                        maxW={500}
                         fontFamily="var(--main-font)"
-                        fontSize={64}
+                        fontSize={50}
                         fontStyle="italic"
                     />
 
-                    <HStack spacing={8} align="center" justifyContent="space-between" w="100%">
-                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontSize={32} fontWeight="bold" color="#7E4925" mr={10}>
+                    <HStack spacing={8} align="center" w="100%">
+                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontSize={32} fontWeight="bold" color="var(--color-brown)" mr={10}>
                             Время приготовления
                         </Text>
 
@@ -116,12 +111,12 @@ const AddRecipePage = () => {
                             size="sm"
                             borderRadius={15}
                             w="100px"
-                            textAlign="center"
-                            border="2px solid #7E4925"
-                            _placeholder={{ color: "#7E4925" }}
+                            textAlign="right"
+                            border="2px solid var(--color-brown)"
+                            _placeholder={{ color: "var(--color-brown)" }}
                             fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28}
                         />
-                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28} color="#7E4925">
+                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28} color="var(--color-brown)">
                             час(ов)
                         </Text>
 
@@ -130,12 +125,12 @@ const AddRecipePage = () => {
                             size="sm"
                             borderRadius={15}
                             w="100px"
-                            textAlign="center"
-                            border="2px solid #7E4925"
-                            _placeholder={{ color: "#7E4925" }}
+                            textAlign="right"
+                            border="2px solid var(--color-brown)"
+                            _placeholder={{ color: "var(--color-brown)" }}
                             fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28}
                         />
-                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28} color="#7E4925">
+                        <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={28} color="var(--color-brown)">
                             минут
                         </Text>
                     </HStack>
@@ -145,22 +140,22 @@ const AddRecipePage = () => {
                             fontFamily="var(--main-font)"
                             fontSize={32}
                             fontWeight="bold"
-                            color="#7E4925"
+                            color="var(--color-brown)"
                             fontStyle="italic"
                         >
                             Фото готового блюда
                         </Text>
                         <Box
-                            w="700px"
-                            h="200px"
+                            w="918px"
+                            h="353px"
                             borderRadius="15px"
-                            border="2px dashed #7E4925"
+                            border="2px dashed var(--color-brown)"
                             display="flex"
                             justifyContent="center"
                             alignItems="center"
-                            bg="white"
+                            bg="var(--color-add-photo)"
                             cursor="pointer"
-                            _hover={{ bg: "#FFF4E0" }}
+                            _hover={{ bg: "var(--color--add-photo2)" }}
                             flexDirection="column"
                             onClick={() => fileInputRef.current.click()} // Trigger the file input click
                         >
@@ -176,7 +171,7 @@ const AddRecipePage = () => {
                                     fontFamily="var(--main-font)"
                                     fontSize={16}
                                     fontWeight={600}
-                                    color="#7E4925"
+                                    color="var(--color-brown)"
                                     mb={2}
                                 >
                                     Выбран файл: {fileName}
@@ -186,9 +181,9 @@ const AddRecipePage = () => {
                                 <Text
                                     fontFamily="var(--main-font)"
                                     fontSize={20}
-                                    fontWeight={800}
-                                    fontStyle="italic"
-                                    color="#7E4925"
+                                    fontWeight={600}
+                                    // fontStyle="italic"
+                                    color="var(--color-brown)"
                                     mb={2}
                                 >
                                     Нажмите, чтобы добавить фото
@@ -203,13 +198,6 @@ const AddRecipePage = () => {
                                 onChange={handleFileChange} // Обработчик изменения файла
                             />
 
-
-                            <input
-                                ref={fileInputRef}
-                                type="file"
-                                style={{ display: 'none' }} // Hide the file input element
-                                onChange={handleFileChange} // Handle file selection
-                            />
                         </Box>
                     </VStack>
 
@@ -221,8 +209,7 @@ const AddRecipePage = () => {
                                 fontStyle="italic"
                                 fontSize={32}
                                 fontWeight="bold"
-                                color="#7E4925"
-                                ml={10}
+                                color="var(--color-brown)"
                             >
                                 Категория блюда
                             </Text>
@@ -231,13 +218,13 @@ const AddRecipePage = () => {
                             <Select
                                 placeholder="Выберите категорию"
                                 size="lg"
-                                w="300px"
-                                ml={10}
-                                borderColor="#7E4925"
+                                h="50px"
+                                w="320px"
+                                borderColor="var(--color-brown)"
                                 fontFamily="var(--main-font)"
                                 fontSize={22}
                                 fontWeight="bold"
-                                color="#7E4925"
+                                color="var(--color-brown)"
                                 borderRadius={15}
                                 onChange={(e) => addCategory(e.target.value)} // Добавление категории
                             >
@@ -254,22 +241,21 @@ const AddRecipePage = () => {
                                 fontFamily="var(--main-font)"
                                 fontSize={32}
                                 fontWeight={800}
-                                color="#7E4925"
+                                color="var(--color-brown)"
                                 fontStyle="italic"
-
                             >
                                 Выбранные категории
                             </Text>
 
                             {/* Контейнер для выбранных категорий */}
-                            <Wrap spacing={4} maxWidth="400px" overflow="hidden" w="100%">
+                            <Wrap spacing={2} maxWidth="400px" overflow="hidden" w="100%">
                                 {selectedCategories.map((category) => (
                                     <WrapItem key={category}>
                                         <HStack
                                             spacing={2}
-                                            bg="#FFF0DA"
+                                            bg="var(--background-color)"
                                             borderRadius="12px"
-                                            borderColor="#7E4925"
+                                            borderColor="var(--color-brown)"
                                             borderWidth={1}
                                             px="12px"
                                             py="8px"
@@ -279,7 +265,7 @@ const AddRecipePage = () => {
                                                 fontFamily="var(--main-font)"
                                                 fontSize={22}
                                                 fontWeight="bold"
-                                                color="#7E4925"
+                                                color="var(--color-brown)"
                                             >
                                                 {category}
                                             </Text>
@@ -288,7 +274,7 @@ const AddRecipePage = () => {
                                                 onClick={() => removeCategory(category)}
                                                 variant="ghost"
                                                 size="sm"
-                                                color="#7E4925"
+                                                color="var(--color-brown)"
                                                 aria-label="Удалить категорию"
                                             />
                                         </HStack>
@@ -313,7 +299,7 @@ const AddRecipePage = () => {
                             fontFamily="var(--main-font)"
                             fontSize={32}
                             fontWeight="bold"
-                            color="#7E4925"
+                            color="var(--color-brown)"
                             fontStyle="italic"
                         >
                             Ингредиенты
@@ -323,7 +309,7 @@ const AddRecipePage = () => {
                         <HStack
                             w="659px"
                             align="center"
-                            border="2px solid #7E4925"
+                            border="2px solid var(--color-brown)"
                             borderRadius={15}
                             p={2}
                             bg="white"
@@ -335,13 +321,13 @@ const AddRecipePage = () => {
                                 fontFamily="var(--main-font)"
                                 fontWeight={700}
                                 fontSize="24px"
-                                color="#979797"
+                                color="var(--color-brown)"
                                 flex="3"
                                 value={ingredientName}
                                 onChange={(e) => setIngredientName(e.target.value)}
                             />
 
-                            <Box w="2px" h="130%" bg="#7E4925" />
+                            <Box w="2px" h="130%" bg="var(--color-brown)" />
 
                             <Input
                                 placeholder="0"
@@ -351,7 +337,7 @@ const AddRecipePage = () => {
                                 fontFamily="var(--main-font)"
                                 fontWeight={700}
                                 fontSize="24px"
-                                color="#7E4925"
+                                color="var(--color-brown)"
                                 flex="1"
                                 value={ingredientQuantity}
                                 onChange={(e) => setIngredientQuantity(e.target.value)}
@@ -365,10 +351,9 @@ const AddRecipePage = () => {
                                 variant="unstyled"
                                 display="flex"
                                 _hover={{
-                                    ".hover-effect": { color: "#FF9901", filter: "brightness(1.2)" }, // Единый стиль
+                                    ".hover-effect": { color: "var(--color--sent)", filter: "brightness(1.2)" }, // Единый стиль
                                 }}
-                            // alignItems="center"
-                            // _hover={{ color: "#FF9901" }}
+
                             >
                                 <Image
                                     src={Plus} // Укажите путь к вашему изображению
@@ -382,7 +367,7 @@ const AddRecipePage = () => {
                                     fontFamily="var(--main-font)"
                                     fontSize="lg"
                                     fontWeight="bold"
-                                    color="#FF6601"
+                                    color="var(--color--add-step-and-photo)"
                                     className='hover-effect'
                                 >
                                     Добавить ингредиент
@@ -396,14 +381,14 @@ const AddRecipePage = () => {
                             {ingredients.map((ingredient, index) => (
                                 <ListItem
                                     key={index}
-                                    border="2px solid #7E4925"
+                                    border="2px solid var(--color-brown)"
                                     borderRadius="12px"
                                     p={4}
-                                    bg="#FFF0DA"
+                                    bg="var(--background-color)"
                                     fontFamily="var(--main-font)"
                                     fontSize="lg"
                                     fontWeight="bold"
-                                    color="#7E4925"
+                                    color="var(--color-brown)"
                                 >
                                     {ingredient.name} - {ingredient.quantity}
                                 </ListItem>
@@ -413,7 +398,7 @@ const AddRecipePage = () => {
                     (
                     <VStack spacing={6} align="center" w="100%" p={6}>
                         {/* Заголовок */}
-                        <Text fontFamily="var(--main-font)" fontSize={32} fontWeight="bold" fontStyle="italic" color="#7E4925">
+                        <Text fontFamily="var(--main-font)" fontSize={32} fontWeight="bold" fontStyle="italic" color="var(--color-brown)">
                             Пошаговый рецепт
                         </Text>
 
@@ -423,43 +408,40 @@ const AddRecipePage = () => {
                             <Box
                                 w="150px"
                                 h="150px"
-                                bg={photoPreview ? "transparent" : "#F2F2F2"} // Фон исчезает при наличии фото
+                                bg={photoPreview ? "transparent" : "var(--color-add-photo)"} // Фон исчезает при наличии фото
                                 cursor="pointer"
                                 overflow="hidden"
-
                                 borderRadius="15px"
-                                border="2px dashed #7E4925"
+                                border="2px dashed var(--color-brown)"
                                 display="flex"
                                 justifyContent="center"
                                 alignItems="center"
-
-                                _hover={{ bg: "#FFF4E0" }}
+                                _hover={{ bg: "var(--color--add-photo2)" }}
                                 onClick={() => document.getElementById("photoInput").click()}
                             >
-                                <VStack >
-                                    <Image
-                                        src={addPhoto}
-                                        alt="Фотоаппарат"
-                                        boxSize="50px"
-                                        mb={2}
-                                    />
-                                    {photoPreview ? (
-                                        <Image src={photoPreview} alt="Превью фото" boxSize="100%" objectFit="cover" />
-                                    ) : (
-                                        <Text fontFamily="var(--main-font)" fontWeight="bold" color="#7E4925">
+                                {photoPreview ? (
+                                    <Image src={photoPreview} alt="Превью фото" boxSize="100%" objectFit="cover" />
+                                ) : (
+                                    <VStack justifyContent="center" alignItems="center" spacing={2}> {/* spacing создает отступ между элементами */}
+                                        <Image
+                                            src={addPhoto}
+                                            alt="Фотоаппарат"
+                                            boxSize="50px"
+                                        />
+                                        <Text fontFamily="var(--main-font)" fontSize={16} fontWeight={600} color="var(--color-brown)" textAlign="center">
                                             Добавить фото
                                         </Text>
-                                    )}
-                                    <input
-                                        id="photoInput"
-                                        type="file"
-                                        accept="image/*"
-                                        style={{ display: "none" }}
-                                        onChange={handlePhotoChange}
-                                    />
-                                </VStack>
-
+                                    </VStack>
+                                )}
+                                <input
+                                    id="photoInput"
+                                    type="file"
+                                    accept="image/*"
+                                    style={{ display: "none" }}
+                                    onChange={handlePhotoChange}
+                                />
                             </Box>
+
 
                             {/* Инпут для описания шага */}
                             <Input
@@ -468,7 +450,7 @@ const AddRecipePage = () => {
                                 onChange={(e) => setCurrentDescription(e.target.value)}
                                 flex="1"
                                 h={20}
-                                border="2px solid #7E4925"
+                                border="2px solid var(--color-brown)"
                                 borderRadius="15px"
                                 fontFamily="var(--main-font)"
                                 fontSize="16px"
@@ -481,10 +463,9 @@ const AddRecipePage = () => {
                             variant="unstyled"
                             display="flex"
                             _hover={{
-                                ".hover-effect": { color: "#FF9901", filter: "brightness(1.2)" }, // Единый стиль
+                                ".hover-effect": { color: "var(--color--sent)", filter: "brightness(1.2)" }, // Единый стиль
                             }}
-                        // alignItems="center"
-                        // _hover={{ color: "#FF9901" }}
+                        
                         >
                             <Image
                                 src={Plus} // Укажите путь к вашему изображению
@@ -498,7 +479,7 @@ const AddRecipePage = () => {
                                 fontFamily="var(--main-font)"
                                 fontSize="lg"
                                 fontWeight="bold"
-                                color="#FF6601"
+                                color="var(--color--add-step-and-photo)"
                                 className='hover-effect'
                             >
                                 Добавить ингредиент
@@ -519,7 +500,7 @@ const AddRecipePage = () => {
                                         display="flex"
                                         justifyContent="center"
                                         alignItems="center"
-                                        border="2px solid #7E4925"
+                                        border="2px solid var(--color-brown)"
                                     >
                                         {step.photo ? (
                                             <Image src={step.photo} alt={`Шаг ${index + 1}`} boxSize="100%" objectFit="cover" />
@@ -535,7 +516,7 @@ const AddRecipePage = () => {
                                         fontFamily="var(--main-font)"
                                         fontSize="16px"
                                         fontWeight="bold"
-                                        color="#7E4925"
+                                        color="var(--color-brown)"
                                         flex="1"
                                     >
                                         {step.description || "Без описания"}
@@ -546,14 +527,13 @@ const AddRecipePage = () => {
                     </VStack>
 
                     <Button
-                        bg="#FF6601"
-
-                        _hover={{ bg: "#FF9901" }} // Цвет при наведении
+                        bg="var(--color--add-step-and-photo)"
+                        _hover={{ bg: "var(--color--sent)" }} // Цвет при наведении
                         fontFamily="var(--main-font)"
                         fontStyle="italic"
                         fontWeight={400}
                         fontSize={32}
-                        color="#fff0da"
+                        color="var(--background-color)"
                         borderRadius="15px"
                         px={8}
                         py={4}
@@ -566,6 +546,7 @@ const AddRecipePage = () => {
 
 
             </Box >
+            <Footer />
         </>
     );
 };
