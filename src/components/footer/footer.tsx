@@ -1,30 +1,46 @@
 import React from "react";
-import { Box, Flex, Text, Button, HStack, Link } from "@chakra-ui/react";
+import { Box, HStack, Flex, Button, Text, VStack, Link } from "@chakra-ui/react";
 import { ImageLogo } from "../image-logo";
 import { FaTelegram } from "react-icons/fa6";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 
 export const Footer = () => {
     return (
-        <Box position="relative" p="6">
-            {/* Верхняя линия */}
-            <Box borderBottom="3px solid" borderColor="var(--color-brown)" width="95%" mx="auto" mb={5} />
-
-            {/* Основной контент */}
-            <Flex
-                justify="space-between"
-                align="center"
-                direction={["column", "row"]}
-            >
-                {/* Логотип */}
-                <ImageLogo />
-
-                {/* Социальные сети */}
-                <Box textAlign={["center", "right"]} mt={["4", "0"]}>
-                    <Text fontFamily="var(--main-font)" fontSize="lg" fontWeight="900" color="var(--color-brown)" mb={4}>
+        <Box pl="30px" pr="30px" pb="20px" mt="30px">
+            <Box
+                borderBottom="3px solid"
+                borderColor="var(--color-brown)"
+                width="95%"
+                mx="auto"
+                mb={3} >
+            </Box>
+            <HStack>
+                <Box flex="1" alignSelf="end">
+                    <ImageLogo />
+                </Box>
+                <Flex flex="1" justifyContent="center" >
+                    <Button
+                        border="3px solid"
+                        borderColor="var(--color-brown)"
+                        borderRadius="20px"
+                        variant="plain"
+                        leftIcon={<HiOutlineEnvelope color="var(--color-brown)" fontSize="30px" />}
+                        fontFamily="var(--main-font)"
+                        fontSize="20px"
+                        fontWeight="800"
+                        color="var(--color-brown)">
+                        Написать нам
+                    </Button>
+                </Flex>
+                <VStack flex="1" align="end" justify="center">
+                    <Text
+                        fontFamily="var(--main-font)"
+                        fontSize="20px"
+                        fontWeight="900"
+                        color="var(--color-brown)">
                         МЫ В СОЦИАЛЬНЫХ СЕТЯХ
                     </Text>
-                    <HStack justify="left">
+                    <HStack mt={1}>
                         <Link href="https://t.me/someoneswm">
                             <FaTelegram size="40" color="#11AADC" />
                         </Link>
@@ -35,18 +51,8 @@ export const Footer = () => {
                             <FaTelegram size="40" color="#11AADC" />
                         </Link>
                     </HStack>
-                </Box>
-            </Flex>
-            <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" mt={1}>
-                <Button border="3px solid" borderColor="var(--color-brown)" variant="plain" borderRadius="20px" px={5} py={6}>
-                    <Flex align="center">
-                        <Box boxSize="40px" display="flex" alignItems="center" justifyContent="center">
-                            <HiOutlineEnvelope style={{ width: "100%", height: "100%", color: "var(--color-brown)" }} />
-                        </Box>
-                        <Text fontFamily="var(--main-font)" ml={4} fontSize="lg" fontWeight="800" color="var(--color-brown)">Написать нам</Text>
-                    </Flex>
-                </Button>
-            </Box>
+                </VStack>
+            </HStack>
         </Box>
     );
 }
