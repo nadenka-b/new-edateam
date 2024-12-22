@@ -6,7 +6,7 @@ import { HiOutlineEnvelope } from "react-icons/hi2";
 
 export const Footer = () => {
     return (
-        <Box pl="30px" pr="30px" pb="20px" mt="30px">
+        <Box pl="30px" pr="30px" pb="20px">
             <Box
                 borderBottom="3px solid"
                 borderColor="var(--color-brown)"

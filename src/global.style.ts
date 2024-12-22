@@ -82,6 +82,7 @@ export const globalStyles = css`
         outline:0;
     }
     body{
+        background-color: var(--background-color);
         min-width:320px;
         -webkit-text-size-adjust:100%;
         max-width:1920px;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Flex, Text, VStack, HStack } from "@chakra-ui/react";
 import { ImageLogo } from "../image-logo";
+import { RegistrationForm } from "../registration-form";
 
 
 export const Header = () => {
@@ -18,40 +19,17 @@ export const Header = () => {
                 <Flex flex="1" justifyContent="center">
                     <ImageLogo />
                 </Flex>
-                <Text
-                    align="end"
-                    flex="1"
-                    fontFamily="var(--main-font)"
-                    fontSize="lg"
-                    fontWeight="600"
-                    fontStyle="Italic"
-                    color="var(--color-text-main)">
-                    Регистрация / Вход
-                </Text>
+                <Box display="flex" justifyContent="end" flex="1" >
+                    <RegistrationForm />
+                </Box>
             </HStack>
+            <Box
+                borderBottom="3px solid"
+                borderColor="var(--background-greetings)"
+                width="90%"
+                mx="auto"
+                mb={3} >
+            </Box>
         </VStack >
-        // <Box py={4} px={8} position="relative" h="100px">
-        //     <Flex align="center" justify="space-between" h="100%">
-        //         <Text
-        //             fontFamily="var(--main-font)"
-        //             fontSize="lg"
-        //             fontWeight="600"
-        //             fontStyle="Italic"
-        //             color="var(--color-text-main)">
-        //             Главная
-        //         </Text>
-        //         <Text
-        //             fontFamily="var(--main-font)"
-        //             fontSize="lg"
-        //             fontWeight="600"
-        //             fontStyle="Italic"
-        //             color="var(--color-text-main)">
-        //             Регистрация / Вход
-        //         </Text>
-        //     </Flex>
-        //     <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" mt={1}>
-        //         <ImageLogo />
-        //     </Box>
-        // </Box>
     );
 }
