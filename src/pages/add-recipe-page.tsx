@@ -16,35 +16,69 @@ const AddRecipePage = () => {
             <Header />
             <Box
                 bg="var(--background-card)"
-                w="1419px"
+                w={{
+                    lg: "45em",
+                    xl: "60em",
+                    "2xl": "70em",
+                }}
                 h="auto"
                 mx="auto"
-                p={6}
+                p={{
+                    lg: "2em",
+                    xl: "2.5em",
+                }}
                 display="flex"
                 justifyContent="center"
-
+                transition="all 0.3s ease-in-out"
             >
-                <VStack spacing={25} align="center">
+                <VStack
+                    spacing={{
+                        lg: "1.5em",
+                        xl: "2em",
+                    }}
+                    align="center"
+                    transition="all 0.3s ease-in-out"
+                >
                     <Input
                         placeholder="Название рецепта"
                         size="lg"
-                        maxW={500}
+                        maxW={{
+                            lg: "10em",
+                            xl: "10em",
+                        }}
                         fontFamily="var(--main-font)"
-                        fontSize={50}
+                        fontSize={{
+                            lg: "1.5em",
+                            xl: "2em",
+                        }}
                         fontStyle="italic"
+                        transition="all 0.3s ease-in-out"
                     />
                     <TimeInput />
                     <DishPhoto />
                     <SelectedCategories />
                     <Ingredients />
-                    <VStack spacing={6} align="center" w="100%" p={6}>
+                    <VStack
+                        spacing={{
+                            lg: "0.5em",
+                            xl: "1em",
+                        }}
+                        align="center"
+                        w="100%"
+                        p={{
+                            lg: "1.5em",
+                            xl: "1em",
+                        }}
+                        transition="all 0.3s ease-in-out"
+                    >
                         <StepAdding />
                     </VStack>
                     <Sent />
-                </VStack >
-            </Box >
+                </VStack>
+            </Box>
             <Footer />
         </>
+
     );
 };
 

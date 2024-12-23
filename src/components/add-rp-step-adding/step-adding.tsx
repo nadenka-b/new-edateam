@@ -34,7 +34,14 @@ export const StepAdding = () => {
 
     return (
         <>
-            <Text fontFamily="var(--main-font)" fontSize={32} fontWeight="bold" fontStyle="italic" color="var(--color-brown)">
+            <Text fontFamily="var(--main-font)"
+                fontSize={{
+                    lg: "1.4em",
+                    xl: "1.6em",
+                }}
+                fontWeight="bold"
+                fontStyle="italic"
+                color="var(--color-brown)">
                 Пошаговый рецепт
             </Text>
 

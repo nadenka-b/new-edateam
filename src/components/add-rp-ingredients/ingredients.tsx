@@ -21,7 +21,10 @@ export const Ingredients = () => {
             {/* Заголовок */}
             <Text
                 fontFamily="var(--main-font)"
-                fontSize={32}
+                fontSize={{
+                    lg: "1.4em",
+                    xl: "1.6em",
+                }}
                 fontWeight="bold"
                 color="var(--color-brown)"
                 fontStyle="italic"

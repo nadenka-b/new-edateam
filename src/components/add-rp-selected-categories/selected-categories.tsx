@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HStack, Text, VStack, Select, Wrap, WrapItem, IconButton } from "@chakra-ui/react";
-import { CloseIcon } from '@chakra-ui/icons';
+// import { CloseIcon } from '@chakra-ui/icons';
+import { AiOutlineClose } from "react-icons/ai";
 
 export const SelectedCategories = () => {
     const [selectedCategories, setSelectedCategories] = useState([]);
@@ -21,8 +22,11 @@ export const SelectedCategories = () => {
                 <Text
                     fontFamily="var(--main-font)"
                     fontStyle="italic"
-                    fontSize={32}
-                    fontWeight="bold"
+                    fontSize={{
+                        lg: "1.4em",
+                        xl: "1.6em",
+                    }}
+                    fontWeight={800}
                     color="var(--color-brown)"
                 >
                     Категория блюда
@@ -36,7 +40,10 @@ export const SelectedCategories = () => {
                     w="320px"
                     borderColor="var(--color-brown)"
                     fontFamily="var(--main-font)"
-                    fontSize={22}
+                    fontSize={{
+                        lg: "1.2em",
+                        xl: "1.4em",
+                    }}
                     fontWeight="bold"
                     color="var(--color-brown)"
                     borderRadius={15}
@@ -53,7 +60,10 @@ export const SelectedCategories = () => {
             <VStack align="start" w="100%" maxWidth={400}>
                 <Text
                     fontFamily="var(--main-font)"
-                    fontSize={32}
+                    fontSize={{
+                        lg: "1.4em",
+                        xl: "1.6em",
+                    }}
                     fontWeight={800}
                     color="var(--color-brown)"
                     fontStyle="italic"
@@ -77,14 +87,17 @@ export const SelectedCategories = () => {
                             >
                                 <Text
                                     fontFamily="var(--main-font)"
-                                    fontSize={22}
+                                    fontSize={{
+                                        lg: "1.2em",
+                                        xl: "1.4em",
+                                    }}
                                     fontWeight="bold"
                                     color="var(--color-brown)"
                                 >
                                     {category}
                                 </Text>
                                 <IconButton
-                                    icon={<CloseIcon />}
+                                    icon={<AiOutlineClose />}
                                     onClick={() => removeCategory(category)}
                                     variant="ghost"
                                     size="sm"
