@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Input, VStack } from "@chakra-ui/react";
 
-import { Header } from '../components/header'
-import { Footer } from '../components/footer'
+import { Header } from '../components/header';
+import { Footer } from '../components/footer';
 import { TimeInput } from '../components/add-rp-time-input';
 import { DishPhoto } from '../components/add-rp-dish-photo';
 import { SelectedCategories } from '../components/add-rp-selected-categories';

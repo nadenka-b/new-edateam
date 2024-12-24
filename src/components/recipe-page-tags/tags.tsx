@@ -5,7 +5,6 @@ export const Tags = () => {
     return (
         <Box textAlign="center" my="calc(21px * 1.2)" >
             <Text as="span"
-                fontFamily="var(--main-font)"
                 fontSize="lg"
                 fontWeight="900"
                 fontStyle="italic"
@@ -16,7 +15,6 @@ export const Tags = () => {
                 завтрак
             </Text>
             <Text as="span"
-                fontFamily="var(--main-font)"
                 fontSize="lg"
                 fontWeight="900"
                 fontStyle="italic"
@@ -26,7 +24,6 @@ export const Tags = () => {
                 -
             </Text>
             <Text as="span"
-                fontFamily="var(--main-font)"
                 fontSize="lg"
                 fontWeight="900"
                 fontStyle="italic"

@@ -20,7 +20,7 @@ export const SelectedCategories = () => {
             {/* Секция с текстом "Категория блюда" */}
             <VStack align="flex-start" >
                 <Text
-                    fontFamily="var(--main-font)"
+
                     fontStyle="italic"
                     fontSize={{
                         lg: "1.4em",
@@ -48,7 +48,7 @@ export const SelectedCategories = () => {
                         xl: "1.4em",
                     }}
                     fontWeight="bold"
-                    color="var(--color-brown)"
+                    color="brown.500"
                     borderRadius={15}
                     onChange={(e) => addCategory(e.target.value)} // Добавление категории
                 >
@@ -68,7 +68,7 @@ export const SelectedCategories = () => {
                         xl: "1.6em",
                     }}
                     fontWeight={800}
-                    color="var(--color-brown)"
+                    color="brown.500"
                     fontStyle="italic"
                 >
                     Выбранные категории
@@ -80,9 +80,9 @@ export const SelectedCategories = () => {
                         <WrapItem key={category}>
                             <HStack
                                 spacing={2}
-                                bg="var(--background-color)"
+                                bg="beige.200"
                                 borderRadius="12px"
-                                borderColor="var(--color-brown)"
+                                borderColor="brown.500"
                                 borderWidth={1}
                                 px="10px"
                                 py="6px"
@@ -95,7 +95,7 @@ export const SelectedCategories = () => {
                                         xl: "1.4em",
                                     }}
                                     fontWeight="bold"
-                                    color="var(--color-brown)"
+                                    color="brown.500"
                                 >
                                     {category}
                                 </Text>
@@ -104,7 +104,7 @@ export const SelectedCategories = () => {
                                     onClick={() => removeCategory(category)}
                                     variant="ghost"
                                     size="sm"
-                                    color="var(--color-brown)"
+                                    color="brown.500"
                                     aria-label="Удалить категорию"
                                 />
                             </HStack>

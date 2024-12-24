@@ -1,42 +1,55 @@
-import React from 'react';
-import { Box, Flex, Heading, HStack, Button } from '@chakra-ui/react'
-import { Header } from '../components/header'
-import { Footer } from '../components/footer'
+import React, { useState } from 'react';
+import { Box, Flex, Heading, Button } from '@chakra-ui/react'
 import { Greetings } from "../components/greetings"
 import { DishCard } from "../components/dish-card"
-import { IoIosArrowBack } from "react-icons/io";
-
+import { PaginatedList } from '../components/pagination';
 
 const HomePage = () => {
+    const [size, setSize] = useState(3);
+
+    const handleClick = () => {
+        if (size === 3) {
+            setSize(9);
+            return;
+        }
+        setSize(3);
+    }
+
     return (
         <>
-            <Box bg="var(--background-color)">
-                <Header />
+            <Box mb="30px">
                 <Greetings />
                 <Flex direction="column" align="center" mt={10}>
-                    <Heading mb={10} fontFamily="var(--main-font)" fontWeight="800" fontStyle="Italic" color="var(--color-text-main)" fontSize="54px">Рецепты</Heading>
+                    <Heading
+                        mb={10}
+                        fontWeight="800"
+                        fontStyle="Italic"
+                        color="orange.500"
+                        fontSize="54px">
+                        Рецепты
+                    </Heading>
+                    {/* <PaginatedList size={size}></PaginatedList> */}
                     <Flex gap={4}>
-                        <IoIosArrowBack fontSize={70} />
                         <DishCard />
                         <DishCard />
                         <DishCard />
-                        <Box style={{ transform: "rotate(180deg)", display: "inline-block" }}>
-                            <IoIosArrowBack fontSize={70} />
-                        </Box>
                     </Flex>
                     <Button
                         mt={10}
                         alignContent="center"
                         borderRadius={30}
-                        bg="var(--background-greetings)"
+                        bg="orange.200"
                         h="50px"
                         w="225px"
-                        fontFamily="var(--main-font)"
-                        fontSize="20px" fontWeight="900"
-                        fontStyle="Italic" color="var(--background-color)"
-                    >Показать еще</Button>
+                        fontSize="20px"
+                        fontWeight="900"
+                        fontStyle="Italic"
+                        color="beige.200"
+                        _hover={{ opacity: 0.9, bg: "orange.200" }}
+                    >
+                        Показать еще
+                    </Button>
                 </Flex>
-                <Footer />
             </Box >
         </>
     );

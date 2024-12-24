@@ -4,9 +4,9 @@ import { Button } from "@chakra-ui/react";
 export const Sent = () => {
     return (
         <Button
-            bg="var(--color--add-step-and-photo)"
-            _hover={{ bg: "var(--color--sent)" }} 
-            fontFamily="var(--main-font)"
+            bg="orange.600"
+            _hover={{ bg: "orange.300" }}
+
             fontStyle="italic"
             fontWeight={400}
             fontSize={{

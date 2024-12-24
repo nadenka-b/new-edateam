@@ -37,7 +37,6 @@ export const ListOfIngredients = () => {
                     m={0} // Убираем margin между строками
                 >
                     <Text
-                        fontFamily="var(--main-font)"
                         fontSize="22px"
                         fontWeight="600"
                         color="#7E4925"
@@ -52,7 +51,6 @@ export const ListOfIngredients = () => {
                         flex="1"
                     />
                     <Text
-                        fontFamily="var(--main-font)"
                         fontSize="22px"
                         fontWeight="600"
                         color="#7E4925"

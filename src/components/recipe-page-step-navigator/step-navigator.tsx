@@ -22,7 +22,6 @@ export const StepNavigator = ({ activeStep, stepsData, setActiveStep }) => (
                     mr={index === stepsData.length - 1 ? 10 : 0}  // Отступ справа для последнего шага
                 >
                     <StepTitle
-                        fontFamily="var(--main-font)"
                         fontSize={25}
                         fontWeight={900}
                         fontStyle="italic"

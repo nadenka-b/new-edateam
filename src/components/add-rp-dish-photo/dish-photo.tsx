@@ -36,7 +36,7 @@ export const DishPhoto = () => {
                     xl: "1.6em",
                 }}
                 fontWeight="bold"
-                color="var(--color-brown)"
+                color="brown.500"
                 fontStyle="italic"
             >
                 Фото готового блюда
@@ -51,13 +51,13 @@ export const DishPhoto = () => {
                     xl: "20em",
                 }}
                 borderRadius="15px"
-                border="2px dashed var(--color-brown)"
+                border="2px dashed brown.500"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                bg="var(--color-add-photo)"
+                bg="grey.50"
                 cursor="pointer"
-                _hover={{ bg: "var(--color--add-photo2)" }}
+                _hover={{ bg: "beige.50" }}
                 flexDirection="column"
                 onClick={() => fileInputRef.current.click()} // Trigger the file input click
             >
@@ -70,10 +70,9 @@ export const DishPhoto = () => {
                 {/* Если файл выбран, отображаем его имя */}
                 {fileName ? (
                     <Text
-                        fontFamily="var(--main-font)"
                         fontSize={16}
                         fontWeight={600}
-                        color="var(--color-brown)"
+                        color="brown.500"
                         mb={2}
                     >
                         Выбран файл: {fileName}
@@ -81,11 +80,10 @@ export const DishPhoto = () => {
                 ) : (
 
                     <Text
-                        fontFamily="var(--main-font)"
                         fontSize={20}
                         fontWeight={600}
                         // fontStyle="italic"
-                        color="var(--color-brown)"
+                        color="brown.500"
                         mb={2}
                     >
                         Нажмите, чтобы добавить фото

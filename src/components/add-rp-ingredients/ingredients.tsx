@@ -26,7 +26,7 @@ export const Ingredients = () => {
                     xl: "1.6em",
                 }}
                 fontWeight="bold"
-                color="var(--color-brown)"
+                color="brown.500"
                 fontStyle="italic"
             >
                 Ингредиенты
@@ -39,7 +39,7 @@ export const Ingredients = () => {
                     xl: "35em",
                 }}
                 align="center"
-                border="2px solid var(--color-brown)"
+                border="2px solid brown.500"
                 borderRadius={15}
                 p={2}
                 bg="white"
@@ -48,7 +48,6 @@ export const Ingredients = () => {
                     placeholder="Например, курица"
                     border="none"
                     _focus={{ outline: "none" }}
-                    fontFamily="var(--main-font)"
                     fontWeight={700}
                     fontSize={{
                         lg: "1.1em",
@@ -60,17 +59,16 @@ export const Ingredients = () => {
                     onChange={(e) => setIngredientName(e.target.value)}
                 />
 
-                <Box w="2px" h="130%" bg="var(--color-brown)" />
+                <Box w="2px" h="130%" bg="brown.500" />
 
                 <Input
                     placeholder="0"
                     border="none"
                     _focus={{ outline: "none" }}
                     textAlign="center"
-                    fontFamily="var(--main-font)"
                     fontWeight={700}
                     fontSize="24px"
-                    color="var(--color-brown)"
+                    color="brown.500"
                     flex="1"
                     value={ingredientQuantity}
                     onChange={(e) => setIngredientQuantity(e.target.value)}
@@ -84,7 +82,7 @@ export const Ingredients = () => {
                     variant="unstyled"
                     display="flex"
                     _hover={{
-                        ".hover-effect": { color: "var(--color--sent)", filter: "brightness(1.2)" }, // Единый стиль
+                        ".hover-effect": { color: "orange.300", filter: "brightness(1.2)" }, // Единый стиль
                     }}
 
                 >
@@ -103,7 +101,7 @@ export const Ingredients = () => {
                             xl: "1.1em",
                         }}
                         fontWeight="bold"
-                        color="var(--color--add-step-and-photo)"
+                        color="orange.600"
                         className='hover-effect'
                     >
                         Добавить ингредиент
@@ -123,7 +121,7 @@ export const Ingredients = () => {
                 {ingredients.map((ingredient, index) => (
                     <ListItem
                         key={index}
-                        border="2px solid var(--color-brown)"
+                        border="2px solid brown.500"
                         borderRadius="12px"
                         p={4}
                         bg="var(--background-color)"
@@ -133,7 +131,7 @@ export const Ingredients = () => {
                             xl: "1.4em",
                         }}
                         fontWeight="bold"
-                        color="var(--color-brown)"
+                        color="brown.500"
                     >
                         {ingredient.name} - {ingredient.quantity}
                     </ListItem>
