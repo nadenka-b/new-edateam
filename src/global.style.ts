@@ -18,8 +18,10 @@ export const globalStyles = css`
         --background-card: #ffe6c3;
         --color-tags: #dc8d57;
         --color-arrow: #FF9F5F; //совпадает с фоном greetings
-
-
+        --color-add-photo: #F2F2F2;
+        --color--add-photo2: #FFF4E0;
+        --color--add-step-and-photo: #FF6601;
+        --color--sent: #FF9901;
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -34,11 +36,11 @@ export const globalStyles = css`
     figure, figcaption, footer, header, hgroup,
     menu, nav, output, ruby, section, summary,
     time, mark, audio, video, button{
-        border:0;
+        /* border:0; */
         margin:0;
         outline:0;
         padding:0;
-        text-decoration:none;
+        /* text-decoration:none; */
         box-sizing:border-box;
         -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
     }
