@@ -9,7 +9,10 @@ export const Sent = () => {
             fontFamily="var(--main-font)"
             fontStyle="italic"
             fontWeight={400}
-            fontSize={32}
+            fontSize={{
+                lg: "1.4em",
+                xl: "1.6em",
+            }}
             color="var(--background-color)"
             borderRadius="15px"
             px={8}

@@ -16,7 +16,7 @@ export const SelectedCategories = () => {
     };
 
     return (
-        <HStack spacing={8} align="flex-start" justifyContent="space-between" w="100%">
+        <HStack spacing={8} align="flex-start" justifyContent="space-between" w="100%" py={2}>
             {/* Секция с текстом "Категория блюда" */}
             <VStack align="flex-start" >
                 <Text
@@ -37,7 +37,10 @@ export const SelectedCategories = () => {
                     placeholder="Выберите категорию"
                     size="lg"
                     h="50px"
-                    w="320px"
+                    w={{
+                        lg: "17em",
+                        xl: "19em",
+                    }}
                     borderColor="var(--color-brown)"
                     fontFamily="var(--main-font)"
                     fontSize={{
@@ -81,8 +84,8 @@ export const SelectedCategories = () => {
                                 borderRadius="12px"
                                 borderColor="var(--color-brown)"
                                 borderWidth={1}
-                                px="12px"
-                                py="8px"
+                                px="10px"
+                                py="6px"
                                 align="center"
                             >
                                 <Text

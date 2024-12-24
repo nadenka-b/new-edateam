@@ -120,7 +120,10 @@ export const StepAdding = () => {
 
                 <Text
                     fontFamily="var(--main-font)"
-                    fontSize="lg"
+                    fontSize={{
+                        lg: "1em",
+                        xl: "1.1em",
+                    }}
                     fontWeight="bold"
                     color="var(--color--add-step-and-photo)"
                     className='hover-effect'

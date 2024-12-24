@@ -33,36 +33,18 @@ const AddRecipePage = () => {
             >
                 <VStack
                     spacing={{
-                        lg: "1.5em",
+                        lg: "2.2em",
                         xl: "2em",
                     }}
                     align="center"
                     transition="all 0.3s ease-in-out"
                 >
-                    <Input
-                        placeholder="Название рецепта"
-                        size="lg"
-                        maxW={{
-                            lg: "10em",
-                            xl: "10em",
-                        }}
-                        fontFamily="var(--main-font)"
-                        fontSize={{
-                            lg: "1.5em",
-                            xl: "2em",
-                        }}
-                        fontStyle="italic"
-                        transition="all 0.3s ease-in-out"
-                    />
                     <TimeInput />
                     <DishPhoto />
                     <SelectedCategories />
                     <Ingredients />
                     <VStack
-                        spacing={{
-                            lg: "0.5em",
-                            xl: "1em",
-                        }}
+                        spacing={4}
                         align="center"
                         w="100%"
                         p={{

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Image, Text, VStack, HStack, Box, Input, Button, List, ListItem } from "@chakra-ui/react";
 
-import {Plus} from './index'
+import { Plus } from './index'
 
 export const Ingredients = () => {
     const [ingredientName, setIngredientName] = useState("");
@@ -34,7 +34,10 @@ export const Ingredients = () => {
 
             {/* Поле ввода */}
             <HStack
-                w="659px"
+                w={{
+                    lg: "26em",
+                    xl: "35em",
+                }}
                 align="center"
                 border="2px solid var(--color-brown)"
                 borderRadius={15}
@@ -47,7 +50,10 @@ export const Ingredients = () => {
                     _focus={{ outline: "none" }}
                     fontFamily="var(--main-font)"
                     fontWeight={700}
-                    fontSize="24px"
+                    fontSize={{
+                        lg: "1.1em",
+                        xl: "1.4em",
+                    }}
                     color="var(--color-brown)"
                     flex="3"
                     value={ingredientName}
@@ -92,7 +98,10 @@ export const Ingredients = () => {
 
                     <Text
                         fontFamily="var(--main-font)"
-                        fontSize="lg"
+                        fontSize={{
+                            lg: "1em",
+                            xl: "1.1em",
+                        }}
                         fontWeight="bold"
                         color="var(--color--add-step-and-photo)"
                         className='hover-effect'
@@ -104,7 +113,13 @@ export const Ingredients = () => {
             </HStack>
 
             {/* Список ингредиентов */}
-            <List spacing={3} w="100%" maxW="700px">
+            <List
+                spacing={3}
+                w={{
+                    lg: "26em",
+                    xl: "35em",
+                }}
+                maxW="700px">
                 {ingredients.map((ingredient, index) => (
                     <ListItem
                         key={index}
@@ -113,7 +128,10 @@ export const Ingredients = () => {
                         p={4}
                         bg="var(--background-color)"
                         fontFamily="var(--main-font)"
-                        fontSize="lg"
+                        fontSize={{
+                            lg: "1.1em",
+                            xl: "1.4em",
+                        }}
                         fontWeight="bold"
                         color="var(--color-brown)"
                     >

@@ -22,6 +22,7 @@ export const DishPhoto = () => {
 
     return (
         <VStack
+        py={3}
             spacing={{
                 lg: "0.5em",
                 xl: "1em",
@@ -45,7 +46,10 @@ export const DishPhoto = () => {
                     lg: "35em",
                     xl: "40em",
                 }}
-                h="353px"
+                h={{
+                    lg: "14em",
+                    xl: "20em",
+                }}
                 borderRadius="15px"
                 border="2px dashed var(--color-brown)"
                 display="flex"
