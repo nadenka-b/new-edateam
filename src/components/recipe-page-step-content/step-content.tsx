@@ -28,7 +28,6 @@ export const StepContent = ({ activeStep, stepsData }) => {
                     borderWidth="5px"
                 />
                 <Text
-                    fontFamily="var(--main-font)"
                     fontSize="calc(35px * 1.1)"
                     fontWeight={900}
                     fontStyle="italic"

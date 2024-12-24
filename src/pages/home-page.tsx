@@ -22,10 +22,9 @@ const HomePage = () => {
                 <Flex direction="column" align="center" mt={10}>
                     <Heading
                         mb={10}
-                        fontFamily="var(--main-font)"
                         fontWeight="800"
                         fontStyle="Italic"
-                        color="var(--color-text-main)"
+                        color="orange.500"
                         fontSize="54px">
                         Рецепты
                     </Heading>
@@ -39,15 +38,14 @@ const HomePage = () => {
                         mt={10}
                         alignContent="center"
                         borderRadius={30}
-                        bg="var(--background-greetings)"
+                        bg="orange.200"
                         h="50px"
                         w="225px"
-                        fontFamily="var(--main-font)"
                         fontSize="20px"
                         fontWeight="900"
                         fontStyle="Italic"
-                        color="var(--background-color)"
-                        _hover={{ opacity: 0.9, bg: "var(--background-greetings)" }}
+                        color="beige.200"
+                        _hover={{ opacity: 0.9, bg: "orange.200" }}
                     >
                         Показать еще
                     </Button>

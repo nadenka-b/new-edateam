@@ -25,12 +25,10 @@ export const RegistrationForm = () => {
             {/* Кнопка для открытия модального окна */}
             <Button
                 variant="link"
-                onClick={onOpen}
-                fontFamily="var(--main-font)"
-                fontSize="lg"
+                fontSize="24px"
                 fontWeight="600"
-                fontStyle="Italic"
-                color="var(--color-text-main)"
+                fontStyle="italic"
+                color="orange.500"
             >
                 Регистрация / Вход
             </Button>

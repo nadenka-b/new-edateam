@@ -16,7 +16,6 @@ export const SectionHeader = ({ title }: { title: string }) => {
             mb="calc(53px * 1.1)"
         >
             <Text
-                fontFamily="var(--main-font)"
                 fontSize="calc(35px * 1.1)"
                 fontWeight={900}
                 fontStyle="italic"

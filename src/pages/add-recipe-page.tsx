@@ -1,8 +1,6 @@
 import React from 'react';
 import { Box, Input, VStack } from "@chakra-ui/react";
 
-import { Header } from '../components/header'
-import { Footer } from '../components/footer'
 import { TimeInput } from '../components/add-rp-time-input';
 import { DishPhoto } from '../components/add-rp-dish-photo';
 import { SelectedCategories } from '../components/add-rp-selected-categories';
@@ -13,9 +11,8 @@ import { Sent } from '../components/add-rp-sent';
 const AddRecipePage = () => {
     return (
         <>
-            <Header />
             <Box
-                bg="var(--background-card)"
+                bg="beige.300"
                 w="1419px"
                 h="auto"
                 mx="auto"
@@ -29,7 +26,6 @@ const AddRecipePage = () => {
                         placeholder="Название рецепта"
                         size="lg"
                         maxW={500}
-                        fontFamily="var(--main-font)"
                         fontSize={50}
                         fontStyle="italic"
                     />
@@ -43,7 +39,6 @@ const AddRecipePage = () => {
                     <Sent />
                 </VStack >
             </Box >
-            <Footer />
         </>
     );
 };

@@ -4,13 +4,13 @@ import { Button } from "@chakra-ui/react";
 export const Sent = () => {
     return (
         <Button
-            bg="var(--color--add-step-and-photo)"
-            _hover={{ bg: "var(--color--sent)" }} 
-            fontFamily="var(--main-font)"
+            bg="orange.600"
+            _hover={{ bg: "orange.300" }}
+
             fontStyle="italic"
             fontWeight={400}
             fontSize={32}
-            color="var(--background-color)"
+            color="beige.200"
             borderRadius="15px"
             px={8}
             py={4}

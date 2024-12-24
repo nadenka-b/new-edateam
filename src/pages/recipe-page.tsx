@@ -1,9 +1,5 @@
 import React from 'react';
-import { Box, VStack, HStack, useSteps} from "@chakra-ui/react";
-
-import { Header } from '../components/header'
-import { Footer } from '../components/footer'
-
+import { Box, VStack, HStack, useSteps } from "@chakra-ui/react";
 
 import { Title } from "../components/recipe-page-title/title"
 import { Video } from "../components/recipe-page-video/video"
@@ -14,16 +10,7 @@ import { SectionHeader } from '../components/recipe-page-section-header/section-
 import { ListOfIngredients } from '../components/recipe-page-list-of-ingredients/list-of-ingredients'
 import { StepperComponent } from '../components/recipe-page-stepper-component/stepper-component'
 
-import step1 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step1.jpg'
-import step2 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step2.jpg'
-import step3 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step3.jpg'
-import step4 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step4.jpg'
-import step5 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step5.jpg'
-import step6 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step6.jpg'
-import step7 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step7.jpg'
-import step8 from 'D:/КФУ/Edateam_new/new-edateam/src/assets/images/step8.jpg'
-
-
+import { step1, step2, step3, step4, step5, step6, step7, step8 } from '../assets';
 
 const stepsData = [
     {
@@ -80,7 +67,6 @@ const RecipePage = () => {
     });
     return (
         <>
-            <Header />
 
             <VStack align="center" w="full">
                 <Title />
@@ -93,9 +79,9 @@ const RecipePage = () => {
             </VStack>
 
             <Box
-                w="100%"              
-                h="auto"             
-                bg="#FBD07E"     
+                w="100%"
+                h="auto"
+                bg="#FBD07E"
                 // position="relative" 
                 pb="20px"
             >
@@ -108,9 +94,8 @@ const RecipePage = () => {
                 h="auto"
             >
                 <SectionHeader title='Пошаговый рецепт' />
-                <StepperComponent  activeStep={activeStep} stepsData={stepsData} setActiveStep={setActiveStep} goToPrevious={goToPrevious} goToNext={goToNext} />
+                <StepperComponent activeStep={activeStep} stepsData={stepsData} setActiveStep={setActiveStep} goToPrevious={goToPrevious} goToNext={goToNext} />
             </Box >
-            <Footer/>
         </>
     );
 };

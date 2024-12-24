@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Image, Text, VStack, HStack, Box, Input, Button, List, ListItem } from "@chakra-ui/react";
 
-import {Plus} from './index'
+import { Plus } from './index'
 
 export const Ingredients = () => {
     const [ingredientName, setIngredientName] = useState("");
@@ -20,10 +20,9 @@ export const Ingredients = () => {
         <VStack spacing={4} align="center" w="100%">
             {/* Заголовок */}
             <Text
-                fontFamily="var(--main-font)"
                 fontSize={32}
                 fontWeight="bold"
-                color="var(--color-brown)"
+                color="brown.500"
                 fontStyle="italic"
             >
                 Ингредиенты
@@ -33,7 +32,7 @@ export const Ingredients = () => {
             <HStack
                 w="659px"
                 align="center"
-                border="2px solid var(--color-brown)"
+                border="2px solid brown.500"
                 borderRadius={15}
                 p={2}
                 bg="white"
@@ -42,26 +41,24 @@ export const Ingredients = () => {
                     placeholder="Например, курица"
                     border="none"
                     _focus={{ outline: "none" }}
-                    fontFamily="var(--main-font)"
                     fontWeight={700}
                     fontSize="24px"
-                    color="var(--color-brown)"
+                    color="brown.500"
                     flex="3"
                     value={ingredientName}
                     onChange={(e) => setIngredientName(e.target.value)}
                 />
 
-                <Box w="2px" h="130%" bg="var(--color-brown)" />
+                <Box w="2px" h="130%" bg="brown.500" />
 
                 <Input
                     placeholder="0"
                     border="none"
                     _focus={{ outline: "none" }}
                     textAlign="center"
-                    fontFamily="var(--main-font)"
                     fontWeight={700}
                     fontSize="24px"
-                    color="var(--color-brown)"
+                    color="brown.500"
                     flex="1"
                     value={ingredientQuantity}
                     onChange={(e) => setIngredientQuantity(e.target.value)}
@@ -75,7 +72,7 @@ export const Ingredients = () => {
                     variant="unstyled"
                     display="flex"
                     _hover={{
-                        ".hover-effect": { color: "var(--color--sent)", filter: "brightness(1.2)" }, // Единый стиль
+                        ".hover-effect": { color: "orange.300", filter: "brightness(1.2)" }, // Единый стиль
                     }}
 
                 >
@@ -88,10 +85,9 @@ export const Ingredients = () => {
                     />
 
                     <Text
-                        fontFamily="var(--main-font)"
                         fontSize="lg"
                         fontWeight="bold"
-                        color="var(--color--add-step-and-photo)"
+                        color="orange.600"
                         className='hover-effect'
                     >
                         Добавить ингредиент
@@ -105,14 +101,14 @@ export const Ingredients = () => {
                 {ingredients.map((ingredient, index) => (
                     <ListItem
                         key={index}
-                        border="2px solid var(--color-brown)"
+                        border="2px solid brown.500"
                         borderRadius="12px"
                         p={4}
-                        bg="var(--background-color)"
-                        fontFamily="var(--main-font)"
+                        bg="beige.200"
+
                         fontSize="lg"
                         fontWeight="bold"
-                        color="var(--color-brown)"
+                        color="brown.500"
                     >
                         {ingredient.name} - {ingredient.quantity}
                     </ListItem>

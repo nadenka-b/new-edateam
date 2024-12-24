@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HStack, Text, VStack, Select, Wrap, WrapItem, IconButton } from "@chakra-ui/react";
-import { CloseIcon } from '@chakra-ui/icons';
+// import { CloseIcon } from '@chakra-ui/icons';
 
 export const SelectedCategories = () => {
     const [selectedCategories, setSelectedCategories] = useState([]);
@@ -19,11 +19,11 @@ export const SelectedCategories = () => {
             {/* Секция с текстом "Категория блюда" */}
             <VStack align="flex-start" >
                 <Text
-                    fontFamily="var(--main-font)"
+
                     fontStyle="italic"
                     fontSize={32}
                     fontWeight="bold"
-                    color="var(--color-brown)"
+                    color="brown.500"
                 >
                     Категория блюда
                 </Text>
@@ -34,11 +34,11 @@ export const SelectedCategories = () => {
                     size="lg"
                     h="50px"
                     w="320px"
-                    borderColor="var(--color-brown)"
-                    fontFamily="var(--main-font)"
+                    borderColor="brown.500"
+
                     fontSize={22}
                     fontWeight="bold"
-                    color="var(--color-brown)"
+                    color="brown.500"
                     borderRadius={15}
                     onChange={(e) => addCategory(e.target.value)} // Добавление категории
                 >
@@ -52,10 +52,10 @@ export const SelectedCategories = () => {
             {/* Секция с выбранными категориями справа */}
             <VStack align="start" w="100%" maxWidth={400}>
                 <Text
-                    fontFamily="var(--main-font)"
+
                     fontSize={32}
                     fontWeight={800}
-                    color="var(--color-brown)"
+                    color="brown.500"
                     fontStyle="italic"
                 >
                     Выбранные категории
@@ -67,28 +67,28 @@ export const SelectedCategories = () => {
                         <WrapItem key={category}>
                             <HStack
                                 spacing={2}
-                                bg="var(--background-color)"
+                                bg="beige.200"
                                 borderRadius="12px"
-                                borderColor="var(--color-brown)"
+                                borderColor="brown.500"
                                 borderWidth={1}
                                 px="12px"
                                 py="8px"
                                 align="center"
                             >
                                 <Text
-                                    fontFamily="var(--main-font)"
+
                                     fontSize={22}
                                     fontWeight="bold"
-                                    color="var(--color-brown)"
+                                    color="brown.500"
                                 >
                                     {category}
                                 </Text>
                                 <IconButton
-                                    icon={<CloseIcon />}
+                                    // icon={<CloseIcon />}
                                     onClick={() => removeCategory(category)}
                                     variant="ghost"
                                     size="sm"
-                                    color="var(--color-brown)"
+                                    color="brown.500"
                                     aria-label="Удалить категорию"
                                 />
                             </HStack>

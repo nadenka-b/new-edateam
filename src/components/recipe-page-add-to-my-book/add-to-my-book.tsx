@@ -8,7 +8,6 @@ export const AddToMyBook = () => {
         <VStack align="center">
             <HStack align="center">
                 <Text
-                    fontFamily="var(--main-font)"
                     fontSize="calc(20px * 1.1)"
                     fontWeight={900}
                     fontStyle="italic"

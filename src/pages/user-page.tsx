@@ -6,14 +6,13 @@ import { PiPencilSimpleBold } from "react-icons/pi";
 const UserPage = () => {
     return (
         <>
-
             <HStack pl="150px" pr="150px" mt="25px" mb="50px">
                 <VStack
-                    bg="var(--background-card)"
+                    bg="beige.300"
                     w="700px"
                     h="750px"
                     border="2px"
-                    borderColor="var(--color-brown)"
+                    borderColor="brown.500"
                     borderRadius="30px"
                     alignItems="flex-start"
                 >
@@ -25,19 +24,19 @@ const UserPage = () => {
                             minW="0"
                             background="none" // Без фона
                             border="none" // Убираем границу
-                            _hover={{ opacity: 0.95, backgroundColor: "var(--background-card)" }}
+                            _hover={{ opacity: 0.95, backgroundColor: "beige.300" }}
                         >
                             <Image src={CurrentBookmark} w="90px" />
                             <Text
                                 lineHeight="normal"
-                                fontFamily="var(--main-font)"
+
                                 fontSize="16"
                                 fontWeight="800"
                                 fontStyle="Italic"
                                 textAlign="right"
                                 position="absolute"
                                 top="20%"
-                                color="var(--background-color)"
+                                color="beige.200"
                                 transform="rotate(270deg)"
                             >
                                 Сохраненные <br /> рецепты
@@ -50,19 +49,18 @@ const UserPage = () => {
                             minW="0"
                             background="none" // Без фона
                             border="none" // Убираем границу
-                            _hover={{ opacity: 0.95, backgroundColor: "var(--background-card)" }} // Эффект наведения
+                            _hover={{ opacity: 0.95, backgroundColor: "beige.300" }} // Эффект наведения
                         >
                             <Image src={UnselectedBookmark} w="90px" />
                             <Text
                                 lineHeight="normal"
-                                fontFamily="var(--main-font)"
                                 fontSize="16"
                                 fontWeight="800"
                                 fontStyle="Italic"
                                 textAlign="right"
                                 position="absolute"
                                 top="15%"
-                                color="var(--color-brown)"
+                                color="brown.500"
                                 transform="rotate(270deg)"
                             >
                                 Мои <br /> рецепты
@@ -73,21 +71,20 @@ const UserPage = () => {
                     <Text
                         lineHeight="normal"
                         alignSelf="center"
-                        fontFamily="var(--main-font)"
                         fontSize="20"
                         fontWeight="900"
                         fontStyle="Italic"
                         textAlign="center"
-                        color="var(--color-brown)">
+                        color="brown.500">
                         Пока здесь ничего нет, но скоро <br />  здесь появятся ваши любимые рецепты
                     </Text>
                 </VStack>
                 <VStack
-                    bg="var(--background-card)"
+                    bg="beige.300"
                     w="450px"
                     h="750px"
                     border="2px"
-                    borderColor="var(--color-brown)"
+                    borderColor="brown.500"
                     borderRadius="30px"
                     alignItems="center"
                     pt="80px"
@@ -95,20 +92,18 @@ const UserPage = () => {
                 >
                     <Image src={profilePhoto} />
                     <Text
-                        fontFamily="var(--main-font)"
                         fontSize="30"
                         fontWeight="900"
                         textAlign="center"
-                        color="var(--color-brown)"
+                        color="brown.500"
                     >
                         Маша Иванова
                     </Text>
                     <Text
-                        fontFamily="var(--main-font)"
                         fontSize="20"
                         fontWeight="600"
                         textAlign="center"
-                        color="var(--color-brown)"
+                        color="brown.500"
                     >
                         Дата регистрации: 22.12.2024
                     </Text>
@@ -117,13 +112,12 @@ const UserPage = () => {
                         w="80%"
                         bg="rgba(126, 73, 37, 0.1)"
                         border="1px"
-                        borderColor="var(--color-brown)"
+                        borderColor="brown.500"
                         borderRadius="50px"
-                        fontFamily="var(--main-font)"
                         fontSize="25"
                         fontWeight="800"
                         textAlign="center"
-                        color="var(--color-brown)"
+                        color="brown.500"
                         _hover={{ opacity: 0.9, backgroundColor: "rgba(126, 73, 37, 0.1)" }}
                     >
                         Добавить рецепт

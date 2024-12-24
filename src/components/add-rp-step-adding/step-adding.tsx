@@ -34,7 +34,7 @@ export const StepAdding = () => {
 
     return (
         <>
-            <Text fontFamily="var(--main-font)" fontSize={32} fontWeight="bold" fontStyle="italic" color="var(--color-brown)">
+            <Text fontSize={32} fontWeight="bold" fontStyle="italic" color="brown.500">
                 Пошаговый рецепт
             </Text>
 
@@ -44,15 +44,15 @@ export const StepAdding = () => {
                 <Box
                     w="150px"
                     h="150px"
-                    bg={photoPreview ? "transparent" : "var(--color-add-photo)"} // Фон исчезает при наличии фото
+                    bg={photoPreview ? "transparent" : "grey.50"} // Фон исчезает при наличии фото
                     cursor="pointer"
                     overflow="hidden"
                     borderRadius="15px"
-                    border="2px dashed var(--color-brown)"
+                    border="2px dashed brown.500"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
-                    _hover={{ bg: "var(--color--add-photo2)" }}
+                    _hover={{ bg: "beige.50" }}
                     onClick={() => document.getElementById("photoInput").click()}
                 >
                     {photoPreview ? (
@@ -64,7 +64,7 @@ export const StepAdding = () => {
                                 alt="Фотоаппарат"
                                 boxSize="50px"
                             />
-                            <Text fontFamily="var(--main-font)" fontSize={16} fontWeight={600} color="var(--color-brown)" textAlign="center">
+                            <Text fontSize={16} fontWeight={600} color="brown.500" textAlign="center">
                                 Добавить фото
                             </Text>
                         </VStack>
@@ -86,9 +86,9 @@ export const StepAdding = () => {
                     onChange={(e) => setCurrentDescription(e.target.value)}
                     flex="1"
                     h={20}
-                    border="2px solid var(--color-brown)"
+                    border="2px solid brown.500"
                     borderRadius="15px"
-                    fontFamily="var(--main-font)"
+
                     fontSize="16px"
                 />
             </HStack>
@@ -99,7 +99,7 @@ export const StepAdding = () => {
                 variant="unstyled"
                 display="flex"
                 _hover={{
-                    ".hover-effect": { color: "var(--color--sent)", filter: "brightness(1.2)" }, // Единый стиль
+                    ".hover-effect": { color: "orange.300", filter: "brightness(1.2)" }, // Единый стиль
                 }}
 
             >
@@ -112,10 +112,10 @@ export const StepAdding = () => {
                 />
 
                 <Text
-                    fontFamily="var(--main-font)"
+
                     fontSize="lg"
                     fontWeight="bold"
-                    color="var(--color--add-step-and-photo)"
+                    color="orange.600"
                     className='hover-effect'
                 >
                     Добавить шаг
@@ -135,12 +135,12 @@ export const StepAdding = () => {
                             display="flex"
                             justifyContent="center"
                             alignItems="center"
-                            border="2px solid var(--color-brown)"
+                            border="2px solid brown.500"
                         >
                             {step.photo ? (
                                 <Image src={step.photo} alt={`Шаг ${index + 1}`} boxSize="100%" objectFit="cover" />
                             ) : (
-                                <Text fontFamily="var(--main-font)" fontWeight="bold" color="gray.400">
+                                <Text fontWeight="bold" color="gray.400">
                                     Фото
                                 </Text>
                             )}
@@ -148,10 +148,10 @@ export const StepAdding = () => {
 
                         {/* Описание шага */}
                         <Text
-                            fontFamily="var(--main-font)"
+
                             fontSize="16px"
                             fontWeight="bold"
-                            color="var(--color-brown)"
+                            color="brown.500"
                             flex="1"
                         >
                             {step.description || "Без описания"}

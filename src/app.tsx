@@ -1,7 +1,7 @@
 import React from 'react'
-import { Global } from '@emotion/react'
-import { globalStyles } from './global.style'
 import { ChakraProvider } from '@chakra-ui/react'
+import theme from './theme'
+import Fonts from './fonts'
 import { Header } from './components/header'
 import { Footer } from './components/footer'
 import HomePage from './pages/home-page'
@@ -11,10 +11,10 @@ import UserPage from './pages/user-page'
 
 const App = () => {
   return (
-    <ChakraProvider>
-      <Global styles={globalStyles} />
+    <ChakraProvider theme={theme}>
+      <Fonts />
       <Header />
-      <HomePage />
+      <RecipePage />
       <Footer />
     </ChakraProvider>
   );
