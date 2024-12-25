@@ -7,32 +7,22 @@ export const TimeInput = () => {
             <Input
                 placeholder="Название рецепта"
                 size="lg"
-                maxW={{
-                    lg: "10.5em",
-                    xl: "10em",
-                }}
+                maxW="26vw"
                 fontFamily="var(--main-font)"
-                fontSize={{
-                    lg: "1.5em",
-                    xl: "2em",
-                }}
+                fontSize="2.3vw"
                 fontStyle="italic"
                 transition="all 0.3s ease-in-out"
             />
             <HStack
-                spacing={{
-                    lg: "0.4em",
-                    xl: "1.2em",
-                }}
-                align="center" w="100%">
-                <Text fontFamily="var(--main-font)"
+                spacing="0.8vw"
+                align="center" 
+                >
+                <Text
+                    fontFamily="var(--main-font)"
                     fontStyle="italic"
-                    fontSize={{
-                        lg: "1.4em",
-                        xl: "1.6em",
-                    }}
+                    fontSize="1.6vw"
                     fontWeight="bold"
-                    color="var(--color-brown)"
+                    color="brown.500"
                     mr={10}>
                     Время приготовления
                 </Text>
@@ -41,27 +31,20 @@ export const TimeInput = () => {
                     placeholder="0"
                     size="sm"
                     borderRadius={15}
-                    w={{
-                        lg: "2.4em",
-                        xl: "4em",
-                    }}
+                    w="5.2vw"
                     textAlign="right"
-                    border="2px solid var(--color-brown)"
-                    _placeholder={{ color: "var(--color-brown)" }}
-                    fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={{
-                        lg: "1.2em",
-                        xl: "1.4em",
-                    }}
+                    border="2px solid"
+                    borderColor="brown.500"
+                    _placeholder={{ color: "brown.500" }}
+                    fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800}
+                    fontSize="1.4vw"
                 />
                 <Text
                     fontFamily="var(--main-font)"
                     fontStyle="italic"
                     fontWeight={800}
-                    fontSize={{
-                        lg: "1.2em",
-                        xl: "1.4em",
-                    }}
-                    color="var(--color-brown)">
+                    fontSize="1.4vw"
+                    color="brown.500">
                     час(ов)
                 </Text>
 
@@ -69,22 +52,20 @@ export const TimeInput = () => {
                     placeholder="0"
                     size="sm"
                     borderRadius={15}
-                    w={{
-                        lg: "2.4em",
-                        xl: "4em",
-                    }}
+                    w="5.2vw"
                     textAlign="right"
-                    border="2px solid var(--color-brown)"
-                    _placeholder={{ color: "var(--color-brown)" }}
-                    fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={{
-                        lg: "1.2em",
-                        xl: "1.4em",
-                    }}
+                    border="2px solid"
+                    borderColor="brown.500"
+                    _placeholder={{ color: "brown.500" }}
+                    fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800}
+                    fontSize="1.4vw"
                 />
-                <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize={{
-                    lg: "1.2em",
-                    xl: "1.4em",
-                }} color="var(--color-brown)">
+                <Text
+                    fontFamily="var(--main-font)"
+                    fontStyle="italic"
+                    fontWeight={800}
+                    fontSize="1.4vw"
+                    color="brown.500">
                     минут
                 </Text>
             </HStack>

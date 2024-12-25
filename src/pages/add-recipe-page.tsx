@@ -1,8 +1,6 @@
 import React from 'react';
 import { Box, Input, VStack } from "@chakra-ui/react";
 
-import { Header } from '../components/header';
-import { Footer } from '../components/footer';
 import { TimeInput } from '../components/add-rp-time-input';
 import { DishPhoto } from '../components/add-rp-dish-photo';
 import { SelectedCategories } from '../components/add-rp-selected-categories';
@@ -13,29 +11,19 @@ import { Sent } from '../components/add-rp-sent';
 const AddRecipePage = () => {
     return (
         <>
-            <Header />
             <Box
-                bg="var(--background-card)"
-                w={{
-                    lg: "45em",
-                    xl: "60em",
-                    "2xl": "70em",
-                }}
+                bg="orange.50"
+                w="74vw"
                 h="auto"
                 mx="auto"
-                p={{
-                    lg: "2em",
-                    xl: "2.5em",
-                }}
+                p="0.3vw"
+                my="1em"
                 display="flex"
                 justifyContent="center"
                 transition="all 0.3s ease-in-out"
             >
                 <VStack
-                    spacing={{
-                        lg: "2.2em",
-                        xl: "2em",
-                    }}
+                    spacing="1.3vw"
                     align="center"
                     transition="all 0.3s ease-in-out"
                 >
@@ -47,10 +35,7 @@ const AddRecipePage = () => {
                         spacing={4}
                         align="center"
                         w="100%"
-                        p={{
-                            lg: "1.5em",
-                            xl: "1em",
-                        }}
+                        p="0.3vw"
                         transition="all 0.3s ease-in-out"
                     >
                         <StepAdding />
@@ -58,7 +43,6 @@ const AddRecipePage = () => {
                     <Sent />
                 </VStack>
             </Box>
-            <Footer />
         </>
 
     );

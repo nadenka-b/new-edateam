@@ -23,18 +23,12 @@ export const DishPhoto = () => {
     return (
         <VStack
         py={3}
-            spacing={{
-                lg: "0.5em",
-                xl: "1em",
-            }}
+            spacing="0.2vw"
             align="center"
             w="100%">
             <Text
                 fontFamily="var(--main-font)"
-                fontSize={{
-                    lg: "1.4em",
-                    xl: "1.6em",
-                }}
+                fontSize="1.6vw"
                 fontWeight="bold"
                 color="brown.500"
                 fontStyle="italic"
@@ -42,16 +36,11 @@ export const DishPhoto = () => {
                 Фото готового блюда
             </Text>
             <Box
-                w={{
-                    lg: "35em",
-                    xl: "40em",
-                }}
-                h={{
-                    lg: "14em",
-                    xl: "20em",
-                }}
+                w="47.8vw"
+                h="18.3vw"
                 borderRadius="15px"
-                border="2px dashed brown.500"
+                border="2px dashed"
+                borderColor="brown.500"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
@@ -80,9 +69,8 @@ export const DishPhoto = () => {
                 ) : (
 
                     <Text
-                        fontSize={20}
+                        fontSize="1vw"
                         fontWeight={600}
-                        // fontStyle="italic"
                         color="brown.500"
                         mb={2}
                     >

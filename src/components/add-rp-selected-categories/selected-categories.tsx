@@ -16,18 +16,14 @@ export const SelectedCategories = () => {
     };
 
     return (
-        <HStack spacing={8} align="flex-start" justifyContent="space-between" w="100%" py={2}>
+        <HStack align="flex-start" w="100%" py={2} justifyContent="space-between">
             {/* Секция с текстом "Категория блюда" */}
-            <VStack align="flex-start" >
+            <VStack align="flex-start">
                 <Text
-
                     fontStyle="italic"
-                    fontSize={{
-                        lg: "1.4em",
-                        xl: "1.6em",
-                    }}
-                    fontWeight={800}
-                    color="var(--color-brown)"
+                    fontSize="1.6vw"
+                    fontWeight="bold"
+                    color="brown.500"
                 >
                     Категория блюда
                 </Text>
@@ -36,17 +32,11 @@ export const SelectedCategories = () => {
                 <Select
                     placeholder="Выберите категорию"
                     size="lg"
-                    h="50px"
-                    w={{
-                        lg: "17em",
-                        xl: "19em",
-                    }}
-                    borderColor="var(--color-brown)"
+                    h="2.6vw"
+                    w="21vw"
+                    borderColor="brown.500"
                     fontFamily="var(--main-font)"
-                    fontSize={{
-                        lg: "1.2em",
-                        xl: "1.4em",
-                    }}
+                    fontSize="1.4vw"
                     fontWeight="bold"
                     color="brown.500"
                     borderRadius={15}
@@ -60,14 +50,11 @@ export const SelectedCategories = () => {
             </VStack>
 
             {/* Секция с выбранными категориями справа */}
-            <VStack align="start" w="100%" maxWidth={400}>
+            <VStack align="flex-end" w="100%" maxWidth={300}>
                 <Text
                     fontFamily="var(--main-font)"
-                    fontSize={{
-                        lg: "1.4em",
-                        xl: "1.6em",
-                    }}
-                    fontWeight={800}
+                    fontSize="1.6vw"
+                    fontWeight="bold"
                     color="brown.500"
                     fontStyle="italic"
                 >
@@ -75,7 +62,7 @@ export const SelectedCategories = () => {
                 </Text>
 
                 {/* Контейнер для выбранных категорий */}
-                <Wrap spacing={2} maxWidth="400px" overflow="hidden" w="100%">
+                <Wrap spacing={2} maxWidth="300px" overflow="hidden" w="100%">
                     {selectedCategories.map((category) => (
                         <WrapItem key={category}>
                             <HStack
@@ -90,10 +77,7 @@ export const SelectedCategories = () => {
                             >
                                 <Text
                                     fontFamily="var(--main-font)"
-                                    fontSize={{
-                                        lg: "1.2em",
-                                        xl: "1.4em",
-                                    }}
+                                    fontSize="1.4vw"
                                     fontWeight="bold"
                                     color="brown.500"
                                 >
@@ -113,5 +97,6 @@ export const SelectedCategories = () => {
                 </Wrap>
             </VStack>
         </HStack>
+
     )
 }
