@@ -4,7 +4,7 @@ import { Stepper, Step, StepIndicator, StepStatus, StepSeparator, StepNumber, St
 
 export const StepNavigator = ({ activeStep, stepsData, setActiveStep }) => (
 
-    <Stepper index={activeStep} colorScheme="orange" size="lg" w="100%">
+    <Stepper index={activeStep} colorScheme="orange" size="1vw" w="100%">
         {stepsData.map((step, index) => (
             <Step key={index} onClick={() => setActiveStep(index)} mb={10}>
                 <StepIndicator
@@ -13,7 +13,7 @@ export const StepNavigator = ({ activeStep, stepsData, setActiveStep }) => (
                 >
                     <StepStatus
                         complete={<StepIcon />}
-                        incomplete={<StepNumber color="#7E4925" fontSize={25} />}
+                        incomplete={<StepNumber color="#7E4925" fontSize="1.3vw" />}
                         active={<StepNumber />}
                     />
                 </StepIndicator>
@@ -22,7 +22,7 @@ export const StepNavigator = ({ activeStep, stepsData, setActiveStep }) => (
                     mr={index === stepsData.length - 1 ? 10 : 0}  // Отступ справа для последнего шага
                 >
                     <StepTitle
-                        fontSize={25}
+                        fontSize="1.3vw"
                         fontWeight={900}
                         fontStyle="italic"
                         color="#7E4925"

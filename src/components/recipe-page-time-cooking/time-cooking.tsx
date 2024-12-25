@@ -7,8 +7,8 @@ export const TimeCooking = () => {
     return (
         <HStack
             align="center"
-            w="406px"
-            h="76px"
+            w="27vw"
+            h="3.9vw"
             borderWidth="2px"
             borderColor="#7E4925"
             bg="rgba(126, 73, 37, 0.2)"
@@ -19,10 +19,10 @@ export const TimeCooking = () => {
             <Image
                 src={clockIcon}
                 alt="Часы"
-                boxSize="50px"
+                boxSize="2.6vw"
             />
             <Text
-                fontSize="calc(20px * 1.1)"
+                fontSize="1.2vw"
                 fontWeight={900}
                 fontStyle="italic"
                 color="#7E4925"

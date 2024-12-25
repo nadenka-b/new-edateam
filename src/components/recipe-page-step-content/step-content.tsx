@@ -12,23 +12,24 @@ export const StepContent = ({ activeStep, stepsData }) => {
             borderColor="#7E4925"
             borderRadius={30}
             p="6"
+            mb="3vw"
             bg="#FFE6C3"
-            w="1441px"
-            h="453px"
+            w="75vw"
+            h="23.5vw"
             textAlign="center"
         >
             <HStack justify="center" align="center" spacing={8}>
                 <Image
                     src={step.image}
                     borderRadius={30}
-                    w="545px"
-                    h="350px"
+                    w="28.3vw"
+                    h="18.2vw"
                     alt={step.title}
                     borderColor="#7E4925"
-                    borderWidth="5px"
+                    borderWidth="4px"
                 />
                 <Text
-                    fontSize="calc(35px * 1.1)"
+                    fontSize="1.8vw"
                     fontWeight={900}
                     fontStyle="italic"
                     color="#7E4925"

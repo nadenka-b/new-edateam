@@ -4,7 +4,7 @@ import { Text } from "@chakra-ui/react";
 export const Title = () => {
     return (
         <Text
-            fontSize="40px"
+            fontSize="2vw"
             fontWeight="900"
             fontStyle="italic"
             color="#7E4925"

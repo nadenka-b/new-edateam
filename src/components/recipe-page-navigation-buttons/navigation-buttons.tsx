@@ -50,7 +50,7 @@ export const NavigationButtons = ({
     return (
         <Button
             variant="unstyled"
-            boxSize="9px"
+            boxSize="0.4vw"
             onClick={isPrevious ? goToPrevious : goToNext}
             isDisabled={
                 isPrevious ? activeStep === 0 : activeStep === stepsData.length - 1
@@ -62,9 +62,9 @@ export const NavigationButtons = ({
             mr={isNext ? "52px" : "0"}
         >
             {isPrevious ? (
-                <CustomArrowLeftIcon boxSize="70px" />
+                <CustomArrowLeftIcon boxSize="3.6vw" />
             ) : (
-                <CustomArrowRightIcon boxSize="70px" />
+                <CustomArrowRightIcon boxSize="3.6vw" />
             )}
         </Button>
     );

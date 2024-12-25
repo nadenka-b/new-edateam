@@ -5,11 +5,11 @@ export const Video = () => {
     return (
         <Box
             as="iframe"
-            src="https://www.youtube.com/embed/EBbwrtTzTVQ"
+            src="https://youtube.com/embed/yTk3iwTyBwY"
             frameBorder="0"
             allowFullScreen
-            width="985px"
-            height="656.55px"
+            width="51vw"
+            height="33vw"
             borderRadius="md"
             boxShadow="lg"
             mx="auto"

@@ -18,9 +18,9 @@ export const ListOfIngredients = () => {
     return (
         <VStack
             w="100%"
-            maxW="1000px"
+            maxW="52vw"
             mx="auto"
-            my="100px"
+            my="4vw"
             borderRadius="16px" // Закругление только внешних углов таблицы
             overflow="hidden" // Обрезка содержимого для строгих краев
             spacing={0} // Убираем отступы между строками
@@ -31,13 +31,13 @@ export const ListOfIngredients = () => {
                     display="flex"
                     alignItems="center"
                     w="100%"
-                    px="16px"
-                    py="12px"
+                    px="0.83vw"
+                    py="0.6vw"
                     bg={index % 2 === 0 ? "#FFF0DA" : "#FFE6C3"} // Чередование цветов строк
                     m={0} // Убираем margin между строками
                 >
                     <Text
-                        fontSize="22px"
+                        fontSize="1.14vw"
                         fontWeight="600"
                         color="#7E4925"
                         mr="4"
@@ -51,7 +51,7 @@ export const ListOfIngredients = () => {
                         flex="1"
                     />
                     <Text
-                        fontSize="22px"
+                        fontSize="1.14vw"
                         fontWeight="600"
                         color="#7E4925"
                         w="10%" // Фиксируем ширину колонки с количеством
