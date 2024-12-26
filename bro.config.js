@@ -11,7 +11,8 @@ module.exports = {
   navigations: {
     "edateam.main": "/edateam",
     "edateam.recipe": "/recipe",
-    "edateam.user": "/user"
+    "edateam.user": "/user",
+    "edateam.add-recipe": "/add-recipe"
   },
   features: {
     "edateam": {

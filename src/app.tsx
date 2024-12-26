@@ -9,14 +9,14 @@ import { PageRoutes } from './routes'
 
 const App = () => {
   return (
-    <ChakraProvider theme={theme}>
-      <Fonts />
-      <Header />
-      <BrowserRouter>
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <Fonts />
+        <Header />
         <PageRoutes />
-      </BrowserRouter>
-      <Footer />
-    </ChakraProvider>
+        <Footer />
+      </ChakraProvider>
+    </BrowserRouter>
   );
 };
 
