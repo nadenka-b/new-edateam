@@ -26,7 +26,7 @@ const RecipePage = () => {
             <Box
                 w="100%"
                 h="auto"
-                bg="#FBD07E"
+                bg="orange.70"
                 pb="1.04vw"
             >
                 <SectionHeader title='Ингредиенты' />

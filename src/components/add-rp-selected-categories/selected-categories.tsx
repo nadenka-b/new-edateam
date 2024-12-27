@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { HStack, Text, VStack, Select, Wrap, WrapItem, IconButton } from "@chakra-ui/react";
-// import { CloseIcon } from '@chakra-ui/icons';
 import { AiOutlineClose } from "react-icons/ai";
 
 export const SelectedCategories = () => {
@@ -33,13 +32,13 @@ export const SelectedCategories = () => {
                     placeholder="Выберите категорию"
                     size="lg"
                     h="2.6vw"
-                    w="21vw"
+                    w="20vw"
                     borderColor="brown.500"
                     fontFamily="var(--main-font)"
                     fontSize="1.4vw"
                     fontWeight="bold"
                     color="brown.500"
-                    borderRadius={15}
+                    borderRadius="0.8vw"
                     onChange={(e) => addCategory(e.target.value)} // Добавление категории
                 >
                     <option value="Супы">Супы</option>
@@ -62,13 +61,13 @@ export const SelectedCategories = () => {
                 </Text>
 
                 {/* Контейнер для выбранных категорий */}
-                <Wrap spacing={2} maxWidth="300px" overflow="hidden" w="100%">
+                <Wrap spacing={2} maxWidth="15.6vw" overflow="hidden" w="100%">
                     {selectedCategories.map((category) => (
                         <WrapItem key={category}>
                             <HStack
                                 spacing={2}
                                 bg="beige.200"
-                                borderRadius="12px"
+                                borderRadius="0.6vw"
                                 borderColor="brown.500"
                                 borderWidth={1}
                                 px="10px"
@@ -97,6 +96,5 @@ export const SelectedCategories = () => {
                 </Wrap>
             </VStack>
         </HStack>
-
     )
 }

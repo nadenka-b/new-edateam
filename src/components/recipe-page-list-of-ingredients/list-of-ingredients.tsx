@@ -21,7 +21,7 @@ export const ListOfIngredients = () => {
             maxW="52vw"
             mx="auto"
             my="4vw"
-            borderRadius="16px" // Закругление только внешних углов таблицы
+            borderRadius="0.83vw" // Закругление только внешних углов таблицы
             overflow="hidden" // Обрезка содержимого для строгих краев
             spacing={0} // Убираем отступы между строками
         >
@@ -33,29 +33,29 @@ export const ListOfIngredients = () => {
                     w="100%"
                     px="0.83vw"
                     py="0.6vw"
-                    bg={index % 2 === 0 ? "#FFF0DA" : "#FFE6C3"} // Чередование цветов строк
+                    bg={index % 2 === 0 ? "beige.200" : "beige.300"} // Чередование цветов строк
                     m={0} // Убираем margin между строками
                 >
                     <Text
                         fontSize="1.14vw"
                         fontWeight="600"
-                        color="#7E4925"
-                        mr="4"
+                        color="brown.500"
+                        mr="0.2vw"
                     >
                         {ingredient.name}
                     </Text>
 
                     <Box
-                        borderBottom="1px solid #7E4925"
+                        borderBottom="0.05vw solid brown.500"
                         height="0"
                         flex="1"
                     />
                     <Text
                         fontSize="1.14vw"
                         fontWeight="600"
-                        color="#7E4925"
+                        color="brown.500"
                         w="10%" // Фиксируем ширину колонки с количеством
-                        textAlign="left" // Выравнивание по правому краю
+                        textAlign="left" // Выравнивание по левому краю
                         ml="4"
                     >
                         {ingredient.quantity}

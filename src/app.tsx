@@ -14,7 +14,7 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <Fonts />
       <Header />
-      <RecipePage />
+      <AddRecipePage />
       <Footer />
     </ChakraProvider>
   );

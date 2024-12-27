@@ -11,7 +11,7 @@ export const AddToMyBook = () => {
                     fontSize="1.2vw"
                     fontWeight={900}
                     fontStyle="italic"
-                    color="#7E4925"
+                    color="brown.500"
                 >
                     Добавить в мою книгу рецептов
                 </Text>

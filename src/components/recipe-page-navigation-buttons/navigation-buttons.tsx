@@ -50,7 +50,7 @@ export const NavigationButtons = ({
     return (
         <Button
             variant="unstyled"
-            boxSize="0.4vw"
+            boxSize="9px"
             onClick={isPrevious ? goToPrevious : goToNext}
             isDisabled={
                 isPrevious ? activeStep === 0 : activeStep === stepsData.length - 1

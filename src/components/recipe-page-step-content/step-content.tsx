@@ -1,42 +1,43 @@
 import React from "react";
-
-import { HStack, Box, Image, Text } from '@chakra-ui/react';
-
+import { Box, Flex, Image, Text } from '@chakra-ui/react';
 
 export const StepContent = ({ activeStep, stepsData }) => {
     const step = stepsData[activeStep];
 
     return (
         <Box
-            borderWidth="5px"
-            borderColor="#7E4925"
-            borderRadius={30}
-            p="6"
+            borderWidth="0.1vw"
+            borderColor="brown.500"
+            borderRadius="1vw"
+            p="0.3vw"
             mb="3vw"
-            bg="#FFE6C3"
+            bg="orange.50"
             w="75vw"
             h="23.5vw"
-            textAlign="center"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
         >
-            <HStack justify="center" align="center" spacing={8}>
+            <Flex ml="3vw" justify="center" align="center" gap="0.4vw">
                 <Image
                     src={step.image}
-                    borderRadius={30}
+                    borderRadius="1.4vw"
                     w="28.3vw"
                     h="18.2vw"
                     alt={step.title}
-                    borderColor="#7E4925"
-                    borderWidth="4px"
+                    borderColor="brown.500"
+                    borderWidth="0.2vw"
                 />
                 <Text
                     fontSize="1.8vw"
-                    fontWeight={900}
+                    fontWeight="bold"
                     fontStyle="italic"
-                    color="#7E4925"
+                    color="brown.500"
+                    textAlign="center"
                 >
                     {step.description}
                 </Text>
-            </HStack>
+            </Flex>
         </Box>
     );
 };

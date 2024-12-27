@@ -6,7 +6,7 @@ export const TimeInput = () => {
         <>
             <Input
                 placeholder="Название рецепта"
-                size="lg"
+                size="7vw"
                 maxW="26vw"
                 fontFamily="var(--main-font)"
                 fontSize="2.3vw"
@@ -30,8 +30,9 @@ export const TimeInput = () => {
                 <Input
                     placeholder="0"
                     size="sm"
-                    borderRadius={15}
+                    borderRadius="0.8vw"
                     w="5.2vw"
+                    h="2vw"
                     textAlign="right"
                     border="2px solid"
                     borderColor="brown.500"
@@ -50,9 +51,9 @@ export const TimeInput = () => {
 
                 <Input
                     placeholder="0"
-                    size="sm"
-                    borderRadius={15}
+                    borderRadius="0.8vw"
                     w="5.2vw"
+                    h="2vw"
                     textAlign="right"
                     border="2px solid"
                     borderColor="brown.500"

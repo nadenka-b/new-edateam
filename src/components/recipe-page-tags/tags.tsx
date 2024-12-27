@@ -8,26 +8,26 @@ export const Tags = () => {
                 fontSize="1vw"
                 fontWeight="900"
                 fontStyle="italic"
-                color="#DC8D57"
+                color="orange.100"
                 textDecoration="underline"
                 textAlign="center"
             >
                 завтрак
             </Text>
             <Text as="span"
-                fontSize="lg"
+                fontSize="1vw"
                 fontWeight="900"
                 fontStyle="italic"
-                color="#DC8D57"
+                color="orange.100"
                 textAlign="center"
-                mx="1.5">
+                mx="0.1vw">
                 -
             </Text>
             <Text as="span"
                 fontSize="1vw"
                 fontWeight="900"
                 fontStyle="italic"
-                color="#DC8D57"
+                color="orange.100"
                 textDecoration="underline"
                 textAlign="center"
             >

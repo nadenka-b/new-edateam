@@ -34,7 +34,7 @@ export const Ingredients = () => {
                 w="34.3vw"
                 // h="5vw"
                 align="center"
-                border="2px solid "
+                border="2px solid"
                 borderColor="brown.500"
                 borderRadius={15}
                 p={2}
@@ -47,6 +47,7 @@ export const Ingredients = () => {
                     fontWeight={700}
                     fontSize="1.25vw"
                     color="brown.500"
+                    h="2vw"
                     flex="3"
                     value={ingredientName}
                     onChange={(e) => setIngredientName(e.target.value)}

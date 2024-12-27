@@ -121,7 +121,7 @@ export const StepAdding = () => {
 
                 <Text
                     fontFamily="var(--main-font)"
-                    fontSize="1vw"
+                    fontSize="1.1vw"
                     fontWeight="bold"
                     color="orange.600"
                     className='hover-effect'

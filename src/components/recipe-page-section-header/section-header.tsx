@@ -9,9 +9,9 @@ export const SectionHeader = ({ title }: { title: string }) => {
             justify="center"
             w="29.3vw"
             h="4.4vw"
-            bg="#FF9F5F"
-            borderRadius="0 0 22px 22px"
-            px="4"
+            bg="orange.200"
+            borderRadius="0 0 1.14vw 1.14vw"
+            px="0.2vw"
             mr="7.7vw"
             mb="2.7vw"
         >
@@ -19,7 +19,7 @@ export const SectionHeader = ({ title }: { title: string }) => {
                 fontSize="1.8vw"
                 fontWeight={900}
                 fontStyle="italic"
-                color="#FFF0DA"
+                color="beige.200"
                 textDecoration="underline"
                 textAlign="center"
             >
