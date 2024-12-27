@@ -1,7 +1,11 @@
 import React from 'react';
 import { Text, HStack, Button, VStack, Image } from '@chakra-ui/react'
-import { CurrentBookmark, UnselectedBookmark, pan, profilePhoto } from '../assets';
 import { PiPencilSimpleBold } from "react-icons/pi";
+import { Link } from "react-router-dom"
+
+import { URLs } from "../__data__/urls"
+
+import { CurrentBookmark, UnselectedBookmark, pan, profilePhoto } from '../assets';
 
 const UserPage = () => {
     return (
@@ -107,21 +111,23 @@ const UserPage = () => {
                     >
                         Дата регистрации: 22.12.2024
                     </Text>
-                    <Button
-                        mt="100px"
-                        w="80%"
-                        bg="rgba(126, 73, 37, 0.1)"
-                        border="1px"
-                        borderColor="brown.500"
-                        borderRadius="50px"
-                        fontSize="25"
-                        fontWeight="800"
-                        textAlign="center"
-                        color="brown.500"
-                        _hover={{ opacity: 0.9, backgroundColor: "rgba(126, 73, 37, 0.1)" }}
-                    >
-                        Добавить рецепт
-                    </Button>
+                    <Link to={URLs.ui.add_recipe.url} style = {{ flex: 1, textDecoration:'none'}}>
+                        <Button
+                            mt="100px"
+                            w="80%"
+                            bg="rgba(126, 73, 37, 0.1)"
+                            border="1px"
+                            borderColor="brown.500"
+                            borderRadius="50px"
+                            fontSize="25"
+                            fontWeight="800"
+                            textAlign="center"
+                            color="brown.500"
+                            _hover={{ opacity: 0.9, backgroundColor: "rgba(126, 73, 37, 0.1)" }}
+                        >
+                            Добавить рецепт
+                        </Button>
+                    </Link>
                 </VStack>
             </HStack>
         </>
