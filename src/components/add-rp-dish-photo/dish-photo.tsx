@@ -21,9 +21,14 @@ export const DishPhoto = () => {
     };
 
     return (
-        <VStack spacing={4} align="center" w="100%">
+        <VStack
+        py={3}
+            spacing="0.2vw"
+            align="center"
+            w="100%">
             <Text
-                fontSize={32}
+                fontFamily="var(--main-font)"
+                fontSize="1.6vw"
                 fontWeight="bold"
                 color="brown.500"
                 fontStyle="italic"
@@ -31,10 +36,11 @@ export const DishPhoto = () => {
                 Фото готового блюда
             </Text>
             <Box
-                w="918px"
-                h="353px"
-                borderRadius="15px"
-                border="2px dashed brown.500"
+                w="45vw"
+                h="18.3vw"
+                borderRadius="0.8vw"
+                border="2px dashed"
+                borderColor="brown.500"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
@@ -47,13 +53,13 @@ export const DishPhoto = () => {
                 <Image
                     src={addPhoto}
                     alt="Фотоаппарат"
-                    boxSize="50px"
+                    boxSize="2.6vw"
                     mb={2}
                 />
                 {/* Если файл выбран, отображаем его имя */}
                 {fileName ? (
                     <Text
-                        fontSize={16}
+                        fontSize="1vw"
                         fontWeight={600}
                         color="brown.500"
                         mb={2}
@@ -63,9 +69,8 @@ export const DishPhoto = () => {
                 ) : (
 
                     <Text
-                        fontSize={20}
+                        fontSize="1vw"
                         fontWeight={600}
-                        // fontStyle="italic"
                         color="brown.500"
                         mb={2}
                     >

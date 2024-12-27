@@ -34,21 +34,27 @@ export const StepAdding = () => {
 
     return (
         <>
-            <Text fontSize={32} fontWeight="bold" fontStyle="italic" color="brown.500">
+            <Text fontFamily="var(--main-font)"
+                fontSize="1.6vw"
+                fontWeight="bold"
+                fontStyle="italic"
+                color="brown.500">
                 Пошаговый рецепт
             </Text>
 
             {/* Поле для добавления шага */}
-            <HStack spacing={4} align="start" w="100%" maxW="800px">
+            <HStack spacing={4} align="start" w="100%">
                 {/* Серый квадрат для добавления фото */}
                 <Box
-                    w="150px"
-                    h="150px"
+                    w="7.8vw"
+                    h="7.8vw"
+                    mr="1.6vw"
                     bg={photoPreview ? "transparent" : "grey.50"} // Фон исчезает при наличии фото
                     cursor="pointer"
                     overflow="hidden"
                     borderRadius="15px"
-                    border="2px dashed brown.500"
+                    border="2px dashed"
+                    borderColor="brown.500"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
@@ -62,9 +68,9 @@ export const StepAdding = () => {
                             <Image
                                 src={addPhoto}
                                 alt="Фотоаппарат"
-                                boxSize="50px"
+                                boxSize="2.6vw"
                             />
-                            <Text fontSize={16} fontWeight={600} color="brown.500" textAlign="center">
+                            <Text fontSize="0.8vw" fontWeight={600} color="brown.500" textAlign="center">
                                 Добавить фото
                             </Text>
                         </VStack>
@@ -85,11 +91,13 @@ export const StepAdding = () => {
                     value={currentDescription}
                     onChange={(e) => setCurrentDescription(e.target.value)}
                     flex="1"
-                    h={20}
-                    border="2px solid brown.500"
+                    h="7.8vw"
+                    w={20}
+                    border="2px solid"
+                    borderColor="brown.500"
                     borderRadius="15px"
 
-                    fontSize="16px"
+                    fontSize="0.8vw"
                 />
             </HStack>
 
@@ -112,8 +120,8 @@ export const StepAdding = () => {
                 />
 
                 <Text
-
-                    fontSize="lg"
+                    fontFamily="var(--main-font)"
+                    fontSize="1.1vw"
                     fontWeight="bold"
                     color="orange.600"
                     className='hover-effect'
@@ -149,7 +157,7 @@ export const StepAdding = () => {
                         {/* Описание шага */}
                         <Text
 
-                            fontSize="16px"
+                            fontSize="0.8vw"
                             fontWeight="bold"
                             color="brown.500"
                             flex="1"

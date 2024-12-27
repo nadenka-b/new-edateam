@@ -62,9 +62,9 @@ export const NavigationButtons = ({
             mr={isNext ? "52px" : "0"}
         >
             {isPrevious ? (
-                <CustomArrowLeftIcon boxSize="70px" />
+                <CustomArrowLeftIcon boxSize="3.6vw" />
             ) : (
-                <CustomArrowRightIcon boxSize="70px" />
+                <CustomArrowRightIcon boxSize="3.6vw" />
             )}
         </Button>
     );

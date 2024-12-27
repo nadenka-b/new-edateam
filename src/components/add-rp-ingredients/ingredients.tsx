@@ -20,7 +20,8 @@ export const Ingredients = () => {
         <VStack spacing={4} align="center" w="100%">
             {/* Заголовок */}
             <Text
-                fontSize={32}
+                fontFamily="var(--main-font)"
+                fontSize="1.6vw"
                 fontWeight="bold"
                 color="brown.500"
                 fontStyle="italic"
@@ -30,9 +31,11 @@ export const Ingredients = () => {
 
             {/* Поле ввода */}
             <HStack
-                w="659px"
+                w="34.3vw"
+                // h="5vw"
                 align="center"
-                border="2px solid brown.500"
+                border="2px solid"
+                borderColor="brown.500"
                 borderRadius={15}
                 p={2}
                 bg="white"
@@ -42,8 +45,9 @@ export const Ingredients = () => {
                     border="none"
                     _focus={{ outline: "none" }}
                     fontWeight={700}
-                    fontSize="24px"
+                    fontSize="1.25vw"
                     color="brown.500"
+                    h="2vw"
                     flex="3"
                     value={ingredientName}
                     onChange={(e) => setIngredientName(e.target.value)}
@@ -57,7 +61,7 @@ export const Ingredients = () => {
                     _focus={{ outline: "none" }}
                     textAlign="center"
                     fontWeight={700}
-                    fontSize="24px"
+                    fontSize="1.25vw"
                     color="brown.500"
                     flex="1"
                     value={ingredientQuantity}
@@ -85,7 +89,8 @@ export const Ingredients = () => {
                     />
 
                     <Text
-                        fontSize="lg"
+                        fontFamily="var(--main-font)"
+                        fontSize="1.1vw"
                         fontWeight="bold"
                         color="orange.600"
                         className='hover-effect'
@@ -97,16 +102,19 @@ export const Ingredients = () => {
             </HStack>
 
             {/* Список ингредиентов */}
-            <List spacing={3} w="100%" maxW="700px">
+            <List
+                spacing={3}
+                w="26vw"
+                maxW="700px">
                 {ingredients.map((ingredient, index) => (
                     <ListItem
                         key={index}
                         border="2px solid brown.500"
                         borderRadius="12px"
                         p={4}
-                        bg="beige.200"
-
-                        fontSize="lg"
+                        bg="var(--background-color)"
+                        fontFamily="var(--main-font)"
+                        fontSize="1.3vw"
                         fontWeight="bold"
                         color="brown.500"
                     >

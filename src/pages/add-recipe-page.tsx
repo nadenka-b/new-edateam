@@ -12,34 +12,39 @@ const AddRecipePage = () => {
     return (
         <>
             <Box
-                bg="beige.300"
-                w="1419px"
+                bg="orange.50"
+                w="74vw"
                 h="auto"
                 mx="auto"
-                p={6}
+                p="0.3vw"
+                my="1em"
                 display="flex"
                 justifyContent="center"
-
+                transition="all 0.3s ease-in-out"
             >
-                <VStack spacing={25} align="center">
-                    <Input
-                        placeholder="Название рецепта"
-                        size="lg"
-                        maxW={500}
-                        fontSize={50}
-                        fontStyle="italic"
-                    />
+                <VStack
+                    spacing="1.3vw"
+                    align="center"
+                    transition="all 0.3s ease-in-out"
+                >
                     <TimeInput />
                     <DishPhoto />
                     <SelectedCategories />
                     <Ingredients />
-                    <VStack spacing={6} align="center" w="100%" p={6}>
+                    <VStack
+                        spacing={4}
+                        align="center"
+                        w="100%"
+                        p="0.3vw"
+                        transition="all 0.3s ease-in-out"
+                    >
                         <StepAdding />
                     </VStack>
                     <Sent />
-                </VStack >
-            </Box >
+                </VStack>
+            </Box>
         </>
+
     );
 };
 

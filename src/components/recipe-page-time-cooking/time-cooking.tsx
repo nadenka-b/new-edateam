@@ -7,25 +7,25 @@ export const TimeCooking = () => {
     return (
         <HStack
             align="center"
-            w="406px"
-            h="76px"
-            borderWidth="2px"
-            borderColor="#7E4925"
-            bg="rgba(126, 73, 37, 0.2)"
-            borderRadius="30px"
-            px="4"
-            mr="149px"
+            w="24vw"
+            h="3.9vw"
+            borderWidth="0.1vw"
+            borderColor="brown.500"
+            bg="brown.150"
+            borderRadius="1.56vw"
+            px="0.2vw"
+            mr="7.8vw"
         >
             <Image
                 src={clockIcon}
                 alt="Часы"
-                boxSize="50px"
+                boxSize="2.6vw"
             />
             <Text
-                fontSize="calc(20px * 1.1)"
+                fontSize="1.2vw"
                 fontWeight={900}
                 fontStyle="italic"
-                color="#7E4925"
+                color="brown.500"
             >
                 Время приготовления: 30 мин
             </Text>

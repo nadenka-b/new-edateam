@@ -1,41 +1,75 @@
 import React from "react";
 import { Input, Text, HStack } from "@chakra-ui/react";
-import { addPhoto } from "../../assets/index";
 
 export const TimeInput = () => {
     return (
-        <HStack spacing={8} align="center" w="100%">
-            <Text fontStyle="italic" fontSize={32} fontWeight="bold" color="brown.500" mr={10}>
-                Время приготовления
-            </Text>
-
+        <>
             <Input
-                placeholder="0"
-                size="sm"
-                borderRadius={15}
-                w="100px"
-                textAlign="right"
-                border="2px solid brown.500"
-                _placeholder={{ color: "brown.500" }}
-                fontStyle="italic" fontWeight={800} fontSize={28}
+                placeholder="Название рецепта"
+                size="7vw"
+                maxW="26vw"
+                fontFamily="var(--main-font)"
+                fontSize="2.3vw"
+                fontStyle="italic"
+                transition="all 0.3s ease-in-out"
             />
-            <Text fontStyle="italic" fontWeight={800} fontSize={28} color="brown.500">
-                час(ов)
-            </Text>
+            <HStack
+                spacing="0.8vw"
+                align="center" 
+                >
+                <Text
+                    fontFamily="var(--main-font)"
+                    fontStyle="italic"
+                    fontSize="1.6vw"
+                    fontWeight="bold"
+                    color="brown.500"
+                    mr={10}>
+                    Время приготовления
+                </Text>
 
-            <Input
-                placeholder="0"
-                size="sm"
-                borderRadius={15}
-                w="100px"
-                textAlign="right"
-                border="2px solid brown.500"
-                _placeholder={{ color: "brown.500" }}
-                fontStyle="italic" fontWeight={800} fontSize={28}
-            />
-            <Text fontStyle="italic" fontWeight={800} fontSize={28} color="brown.500">
-                минут
-            </Text>
-        </HStack>
+                <Input
+                    placeholder="0"
+                    size="sm"
+                    borderRadius="0.8vw"
+                    w="5.2vw"
+                    h="2vw"
+                    textAlign="right"
+                    border="2px solid"
+                    borderColor="brown.500"
+                    _placeholder={{ color: "brown.500" }}
+                    fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800}
+                    fontSize="1.4vw"
+                />
+                <Text
+                    fontFamily="var(--main-font)"
+                    fontStyle="italic"
+                    fontWeight={800}
+                    fontSize="1.4vw"
+                    color="brown.500">
+                    час(ов)
+                </Text>
+
+                <Input
+                    placeholder="0"
+                    borderRadius="0.8vw"
+                    w="5.2vw"
+                    h="2vw"
+                    textAlign="right"
+                    border="2px solid"
+                    borderColor="brown.500"
+                    _placeholder={{ color: "brown.500" }}
+                    fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800}
+                    fontSize="1.4vw"
+                />
+                <Text
+                    fontFamily="var(--main-font)"
+                    fontStyle="italic"
+                    fontWeight={800}
+                    fontSize="1.4vw"
+                    color="brown.500">
+                    минут
+                </Text>
+            </HStack>
+        </>
     )
 }

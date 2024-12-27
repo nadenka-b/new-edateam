@@ -7,6 +7,8 @@ const theme = extendTheme({
     },
     colors: {
         orange: {
+            50: "#FFe6c3",
+            70: "#FBD07E",
             100: "#DC8D57", //теги
             200: "#FF9F5F", //приветствие
             300: "#FF9901",
@@ -22,6 +24,7 @@ const theme = extendTheme({
         },
         brown: {
             100: "rgba(126, 73, 37, 0.1)",
+            150: "rgba(126, 73, 37, 0.2)",
             200: "rgba(126, 73, 37, 0.4)",
             500: "#7E4925" //везде
         },
