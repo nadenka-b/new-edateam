@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export const Greetings = () => {
     return (
-        <Box position="relative" bg="orange.200" h="23vw" w="100%" mt="1vw" px="5.2vw" py="0.8vw">
+        <Box position="relative" bg="orange.200" h="23vw" w="100%" mt="1.8vw" px="5.2vw" pt="1.5vw">
             <Flex>
                 <Box>
                     <Heading
@@ -24,14 +24,14 @@ export const Greetings = () => {
                     </Heading>
                     <HStack
                         bg="beige.200"
-                        borderRadius="50px"
+                        borderRadius="2.6vw"
                         w="35vw"
                         mt="3.5vw"
                         pl="0.3vw"
                         h="3vw">
                         <Input
                             h="100%"
-                            borderRadius="50px"
+                            borderRadius="2.6vw"
                             border="none"
                             focusBorderColor="transparent"
                             color="brown.500"
@@ -44,14 +44,14 @@ export const Greetings = () => {
                             color="beige.200"
                             bg="orange.500"
                             fontSize="1.25vw"
-                            borderRadius="50px"
+                            borderRadius="2.6vw"
                             w="12vw"
                             _hover={{ opacity: 0.85, bg: "orange.500" }}>
                             Найти
                         </Button>
                     </HStack>
                 </Box>
-                <Box ml="1.5vw" mt="9vw">
+                <Box ml="2.5vw" mt="9vw">
                     <Button
                         _hover={{ opacity: 0.85, bg: "orange.500" }}
                         rightIcon={<FaArrowRight />}
@@ -62,7 +62,7 @@ export const Greetings = () => {
                         bg="orange.500"
                         fontSize="1.25vw"
                         fontWeight="900"
-                        borderRadius="50px">
+                        borderRadius="2.6vw">
                         К рецептам
                     </Button>
                 </Box>

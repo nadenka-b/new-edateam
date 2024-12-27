@@ -10,28 +10,27 @@ export const Footer = () => {
     return (
         <Box pl="2.6vw" pr="2.6vw" pb="1.5vw">
             <Box
-                borderBottom="3px solid"
+                borderBottom="0.2vw solid"
                 borderColor="brown.500"
                 width="95%"
                 mx="auto"
                 mb="1vw" >
             </Box>
             <HStack>
-                <RouteLink to={URLs.baseUrl} style={{ flex: 1, textDecoration: 'none' }}>
-                    {/* не работает  */}
-                    <Flex flex="1" alignSelf="center" h="5vw">
+                <RouteLink to={URLs.baseUrl} style={{ flex: 1, alignSelf: 'center' }}>
+                    <Flex h="3.5vw">
                         <ImageLogo />
                     </Flex>
                 </RouteLink>
                 <Flex flex="1" justifyContent="center" >
                     <Button
-                        pt="0.9vw"
-                        pb="0.9vw"
-                        border="3px solid"
+                        h="3.5vw"
+                        w="16vw"
+                        border="0.2vw solid"
                         borderColor="brown.500"
-                        borderRadius="15px"
+                        borderRadius="1.5vw"
                         variant="plain"
-                        leftIcon={<HiOutlineEnvelope color="brown.500" fontSize="1.8vw" />}
+                        leftIcon={<HiOutlineEnvelope color="brown.500" fontSize="2vw" />}
                         fontSize="1.25vw"
                         fontWeight="800"
                         color="brown.500">
@@ -45,21 +44,21 @@ export const Footer = () => {
                         color="brown.500">
                         МЫ В СОЦИАЛЬНЫХ СЕТЯХ
                     </Text>
-                    <HStack mt={1}>
+                    <HStack mt="0.05vw">
                         <Link href="https://t.me/someoneswm"
                             rel="noopener noreferrer"
                             target="_blank" >
-                            <Box as={FaTelegram} size="3.1vw" color="blue.500" />
+                            <Box as={FaTelegram} size="2.2vw" color="blue.500" />
                         </Link>
                         <Link href="https://t.me/nadenka_b"
                             rel="noopener noreferrer"
                             target="_blank" >
-                            <Box as={FaTelegram} size="3.1vw" color="blue.500" />
+                            <Box as={FaTelegram} size="2.2vw" color="blue.500" />
                         </Link>
                         <Link href="https://t.me/AdelinaSattarova"
                             rel="noopener noreferrer"
                             target="_blank">
-                            <Box as={FaTelegram} size="3.1vw" color="blue.500" />
+                            <Box as={FaTelegram} size="2.2vw" color="blue.500" />
                         </Link>
                     </HStack>
                 </VStack>

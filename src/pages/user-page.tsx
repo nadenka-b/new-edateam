@@ -15,9 +15,9 @@ const UserPage = () => {
                     bg="beige.300"
                     w="41vw"
                     h="41.6vw"
-                    border="2px"
+                    border="0.15vw solid"
                     borderColor="brown.500"
-                    borderRadius="30px"
+                    borderRadius="1.56vw"
                     alignItems="flex-start"
                 >
                     <HStack align="start" pl="4.6vw" spacing="2vw">
@@ -87,9 +87,9 @@ const UserPage = () => {
                     bg="beige.300"
                     w="26vw"
                     h="41.6vw"
-                    border="2px"
+                    border="0.15vw solid"
                     borderColor="brown.500"
-                    borderRadius="30px"
+                    borderRadius="1.56vw"
                     alignItems="center"
                     pt="2vw"
                     pb="2vw"
@@ -111,15 +111,15 @@ const UserPage = () => {
                     >
                         Дата регистрации: 22.12.2024
                     </Text>
-                    <Link to={URLs.ui.add_recipe.url} style={{ flex: 1, textDecoration: 'none' }}>
+                    <Link to={URLs.ui.add_recipe.url}>
                         <Button
                             mt="5vw"
-                            w="80%"
+                            w="20.8vw"
                             h="3.3vw"
                             bg="rgba(126, 73, 37, 0.1)"
-                            border="1px"
+                            border="0.1vw solid"
                             borderColor="brown.500"
-                            borderRadius="50px"
+                            borderRadius="2.6vw"
                             fontSize="1.3vw"
                             fontWeight="800"
                             textAlign="center"

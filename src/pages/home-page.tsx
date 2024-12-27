@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
 import { Greetings } from "../components/greetings"
 import { DishCard } from "../components/dish-card"
@@ -14,7 +14,6 @@ const HomePage = () => {
     //     }
     //     setSize(3);
     // }
-
     return (
         <>
             <Box mb="3vw">
@@ -25,11 +24,12 @@ const HomePage = () => {
                         fontWeight="800"
                         fontStyle="Italic"
                         color="orange.500"
-                        fontSize="3.3vw">
+                        fontSize="3.3vw"
+                    >
                         Рецепты
                     </Heading>
                     {/* <PaginatedList size={size}></PaginatedList> */}
-                    <Flex pl="12vw" pr="12vw" justify="space-between" w="100%">
+                    <Flex pl="10vw" pr="10vw" justify="space-between" w="100%">
                         <Box as={DishCard} w="33%" />
                         <Box as={DishCard} w="33%" />
                         <Box as={DishCard} w="33%" />
@@ -45,7 +45,8 @@ const HomePage = () => {
                         fontWeight="900"
                         fontStyle="italic"
                         color="beige.200"
-                        _hover={{ opacity: 0.9, bg: "orange.200" }}>
+                        _hover={{ opacity: 0.9, bg: "orange.200" }}
+                    >
                         Показать еще
                     </Button>
                 </Flex>
