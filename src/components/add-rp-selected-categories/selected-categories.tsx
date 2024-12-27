@@ -30,7 +30,6 @@ export const SelectedCategories = () => {
                 {/* Выпадающее меню под заголовком */}
                 <Select
                     placeholder="Выберите категорию"
-                    size="lg"
                     h="2.6vw"
                     w="20vw"
                     borderColor="brown.500"
@@ -39,6 +38,7 @@ export const SelectedCategories = () => {
                     fontWeight="bold"
                     color="brown.500"
                     borderRadius="0.8vw"
+                    iconSize="1.6vw" // Adjusts the dropdown arrow size
                     onChange={(e) => addCategory(e.target.value)} // Добавление категории
                 >
                     <option value="Супы">Супы</option>
@@ -56,6 +56,7 @@ export const SelectedCategories = () => {
                     fontWeight="bold"
                     color="brown.500"
                     fontStyle="italic"
+                    whiteSpace="nowrap" // Prevent text wrapping
                 >
                     Выбранные категории
                 </Text>
@@ -89,6 +90,7 @@ export const SelectedCategories = () => {
                                     size="sm"
                                     color="brown.500"
                                     aria-label="Удалить категорию"
+                                    fontSize="0.8vw" // Adjusts the close icon size
                                 />
                             </HStack>
                         </WrapItem>
@@ -96,5 +98,5 @@ export const SelectedCategories = () => {
                 </Wrap>
             </VStack>
         </HStack>
-    )
-}
+    );
+};
