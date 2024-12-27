@@ -1,4 +1,4 @@
-import { border, extendTheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
     fonts: {
@@ -31,7 +31,7 @@ const theme = extendTheme({
             400: "#5B5B5B" //в создании рецепта
         },
         blue: {
-            500: "" //телега
+            500: "#11AADC" //телега
         },
 
     },

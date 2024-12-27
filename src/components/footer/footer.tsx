@@ -6,26 +6,29 @@ import { HiOutlineEnvelope } from "react-icons/hi2";
 
 export const Footer = () => {
     return (
-        <Box pl="30px" pr="30px" pb="20px">
+        <Box pl="2.6vw" pr="2.6vw" pb="1.5vw">
             <Box
                 borderBottom="3px solid"
                 borderColor="brown.500"
                 width="95%"
                 mx="auto"
-                mb={3} >
+                mb="1vw" >
             </Box>
             <HStack>
-                <Box flex="1" alignSelf="end">
+                {/* не работает  */}
+                <Flex flex="1" alignSelf="center" h="5vw">
                     <ImageLogo />
-                </Box>
+                </Flex>
                 <Flex flex="1" justifyContent="center" >
                     <Button
+                        pt="0.9vw"
+                        pb="0.9vw"
                         border="3px solid"
                         borderColor="brown.500"
-                        borderRadius="20px"
+                        borderRadius="15px"
                         variant="plain"
-                        leftIcon={<HiOutlineEnvelope color="brown.500" fontSize="30px" />}
-                        fontSize="20px"
+                        leftIcon={<HiOutlineEnvelope color="brown.500" fontSize="1.8vw" />}
+                        fontSize="1.25vw"
                         fontWeight="800"
                         color="brown.500">
                         Написать нам
@@ -33,20 +36,20 @@ export const Footer = () => {
                 </Flex>
                 <VStack flex="1" align="end" justify="center">
                     <Text
-                        fontSize="20px"
+                        fontSize="1.25vw"
                         fontWeight="900"
                         color="brown.500">
                         МЫ В СОЦИАЛЬНЫХ СЕТЯХ
                     </Text>
                     <HStack mt={1}>
                         <Link href="https://t.me/someoneswm">
-                            <FaTelegram size="40" color="#11AADC" />
+                            <Box as={FaTelegram} size="3.1vw" color="blue.500" />
                         </Link>
                         <Link href="https://t.me/nadenka_b">
-                            <FaTelegram size="40" color="#11AADC" />
+                            <Box as={FaTelegram} size="3.1vw" color="blue.500" />
                         </Link>
                         <Link href="https://t.me/AdelinaSattarova">
-                            <FaTelegram size="40" color="#11AADC" />
+                            <Box as={FaTelegram} size="3.1vw" color="blue.500" />
                         </Link>
                     </HStack>
                 </VStack>

@@ -5,48 +5,47 @@ import { DishCard } from "../components/dish-card"
 import { PaginatedList } from '../components/pagination';
 
 const HomePage = () => {
-    const [size, setSize] = useState(3);
+    // const [size, setSize] = useState(3);
 
-    const handleClick = () => {
-        if (size === 3) {
-            setSize(9);
-            return;
-        }
-        setSize(3);
-    }
+    // const handleClick = () => {
+    //     if (size === 3) {
+    //         setSize(9);
+    //         return;
+    //     }
+    //     setSize(3);
+    // }
 
     return (
         <>
-            <Box mb="30px">
+            <Box mb="3vw">
                 <Greetings />
-                <Flex direction="column" align="center" mt={10}>
+                <Flex direction="column" align="center" mt="3vw">
                     <Heading
-                        mb={10}
+                        mb="3vw"
                         fontWeight="800"
                         fontStyle="Italic"
                         color="orange.500"
-                        fontSize="54px">
+                        fontSize="3.3vw">
                         Рецепты
                     </Heading>
                     {/* <PaginatedList size={size}></PaginatedList> */}
-                    <Flex gap={4}>
-                        <DishCard />
-                        <DishCard />
-                        <DishCard />
+                    <Flex pl="12vw" pr="12vw" justify="space-between" w="100%">
+                        <Box as={DishCard} w="33%" />
+                        <Box as={DishCard} w="33%" />
+                        <Box as={DishCard} w="33%" />
                     </Flex>
                     <Button
-                        mt={10}
+                        mt="3.1vw"
                         alignContent="center"
-                        borderRadius={30}
+                        borderRadius="1.5vw"
                         bg="orange.200"
-                        h="50px"
-                        w="225px"
-                        fontSize="20px"
+                        h="2.9vw"
+                        w="13.9vw"
+                        fontSize="1.25vw"
                         fontWeight="900"
-                        fontStyle="Italic"
+                        fontStyle="italic"
                         color="beige.200"
-                        _hover={{ opacity: 0.9, bg: "orange.200" }}
-                    >
+                        _hover={{ opacity: 0.9, bg: "orange.200" }}>
                         Показать еще
                     </Button>
                 </Flex>

@@ -1,22 +1,22 @@
 import React from 'react';
-import { Text, HStack, Button, VStack, Image } from '@chakra-ui/react'
+import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
 import { CurrentBookmark, UnselectedBookmark, pan, profilePhoto } from '../assets';
 import { PiPencilSimpleBold } from "react-icons/pi";
 
 const UserPage = () => {
     return (
         <>
-            <HStack pl="150px" pr="150px" mt="25px" mb="50px">
+            <Flex pl="10vw" pr="10vw" mt="1.3vw" mb="2.6vw" >
                 <VStack
                     bg="beige.300"
-                    w="700px"
-                    h="750px"
+                    w="41vw"
+                    h="41.6vw"
                     border="2px"
                     borderColor="brown.500"
                     borderRadius="30px"
                     alignItems="flex-start"
                 >
-                    <HStack align="start" pl="100px" spacing="25px">
+                    <HStack align="start" pl="4.6vw" spacing="2vw">
                         <Button
                             position="relative"
                             p={0}
@@ -26,11 +26,10 @@ const UserPage = () => {
                             border="none" // Убираем границу
                             _hover={{ opacity: 0.95, backgroundColor: "beige.300" }}
                         >
-                            <Image src={CurrentBookmark} w="90px" />
+                            <Image src={CurrentBookmark} w="4.6vw" />
                             <Text
                                 lineHeight="normal"
-
-                                fontSize="16"
+                                fontSize="0.8vw"
                                 fontWeight="800"
                                 fontStyle="Italic"
                                 textAlign="right"
@@ -51,12 +50,12 @@ const UserPage = () => {
                             border="none" // Убираем границу
                             _hover={{ opacity: 0.95, backgroundColor: "beige.300" }} // Эффект наведения
                         >
-                            <Image src={UnselectedBookmark} w="90px" />
+                            <Image src={UnselectedBookmark} w="4.6vw" />
                             <Text
                                 lineHeight="normal"
-                                fontSize="16"
+                                fontSize="0.8vw"
                                 fontWeight="800"
-                                fontStyle="Italic"
+                                fontStyle="italic"
                                 textAlign="right"
                                 position="absolute"
                                 top="15%"
@@ -67,11 +66,11 @@ const UserPage = () => {
                             </Text>
                         </Button>
                     </HStack>
-                    <Image alignSelf="center" src={pan} />
+                    <Image alignSelf="center" src={pan} w="13vw" />
                     <Text
                         lineHeight="normal"
                         alignSelf="center"
-                        fontSize="20"
+                        fontSize="1vw"
                         fontWeight="900"
                         fontStyle="Italic"
                         textAlign="center"
@@ -79,20 +78,21 @@ const UserPage = () => {
                         Пока здесь ничего нет, но скоро <br />  здесь появятся ваши любимые рецепты
                     </Text>
                 </VStack>
+                <Spacer />
                 <VStack
                     bg="beige.300"
-                    w="450px"
-                    h="750px"
+                    w="26vw"
+                    h="41.6vw"
                     border="2px"
                     borderColor="brown.500"
                     borderRadius="30px"
                     alignItems="center"
-                    pt="80px"
-                    pb="80px"
+                    pt="2vw"
+                    pb="2vw"
                 >
-                    <Image src={profilePhoto} />
+                    <Image src={profilePhoto} w="18.75vw" />
                     <Text
-                        fontSize="30"
+                        fontSize="1.6vw"
                         fontWeight="900"
                         textAlign="center"
                         color="brown.500"
@@ -100,7 +100,7 @@ const UserPage = () => {
                         Маша Иванова
                     </Text>
                     <Text
-                        fontSize="20"
+                        fontSize="1vw"
                         fontWeight="600"
                         textAlign="center"
                         color="brown.500"
@@ -108,13 +108,14 @@ const UserPage = () => {
                         Дата регистрации: 22.12.2024
                     </Text>
                     <Button
-                        mt="100px"
+                        mt="5vw"
                         w="80%"
+                        h="3.3vw"
                         bg="rgba(126, 73, 37, 0.1)"
                         border="1px"
                         borderColor="brown.500"
                         borderRadius="50px"
-                        fontSize="25"
+                        fontSize="1.3vw"
                         fontWeight="800"
                         textAlign="center"
                         color="brown.500"
@@ -123,9 +124,8 @@ const UserPage = () => {
                         Добавить рецепт
                     </Button>
                 </VStack>
-            </HStack>
+            </Flex>
         </>
-
     );
 };
 

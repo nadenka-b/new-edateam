@@ -151,7 +151,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ size }) => {
       <HStack justifyContent="center" spacing={4}>
         <IconButton
           icon={<IoIosArrowBack />}
-          aria-label=''
+          aria-label='Arrow'
           onClick={handlePrevPage}
           isDisabled={data.first}
           colorScheme="blue"
@@ -159,7 +159,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ size }) => {
         </IconButton>
         <IconButton
           icon={<IoIosArrowBack style={{ transform: "rotate(180deg)", display: "inline-block" }} />}
-          aria-label=''
+          aria-label='Arrow'
           onClick={handleNextPage}
           isDisabled={data.last}
           colorScheme="blue"
