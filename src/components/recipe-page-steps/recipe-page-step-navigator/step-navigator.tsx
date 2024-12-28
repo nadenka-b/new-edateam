@@ -1,12 +1,18 @@
 import React from "react";
 import { Stepper, Step, StepIndicator, StepStatus, StepSeparator, StepNumber, StepTitle, StepIcon, Box } from '@chakra-ui/react';
-interface StepNavigatorProps{
+
+interface StepNavigatorProps {
     activeStep: number;
     stepsData: StepData;
     setActiveStep: () => void;
 }
+interface StepData {
+    image: string;
+    title: string;
+    description: string;
+}
 
-export const StepNavigator = ({ activeStep, stepsData, setActiveStep }) => (
+export const StepNavigator: React.FC<StepNavigatorProps> = ({ activeStep, stepsData, setActiveStep }) => (
 
     <Stepper mb="1vw" index={activeStep} colorScheme="orange" size="lg" w="100%">
         {stepsData.map((step, index) => (
