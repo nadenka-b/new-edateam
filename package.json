@@ -1,6 +1,6 @@
 {
     "name": "new-edateam",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "main": "./src/index.tsx",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -8,8 +8,8 @@
         "build": "npm run clean && brojs build --dev",
         "build:prod": "npm run clean && brojs build",
         "clean": "rimraf dist",
-        "lint" : "npx eslint .",
-        "lint:fix" : "npx eslint . --fix"
+        "lint": "npx eslint .",
+        "lint:fix": "npx eslint . --fix"
     },
     "author": "",
     "license": "ISC",
