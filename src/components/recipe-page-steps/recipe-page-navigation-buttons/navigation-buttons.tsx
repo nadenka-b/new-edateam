@@ -31,18 +31,18 @@ const CustomArrowRightIcon = createIcon({
     ),
 });
 
-export const NavigationButtons = ({ 
-    activeStep, 
-    stepsData, 
-    goToPrevious, 
-    goToNext, 
-    position 
-}: { 
-    activeStep: number; 
-    stepsData: { title: string; description: string; image: string }[]; 
-    goToPrevious?: VoidFunction; 
-    goToNext?: VoidFunction; 
-    position: "previous" | "next"; 
+export const NavigationButtons = ({
+    activeStep,
+    stepsData,
+    goToPrevious,
+    goToNext,
+    position
+}: {
+    activeStep: number;
+    stepsData: { title: string; description: string; image: string }[];
+    goToPrevious?: VoidFunction;
+    goToNext?: VoidFunction;
+    position: "previous" | "next";
 }) => {
     const isPrevious = position === "previous";//Если position имеет значение "previous", то onClick обработчик запускает goToPrevious функцию для перехода назад
     const isNext = position === "next";

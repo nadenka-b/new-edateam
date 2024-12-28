@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardBody, CardFooter, Text, Image, Box, Flex, IconButton, Heading } from "@chakra-ui/react";
+import { Card, CardBody,/* CardFooter,*/ Text, Image, Box, Flex, IconButton, Heading } from "@chakra-ui/react";
 import { AiOutlineHourglass } from "react-icons/ai";
-import { FaRegBookmark, FaBookmark } from "react-icons/fa6";
+import { FaRegBookmark /*, FaBookmark */} from "react-icons/fa6";
 import { Link } from "react-router-dom"
 import { URLs } from "../../__data__/urls"
 
