@@ -1,3 +1,4 @@
+// eslint-disable-next-line 
 const pkg = require("./package");
 
 module.exports = {

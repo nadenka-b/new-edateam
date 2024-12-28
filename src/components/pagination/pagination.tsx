@@ -101,10 +101,10 @@ const dataCalled = {
   numberOfElements: 5,
   empty: false,
 }
-
+// eslint-disable-next-line
 export const PaginatedList: React.FC<PaginatedListProps> = ({ size }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-
+// eslint-disable-next-line
   const [data, setData] = useState<RootObject>(dataCalled);
 
   // нужно добавить useEffect на data!!!!!!!!!!!!!!!!!!

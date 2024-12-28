@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Image, Text, VStack, HStack, Box, Input, Button, List, ListItem } from "@chakra-ui/react";
 
 import { Plus } from './index'
