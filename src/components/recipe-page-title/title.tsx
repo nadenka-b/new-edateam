@@ -4,10 +4,10 @@ import { Text } from "@chakra-ui/react";
 export const Title = () => {
     return (
         <Text
-            fontSize="40px"
+            fontSize="2vw"
             fontWeight="900"
             fontStyle="italic"
-            color="#7E4925"
+            color="brown.500"
             textAlign="center" // Центрирует текст
             mb="calc(11px * 1.2)"
         >

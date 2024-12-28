@@ -4,22 +4,22 @@ import { Text, HStack } from "@chakra-ui/react";
 export const SectionHeader = ({ title }: { title: string }) => {
     return (
         <HStack
-            ml="168px"
+            ml="8.75vw"
             align="center"
             justify="center"
-            w="563px"
-            h="85px"
-            bg="#FF9F5F"
-            borderRadius="0 0 22px 22px"
-            px="4"
-            mr="149px"
-            mb="calc(53px * 1.1)"
+            w="29.3vw"
+            h="4.4vw"
+            bg="orange.200"
+            borderRadius="0 0 1.14vw 1.14vw"
+            px="0.2vw"
+            mr="7.7vw"
+            mb="2.7vw"
         >
             <Text
-                fontSize="calc(35px * 1.1)"
+                fontSize="1.8vw"
                 fontWeight={900}
                 fontStyle="italic"
-                color="#FFF0DA"
+                color="beige.200"
                 textDecoration="underline"
                 textAlign="center"
             >

@@ -8,22 +8,22 @@ export const AddToMyBook = () => {
         <VStack align="center">
             <HStack align="center">
                 <Text
-                    fontSize="calc(20px * 1.1)"
+                    fontSize="1.2vw"
                     fontWeight={900}
                     fontStyle="italic"
-                    color="#7E4925"
+                    color="brown.500"
                 >
                     Добавить в мою книгу рецептов
                 </Text>
                 <Image
                     src={flagIcon}
                     alt="Флажок для избранного"
-                    w="27px"
-                    h="36px"
+                    w="1.4vw"
+                    h="1.8vw"
                 />
             </HStack>
 
-            <Box borderBottom="6px solid orange" width="421px" height="5.5px" />
+            <Box borderBottom="6px solid orange" w="25vw" h="0.01vw" />
         </VStack>
     )
 }

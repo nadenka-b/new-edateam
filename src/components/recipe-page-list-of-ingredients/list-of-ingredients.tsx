@@ -18,10 +18,10 @@ export const ListOfIngredients = () => {
     return (
         <VStack
             w="100%"
-            maxW="1000px"
+            maxW="52vw"
             mx="auto"
-            my="100px"
-            borderRadius="16px" // Закругление только внешних углов таблицы
+            my="4vw"
+            borderRadius="0.83vw" // Закругление только внешних углов таблицы
             overflow="hidden" // Обрезка содержимого для строгих краев
             spacing={0} // Убираем отступы между строками
         >
@@ -31,31 +31,31 @@ export const ListOfIngredients = () => {
                     display="flex"
                     alignItems="center"
                     w="100%"
-                    px="16px"
-                    py="12px"
-                    bg={index % 2 === 0 ? "#FFF0DA" : "#FFE6C3"} // Чередование цветов строк
+                    px="0.83vw"
+                    py="0.6vw"
+                    bg={index % 2 === 0 ? "beige.200" : "beige.300"} // Чередование цветов строк
                     m={0} // Убираем margin между строками
                 >
                     <Text
-                        fontSize="22px"
+                        fontSize="1.14vw"
                         fontWeight="600"
-                        color="#7E4925"
-                        mr="4"
+                        color="brown.500"
+                        mr="0.2vw"
                     >
                         {ingredient.name}
                     </Text>
 
                     <Box
-                        borderBottom="1px solid #7E4925"
+                        borderBottom="0.05vw solid brown.500"
                         height="0"
                         flex="1"
                     />
                     <Text
-                        fontSize="22px"
+                        fontSize="1.14vw"
                         fontWeight="600"
-                        color="#7E4925"
+                        color="brown.500"
                         w="10%" // Фиксируем ширину колонки с количеством
-                        textAlign="left" // Выравнивание по правому краю
+                        textAlign="left" // Выравнивание по левому краю
                         ml="4"
                     >
                         {ingredient.quantity}
