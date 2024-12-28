@@ -4,7 +4,7 @@ import { StepNavigator } from "../recipe-page-step-navigator/step-navigator";
 import { NavigationButtons } from "../recipe-page-navigation-buttons/navigation-buttons";
 import { StepContent } from "../recipe-page-step-content/step-content";
 
-import { step1, step2, step3, step4, step5, step6, step7, step8 } from '../../assets';
+import { step1, step2, step3, step4, step5, step6, step7, step8 } from '../../../assets';
 
 const stepsData = [
     {

@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
 import { Greetings } from "../components/greetings"
 import { DishCard } from "../components/dish-card"
-import { PaginatedList } from '../components/pagination';
-
 
 const HomePage = () => {
     // const [size, setSize] = useState(3);

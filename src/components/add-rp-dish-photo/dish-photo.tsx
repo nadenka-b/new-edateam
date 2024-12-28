@@ -8,15 +8,15 @@ export const DishPhoto = () => {
     const [fileName, setFileName] = useState(null); // Состояние для хранения имени файла
 
     // Функция для обработки изменения файла
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
+    const handleFileChange = (event) => { //Запускается, когда пользователь выбирает файл
+        const file = event.target.files[0]; //Извлекает выбранный файл
         if (file) {
             // Извлекаем имя файла и его расширение
             const name = file.name;
             const fileExtension = name.split('.').pop(); // Получаем расширение файла
 
             // Сохраняем полное имя файла (включая расширение)
-            setFileName(`${name} (${fileExtension})`);
+            setFileName(`${name} (${fileExtension})`); //Извлекает имя и расширение файла и обновляет состояние
         }
     };
 

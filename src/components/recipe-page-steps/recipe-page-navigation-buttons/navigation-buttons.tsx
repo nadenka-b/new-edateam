@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, Button, Circle, createIcon } from '@chakra-ui/react';
+import { Button, createIcon } from '@chakra-ui/react';
 
 const CustomArrowLeftIcon = createIcon({
     displayName: 'ArrowIcon',
@@ -44,7 +44,7 @@ export const NavigationButtons = ({
     goToNext?: VoidFunction; 
     position: "previous" | "next"; 
 }) => {
-    const isPrevious = position === "previous";
+    const isPrevious = position === "previous";//Если position имеет значение "previous", то onClick обработчик запускает goToPrevious функцию для перехода назад
     const isNext = position === "next";
 
     return (
@@ -54,7 +54,7 @@ export const NavigationButtons = ({
             onClick={isPrevious ? goToPrevious : goToNext}
             isDisabled={
                 isPrevious ? activeStep === 0 : activeStep === stepsData.length - 1
-            }
+            }//нопки будут отключены на первом или последнем шаге:
             display="flex"
             alignItems="center"
             justifyContent="center"

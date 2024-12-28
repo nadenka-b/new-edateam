@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
-import { PiPencilSimpleBold } from "react-icons/pi";
+// import { PiPencilSimpleBold } from "react-icons/pi";
 import { Link } from "react-router-dom"
 
 import { URLs } from "../__data__/urls"

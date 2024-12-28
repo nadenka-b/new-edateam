@@ -4,10 +4,9 @@ import { Image, Text, Button, HStack, VStack, Input, Box } from "@chakra-ui/reac
 import { Plus, addPhoto } from "./index";
 
 export const StepAdding = () => {
-    const [photoPreview, setPhotoPreview] = useState(null)
-    const [steps, setSteps] = useState([]);
-    const [currentDescription, setCurrentDescription] = useState("");
-    // const [currentPhoto, setCurrentPhoto] = useState(null);
+    const [photoPreview, setPhotoPreview] = useState(null)//Сохраняет предварительный просмотр загруженной фотографии для текущего шага
+    const [steps, setSteps] = useState([]);//Поддерживает массив всех добавленных шагов, где каждый шаг включает photo и description
+    const [currentDescription, setCurrentDescription] = useState("");//Содержит вводимый текст для описания шага
 
     const handlePhotoChange = (event) => {
         const file = event.target.files[0];
@@ -21,11 +20,12 @@ export const StepAdding = () => {
     };
 
     const addStep = () => {
+        //Перед добавлением шага убедились, что предоставили хотя бы фотографию или описание
         if (photoPreview || currentDescription.trim()) {
             setSteps((prevSteps) => [
                 ...prevSteps,
                 { photo: photoPreview, description: currentDescription },
-            ]);
+            ]);//Добавляет текущий шаг (фотографию и описание) в steps массив.
             setPhotoPreview(null); // Сброс фото
             setCurrentDescription(""); // Сброс описания
         }
@@ -59,6 +59,7 @@ export const StepAdding = () => {
                     justifyContent="center"
                     alignItems="center"
                     _hover={{ bg: "beige.50" }}
+                    // Нажатие на поле с фотографией запускает скрытый <input> элемент для выбора файла
                     onClick={() => document.getElementById("photoInput").click()}
                 >
                     {photoPreview ? (

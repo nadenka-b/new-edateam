@@ -11,7 +11,7 @@ export const Ingredients = () => {
     const addIngredient = () => {
         if (ingredientName.trim() && ingredientQuantity.trim()) {
             setIngredients([...ingredients, { name: ingredientName, quantity: ingredientQuantity }]);
-            setIngredientName("");
+            setIngredientName(""); //сбрасывает ingredientName и ingredientQuantity в пустые строки, чтобы подготовиться к следующему вводу
             setIngredientQuantity("");
         }
     };
@@ -72,7 +72,7 @@ export const Ingredients = () => {
             {/* Кнопка для добавления */}
             <HStack spacing={2} align="center">
                 <Button
-                    onClick={addIngredient}
+                    onClick={addIngredient} // срабатывает addIngredient, добавляя текущее название и количество в список
                     variant="unstyled"
                     display="flex"
                     _hover={{
@@ -106,7 +106,7 @@ export const Ingredients = () => {
                 spacing={3}
                 w="26vw"
                 maxW="700px">
-                {ingredients.map((ingredient, index) => (
+                {ingredients.map((ingredient, index) => (//цикл по ingredients массиву и отображает каждый элемент в стилизованном виде <ListItem>
                     <ListItem
                         key={index}
                         border="2px solid brown.500"

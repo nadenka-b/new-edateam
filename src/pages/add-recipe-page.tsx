@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Input, VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 
 import { TimeInput } from '../components/add-rp-time-input';
 import { DishPhoto } from '../components/add-rp-dish-photo';

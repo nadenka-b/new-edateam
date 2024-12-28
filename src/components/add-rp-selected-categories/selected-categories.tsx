@@ -12,6 +12,7 @@ export const SelectedCategories = () => {
 
     const removeCategory = (category) => {
         setSelectedCategories(selectedCategories.filter((item) => item !== category));
+        //Отфильтруйте категорию, которую нужно удалить, создав новый массив, исключающий выбранную категорию
     };
 
     return (
@@ -39,7 +40,7 @@ export const SelectedCategories = () => {
                     color="brown.500"
                     borderRadius="0.8vw"
                     iconSize="1.6vw" // Adjusts the dropdown arrow size
-                    onChange={(e) => addCategory(e.target.value)} // Добавление категории
+                    onChange={(e) => addCategory(e.target.value)} // когда пользователь выбирает новую категорию, функция addCategory вызывается с выбранным значением
                 >
                     <option value="Супы">Супы</option>
                     <option value="Гарнир">Гарнир</option>
