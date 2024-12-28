@@ -18,7 +18,7 @@ export const Footer = () => {
             </Box>
             <HStack>
                 <RouteLink to={URLs.baseUrl} style={{ flex: 1, alignSelf: 'center' }}>
-                    <Flex h="3.5vw">
+                    <Flex h="3vw">
                         <ImageLogo />
                     </Flex>
                 </RouteLink>

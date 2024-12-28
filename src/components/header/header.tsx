@@ -29,9 +29,22 @@ export const Header = () => {
                         <ImageLogo />
                     </Flex>
                 </Link>
-                <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
+                <Link to={URLs.ui.user.url} style={{ flex: 1 }}>
+                    <Text
+                        justifySelf="end"
+                        mt="0.6vw"
+                        fontSize="1.5vw"
+                        fontWeight="600"
+                        fontStyle="italic"
+                        color="orange.500"
+                        _hover={{ opacity: 0.85, color: 'orange.500' }}
+                    >
+                        Мой профиль
+                    </Text>
+                </Link>
+                {/* <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
                     <RegistrationForm />
-                </Box>
+                </Box> */}
             </HStack>
             {
                 !isHomePage && (

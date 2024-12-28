@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
 import { Greetings } from "../components/greetings"
 import { DishCard } from "../components/dish-card"
 import { PaginatedList } from '../components/pagination';
+
 
 const HomePage = () => {
     // const [size, setSize] = useState(3);
@@ -14,12 +15,19 @@ const HomePage = () => {
     //     }
     //     setSize(3);
     // }
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    const handleScroll = () => {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        console.log(sectionRef);
+    };
     return (
         <>
             <Box mb="3vw">
-                <Greetings />
+                <Greetings onClick={handleScroll} />
                 <Flex direction="column" align="center" mt="3vw">
                     <Heading
+                        ref={sectionRef}
                         mb="3vw"
                         fontWeight="800"
                         fontStyle="Italic"
@@ -38,12 +46,12 @@ const HomePage = () => {
                         mt="3.1vw"
                         alignContent="center"
                         borderRadius="1.5vw"
-                        bg="orange.200"
                         h="2.9vw"
                         w="13.9vw"
                         fontSize="1.25vw"
                         fontWeight="900"
                         fontStyle="italic"
+                        bg="orange.200"
                         color="beige.200"
                         _hover={{ opacity: 0.9, bg: "orange.200" }}
                     >
