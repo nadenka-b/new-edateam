@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, Button, Circle, createIcon } from '@chakra-ui/react';
+import { Button, createIcon } from '@chakra-ui/react';
 
 const CustomArrowLeftIcon = createIcon({
     displayName: 'ArrowIcon',
@@ -31,18 +31,18 @@ const CustomArrowRightIcon = createIcon({
     ),
 });
 
-export const NavigationButtons = ({ 
-    activeStep, 
-    stepsData, 
-    goToPrevious, 
-    goToNext, 
-    position 
-}: { 
-    activeStep: number; 
-    stepsData: { title: string; description: string; image: string }[]; 
-    goToPrevious?: VoidFunction; 
-    goToNext?: VoidFunction; 
-    position: "previous" | "next"; 
+export const NavigationButtons = ({
+    activeStep,
+    stepsData,
+    goToPrevious,
+    goToNext,
+    position
+}: {
+    activeStep: number;
+    stepsData: { title: string; description: string; image: string }[];
+    goToPrevious?: VoidFunction;
+    goToNext?: VoidFunction;
+    position: "previous" | "next";
 }) => {
     const isPrevious = position === "previous";
     const isNext = position === "next";

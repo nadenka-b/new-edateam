@@ -1,7 +1,18 @@
 import React from "react";
 import { Box, Flex, Image, Text } from '@chakra-ui/react';
 
-export const StepContent = ({ activeStep, stepsData }) => {
+interface StepsDataProps {
+    activeStep: number;
+    stepsData: StepData;
+}
+
+interface StepData {
+    image: string;
+    title: string;
+    description: string;
+}
+
+export const StepContent: React.FC<StepsDataProps> = ({ activeStep, stepsData }) => {
     const step = stepsData[activeStep];
 
     return (
