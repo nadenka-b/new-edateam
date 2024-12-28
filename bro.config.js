@@ -9,11 +9,11 @@ module.exports = {
   },
   /* use https://admin.bro-js.ru/ to create config, navigations and features */
   navigations: {
-    "edateam.main": "/edateam",
-    "edateam.recipe": "/recipe",
-    "edateam.user": "/user",
-    "edateam.add-recipe": "/add-recipe"
-  },
+    "new-edateam.main": "/new-edateam",
+    "new-edateam.recipe": "/recipe",
+    "new-edateam.user": "/user",
+    "new-edateam.add-recipe": "/add-recipe"
+},
   features: {
     "edateam": {
       // add your features here in the format [featureName]: { value: string }
