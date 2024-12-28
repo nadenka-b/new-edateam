@@ -7,7 +7,9 @@
         "start": "brojs server --port=8099 --with-open-browser",
         "build": "npm run clean && brojs build --dev",
         "build:prod": "npm run clean && brojs build",
-        "clean": "rimraf dist"
+        "clean": "rimraf dist",
+        "lint" : "npx eslint .",
+        "lint:fix" : "npx eslint . --fix"
     },
     "author": "",
     "license": "ISC",
@@ -28,6 +30,10 @@
     },
     "devDependencies": {
         "@types/webpack-env": "^1.18.5",
-        "typescript": "^5.7.2"
+        "eslint": "^9.17.0",
+        "eslint-plugin-react": "^7.37.3",
+        "globals": "^15.14.0",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.18.2"
     }
 }
