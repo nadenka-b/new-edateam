@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, VStack } from "@chakra-ui/react";
 
-import { TimeInput } from '../components/add-rp-time-input';
-import { DishPhoto } from '../components/add-rp-dish-photo';
-import { SelectedCategories } from '../components/add-rp-selected-categories';
-import { Ingredients } from '../components/add-rp-ingredients';
-import { StepAdding } from '../components/add-rp-step-adding';
-import { Sent } from '../components/add-rp-sent';
+import { TimeInput } from '../components/add-rp/add-rp-time-input';
+import { DishPhoto } from '../components/add-rp/add-rp-dish-photo';
+import { SelectedCategories } from '../components/add-rp/add-rp-selected-categories';
+import { Ingredients } from '../components/add-rp/add-rp-ingredients';
+import { StepAdding } from '../components/add-rp/add-rp-step-adding';
+import { Sent } from '../components/add-rp/add-rp-sent';
 
 const AddRecipePage = () => {
     return (
