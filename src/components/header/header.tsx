@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Text, VStack, HStack } from "@chakra-ui/react";
 import { ImageLogo } from "../image-logo";
-//import { RegistrationForm } from "../registration-form";
+//import { RegistrationForm } from "./registration-form";
 import { Link, useLocation } from "react-router-dom"
 import { URLs } from "../../__data__/urls";
 

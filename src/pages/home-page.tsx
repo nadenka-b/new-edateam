@@ -1,7 +1,14 @@
 import React, { useRef } from 'react';
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
-import { Greetings } from "../components/greetings"
-import { DishCard } from "../components/dish-card"
+import { Greetings } from "../components/home-page/greetings"
+import { DishCard } from "../components/home-page/dish-card"
+
+const recipeList = [
+    { image: "https://img1.russianfood.com/dycontent/images_upl/644/big_643804.jpg", /*href: `${URLs.ui.recipe.url}#01`,*/ time: "1 час", tags: "завтрак - выпечка и десерты", title: "Блинчики с мясом, сыром и лучком" },
+    { image: "https://img1.russianfood.com/dycontent/images_upl/644/big_643804.jpg", /*href: `${URLs.ui.recipe.url}#01`,*/ time: "30 мин", tags: "завтрак - выпечка и десерты", title: "Блинчики с мясом, сыром и лучком" },
+    { image: "https://img1.russianfood.com/dycontent/images_upl/644/big_643804.jpg", /*href: `${URLs.ui.recipe.url}#01`,*/ time: "1 час 30 мин", tags: "завтрак - выпечка и десерты", title: "Блинчики с мясом, сыром и лучком" }
+];
+
 
 const HomePage = () => {
     // const [size, setSize] = useState(3);
@@ -36,9 +43,9 @@ const HomePage = () => {
                     </Heading>
                     {/* <PaginatedList size={size}></PaginatedList> */}
                     <Flex pl="10vw" pr="10vw" justify="space-between" w="100%">
-                        <Box as={DishCard} w="33%" />
-                        <Box as={DishCard} w="33%" />
-                        <Box as={DishCard} w="33%" />
+                        {recipeList.map((recipe, index) => (
+                            <DishCard key={index} image={recipe.image} time={recipe.time} tags={recipe.tags} title={recipe.title} />
+                        ))}
                     </Flex>
                     <Button
                         mt="3.1vw"

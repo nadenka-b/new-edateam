@@ -12,10 +12,10 @@ interface RootObject {
   last: boolean;
   totalPages: number;
   totalElements: number;
-  first: boolean;
   size: number;
   number: number;
   sort: Sort;
+  first: boolean;
   numberOfElements: number;
   empty: boolean;
 }
@@ -25,8 +25,8 @@ interface Pageable {
   pageSize: number;
   sort: Sort;
   offset: number;
-  unpaged: boolean;
   paged: boolean;
+  unpaged: boolean;
 }
 
 interface Sort {
@@ -38,43 +38,122 @@ interface Sort {
 interface Content {
   id: number;
   title: string;
+  timeCook: number;
+  type: Type;
+  file: File;
+  tags: FileType[];
+  dishIngredients: DishIngredient[];
+  linkVideo: string;
+  steps: Step[];
+  owner: null;
+}
+
+interface Step {
+  id: number;
+  number: number;
+  value: string;
+  image: File;
+}
+
+interface DishIngredient {
+  id: number;
+  ingredient: Ingredient;
+  quantity: number;
+}
+
+interface Ingredient {
+  id: number;
+  title: string;
   measure: string;
 }
 
+interface File {
+  id: number;
+  fileName: string;
+  filePath: string;
+  type: FileType;
+  dateUploaded: string;
+}
+
+interface Type {
+  id: number;
+  value: string;
+  fileTypes: FileType[];
+}
+
+interface FileType {
+  id: number;
+  value: string;
+}
 
 const dataCalled = {
   content: [
     {
-      id: 1,
-      title: 'огурец',
-      measure: 'гр.',
-    },
-    {
-      id: 2,
-      title: 'яйцо',
-      measure: 'шт.',
-    },
-    {
-      id: 3,
-      title: 'сахар',
-      measure: 'ст.л.',
-    },
-    {
-      id: 4,
-      title: 'сахар',
-      measure: 'ч.л.',
-    },
-    {
-      id: 5,
-      title: 'сахар',
-      measure: 'гр.',
-    },
-    {
-      id: 6,
-      title: 'мука',
-      measure: 'гр.',
-    },
-  ],
+        id: 2,
+        title: "title",
+        timeCook: 30,
+        type: {
+            id: 2,
+            value: "dish",
+            fileTypes: [
+                {
+                    id: 2,
+                    value: "image/png"
+                },
+                {
+                    id: 3,
+                    value: "image/svg"
+                }
+            ]
+        },
+        file: {
+            id: 6,
+            fileName: "scheme.png",
+            filePath: "./Images/dish-images/1a01464c-481d-4f30-9944-580173b37554_scheme.png",
+            type: {
+                id: 2,
+                value: "image/png"
+            },
+            dateUploaded: "2024-12-11T17:03:23.328151"
+        },
+        tags: [
+            {
+                id: 1,
+                value: "ужин"
+            }
+        ],
+        dishIngredients: [
+            {
+                id: 1,
+                ingredient: {
+                    id: 1,
+                    title: "огурец",
+                    measure: "гр."
+                },
+                quantity: 10.9
+            }
+        ],
+        linkVideo: "https://google.com",
+        steps: [
+            {
+                id: 2,
+                number: 1,
+                value: "собраться с мыслями",
+                image: {
+                    id: 7,
+                    fileName: "soup.png",
+                    filePath: "./Images/steps-images/658f706d-d1cd-4871-b4b6-eb57997a086e_soup.png",
+                    type: {
+                        id: 2,
+                        value: "image/png"
+                    },
+                    dateUploaded: "2024-12-11T17:03:23.330873"
+                }
+            }
+        ],
+        owner: null
+    }
+],
   pageable: {
     pageNumber: 0,
     pageSize: 10,
@@ -101,6 +180,7 @@ const dataCalled = {
   numberOfElements: 5,
   empty: false,
 }
+
 // eslint-disable-next-line
 export const PaginatedList: React.FC<PaginatedListProps> = ({ size }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -111,7 +191,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ size }) => {
 
 
   // Общее количество страниц
-  const totalPages = data.totalPages //придет 
+  const totalPages = data.totalPages
 
   // Данные для текущей страницы
   const currentData = data.content
