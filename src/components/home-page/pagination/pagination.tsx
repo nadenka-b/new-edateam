@@ -1,10 +1,13 @@
 import React from 'react';
 import { HStack, Box, IconButton, Flex } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { setCurrentPage } from '../../../__data__/slices/dishesSlice';
 import { IoIosArrowBack } from "react-icons/io";
 import { DishCard } from '../dish-card'
 
 interface PaginatedListProps {
-  data: RootObject
+  data: RootObject;
+  currentPage: number;
 }
 
 interface RootObject {
@@ -69,23 +72,20 @@ interface FileType {
 }
 
 
-export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
+export const PaginatedList: React.FC<PaginatedListProps> = ({ data, currentPage }) => {
+  const dispatch = useDispatch();
 
-  // Общее количество страниц
-  //const totalPages = data.totalPages
+  const goToNextPage = () => {
+    if (currentPage < data.totalPages) {
+      dispatch(setCurrentPage(currentPage + 1));
+    }
+  };
 
-  // Обработчики переключения страниц
-  // const handleNextPage = () => {
-  //   if (!data.last) {
-  //     setCurrentPage((prev) => prev + 1);
-  //   }
-  // };
-
-  // const handlePrevPage = () => {
-  //   if (!data.first) {
-  //     setCurrentPage((prev) => prev - 1);
-  //   }
-  // };
+  const goToPreviousPage = () => {
+    if (currentPage > 0) {
+      dispatch(setCurrentPage(currentPage - 1));
+    }
+  };
 
   return (
     <Box>
@@ -101,7 +101,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
         <IconButton
           icon={<IoIosArrowBack />}
           aria-label='Arrow'
-          // onClick={handlePrevPage}
+          onClick={goToPreviousPage}
           isDisabled={data.first}
           colorScheme="blue"
           variant="outline">
@@ -109,7 +109,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
         <IconButton
           icon={<IoIosArrowBack style={{ transform: "rotate(180deg)", display: "inline-block" }} />}
           aria-label='Arrow'
-          // onClick={handleNextPage}
+          onClick={goToNextPage}
           isDisabled={data.last}
           colorScheme="blue"
           variant="outline">

@@ -143,6 +143,51 @@
                     }
                 ],
                 "events": []
+            },
+            {
+                "id": 10,
+                "title": "Блюдо",
+                "timeCook": 49,
+                "type": {
+                    "id": 1,
+                    "value": "dish",
+                    "types": [
+                        {
+                            "id": 1,
+                            "value": "image/png"
+                        },
+                        {
+                            "id": 2,
+                            "value": "image/svg"
+                        },
+                        {
+                            "id": 3,
+                            "value": "image/jpeg"
+                        }
+                    ]
+                },
+                "file": {
+                    "filePath": "./Images/dish-images/59ac44d5-cc8c-49fa-b50f-8d2352156b36_schemev.1.0.0.png",
+                    "id": 19
+                },
+                "tags": [
+                    {
+                        "id": 2,
+                        "value": "ужин"
+                    }
+                ],
+                "dishIngredients": [
+                    {
+                        "id": 10,
+                        "ingredient": {
+                            "id": 1,
+                            "title": "сахар",
+                            "measure": "гр."
+                        },
+                        "quantity": 10.9
+                    }
+                ],
+                "events": []
             }
         ],
         "pageable": {

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
 // import { PiPencilSimpleBold } from "react-icons/pi";
+import { PaginatedList } from '../components/user-page/pagination';
 import { Link } from "react-router-dom"
 
 import { URLs } from "../__data__/urls"
@@ -8,8 +9,50 @@ import { URLs } from "../__data__/urls"
 import { pan, profilePhoto } from '../assets';
 import { Bookmark } from '../components/user-page/bookmark';
 
+
+interface RootObject {
+    content: Content[];
+    last: boolean;
+    totalPages: number; //Количество страниц
+    totalElements: number; // Сколько всего элементов
+    first: boolean;
+    size: number; //сколько запрашиваю объектов на странице
+    number: number; // Номер страницы
+    numberOfElements: number; // Сколько объектов именно на этой странице
+    empty: boolean; // пусто или нет 
+}
+
+interface Content {
+    id: number;
+    title: string;
+}
+
+
+const emptyData = {
+    content: [],
+    last: true,
+    totalPages: 1, //Количество страниц
+    totalElements: 0, // Сколько всего элементов
+    first: true,
+    size: 0, //сколько запрашиваю объектов на странице
+    number: 1, // Номер страницы
+    numberOfElements: 0, // Сколько объектов именно на этой странице
+    empty: true // пусто или нет 
+}
+
+
 const UserPage = () => {
     const [savedRecipes, setSavedRecipes] = useState(true);
+
+    const [data, setData] = useState<RootObject>(emptyData)
+
+    useEffect(() => {
+        fetch(`${URLs.api.main}/up/favourite`)
+            .then(response => response.json())
+            .then(data => {
+                setData(data.data)
+            })
+    }, [])
     return (
         <>
             <Flex pl="10vw" pr="10vw" mt="1.3vw" mb="2.6vw" >
@@ -26,7 +69,8 @@ const UserPage = () => {
                         <Bookmark title={<>Сохраненные<br />рецепты</>} current={savedRecipes} click={() => setSavedRecipes(true)} top="24%" />
                         <Bookmark title={<>Мои<br />рецепты</>} current={!savedRecipes} click={() => setSavedRecipes(false)} top="15%" />
                     </HStack>
-                    <Image alignSelf="center" src={pan} w="13vw" />
+                    <PaginatedList data={data} />
+                    {/* <Image alignSelf="center" src={pan} w="13vw" />
                     <Text
                         lineHeight="normal"
                         alignSelf="center"
@@ -40,7 +84,7 @@ const UserPage = () => {
                             {savedRecipes ? ' любимые ' : ' '}
                             рецепты
                         </>
-                    </Text>
+                    </Text> */}
                 </VStack>
                 <Spacer />
                 <VStack

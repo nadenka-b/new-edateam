@@ -1,96 +1,76 @@
-import React, { useState } from 'react';
-import { Button, HStack, Box, Text } from '@chakra-ui/react';
+import React from 'react';
+import { HStack, Box, Flex, IconButton } from '@chakra-ui/react';
+import { DishCard } from '../dish-card'
+import { IoIosArrowBack } from "react-icons/io";
 
 interface PaginatedListProps {
-  itemsPerPage: number; // Количество элементов на страницу
-  data: string[]; // Список строк для отображения
+  data: RootObject
 }
 
 interface RootObject {
   content: Content[];
-  pageable: Pageable;
-  totalPages: number;
-  totalElements: number;
-  size: number;
-  number: number;
-  sort: Sort;
-  first: boolean;
   last: boolean;
-  numberOfElements: number;
-  empty: boolean;
+  totalPages: number; //Количество страниц
+  totalElements: number; // Сколько всего элементов
+  first: boolean;
+  size: number; //сколько запрашиваю объектов на странице
+  number: number; // Номер страницы
+  numberOfElements: number; // Сколько объектов именно на этой странице
+  empty: boolean; // пусто или нет 
+}
+
+interface Content {
+  id: number;
+  title: string;
 }
 
 
-const dataCalled = {
-
-}
-
-const PaginatedList: React.FC<PaginatedListProps> = ({ itemsPerPage }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
-  const [data, setData] = useState<RootObject>(dataCalled);
+export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
 
   // Общее количество страниц
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-
-  // Данные для текущей страницы
-  const currentData = data.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  // const totalPages = Math.ceil(data.length / itemsPerPage);
 
   // Обработчики переключения страниц
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
+  // const handleNextPage = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage((prev) => prev + 1);
+  //   }
+  // };
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
+  // const handlePrevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage((prev) => prev - 1);
+  //   }
+  // };
 
   return (
     <Box>
       {/* Список данных для текущей страницы */}
-      <Box mb={4}>
-        {currentData.map((item, index) => (
-          <Box
-            key={index}
-            p={4}
-            mb={2}
-            border="1px"
-            borderColor="gray.200"
-            borderRadius="md"
-          >
-            <Text>{item}</Text>
-          </Box>
+      <Flex flexDirection="column" gap="1.5vw" w="100%">
+        {data.content.map((recipe, index) => (
+          <DishCard key={index} title={recipe.title} />
         ))}
-      </Box>
+      </Flex>
 
       {/* Управление пагинацией: только стрелки */}
       <HStack justifyContent="center" spacing={4}>
-        <Button
-          onClick={handlePrevPage}
-          isDisabled={currentPage === 1}
+        <IconButton
+          icon={<IoIosArrowBack />}
+          aria-label='Arrow'
+          // onClick={handlePrevPage}
+          isDisabled={data.first}
           colorScheme="blue"
-          variant="outline"
-        >
-          Previous
-        </Button>
-        <Button
-          onClick={handleNextPage}
-          isDisabled={currentPage === totalPages}
+          variant="outline">
+        </IconButton>
+        <IconButton
+          icon={<IoIosArrowBack style={{ transform: "rotate(180deg)", display: "inline-block" }} />}
+          aria-label='Arrow'
+          // onClick={handleNextPage}
+          isDisabled={data.last}
           colorScheme="blue"
-          variant="outline"
-        >
-          Next
-        </Button>
+          variant="outline">
+        </IconButton>
       </HStack>
     </Box>
   );
 };
-
-export default PaginatedList;
