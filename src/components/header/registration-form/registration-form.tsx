@@ -22,7 +22,6 @@ export const RegistrationForm = () => {
     const [flag, setFlag] = useBoolean()
     return (
         <Box>
-            {/* Кнопка для открытия модального окна */}
             <Button
                 onClick={onOpen}
                 variant="link"
@@ -35,50 +34,96 @@ export const RegistrationForm = () => {
                 Регистрация / Вход
             </Button>
 
-            {/* Модальное окно с формой входа или регистрации */}
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose} >
                 <ModalOverlay />
-                <ModalContent pb="15px">
-                    <ModalHeader>{flag ? 'Регистрация' : 'Вход'}</ModalHeader>
+                <ModalContent
+                    w="30vw"
+                    maxW="none"
+                    h="auto"
+                    bg="beige.300"
+                    pb="0.8vw"
+                    color="brown.500"
+                >
+                    <ModalHeader fontSize="1.8vw">{flag ? 'Регистрация' : 'Вход'}</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <form>
-                            <Stack spacing={4}>
+                            <Stack spacing="1vw">
                                 {/* Поле для имени пользователя */}
                                 {flag && (
                                     <FormControl id="username" isRequired>
-                                        <FormLabel>Логин</FormLabel>
-                                        <Input type="text" />
+                                        <FormLabel fontSize="1.2vw">Логин</FormLabel>
+                                        <Input
+                                            borderColor="brown.500"
+                                            _hover={{ opacity: 0.85, borderColor: "orange.100" }}
+                                            bg="beige.200"
+                                            focusBorderColor="orange.100"
+                                            fontSize="1.2vw"
+                                            h="3vw"
+                                            type="text"
+                                        />
                                     </FormControl>
                                 )}
 
                                 {/* Поле для email */}
                                 <FormControl id="email" isRequired>
-                                    <FormLabel>Email</FormLabel>
-                                    <Input type="email" />
+                                    <FormLabel fontSize="1.2vw">Email</FormLabel>
+                                    <Input
+                                        borderColor="brown.500"
+                                        _hover={{ opacity: 0.85, borderColor: "orange.100" }}
+                                        bg="beige.200"
+                                        focusBorderColor="orange.100"
+                                        fontSize="1.2vw"
+                                        h="3vw"
+                                        type=" email"
+                                    />
                                 </FormControl>
 
                                 {/* Поле для пароля */}
                                 <FormControl id="password" isRequired>
-                                    <FormLabel>Пароль</FormLabel>
-                                    <Input type="password" />
+                                    <FormLabel fontSize="1.2vw">Пароль</FormLabel>
+                                    <Input
+                                        borderColor="brown.500"
+                                        _hover={{ opacity: 0.85, borderColor: "orange.100" }}
+                                        bg="beige.200"
+                                        focusBorderColor="orange.100"
+                                        fontSize="1.2vw"
+                                        h="3vw"
+                                        type="password"
+                                    />
                                 </FormControl>
                             </Stack>
                         </form>
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme="blue" mr={3}>
+                        <Button
+                            w={flag ? "10vw" : "6vw"}
+                            h="3vw"
+                            bg="orange.100"
+                            color="beige.200"
+                            fontSize="1.2vw"
+                            mr="0.5vw"
+                            _hover={{ opacity: 0.7, bg: "orange.100" }}
+                        >
                             {flag ? 'Регистрация' : 'Вход'}
                         </Button>
-                        <Button variant="ghost" onClick={onClose}>
+                        <Button
+                            w="6vw"
+                            h="3vw"
+                            fontSize="1.2vw"
+                            variant="outline"
+                            color="brown.500"
+                            borderColor="brown.500"
+                            _hover={{ opacity: 0.7, bg: "beige.300" }}
+                            onClick={onClose}>
                             Назад
                         </Button>
                     </ModalFooter>
 
                     {/* Кнопка для переключения между регистрацией и входом */}
-                    <Box mt={2} textAlign="center">
-                        <Button variant="link" onClick={setFlag.toggle}>
+                    <Box mt="0.5vw" textAlign="center">
+                        <Button color="grey.400" fontSize="1.2vw" variant="link" onClick={setFlag.toggle}>
                             {flag ? 'Уже есть аккаунт? Войти' : "Нет аккаунта? Зарегистрироваться"}
                         </Button>
                     </Box>

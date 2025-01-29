@@ -7,10 +7,14 @@ export const mainApi = createApi({
     reducerPath: 'main-api',
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl, }),
     endpoints: (builder) => ({
-        getDishes: builder.query({
-            query: ({ page, size }) => `dish/dishes?page=${page}&size=${size}`, // Параметры запроса
+        getIngredients: builder.query({
+            query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
         }),
+        getDishes: builder.query({
+            query: ({ page, size }) => `dishes${page}&${size}`,
+        }),
+
     }),
 });
 
-export const { useGetDishesQuery } = mainApi; // Хук для запроса данных
+export const { useLazyGetIngredientsQuery, useLazyGetDishesQuery, useGetDishesQuery } = mainApi; // Хук для запроса данных

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Input, List, ListItem, Text } from "@chakra-ui/react";
+import { useLazyGetIngredientsQuery } from "../../../../__data__/services/mainApi";
 
 type IngredientFilterProps = {
     placeholder: string;
-    title: string
+    title: string;
+    onIngredientSelect: (ingredient: string) => void;
 };
 
-const ingredients = ["Apple", "Banana", "Cherry", "Date", "Grape", "Orange", "Strawberry"];
+//const ingredients = ["Apple", "Banana", "Cherry", "Date", "Grape", "Orange", "Strawberry"];
 // Если список фильтров загружается из API:
 // useEffect(() => {
 //     if (inputValue) {
@@ -14,29 +16,36 @@ const ingredients = ["Apple", "Banana", "Cherry", "Date", "Grape", "Orange", "St
 //     }
 //   }, [inputValue]);
 
-
-
-export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder, title }) => {
+export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder, title, onIngredientSelect }) => {
     const [inputValue, setInputValue] = useState("");
     const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
+    const [getIngredients, { data, isFetching }] = useLazyGetIngredientsQuery();
+
+    // ⚡ Запрос ингредиентов с задержкой
+    useEffect(() => {
+        if (inputValue.trim().length > 2) {
+            const timeout = setTimeout(() => {
+                getIngredients(inputValue);
+            }, 500); // Дебоунс 500 мс
+            return () => clearTimeout(timeout);
+        }
+    }, [inputValue, getIngredients]);
+
+    useEffect(() => {
+        if (data) {
+            setFilteredOptions(data);
+        }
+    }, [data]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setInputValue(value);
-
-        if (value.trim()) {
-            const filtered = ingredients.filter((option) =>
-                option.toLowerCase().includes(value.toLowerCase())
-            );
-            setFilteredOptions(filtered);
-        } else {
-            setFilteredOptions([]);
-        }
+        setInputValue(event.target.value);
+        console.log(event.target.value);
     };
 
     const handleOptionSelect = (option: string) => {
-        setInputValue(option);
-        setFilteredOptions([]);
+        onIngredientSelect(option); // ⬅ Передача в `Filters`
+        setInputValue(""); // Очищаем поле
+        setFilteredOptions([]); // Закрываем список
     };
 
     return (
@@ -44,7 +53,6 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
             <Text fontSize="1.2vw" color="orange.500">
                 {title}
             </Text>
-            {/* Input Field */}
             <Input
                 focusBorderColor="orange.100"
                 _hover={{ opacity: 0.85, borderColor: "orange.100" }}
@@ -57,8 +65,6 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
                 value={inputValue}
                 onChange={handleInputChange}
             />
-
-            {/* Dropdown List */}
             {filteredOptions.length > 0 && (
                 <List
                     position="absolute"
@@ -79,7 +85,6 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
                             key={index}
                             p="2"
                             cursor="pointer"
-                            //_hover={{ bg: `${colorScheme}.50` }}
                             onClick={() => handleOptionSelect(option)}
                         >
                             <Text>{option}</Text>

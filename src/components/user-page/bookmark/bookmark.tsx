@@ -11,14 +11,14 @@ interface BookmarkProps {
 
 export const Bookmark: React.FC<BookmarkProps> = ({ title, current, click, top }) => {
     return (
-        <Button //button одинаковый
+        <Button
             onClick={click}
             position="relative"
             p={0}
             h="auto"
             minW="0"
-            background="none" // Без фона
-            border="none" // Убираем границу
+            background="none"
+            border="none"
             _hover={{ opacity: 0.95, backgroundColor: "beige.300" }}
         >
             <Image src={current ? CurrentBookmark : UnselectedBookmark} w="4.6vw" />

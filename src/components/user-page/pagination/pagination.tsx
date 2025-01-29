@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, Box, Flex, IconButton } from '@chakra-ui/react';
+import { HStack, Box, IconButton, VStack } from '@chakra-ui/react';
 import { DishCard } from '../dish-card'
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -26,10 +26,6 @@ interface Content {
 
 
 export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
-
-  // Общее количество страниц
-  // const totalPages = Math.ceil(data.length / itemsPerPage);
-
   // Обработчики переключения страниц
   // const handleNextPage = () => {
   //   if (currentPage < totalPages) {
@@ -45,30 +41,33 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
 
   return (
     <Box>
-      {/* Список данных для текущей страницы */}
-      <Flex flexDirection="column" gap="1.5vw" w="100%">
+      <VStack gap="1.5vw" mb="1.5vw">
         {data.content.map((recipe, index) => (
           <DishCard key={index} title={recipe.title} />
         ))}
-      </Flex>
-
-      {/* Управление пагинацией: только стрелки */}
-      <HStack justifyContent="center" spacing={4}>
+      </VStack>
+      <HStack justifyContent="center">
         <IconButton
-          icon={<IoIosArrowBack />}
+          bg="transparent"
+          color="orange.500"
+          _hover={{ opacity: 0.5, color: 'orange.500', bg: 'none' }}
+          minW="3vw"
+          h="3w"
+          icon={<IoIosArrowBack fontSize="3vw" />}
           aria-label='Arrow'
           // onClick={handlePrevPage}
-          isDisabled={data.first}
-          colorScheme="blue"
-          variant="outline">
+          isDisabled={data.first}>
         </IconButton>
         <IconButton
-          icon={<IoIosArrowBack style={{ transform: "rotate(180deg)", display: "inline-block" }} />}
+          bg="transparent"
+          color="orange.500"
+          _hover={{ opacity: 0.5, color: 'orange.500', bg: 'none' }}
+          minW="3vw"
+          h="3w"
+          icon={<IoIosArrowBack style={{ transform: "rotate(180deg)", display: "inline-block", fontSize: "3vw" }} />}
           aria-label='Arrow'
           // onClick={handleNextPage}
-          isDisabled={data.last}
-          colorScheme="blue"
-          variant="outline">
+          isDisabled={data.last}>
         </IconButton>
       </HStack>
     </Box>

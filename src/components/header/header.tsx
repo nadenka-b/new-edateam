@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Flex, Text, VStack, HStack } from "@chakra-ui/react";
 import { ImageLogo } from "../image-logo";
 import { Filters } from '../home-page/filters'
-//import { RegistrationForm } from "./registration-form";
+import { RegistrationForm } from "./registration-form";
 import { Link, useLocation } from "react-router-dom"
 import { URLs } from "../../__data__/urls";
 
@@ -38,7 +38,7 @@ export const Header = () => {
                         <ImageLogo />
                     </Flex>
                 </Link>
-                <Link to={URLs.ui.user.url} style={{ flex: 1 }}>
+                {/* <Link to={URLs.ui.user.url} style={{ flex: 1 }}>
                     <Text
                         justifySelf="end"
                         fontSize="1.5vw"
@@ -49,10 +49,10 @@ export const Header = () => {
                     >
                         Мой профиль
                     </Text>
-                </Link>
-                {/* <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
+                </Link> */}
+                <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
                     <RegistrationForm />
-                </Box> */}
+                </Box>
             </HStack>
             {
                 !isHomePage && (

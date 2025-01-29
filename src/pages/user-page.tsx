@@ -63,28 +63,32 @@ const UserPage = () => {
                     border="0.15vw solid"
                     borderColor="brown.500"
                     borderRadius="1.56vw"
-                    alignItems="flex-start"
+                // alignItems="flex-start"
                 >
-                    <HStack align="start" pl="4.6vw" spacing="2vw">
+                    <HStack pr="17vw" align="start" spacing="2vw" mb="1vw">
                         <Bookmark title={<>Сохраненные<br />рецепты</>} current={savedRecipes} click={() => setSavedRecipes(true)} top="24%" />
                         <Bookmark title={<>Мои<br />рецепты</>} current={!savedRecipes} click={() => setSavedRecipes(false)} top="15%" />
                     </HStack>
-                    <PaginatedList data={data} />
-                    {/* <Image alignSelf="center" src={pan} w="13vw" />
-                    <Text
-                        lineHeight="normal"
-                        alignSelf="center"
-                        fontSize="1vw"
-                        fontWeight="900"
-                        fontStyle="Italic"
-                        textAlign="center"
-                        color="brown.500">
-                        <>
-                            Пока здесь ничего нет, но скоро <br />здесь появятся ваши
-                            {savedRecipes ? ' любимые ' : ' '}
-                            рецепты
-                        </>
-                    </Text> */}
+
+                    {data.empty ? <>
+                        <Image alignSelf="center" src={pan} w="13vw" />
+                        <Text
+                            lineHeight="normal"
+                            alignSelf="center"
+                            fontSize="1vw"
+                            fontWeight="900"
+                            fontStyle="Italic"
+                            textAlign="center"
+                            color="brown.500">
+                            <>
+                                Пока здесь ничего нет, но скоро <br />здесь появятся ваши
+                                {savedRecipes ? ' любимые ' : ' '}
+                                рецепты
+                            </>
+                        </Text>
+                    </> :
+                        <PaginatedList data={data} />
+                    }
                 </VStack>
                 <Spacer />
                 <VStack
@@ -134,7 +138,7 @@ const UserPage = () => {
                         </Button>
                     </Link>
                 </VStack>
-            </Flex>
+            </Flex >
         </>
     );
 };

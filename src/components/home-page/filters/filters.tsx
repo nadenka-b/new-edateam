@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
     IconButton,
     Button,
@@ -11,28 +11,49 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure
-} from '@chakra-ui/react'
+    useDisclosure,
+} from '@chakra-ui/react';
 import { PiListHeart } from "react-icons/pi";
-import { IngredientFilter } from './ingredient-filter'
-import { TimeCooking } from './time-cooking'
+import { IngredientFilter } from "./ingredient-filter";
+import { TimeCooking } from "./time-cooking";
 
 const selectList = [
-    { value: "breakfast", Name: "Завтраки" },
-    { value: "lunches", Name: "Обеды" },
-    { value: "dinners", Name: "Ужины" },
-    { value: "soups", Name: "Супы" },
-    { value: "main-dishes", Name: "Гарниры" },
-    { value: "meat", Name: "Мясо" },
-    { value: "fish", Name: "Рыба" },
-    { value: "salads", Name: "Салаты" },
-    { value: "pastries-&-desserts", Name: "Выпечка и десерты" }
+    { id: 1, Name: "Завтраки" },
+    { id: 2, Name: "Обеды" },
+    { id: 3, Name: "Ужины" },
+    { id: 4, Name: "Супы" },
+    { id: 5, Name: "Гарниры" },
+    { id: 6, Name: "Мясо" },
+    { id: 7, Name: "Рыба" },
+    { id: 8, Name: "Салаты" },
+    { id: 9, Name: "Выпечка и десерты" }
 ];
 
-
 export const Filters = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = useRef()
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const btnRef = useRef();
+
+    const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
+    const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
+
+    const addIngredient = (ingredient: string, type: "include" | "exclude") => {
+        if (type === "include" && !includeIngredients.includes(ingredient)) {
+            setIncludeIngredients([...includeIngredients, ingredient]);
+        }
+        if (type === "exclude" && !excludeIngredients.includes(ingredient)) {
+            setExcludeIngredients([...excludeIngredients, ingredient]);
+        }
+    };
+
+    // const removeIngredient = (ingredient: string, type: "include" | "exclude") => {
+    //     if (type === "include") {
+    //         setIncludeIngredients(includeIngredients.filter(i => i !== ingredient));
+    //     }
+    //     if (type === "exclude") {
+    //         setExcludeIngredients(excludeIngredients.filter(i => i !== ingredient));
+    //     }
+    // };
+
 
     return (
         <>
@@ -90,16 +111,18 @@ export const Filters = () => {
                             mb="0.5vw"
                         >
                             {selectList.map((item, index) => (
-                                <option key={index} value={item.value}>{item.Name}</option>
+                                <option key={index} value={item.id}>{item.Name}</option>
                             ))}
                         </Select>
                         <IngredientFilter //логика с ингредиентами должна быть немного другая, должно при нажатии на кнопку появляться где-то ниже выбранное, чтобы можно было несколько выбрать
                             placeholder="Например, курица"
                             title="Добавить ингредиент"
+                            onIngredientSelect={(ingredient) => addIngredient(ingredient, "include")}
                         />
                         <IngredientFilter
                             placeholder="Например, чеснок"
                             title="Исключить ингредиент"
+                            onIngredientSelect={(ingredient) => addIngredient(ingredient, "include")}
                         />
                         <TimeCooking />
                     </DrawerBody>

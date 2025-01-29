@@ -9,7 +9,6 @@ import { Greetings } from "../components/home-page/greetings"
 import { PaginatedList } from '../components/home-page/pagination'
 
 
-
 const HomePage = () => {
     const dispatch: AppDispatch = useDispatch();
     const currentPage = useSelector((state: RootState) => state.dishes.currentPage);
@@ -17,7 +16,7 @@ const HomePage = () => {
     const [isHidden, setIsHidden] = useState(false);
 
     const increasePageSize = () => {
-        dispatch(setPageSize(9)); // Увеличить на 3
+        dispatch(setPageSize(9));
         dispatch(setCurrentPage(0)); // Вернуться на первую страницу
         setIsHidden(true);
     };
