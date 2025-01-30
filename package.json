@@ -8,8 +8,8 @@
         "build": "npm run clean && brojs build --dev",
         "build:prod": "npm run clean && brojs build",
         "clean": "rimraf dist",
-        "lint" : "npx eslint .",
-        "lint:fix" : "npx eslint . --fix"
+        "lint": "npx eslint .",
+        "lint:fix": "npx eslint . --fix"
     },
     "author": "",
     "license": "ISC",
@@ -19,13 +19,16 @@
         "@chakra-ui/react": "^2.10.4",
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
+        "@reduxjs/toolkit": "^2.5.1",
         "@types/react": "^18.3.13",
         "express": "^4.19.2",
         "framer-motion": "^11.14.4",
         "next-themes": "^0.4.4",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-hook-form": "^7.54.2",
         "react-icons": "^5.4.0",
+        "react-redux": "^9.2.0",
         "react-router-dom": "^7.0.1"
     },
     "devDependencies": {

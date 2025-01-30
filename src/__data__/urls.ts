@@ -1,26 +1,29 @@
-import { getNavigationsValue } from "@brojs/cli";
+import { getConfigValue, getNavigationsValue } from "@brojs/cli";
 // eslint-disable-next-line
+
 import { generatePath } from "react-router-dom";
 
 const baseUrl = getNavigationsValue('new-edateam.main');
+console.log("Base URL:", baseUrl);
 
 export const URLs = {
     baseUrl,
-    ui:{
-        recipe:{
-            url:`${baseUrl}${getNavigationsValue('new-edateam.recipe')}`,
-            on:Boolean(getNavigationsValue('new-edateam.recipe')),
-          //  getUrl:(recipeId:number)=>generatePath(`${baseUrl}${getNavigationsValue('new-edateam.recipe')}, {recipeId}`)
+    ui: {
+        recipe: {
+            url: `${baseUrl}${getNavigationsValue('new-edateam.recipe')}`,
+            on: Boolean(getNavigationsValue('new-edateam.recipe')),
+            getUrl: (recipeId: number) => generatePath(`${baseUrl}${getNavigationsValue('new-edateam.recipe')}/:recipeId`, { recipeId })
         },
-        user:{
-            url:`${baseUrl}${getNavigationsValue('new-edateam.user')}`,
-            on:Boolean(getNavigationsValue('new-edateam.user')),
-           //  getUrl:(userId:number)=>generatePath(`${baseUrl}${getNavigationsValue('new-edateam.user')}, {userId}`)
+        user: {
+            url: `${baseUrl}${getNavigationsValue('new-edateam.user')}`,
+            on: Boolean(getNavigationsValue('new-edateam.user')),
+            //  getUrl:(userId:number)=>generatePath(`${baseUrl}${getNavigationsValue('new-edateam.user')}, {userId}`)
         },
-        add_recipe:{
-            url:`${baseUrl}${getNavigationsValue('new-edateam.add-recipe')}`,
+        add_recipe: {
+            url: `${baseUrl}${getNavigationsValue('new-edateam.add-recipe')}`,
             on: Boolean(getNavigationsValue('new-edateam.add-recipe'))
         }
     },
-    api:{}, // здесь будут запросы
+    // api:{}, // здесь будут запросы
+    main: getConfigValue('new-edateam.api')
 }
