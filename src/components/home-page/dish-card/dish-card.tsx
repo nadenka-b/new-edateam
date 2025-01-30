@@ -6,9 +6,10 @@ import { Link } from "react-router-dom"
 import { URLs } from "../../../__data__/urls"
 
 interface DishCardProps {
+  recipeId: number,
   image: string,
   time: number,
-  tags: FileType[], //пока стринг
+  tags: FileType[],
   title: string
 }
 
@@ -17,7 +18,7 @@ interface FileType {
   value: string;
 }
 
-export const DishCard: React.FC<DishCardProps> = ({ image, time, tags, title }) => {
+export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags, title }) => {
   const result = tags.map(tag => tag.value).join(" - ");
   function formatTime(minutes) {
     if (minutes < 60) {
@@ -36,7 +37,7 @@ export const DishCard: React.FC<DishCardProps> = ({ image, time, tags, title }) 
       <Card p="1vw" w="24vw" h="24vw" overflow="hidden" bg="beige.300" boxShadow="lg" borderRadius="0.26vw">
         <CardBody p={0}>
           <Box position="relative">
-            <Link to={URLs.ui.recipe.url} >
+            <Link to={URLs.ui.recipe.getUrl(recipeId)} >
               <Image
                 h="16.5vw"
                 w="22vw"
@@ -62,7 +63,7 @@ export const DishCard: React.FC<DishCardProps> = ({ image, time, tags, title }) 
             {result}
           </Text>
           <Flex w="100%">
-            <Link to={URLs.ui.recipe.url} style={{ flex: 95 }}>
+            <Link to={URLs.ui.recipe.getUrl(recipeId)} style={{ flex: 95 }}>
               <Heading
                 fontSize="1.4vw" fontWeight="900" fontStyle="italic"
                 color="brown.500"

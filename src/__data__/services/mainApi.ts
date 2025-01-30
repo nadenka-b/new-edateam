@@ -27,12 +27,17 @@ export const mainApi = createApi({
         }),
         getDishes: builder.query({
             query: ({ page, size, filters }) => {
-                const queryParams = buildQueryParams(filters);
-                const query = `dishes?page=${page}&size=${size}`;
-                return queryParams ? `${query}&${queryParams}` : query;
+                // const queryParams = buildQueryParams(filters);
+                const query = `dishes${page}&${size}`;
+                return query;
+                // return queryParams ? `${query}&${queryParams}` : query;
+
             }
+        }),
+        getRecipeById: builder.query({
+            query: ({ id }) => `recipepage-data/${id}`,
         }),
     }),
 });
 
-export const { useLazyGetIngredientsQuery, useGetDishesQuery } = mainApi; // Хук для запроса данных
+export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery } = mainApi;

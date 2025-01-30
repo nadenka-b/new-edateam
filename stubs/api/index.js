@@ -1,5 +1,10 @@
 const router = require('express').Router();
 
+router.get(`/recipepage-data/:id`, (req, res) => {
+    const { id } = req.params;
+    res.send(require(`../json/recipepage-data/${id}.json`))
+})
+
 router.get('/dishes0&3', (req, res) => {
     res.send(require('../json/homepage-data/dishes0&3.json'))
 })

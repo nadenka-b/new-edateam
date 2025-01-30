@@ -9,7 +9,7 @@ export const URLs = {
         recipe: {
             url: `${baseUrl}${getNavigationsValue('new-edateam.recipe')}`,
             on: Boolean(getNavigationsValue('new-edateam.recipe')),
-            //  getUrl:(recipeId:number)=>generatePath(`${baseUrl}${getNavigationsValue('new-edateam.recipe')}, {recipeId}`)
+            getUrl: (recipeId: number) => generatePath(`${baseUrl}${getNavigationsValue('new-edateam.recipe')}/:id`, { id: recipeId.toString() })
         },
         user: {
             url: `${baseUrl}${getNavigationsValue('new-edateam.user')}`,

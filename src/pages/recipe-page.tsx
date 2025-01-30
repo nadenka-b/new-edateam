@@ -9,9 +9,13 @@ import { AddToMyBook } from '../components/recipe-page-add-to-my-book/add-to-my-
 import { SectionHeader } from '../components/recipe-page-section-header/section-header'
 import { ListOfIngredients } from '../components/recipe-page-list-of-ingredients/list-of-ingredients'
 import { StepperComponent } from '../components/recipe-page-steps/recipe-page-stepper-component/stepper-component'
+import { useParams } from 'react-router-dom';
+import { useGetRecipeByIdQuery } from '../__data__/services/mainApi';
 
 
 const RecipePage = () => {
+    const { id } = useParams(); // Получаем ID рецепта из URL
+    const { data, error, isLoading } = useGetRecipeByIdQuery({ id });
     return (
         <>
             <VStack align="center" w="full">

@@ -105,7 +105,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data, currentPage 
         <Grid templateColumns="repeat(3, 1fr)" gap="3.5vw">
           {data.content.map((recipe, index) => (
             <GridItem key={index}>
-              <DishCard image={recipe.file.filePath} time={recipe.timeCook} tags={recipe.tags} title={recipe.title} />
+              <DishCard recipeId={recipe.id} image={recipe.file.filePath} time={recipe.timeCook} tags={recipe.tags} title={recipe.title} />
             </GridItem>
           ))}
         </Grid>
