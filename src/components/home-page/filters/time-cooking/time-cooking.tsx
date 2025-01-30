@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Flex, Box, Text } from "@chakra-ui/react";
 
+interface TimeCookingProps {
+    value: number;
+    options: optionObject[];
+    onChange: (value: number) => void;
+}
 
-export const TimeCooking = () => {
-    const [selected, setSelected] = useState("Любое");
-    const options = ["<30мин", "<1ч", "<2ч", "Любое"];
+interface optionObject {
+    value: number;
+    title: string;
+}
+
+export const TimeCooking: React.FC<TimeCookingProps> = ({ value, options, onChange }) => {
     return (
         <Box>
             <Text fontSize="1.2vw" color="orange.500">
@@ -16,18 +24,19 @@ export const TimeCooking = () => {
                         fontSize="1vw"
                         h="2.5vw"
                         flex="1"
-                        key={option}
-                        onClick={() => setSelected(option)}
+                        key={option.value}
+                        onClick={() => onChange(option.value)}
                         borderRadius="0.8vw"
                         variant="solid"
-                        bg={selected === option ? "orange.200" : "beige.200"}
-                        color={selected === option ? "beige.200" : "brown.500"}
-                        _hover={{ opacity: 0.85, bg: selected === option ? "orange.200" : "beige.200" }}
+                        bg={value === option.value ? "orange.200" : "beige.200"}
+                        color={value === option.value ? "beige.200" : "brown.500"}
+                        _hover={{ opacity: 0.85, bg: value === option.value ? "orange.200" : "beige.200" }}
                     >
-                        {option}
+                        {option.title}
                     </Button>
                 ))}
             </Flex>
         </Box>
     );
 }
+

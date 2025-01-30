@@ -8,20 +8,13 @@ type IngredientFilterProps = {
     onIngredientSelect: (ingredient: string) => void;
 };
 
-//const ingredients = ["Apple", "Banana", "Cherry", "Date", "Grape", "Orange", "Strawberry"];
-// Если список фильтров загружается из API:
-// useEffect(() => {
-//     if (inputValue) {
-//       fetchOptions(inputValue).then(setFilteredOptions);
-//     }
-//   }, [inputValue]);
 
 export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder, title, onIngredientSelect }) => {
     const [inputValue, setInputValue] = useState("");
     const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
-    const [getIngredients, { data, isFetching }] = useLazyGetIngredientsQuery();
+    const [getIngredients, { data }] = useLazyGetIngredientsQuery();
 
-    // ⚡ Запрос ингредиентов с задержкой
+    // Запрос ингредиентов с задержкой
     useEffect(() => {
         if (inputValue.trim().length > 2) {
             const timeout = setTimeout(() => {
@@ -39,7 +32,6 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
-        console.log(event.target.value);
     };
 
     const handleOptionSelect = (option: string) => {

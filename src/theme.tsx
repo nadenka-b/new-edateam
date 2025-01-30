@@ -36,6 +36,12 @@ const theme = extendTheme({
         blue: {
             500: "#11AADC" //телега
         },
+        red: {
+            500: "#FF354F"
+        },
+        green: {
+            500: "#34CA66"
+        },
 
     },
     styles: {

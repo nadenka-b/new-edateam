@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux';
+import { selectFilters } from "../__data__/selectors/dishes-list";
 import { RootState, AppDispatch } from '../__data__/store';
 import { useGetDishesQuery } from '../__data__/services/mainApi';
 import { setCurrentPage, setPageSize } from '../__data__/slices/dishesSlice';
@@ -8,20 +9,21 @@ import { setCurrentPage, setPageSize } from '../__data__/slices/dishesSlice';
 import { Greetings } from "../components/home-page/greetings"
 import { PaginatedList } from '../components/home-page/pagination'
 
-
 const HomePage = () => {
     const dispatch: AppDispatch = useDispatch();
     const currentPage = useSelector((state: RootState) => state.dishes.currentPage);
     const size = useSelector((state: RootState) => state.dishes.pageSize);
-    const [isHidden, setIsHidden] = useState(false);
+    const filters = useSelector(selectFilters);
+
+    const [isHidden, setIsHidden] = useState(true);
 
     const increasePageSize = () => {
         dispatch(setPageSize(9));
         dispatch(setCurrentPage(0)); // Вернуться на первую страницу
-        setIsHidden(true);
+        setIsHidden(false);
     };
 
-    const { data, error, isLoading } = useGetDishesQuery({ page: currentPage, size: size });
+    const { data, error, isLoading } = useGetDishesQuery({ page: currentPage, size: size, filters: filters });
 
     const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +51,7 @@ const HomePage = () => {
                             Рецепты
                         </Heading>
                         <PaginatedList currentPage={currentPage} data={data} />
-                        {!isHidden && <Button
+                        {isHidden && <Button
                             onClick={increasePageSize}
                             mt="3.1vw"
                             alignContent="center"

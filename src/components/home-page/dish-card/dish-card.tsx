@@ -42,7 +42,6 @@ export const DishCard: React.FC<DishCardProps> = ({ image, time, tags, title }) 
                 w="22vw"
                 boxShadow="sm"
                 src={image}
-                // src="https://img1.russianfood.com/dycontent/images_upl/644/big_643804.jpg"
                 alt="Картинка блюда" borderRadius="0.26vw"
               />
             </Link>
@@ -51,7 +50,7 @@ export const DishCard: React.FC<DishCardProps> = ({ image, time, tags, title }) 
               <Text fontWeight="900" fontStyle="italic" fontSize="1vw" color="brown.500">{formatTime(time)}</Text>
             </Flex>
           </Box>
-          <Text
+          <Text // сделать кнопкой как ссылка на фильтры
             justifySelf="center"
             fontSize="1vw"
             fontWeight="800"

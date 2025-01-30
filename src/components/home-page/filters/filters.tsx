@@ -12,10 +12,20 @@ import {
     DrawerContent,
     DrawerCloseButton,
     useDisclosure,
+    Wrap,
+    WrapItem,
+    HStack,
+    Icon
 } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIncludeIngredientsTitles, setExcludeIngredientsTitles, setTag, setCookTime } from '../../../__data__/slices/dishesSlice';
+
 import { PiListHeart } from "react-icons/pi";
+import { TiPlus } from "react-icons/ti";
+import { MdOutlineDelete } from "react-icons/md";
 import { IngredientFilter } from "./ingredient-filter";
 import { TimeCooking } from "./time-cooking";
+import { AppDispatch, RootState } from "../../../__data__/store";
 
 const selectList = [
     { id: 1, Name: "Завтраки" },
@@ -28,13 +38,27 @@ const selectList = [
     { id: 8, Name: "Салаты" },
     { id: 9, Name: "Выпечка и десерты" }
 ];
+const options = [
+    { value: 30, title: "<30мин" },
+    { value: 60, title: "<1ч" },
+    { value: 120, title: "<2ч" },
+    { value: 0, title: "Любое" },
+]
 
 export const Filters = () => {
+    const dispatch: AppDispatch = useDispatch();
+    const selectedTagFromStore = useSelector((state: RootState) => state.dishes.tagIds);
+    const selectedTimeFromStore = useSelector((state: RootState) => state.dishes.cookTime);
+    const includeIngredientsFromStore = useSelector((state: RootState) => state.dishes.ingredientTitles);
+    const excludeIngredientsFromStore = useSelector((state: RootState) => state.dishes.excludeIngredientTitles);
+
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
 
-    const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
-    const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
+    const [includeIngredients, setIncludeIngredients] = useState<string[]>(includeIngredientsFromStore);
+    const [excludeIngredients, setExcludeIngredients] = useState<string[]>(excludeIngredientsFromStore);
+    const [selectedTag, setSelectedTag] = useState(selectedTagFromStore);
+    const [selectedTime, setSelectedTime] = useState(selectedTimeFromStore);
 
     const addIngredient = (ingredient: string, type: "include" | "exclude") => {
         if (type === "include" && !includeIngredients.includes(ingredient)) {
@@ -45,15 +69,33 @@ export const Filters = () => {
         }
     };
 
-    // const removeIngredient = (ingredient: string, type: "include" | "exclude") => {
-    //     if (type === "include") {
-    //         setIncludeIngredients(includeIngredients.filter(i => i !== ingredient));
-    //     }
-    //     if (type === "exclude") {
-    //         setExcludeIngredients(excludeIngredients.filter(i => i !== ingredient));
-    //     }
-    // };
+    const removeIngredient = (ingredient: string, type: "include" | "exclude") => {
+        if (type === "include") {
+            setIncludeIngredients(includeIngredients.filter(i => i !== ingredient));
+        }
+        if (type === "exclude") {
+            setExcludeIngredients(excludeIngredients.filter(i => i !== ingredient));
+        }
+    };
 
+    const resetFilters = () => {
+        setSelectedTag(0); // Сбрасываем категорию
+        setSelectedTime(0); // Сбрасываем время
+        setIncludeIngredients([]); // Очищаем выбранные ингредиенты
+        setExcludeIngredients([]); // Очищаем исключенные ингредиенты
+        dispatch(setTag(0));
+        dispatch(setCookTime(0));
+        dispatch(setIncludeIngredientsTitles([]));
+        dispatch(setExcludeIngredientsTitles([]));
+    };
+
+    const handleSearch = () => { // здесь неправильная логика, ведь может быть не 0, а какое-то изменение
+        if (selectedTag !== selectedTagFromStore) dispatch(setTag(selectedTag));
+        if (selectedTime !== selectedTimeFromStore) dispatch(setCookTime(selectedTime));
+        if (includeIngredients.length !== 0) dispatch(setIncludeIngredientsTitles(includeIngredients));
+        if (excludeIngredients.length !== 0) dispatch(setExcludeIngredientsTitles(excludeIngredients));
+        if (isOpen) onClose();
+    };
 
     return (
         <>
@@ -100,6 +142,8 @@ export const Filters = () => {
                             Категории
                         </Text>
                         <Select
+                            value={selectedTag}
+                            onChange={(e) => setSelectedTag(Number(e.target.value))}
                             focusBorderColor="orange.100"
                             border="0.1vw solid"
                             bg="beige.200"
@@ -114,7 +158,7 @@ export const Filters = () => {
                                 <option key={index} value={item.id}>{item.Name}</option>
                             ))}
                         </Select>
-                        <IngredientFilter //логика с ингредиентами должна быть немного другая, должно при нажатии на кнопку появляться где-то ниже выбранное, чтобы можно было несколько выбрать
+                        <IngredientFilter
                             placeholder="Например, курица"
                             title="Добавить ингредиент"
                             onIngredientSelect={(ingredient) => addIngredient(ingredient, "include")}
@@ -124,12 +168,70 @@ export const Filters = () => {
                             title="Исключить ингредиент"
                             onIngredientSelect={(ingredient) => addIngredient(ingredient, "include")}
                         />
-                        <TimeCooking />
+                        <TimeCooking value={selectedTime} options={options} onChange={setSelectedTime} />
+                        <Wrap mt="1vw">
+                            {includeIngredients.map((ingredient, index) => (
+                                <WrapItem key={index}>
+                                    <HStack
+                                        border="0.08vw solid"
+                                        borderColor="brown.500"
+                                        bg="beige.200"
+                                        borderRadius="1vw"
+                                        h="3vw"
+                                        pl="0.4vw"
+                                        pr="0.4vw">
+                                        <Icon as={TiPlus} fontSize="1.5vw" color="green.500" />
+                                        <Text fontSize="1vw" color="brown.500" fontWeight="500">
+                                            {ingredient}
+                                        </Text>
+                                        <IconButton
+                                            color="red.500"
+                                            bg="transparent"
+                                            minW="1.5vw"
+                                            h="1.5vw"
+                                            aria-label="delete"
+                                            onClick={() => removeIngredient(ingredient, "include")}
+                                            icon={<MdOutlineDelete fontSize="1.5vw" />}
+                                            _hover={{ opacity: 0.85 }}>
+                                        </IconButton>
+                                    </HStack>
+                                </WrapItem>
+                            ))}
+                            {excludeIngredients.map((ingredient, index) => (
+                                <WrapItem key={index}>
+                                    <HStack
+                                        border="0.08vw solid"
+                                        borderColor="brown.500"
+                                        bg="beige.200"
+                                        borderRadius="1vw"
+                                        h="3vw"
+                                        pl="0.4vw"
+                                        pr="0.4vw">
+                                        <Icon as={TiPlus} transform="rotate(45deg)" fontSize="1.7vw" color="red.500" />
+                                        <Text fontSize="1vw" color="brown.500" fontWeight="500">
+                                            {ingredient}
+                                        </Text>
+                                        <IconButton
+                                            color="red.500"
+                                            bg="transparent"
+                                            minW="1.5vw"
+                                            h="1.5vw"
+                                            aria-label="delete"
+                                            onClick={() => removeIngredient(ingredient, "exclude")}
+                                            icon={<MdOutlineDelete fontSize="1.5vw" />}
+                                            _hover={{ opacity: 0.85 }}>
+                                        </IconButton>
+                                    </HStack>
+                                </WrapItem>
+                            ))}
+                        </Wrap>
+
                     </DrawerBody>
 
                     <DrawerFooter>
                         <Button
-                            mr={3}
+                            onClick={resetFilters}
+                            mr="0.2vw"
                             bg="beige.200"
                             color="brown.500"
                             border="0.1vw solid"
@@ -140,6 +242,7 @@ export const Filters = () => {
                             Сбросить
                         </Button>
                         <Button
+                            onClick={handleSearch}
                             bg="orange.200"
                             color="beige.200"
                             fontSize="1.2vw"
