@@ -18,7 +18,7 @@ import {
     Icon
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIncludeIngredientsTitles, setExcludeIngredientsTitles, setTag, setCookTime } from '../../../__data__/slices/dishesSlice';
+import { setIncludeIngredientsTitles, setExcludeIngredientsTitles, setTag, setCookTime } from '../../../__data__/slices/mainDishesSlice';
 import { useGetTagsQuery } from '../../../__data__/services/mainApi';
 
 import { PiListHeart } from "react-icons/pi";

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectFilters } from "../__data__/selectors/dishes-list";
 import { RootState, AppDispatch } from '../__data__/store';
 import { useGetDishesQuery } from '../__data__/services/mainApi';
-import { setCurrentPage, setPageSize } from '../__data__/slices/dishesSlice';
+import { setCurrentPage, setPageSize } from '../__data__/slices/mainDishesSlice';
 
 import { Greetings } from "../components/home-page/greetings"
 import { PaginatedList } from '../components/home-page/pagination'
@@ -50,7 +50,7 @@ const HomePage = () => {
                         >
                             Рецепты
                         </Heading>
-                        <PaginatedList currentPage={currentPage} data={data} />
+                        <PaginatedList data={data} />
                         {isHidden && <Button
                             onClick={increasePageSize}
                             mt="3.1vw"

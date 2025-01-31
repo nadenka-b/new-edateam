@@ -1,12 +1,23 @@
 import React from 'react';
 import { Flex, Link, IconButton, Spacer } from '@chakra-ui/react';
 import { IoCloseCircleOutline } from "react-icons/io5";
+import { useRemoveFromFavouritesMutation } from '../../../__data__/services/mainApi';
 
 interface DishCardProps {
     title: string;
+    idDish: number;
 }
 
-export const DishCard: React.FC<DishCardProps> = ({ title }) => {
+export const DishCard: React.FC<DishCardProps> = ({ title, idDish }) => {
+    const [removeFromFavourites] = useRemoveFromFavouritesMutation();
+    const handleRemoveFavourite = async (dishId) => {
+        try {
+            await removeFromFavourites({ dishId }).unwrap();
+            console.log('Блюдо удалено из избранного');
+        } catch (error) {
+            console.error('Ошибка при удалении из избранного', error);
+        }
+    };
     return (
         <Flex
             bg="beige.200"
@@ -22,6 +33,7 @@ export const DishCard: React.FC<DishCardProps> = ({ title }) => {
             </Link>
             <Spacer />
             <IconButton
+                onClick={() => handleRemoveFavourite(idDish)}
                 color="brown.500"
                 bg="transparent"
                 aria-label='Delete'

@@ -2,44 +2,11 @@ import React from "react";
 import { Image, Text } from "@chakra-ui/react";
 import { pan } from '../../../assets';
 import { PaginatedList } from '../pagination';
+import { RootObject } from "../../../__data__/model/common";
 
 interface DishesBlockProps {
     data: RootObject;
     flagSavedRecipes: boolean;
-}
-
-interface RootObject {
-    content: Content[];
-    pageable: Pageable;
-    last: boolean;
-    totalPages: number;
-    totalElements: number;
-    first: boolean;
-    size: number;
-    number: number;
-    sort: Sort;
-    numberOfElements: number;
-    empty: boolean;
-}
-
-interface Pageable {
-    pageNumber: number;
-    pageSize: number;
-    sort: Sort;
-    offset: number;
-    unpaged: boolean;
-    paged: boolean;
-}
-
-interface Sort {
-    sorted: boolean;
-    empty: boolean;
-    unsorted: boolean;
-}
-
-interface Content {
-    id: number;
-    title: string;
 }
 
 export const DishesBlock: React.FC<DishesBlockProps> = ({ data, flagSavedRecipes }) => {
@@ -62,7 +29,7 @@ export const DishesBlock: React.FC<DishesBlockProps> = ({ data, flagSavedRecipes
                     </>
                 </Text>
             </> :
-                <PaginatedList data={data} />
+                <PaginatedList data={data} flagSavedRecipes={flagSavedRecipes} />
             }
         </>
     );

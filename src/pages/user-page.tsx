@@ -9,14 +9,18 @@ import { URLs } from "../__data__/urls"
 import { profilePhoto } from '../assets';
 import { Bookmark } from '../components/user-page/bookmark';
 import { DishesBlock } from '../components/user-page/dishes-block';
+import { RootState } from '../__data__/store';
+import { useSelector } from 'react-redux';
 
 
 const UserPage = () => {
     const [savedRecipes, setSavedRecipes] = useState(true);
 
+    const favouritesPage = useSelector((state: RootState) => state.userDishes.favouritesPage);
+    const recipesPage = useSelector((state: RootState) => state.userDishes.recipesPage);
     const { data: userData, error, isLoading } = useGetUserDataQuery({ id: 1 });
-    const { data: userFavouritesData } = useGetUserFavouritesQuery({ page: 0, size: 5 });
-    const { data: userRecipesData } = useGetUserRecipesQuery({ page: 0, size: 5 });
+    const { data: userFavouritesData } = useGetUserFavouritesQuery({ page: favouritesPage, size: 5 });
+    const { data: userRecipesData } = useGetUserRecipesQuery({ page: recipesPage, size: 5 });
 
     if (isLoading) return <div>Загрузка...</div>;
     if (error) return <div>Ошибка загрузки</div>;
@@ -36,10 +40,9 @@ const UserPage = () => {
                         <Bookmark title={<>Мои<br />рецепты</>} current={!savedRecipes} click={() => setSavedRecipes(false)} top="15%" />
                     </HStack>
 
-                    {savedRecipes ?
-                        <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} />
-                        :
-                        <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} />
+                    {savedRecipes
+                        ? <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} />
+                        : <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} />
                     }
                 </VStack>
                 <Spacer />

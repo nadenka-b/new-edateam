@@ -52,6 +52,12 @@ export const mainApi = createApi({
         getUserRecipes: builder.query({
             query: ({ page, size }) => `profile/my-dishes?page=${page}&size=${size}`,
         }),
+        removeFromFavourites: builder.mutation({
+            query: ({ dishId }) => ({
+                url: `dish/delete-favourite/${dishId}`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 });
 
@@ -62,5 +68,6 @@ export const {
     useGetTagsQuery,
     useGetUserDataQuery,
     useGetUserFavouritesQuery,
-    useGetUserRecipesQuery
+    useGetUserRecipesQuery,
+    useRemoveFromFavouritesMutation
 } = mainApi;
