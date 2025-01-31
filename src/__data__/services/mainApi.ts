@@ -36,6 +36,7 @@ export const mainApi = createApi({
         }),
         getRecipeById: builder.query({
             query: ({ id }) => `recipepage-data/${id}`,
+       
         }),
     }),
 });

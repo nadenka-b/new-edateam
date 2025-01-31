@@ -1,55 +1,110 @@
 {
-  "success": true,
-  "data": {
-    "id": 5,
-    "title": "NEW TITLE",
-    "timeCook": 10,
-    "type": {
-      "id": 1,
-      "value": "dish",
-      "types": [
-        {
-          "id": 1,
-          "value": "image/png"
-        },
-        {
-          "id": 3,
-          "value": "image/jpeg"
-        },
-        {
-          "id": 2,
-          "value": "image/svg"
-        }
-      ]
-    },
-    "file": {
-      "filePath": "./Images/dish-images/9cefd7d4-36e6-4828-b42b-20e717631eae_schemev.1.0.0.png",
-      "id": 16
-    },
-    "tags": [
-      {
-        "id": 2,
-        "value": "ужин"
-      }
-    ],
-    "dishIngredients": [
-      {
-        "id": 2,
-        "ingredient": {
-          "id": 1,
-          "title": "сахар",
-          "measure": "гр."
-        },
-        "quantity": 10.9
-      }
-    ],
-    "events": [
+  "id": 1,
+  "title": "Пирог с яблоками",
+  "timeCook": "45 мин",
+  "type": {
+    "id": 1,
+    "value": "dessert",
+    "types": [
       {
         "id": 1,
-        "title": "Happy new year",
-        "startDate": "2024-12-25",
-        "endDate": "2025-01-13"
+        "value": "image/png"
       }
     ]
+  },
+  "file": {
+    "filePath": "https://example.com/recipe-video",
+    "id": 1
+  },
+  "tags": [
+    {
+      "id": 1,
+      "value": "десерт"
+    },
+    {
+      "id": 2,
+      "value": "вегетарианское"
+    }
+  ],
+  "dishIngredients": [
+    {
+      "id": 1,
+      "ingredient": {
+        "id": 1,
+        "title": "яблоки",
+        "measure": "шт."
+      },
+      "quantity": 5
+    },
+    {
+      "id": 2,
+      "ingredient": {
+        "id": 2,
+        "title": "мука",
+        "measure": "г"
+      },
+      "quantity": 200
+    },
+    {
+      "id": 3,
+      "ingredient": {
+        "id": 3,
+        "title": "сахар",
+        "measure": "г"
+      },
+      "quantity": 100
+    },
+    {
+      "id": 4,
+      "ingredient": {
+        "id": 4,
+        "title": "яйца",
+        "measure": "шт."
+      },
+      "quantity": 2
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Новогодний ужин",
+      "startDate": "2024-12-31",
+      "endDate": "2025-01-01"
+    }
+  ],
+  "linkVideo": "https://youtube.com/embed/_h8O5V1ctRc",
+  "steps": [
+    {
+      "id": 1,
+      "number": 1,
+      "value": "Подготовьте яблоки: очистите и нарежьте их ломтями.",
+      "image": {
+        "filePath": "src/assets/images/step1.jpg",
+        "id": 1
+      }
+    },
+    {
+      "id": 2,
+      "number": 2,
+      "value": "Приготовьте тесто: смешайте муку, сахар и яйца.",
+      "image": {
+        "filePath": "src/assets/images/step1.jpg",
+        "id": 2
+      }
+    },
+    {
+      "id": 3,
+      "number": 3,
+      "value": "Выложите яблоки на тесто и запекайте при 180°C в течение 40 минут.",
+      "image": {
+        "filePath": "src/assets/images/step1.jpg",
+        "id": 3
+      }
+    }
+  ],
+  "owner": {
+    "id": 1,
+    "login": "recipe_owner",
+    "email": "owner@example.com"
   }
 }
