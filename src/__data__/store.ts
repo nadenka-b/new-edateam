@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { mainApi } from './service/main-api'; // Импортируем базовый API
+import { mainApi } from './services/mainApi'; // Импортируем базовый API
 // import dishesReducer from './slices/dishesSlice'
 import recipeReducer from './slices/recipeSlice';
 

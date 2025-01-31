@@ -47,7 +47,7 @@
 
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetRecipeByIdQuery } from '../__data__/service/main-api';
+import { useGetRecipeByIdQuery } from '../__data__/services/mainApi';
 import { Box, VStack, HStack } from "@chakra-ui/react";
 import { Title } from '../components/recipe-page/title/title';
 import { Video } from '../components/recipe-page/video/video';
