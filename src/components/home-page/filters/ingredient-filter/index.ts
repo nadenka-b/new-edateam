@@ -1,0 +1,1 @@
+export { IngredientFilter } from './ingredient-filter';   

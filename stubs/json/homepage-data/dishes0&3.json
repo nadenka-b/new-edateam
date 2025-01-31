@@ -1,0 +1,171 @@
+{
+    "content": [
+        {
+            "id": 5,
+            "title": "NEW TITLE",
+            "timeCook": 10,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 1,
+                        "value": "image/png"
+                    },
+                    {
+                        "id": 3,
+                        "value": "image/jpeg"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/svg"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "./Images/dish-images/9cefd7d4-36e6-4828-b42b-20e717631eae_schemev.1.0.0.png",
+                "id": 16
+            },
+            "tags": [
+                {
+                    "id": 2,
+                    "value": "ужин"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 2,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "сахар",
+                        "measure": "гр."
+                    },
+                    "quantity": 10.9
+                }
+            ],
+            "events": [
+                {
+                    "id": 1,
+                    "title": "Happy new year",
+                    "startDate": "2024-12-25",
+                    "endDate": "2025-01-13"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Проверяю что всё нормик",
+            "timeCook": 1000,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 1,
+                        "value": "image/png"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/svg"
+                    },
+                    {
+                        "id": 3,
+                        "value": "image/jpeg"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "./Images/dish-images/59ac44d5-cc8c-49fa-b50f-8d2352156b36_schemev.1.0.0.png",
+                "id": 19
+            },
+            "tags": [
+                {
+                    "id": 2,
+                    "value": "ужин"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 10,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "сахар",
+                        "measure": "гр."
+                    },
+                    "quantity": 10.9
+                }
+            ],
+            "events": []
+        },
+        {
+            "id": 7,
+            "title": "title",
+            "timeCook": 30,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 3,
+                        "value": "image/jpeg"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/svg"
+                    },
+                    {
+                        "id": 1,
+                        "value": "image/png"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "./Images/dish-images/b23c2959-a7d4-4658-bb99-abac12f6cff8_soup.png",
+                "id": 20
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "value": "обед"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 12,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "сахар",
+                        "measure": "гр."
+                    },
+                    "quantity": 8
+                }
+            ],
+            "events": []
+        }
+    ],
+    "pageable": {
+        "pageNumber": 0,
+        "pageSize": 10,
+        "sort": {
+            "sorted": false,
+            "empty": true,
+            "unsorted": true
+        },
+        "offset": 0,
+        "unpaged": false,
+        "paged": true
+    },
+    "last": false,
+    "totalPages": 1,
+    "totalElements": 3,
+    "first": true,
+    "size": 10,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "empty": true,
+        "unsorted": true
+    },
+    "numberOfElements": 3,
+    "empty": false
+}

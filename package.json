@@ -1,6 +1,6 @@
 {
     "name": "new-edateam",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "main": "./src/index.tsx",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,11 +15,11 @@
     "license": "ISC",
     "description": "",
     "dependencies": {
-        "@brojs/cli": "^1.0.0",
+        "@brojs/cli": "^1.8.4",
         "@chakra-ui/react": "^2.10.4",
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
-        "@reduxjs/toolkit": "^2.5.1",
+        "@reduxjs/toolkit": "^2.5.0",
         "@types/react": "^18.3.13",
         "express": "^4.19.2",
         "framer-motion": "^11.14.4",

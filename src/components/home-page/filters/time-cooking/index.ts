@@ -1,0 +1,1 @@
+export { TimeCooking } from './time-cooking';

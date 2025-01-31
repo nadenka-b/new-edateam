@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { mainApi } from './services/mainApi'; // Импортируем базовый API
-// import dishesReducer from './slices/dishesSlice'
-import recipeReducer from './slices/recipeSlice';
+import dishesReducer from './slices/dishesSlice'
 
 export const store = configureStore({
     reducer: {
         [mainApi.reducerPath]: mainApi.reducer, // Регистрируем базовый API
-        // dishes: dishesReducer,
-        recipe: recipeReducer,
+        dishes: dishesReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(mainApi.middleware), // Middleware для RTK Query
@@ -15,17 +13,3 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-// import { configureStore } from '@reduxjs/toolkit';
-// import { mainApi } from './service/main-api';
-
-// export const store = configureStore({
-//     reducer: {
-//         [mainApi.reducerPath]: mainApi.reducer, // Регистрируем RTK Query API
-//     },
-//     middleware: (getDefaultMiddleware) =>
-//         getDefaultMiddleware().concat(mainApi.middleware), // Добавляем middleware для API
-// });
-
-// export type RootState = ReturnType<typeof store.getState>;
-// export type AppDispatch = typeof store.dispatch;

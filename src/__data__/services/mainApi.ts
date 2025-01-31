@@ -1,63 +1,43 @@
-// // import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// // export const mainApi = createApi({
-// //     reducerPath: 'main-api',
-// //     baseQuery: fetchBaseQuery({
-// //         baseUrl: 'http://localhost:5000/', // Задай базовый URL для запросов
-// //     }),
-// //     endpoints: (builder) => ({
-// //         getRecipes: builder.query<{ title: string; id: string }[], void>({
-// //             query: () => `/recipes`,
-// //             transformResponse: (response: { success: boolean; body: any[] }) => {
-// //                 if (response.success === true) {
-// //                     return response.body
-// //                 } else {
-// //                     return void 0
-// //                 }
-// //             },
-// //             providesTags: ["Recipe"],
-// //         })
-// //     })
-// // });
-
-// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import { getConfigValue } from '@brojs/cli';
-
-// const baseUrl = getConfigValue('new-edateam.api');
-
-// export const mainApi = createApi({
-//     reducerPath: 'mainApi',
-//     baseQuery: fetchBaseQuery({ baseUrl }),
-//     endpoints: (builder) => ({
-//         getDishes: builder.query({
-//             query: ({ page, size }) => `dish/dishes?page=${page}&size=${size}`,
-//         }),
-//         getRecipe: builder.query({
-//             query: (id) => `/recipes/${id}`,
-//             providesTags: (result, error, id) => [{ type: "Recipe", id }],
-//         }),
-//     }),
-// });
-
-// export const { useGetDishesQuery, useGetRecipeQuery } = mainApi;
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getConfigValue } from '@brojs/cli'
 
+const baseUrl = getConfigValue('new-edateam.api')
 
-// Получаем baseUrl из конфигурации
-const baseUrl = getConfigValue('new-edateam.api');
+const buildQueryParams = (params = {}) => {
+    const searchParams = new URLSearchParams();
+
+    Object.keys(params).forEach((key) => {
+        const value = params[key];
+        if (Array.isArray(value) && value.length) {
+            searchParams.append(key, value.join(','));
+        }
+        else if (!Array.isArray(value) && value) {
+            searchParams.append(key, value);
+        }
+    });
+    return searchParams.toString();
+};
 
 export const mainApi = createApi({
-  reducerPath: 'main-api',
-  baseQuery: fetchBaseQuery({
-     baseUrl: '' 
-    // baseUrl: '/stubs/json/recipepage-data/' // Указываем путь до JSON
-    // baseUrl: 'http://localhost:8099'
-  }),
-  endpoints: (builder) => ({
-    getRecipeById: builder.query({
-      query: (id) => `/stubs/json/recipepage-data/${id}`,  // Используем параметр id для запроса
+    reducerPath: 'main-api',
+    baseQuery: fetchBaseQuery({ baseUrl: baseUrl, }),
+    endpoints: (builder) => ({
+        getIngredients: builder.query({
+            query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
+        }),
+        getDishes: builder.query({
+            query: ({ page, size, filters }) => {
+                // const queryParams = buildQueryParams(filters);
+                const query = `dishes${page}&${size}`;
+                return query;
+                // return queryParams ? `${query}&${queryParams}` : query;
+
+            }
+        }),
+        getRecipeById: builder.query({
+            query: ({ id }) => `recipepage-data/${id}`,
+        }),
     }),
-  }),
 });
 
-export const { useGetRecipeByIdQuery } = mainApi;
+export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery } = mainApi;

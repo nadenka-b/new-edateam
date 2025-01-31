@@ -1,6 +1,4 @@
 import { getConfigValue, getNavigationsValue } from "@brojs/cli";
-// eslint-disable-next-line
-
 import { generatePath } from "react-router-dom";
 
 const baseUrl = getNavigationsValue('new-edateam.main');
@@ -12,18 +10,19 @@ export const URLs = {
         recipe: {
             url: `${baseUrl}${getNavigationsValue('new-edateam.recipe')}`,
             on: Boolean(getNavigationsValue('new-edateam.recipe')),
-            getUrl: (recipeId: number) => generatePath(`${baseUrl}${getNavigationsValue('new-edateam.recipe')}/:recipeId`, { recipeId })
+            getUrl: (recipeId: number) => generatePath(`${baseUrl}${getNavigationsValue('new-edateam.recipe')}/:id`, { id: recipeId.toString() })
         },
         user: {
             url: `${baseUrl}${getNavigationsValue('new-edateam.user')}`,
             on: Boolean(getNavigationsValue('new-edateam.user')),
-            //  getUrl:(userId:number)=>generatePath(`${baseUrl}${getNavigationsValue('new-edateam.user')}, {userId}`)
+            getUrl: (userId: number) => generatePath(`${baseUrl}${getNavigationsValue('new-edateam.user')}, ${userId}`)
         },
         add_recipe: {
             url: `${baseUrl}${getNavigationsValue('new-edateam.add-recipe')}`,
             on: Boolean(getNavigationsValue('new-edateam.add-recipe'))
         }
     },
-    // api:{}, // здесь будут запросы
-    main: getConfigValue('new-edateam.api')
+    api: {
+        main: getConfigValue('new-edateam.api')
+    },
 }

@@ -1,4 +1,3 @@
-// eslint-disable-next-line 
 const pkg = require("./package");
 
 module.exports = {
@@ -12,9 +11,9 @@ module.exports = {
   navigations: {
     "new-edateam.main": "/new-edateam",
     "new-edateam.recipe": "/recipe",
-    "new-edateam.user": "/user",
+    "new-edateam.user": "/user/userId",
     "new-edateam.add-recipe": "/add-recipe"
-},
+  },
   features: {
     "edateam": {
       // add your features here in the format [featureName]: { value: string }
@@ -22,6 +21,5 @@ module.exports = {
   },
   config: {
     "new-edateam.api": "/api",
-    // "new-edateam.api": "http://192.168.0.107:8080/",
   },
 };

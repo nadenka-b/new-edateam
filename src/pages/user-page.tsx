@@ -1,13 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
 // import { PiPencilSimpleBold } from "react-icons/pi";
+import { PaginatedList } from '../components/user-page/pagination';
 import { Link } from "react-router-dom"
 
 import { URLs } from "../__data__/urls"
 
-import { CurrentBookmark, UnselectedBookmark, pan, profilePhoto } from '../assets';
+import { pan, profilePhoto } from '../assets';
+import { Bookmark } from '../components/user-page/bookmark';
+
+
+interface RootObject {
+    content: Content[];
+    last: boolean;
+    totalPages: number; //Количество страниц
+    totalElements: number; // Сколько всего элементов
+    first: boolean;
+    size: number; //сколько запрашиваю объектов на странице
+    number: number; // Номер страницы
+    numberOfElements: number; // Сколько объектов именно на этой странице
+    empty: boolean; // пусто или нет 
+}
+
+interface Content {
+    id: number;
+    title: string;
+}
+
+
+const emptyData = {
+    content: [],
+    last: true,
+    totalPages: 1, //Количество страниц
+    totalElements: 0, // Сколько всего элементов
+    first: true,
+    size: 0, //сколько запрашиваю объектов на странице
+    number: 1, // Номер страницы
+    numberOfElements: 0, // Сколько объектов именно на этой странице
+    empty: true // пусто или нет 
+}
+
 
 const UserPage = () => {
+    const [savedRecipes, setSavedRecipes] = useState(true);
+
+    const [data, setData] = useState<RootObject>(emptyData)
+
+    useEffect(() => {
+        fetch(`${URLs.api.main}/up/favourite`)
+            .then(response => response.json())
+            .then(data => {
+                setData(data.data)
+            })
+    }, [])
     return (
         <>
             <Flex pl="10vw" pr="10vw" mt="1.3vw" mb="2.6vw" >
@@ -18,69 +63,32 @@ const UserPage = () => {
                     border="0.15vw solid"
                     borderColor="brown.500"
                     borderRadius="1.56vw"
-                    alignItems="flex-start"
+                // alignItems="flex-start"
                 >
-                    <HStack align="start" pl="4.6vw" spacing="2vw">
-                        <Button
-                            position="relative"
-                            p={0}
-                            h="auto"
-                            minW="0"
-                            background="none" // Без фона
-                            border="none" // Убираем границу
-                            _hover={{ opacity: 0.95, backgroundColor: "beige.300" }}
-                        >
-                            <Image src={CurrentBookmark} w="4.6vw" />
-                            <Text
-                                lineHeight="normal"
-                                fontSize="0.8vw"
-                                fontWeight="800"
-                                fontStyle="Italic"
-                                textAlign="right"
-                                position="absolute"
-                                top="20%"
-                                color="beige.200"
-                                transform="rotate(270deg)"
-                            >
-                                Сохраненные <br /> рецепты
-                            </Text>
-                        </Button>
-                        <Button
-                            position="relative"
-                            p={0}
-                            h="auto"
-                            minW="0"
-                            background="none" // Без фона
-                            border="none" // Убираем границу
-                            _hover={{ opacity: 0.95, backgroundColor: "beige.300" }} // Эффект наведения
-                        >
-                            <Image src={UnselectedBookmark} w="4.6vw" />
-                            <Text
-                                lineHeight="normal"
-                                fontSize="0.8vw"
-                                fontWeight="800"
-                                fontStyle="italic"
-                                textAlign="right"
-                                position="absolute"
-                                top="15%"
-                                color="brown.500"
-                                transform="rotate(270deg)"
-                            >
-                                Мои <br /> рецепты
-                            </Text>
-                        </Button>
+                    <HStack pr="17vw" align="start" spacing="2vw" mb="1vw">
+                        <Bookmark title={<>Сохраненные<br />рецепты</>} current={savedRecipes} click={() => setSavedRecipes(true)} top="24%" />
+                        <Bookmark title={<>Мои<br />рецепты</>} current={!savedRecipes} click={() => setSavedRecipes(false)} top="15%" />
                     </HStack>
-                    <Image alignSelf="center" src={pan} w="13vw" />
-                    <Text
-                        lineHeight="normal"
-                        alignSelf="center"
-                        fontSize="1vw"
-                        fontWeight="900"
-                        fontStyle="Italic"
-                        textAlign="center"
-                        color="brown.500">
-                        Пока здесь ничего нет, но скоро <br />  здесь появятся ваши любимые рецепты
-                    </Text>
+
+                    {data.empty ? <>
+                        <Image alignSelf="center" src={pan} w="13vw" />
+                        <Text
+                            lineHeight="normal"
+                            alignSelf="center"
+                            fontSize="1vw"
+                            fontWeight="900"
+                            fontStyle="Italic"
+                            textAlign="center"
+                            color="brown.500">
+                            <>
+                                Пока здесь ничего нет, но скоро <br />здесь появятся ваши
+                                {savedRecipes ? ' любимые ' : ' '}
+                                рецепты
+                            </>
+                        </Text>
+                    </> :
+                        <PaginatedList data={data} />
+                    }
                 </VStack>
                 <Spacer />
                 <VStack
@@ -130,7 +138,7 @@ const UserPage = () => {
                         </Button>
                     </Link>
                 </VStack>
-            </Flex>
+            </Flex >
         </>
     );
 };
