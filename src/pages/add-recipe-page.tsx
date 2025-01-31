@@ -131,7 +131,8 @@ const AddRecipePage = () => {
             steps: [{ description: '', image: null }]
         }
     });
-
+    throw new Error("Тестовая ошибка!"); // Имитация сбоя
+    return <div>Этот код не выполнится</div>;
     const [createDish, { isLoading, isError }] = useCreateDishMutation();
 
     const onSubmit = async (data: any) => {

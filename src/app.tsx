@@ -9,20 +9,23 @@ import { Provider } from 'react-redux'
 import { Header } from './components/header'
 import { Footer } from './components/footer'
 import { ScrollToTop } from './components/scroll-to-top'
+import ErrorBoundary from './components/error-boundary/error-boundary';
 
 
 const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <ChakraProvider theme={theme}>
-          <Fonts />
-          <ScrollToTop />
-          <Header />
-          <PageRoutes />
-          <Footer />
-        </ChakraProvider>
-      </BrowserRouter>
+      <ErrorBoundary>
+        <BrowserRouter>
+          <ChakraProvider theme={theme}>
+            <Fonts />
+            <ScrollToTop />
+            <Header />
+            <PageRoutes />
+            <Footer />
+          </ChakraProvider>
+        </BrowserRouter>
+      </ErrorBoundary>
     </Provider>
   );
 };
