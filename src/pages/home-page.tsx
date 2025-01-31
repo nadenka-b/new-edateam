@@ -64,6 +64,7 @@ const HomePage = () => {
                             bg="orange.200"
                             color="beige.200"
                             _hover={{ opacity: 0.9, bg: "orange.200" }}
+                            _active={{ bg: "orange.100" }}
                         >
                             Показать еще
                         </Button>}

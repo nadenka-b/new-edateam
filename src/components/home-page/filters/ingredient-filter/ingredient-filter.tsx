@@ -14,12 +14,11 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
     const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
     const [getIngredients, { data }] = useLazyGetIngredientsQuery();
 
-    // Запрос ингредиентов с задержкой
     useEffect(() => {
         if (inputValue.trim().length > 2) {
             const timeout = setTimeout(() => {
-                getIngredients(inputValue);
-            }, 500); // Дебоунс 500 мс
+                getIngredients({ value: inputValue });
+            }, 500);
             return () => clearTimeout(timeout);
         }
     }, [inputValue, getIngredients]);
@@ -35,9 +34,9 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
     };
 
     const handleOptionSelect = (option: string) => {
-        onIngredientSelect(option); // ⬅ Передача в `Filters`
-        setInputValue(""); // Очищаем поле
-        setFilteredOptions([]); // Закрываем список
+        onIngredientSelect(option);
+        setInputValue("");
+        setFilteredOptions([]);
     };
 
     return (

@@ -29,7 +29,11 @@
             "tags": [
                 {
                     "id": 2,
-                    "value": "ужин"
+                    "value": "Ужин"
+                },
+                {
+                    "id": 4,
+                    "value": "Салат"
                 }
             ],
             "dishIngredients": [

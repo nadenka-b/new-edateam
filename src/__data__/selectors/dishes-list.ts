@@ -6,10 +6,12 @@ export const selectFilters = createSelector(
     (state: RootState) => state.dishes.excludeIngredientTitles,
     (state: RootState) => state.dishes.tagIds,
     (state: RootState) => state.dishes.cookTime,
-    (ingredientTitles, excludeIngredientTitles, tagIds, cookTime) => ({
+    (state: RootState) => state.dishes.title,
+    (ingredientTitles, excludeIngredientTitles, tagIds, cookTime, title) => ({
         ingredientTitles,
         excludeIngredientTitles,
         tagIds,
         cookTime,
+        title
     })
 );

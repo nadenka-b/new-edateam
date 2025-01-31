@@ -19,6 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIncludeIngredientsTitles, setExcludeIngredientsTitles, setTag, setCookTime } from '../../../__data__/slices/dishesSlice';
+import { useGetTagsQuery } from '../../../__data__/services/mainApi';
 
 import { PiListHeart } from "react-icons/pi";
 import { TiPlus } from "react-icons/ti";
@@ -27,17 +28,6 @@ import { IngredientFilter } from "./ingredient-filter";
 import { TimeCooking } from "./time-cooking";
 import { AppDispatch, RootState } from "../../../__data__/store";
 
-const selectList = [
-    { id: 1, Name: "Завтраки" },
-    { id: 2, Name: "Обеды" },
-    { id: 3, Name: "Ужины" },
-    { id: 4, Name: "Супы" },
-    { id: 5, Name: "Гарниры" },
-    { id: 6, Name: "Мясо" },
-    { id: 7, Name: "Рыба" },
-    { id: 8, Name: "Салаты" },
-    { id: 9, Name: "Выпечка и десерты" }
-];
 const options = [
     { value: 30, title: "<30мин" },
     { value: 60, title: "<1ч" },
@@ -51,6 +41,7 @@ export const Filters = () => {
     const selectedTimeFromStore = useSelector((state: RootState) => state.dishes.cookTime);
     const includeIngredientsFromStore = useSelector((state: RootState) => state.dishes.ingredientTitles);
     const excludeIngredientsFromStore = useSelector((state: RootState) => state.dishes.excludeIngredientTitles);
+    const { data, error, isLoading } = useGetTagsQuery(null);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
@@ -97,6 +88,8 @@ export const Filters = () => {
         if (isOpen) onClose();
     };
 
+    if (isLoading) return <div>Загрузка...</div>; // почему-то без этого не работает
+    if (error) return <div>Ошибка загрузки</div>;
     return (
         <>
             <IconButton
@@ -149,13 +142,13 @@ export const Filters = () => {
                             bg="beige.200"
                             h="2.6vw" w="100%"
                             fontSize="1vw"
-                            placeholder='Выберите категорию'
                             _hover={{ opacity: 0.85, borderColor: "orange.100" }}
                             color="brown.500"
                             mb="0.5vw"
                         >
-                            {selectList.map((item, index) => (
-                                <option key={index} value={item.id}>{item.Name}</option>
+                            <option value={0}>Выберите категорию</option>
+                            {data.data.map((tag) => (
+                                <option key={tag.id} value={tag.id}>{tag.title}</option>
                             ))}
                         </Select>
                         <IngredientFilter
@@ -230,23 +223,29 @@ export const Filters = () => {
 
                     <DrawerFooter>
                         <Button
+                            h="3.5vw"
+                            w="7vw"
                             onClick={resetFilters}
-                            mr="0.2vw"
+                            mr="0.5vw"
                             bg="beige.200"
                             color="brown.500"
                             border="0.1vw solid"
                             borderColor="brown.500"
                             fontSize="1.2vw"
                             _hover={{ opacity: 0.85, borderColor: "orange.100" }}
+                            _active={{ bg: "beige.50" }}
                         >
                             Сбросить
                         </Button>
                         <Button
+                            h="3.5vw"
+                            w="7vw"
                             onClick={handleSearch}
                             bg="orange.200"
                             color="beige.200"
                             fontSize="1.2vw"
                             _hover={{ opacity: 0.85, borderColor: "orange.200" }}
+                            _active={{ bg: "orange.100" }}
                         >
                             Найти
                         </Button>

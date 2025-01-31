@@ -27,17 +27,19 @@ export const mainApi = createApi({
         }),
         getDishes: builder.query({
             query: ({ page, size, filters }) => {
-                // const queryParams = buildQueryParams(filters);
-                const query = `dishes${page}&${size}`;
-                return query;
-                // return queryParams ? `${query}&${queryParams}` : query;
-
+                const queryParams = buildQueryParams(filters);
+                const query = `dishes?page=${page}&size=${size}`;
+                return queryParams ? `${query}&${queryParams}` : query;
             }
         }),
         getRecipeById: builder.query({
             query: ({ id }) => `recipepage-data/${id}`,
         }),
+        getTags: builder.query({
+            query: () => `tag`,
+            keepUnusedDataFor: 60 * 60 * 12,
+        }),
     }),
 });
 
-export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery } = mainApi;
+export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery, useGetTagsQuery } = mainApi;
