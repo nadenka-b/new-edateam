@@ -9,14 +9,31 @@ interface PaginatedListProps {
 
 interface RootObject {
   content: Content[];
+  pageable: Pageable;
   last: boolean;
-  totalPages: number; //Количество страниц
-  totalElements: number; // Сколько всего элементов
+  totalPages: number;
+  totalElements: number;
   first: boolean;
-  size: number; //сколько запрашиваю объектов на странице
-  number: number; // Номер страницы
-  numberOfElements: number; // Сколько объектов именно на этой странице
-  empty: boolean; // пусто или нет 
+  size: number;
+  number: number;
+  sort: Sort;
+  numberOfElements: number;
+  empty: boolean;
+}
+
+interface Pageable {
+  pageNumber: number;
+  pageSize: number;
+  sort: Sort;
+  offset: number;
+  unpaged: boolean;
+  paged: boolean;
+}
+
+interface Sort {
+  sorted: boolean;
+  empty: boolean;
+  unsorted: boolean;
 }
 
 interface Content {

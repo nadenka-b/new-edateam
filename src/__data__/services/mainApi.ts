@@ -20,7 +20,9 @@ const buildQueryParams = (params = {}) => {
 
 export const mainApi = createApi({
     reducerPath: 'main-api',
-    baseQuery: fetchBaseQuery({ baseUrl: baseUrl, }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: baseUrl,
+    }),
     endpoints: (builder) => ({
         getIngredients: builder.query({
             query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
@@ -39,7 +41,26 @@ export const mainApi = createApi({
             query: () => `tag`,
             keepUnusedDataFor: 60 * 60 * 12,
         }),
+
+
+        getUserData: builder.query({
+            query: ({ id }) => `profile/userId?id=${id}`,
+        }),
+        getUserFavourites: builder.query({
+            query: ({ page, size }) => `profile/favourite?page=${page}&size=${size}`,
+        }),
+        getUserRecipes: builder.query({
+            query: ({ page, size }) => `profile/my-dishes?page=${page}&size=${size}`,
+        }),
     }),
 });
 
-export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery, useGetTagsQuery } = mainApi;
+export const {
+    useLazyGetIngredientsQuery,
+    useGetDishesQuery,
+    useGetRecipeByIdQuery,
+    useGetTagsQuery,
+    useGetUserDataQuery,
+    useGetUserFavouritesQuery,
+    useGetUserRecipesQuery
+} = mainApi;

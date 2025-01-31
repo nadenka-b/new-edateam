@@ -1,0 +1,1 @@
+export { DishesBlock } from './dishes-block';

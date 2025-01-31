@@ -1,58 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
 // import { PiPencilSimpleBold } from "react-icons/pi";
-import { PaginatedList } from '../components/user-page/pagination';
+import { useGetUserDataQuery, useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/mainApi';
 import { Link } from "react-router-dom"
 
 import { URLs } from "../__data__/urls"
 
-import { pan, profilePhoto } from '../assets';
+import { profilePhoto } from '../assets';
 import { Bookmark } from '../components/user-page/bookmark';
-
-
-interface RootObject {
-    content: Content[];
-    last: boolean;
-    totalPages: number; //Количество страниц
-    totalElements: number; // Сколько всего элементов
-    first: boolean;
-    size: number; //сколько запрашиваю объектов на странице
-    number: number; // Номер страницы
-    numberOfElements: number; // Сколько объектов именно на этой странице
-    empty: boolean; // пусто или нет 
-}
-
-interface Content {
-    id: number;
-    title: string;
-}
-
-
-const emptyData = {
-    content: [],
-    last: true,
-    totalPages: 1, //Количество страниц
-    totalElements: 0, // Сколько всего элементов
-    first: true,
-    size: 0, //сколько запрашиваю объектов на странице
-    number: 1, // Номер страницы
-    numberOfElements: 0, // Сколько объектов именно на этой странице
-    empty: true // пусто или нет 
-}
+import { DishesBlock } from '../components/user-page/dishes-block';
 
 
 const UserPage = () => {
     const [savedRecipes, setSavedRecipes] = useState(true);
 
-    const [data, setData] = useState<RootObject>(emptyData)
+    const { data: userData, error, isLoading } = useGetUserDataQuery({ id: 1 });
+    const { data: userFavouritesData } = useGetUserFavouritesQuery({ page: 0, size: 5 });
+    const { data: userRecipesData } = useGetUserRecipesQuery({ page: 0, size: 5 });
 
-    useEffect(() => {
-        fetch(`${URLs.api.main}/up/favourite`)
-            .then(response => response.json())
-            .then(data => {
-                setData(data.data)
-            })
-    }, [])
+    if (isLoading) return <div>Загрузка...</div>;
+    if (error) return <div>Ошибка загрузки</div>;
     return (
         <>
             <Flex pl="10vw" pr="10vw" mt="1.3vw" mb="2.6vw" >
@@ -63,31 +30,16 @@ const UserPage = () => {
                     border="0.15vw solid"
                     borderColor="brown.500"
                     borderRadius="1.56vw"
-                // alignItems="flex-start"
                 >
                     <HStack pr="17vw" align="start" spacing="2vw" mb="1vw">
                         <Bookmark title={<>Сохраненные<br />рецепты</>} current={savedRecipes} click={() => setSavedRecipes(true)} top="24%" />
                         <Bookmark title={<>Мои<br />рецепты</>} current={!savedRecipes} click={() => setSavedRecipes(false)} top="15%" />
                     </HStack>
 
-                    {data.empty ? <>
-                        <Image alignSelf="center" src={pan} w="13vw" />
-                        <Text
-                            lineHeight="normal"
-                            alignSelf="center"
-                            fontSize="1vw"
-                            fontWeight="900"
-                            fontStyle="Italic"
-                            textAlign="center"
-                            color="brown.500">
-                            <>
-                                Пока здесь ничего нет, но скоро <br />здесь появятся ваши
-                                {savedRecipes ? ' любимые ' : ' '}
-                                рецепты
-                            </>
-                        </Text>
-                    </> :
-                        <PaginatedList data={data} />
+                    {savedRecipes ?
+                        <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} />
+                        :
+                        <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} />
                     }
                 </VStack>
                 <Spacer />
@@ -102,23 +54,23 @@ const UserPage = () => {
                     pt="2vw"
                     pb="2vw"
                 >
-                    <Image src={profilePhoto} w="18.75vw" />
+                    <Image src={userData.image.filePath ? userData.image.filePath : profilePhoto} w="18.75vw" />
                     <Text
                         fontSize="1.6vw"
                         fontWeight="900"
                         textAlign="center"
                         color="brown.500"
                     >
-                        Маша Иванова
+                        {userData.login}
                     </Text>
-                    <Text
+                    {/* <Text
                         fontSize="1vw"
                         fontWeight="600"
                         textAlign="center"
                         color="brown.500"
                     >
-                        Дата регистрации: 22.12.2024
-                    </Text>
+                        Дата регистрации: {userData.id}
+                    </Text> */}
                     <Link to={URLs.ui.add_recipe.url}>
                         <Button
                             mt="5vw"

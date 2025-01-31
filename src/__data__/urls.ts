@@ -14,7 +14,7 @@ export const URLs = {
         user: {
             url: `${baseUrl}${getNavigationsValue('new-edateam.user')}`,
             on: Boolean(getNavigationsValue('new-edateam.user')),
-            getUrl: (userId: number) => generatePath(`${baseUrl}${getNavigationsValue('new-edateam.user')}, ${userId}`)
+            getUrl: (userId: number) => generatePath(`${baseUrl}${getNavigationsValue('new-edateam.user')}/:id`, { id: userId.toString() })
         },
         add_recipe: {
             url: `${baseUrl}${getNavigationsValue('new-edateam.add-recipe')}`,
