@@ -38,7 +38,7 @@ export const Header = () => {
                         <ImageLogo />
                     </Flex>
                 </Link>
-                {/* <Link to={URLs.ui.user.url} style={{ flex: 1 }}>
+                <Link to={URLs.ui.user.url} style={{ flex: 1 }}>
                     <Text
                         justifySelf="end"
                         fontSize="1.5vw"
@@ -49,10 +49,10 @@ export const Header = () => {
                     >
                         Мой профиль
                     </Text>
-                </Link> */}
-                <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
+                </Link>
+                {/* <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
                     <RegistrationForm />
-                </Box>
+                </Box> */}
             </HStack>
             {
                 !isHomePage && (

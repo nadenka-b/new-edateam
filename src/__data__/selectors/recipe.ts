@@ -7,7 +7,7 @@
 // export const selectRecipeLoading = createSelector(recipeRootSelector, state => state.isLoading);
 // export const selectRecipeError = createSelector(recipeRootSelector, state => state.error);
 
-import { mainApi } from '../services/mainApi';
+// import { mainApi } from '../services/mainApi';
 
-export const selectRecipeById = (id: string) => (state: RootState) =>
-  mainApi.endpoints.getRecipe.select(id)(state).data;
+// export const selectRecipeById = (id: string) => (state: RootState) =>
+//   mainApi.endpoints.getRecipe.select(id)(state).data;

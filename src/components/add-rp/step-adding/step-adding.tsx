@@ -218,63 +218,65 @@ export const StepAdding = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(() => {})}>
-            <Text fontSize="1.6vw" fontWeight="bold" fontStyle="italic" color="brown.500">
-                Пошаговый рецепт
-            </Text>
-
-            <HStack spacing={4} align="start" w="100%">
-                <Box
-                    w="7.8vw"
-                    h="7.8vw"
-                    bg={watch("photo") ? "transparent" : "grey.50"}
-                    cursor="pointer"
-                    border="2px dashed brown.500"
-                    borderRadius="15px"
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    _hover={{ bg: "beige.50" }}
-                    onClick={() => fileInputRef.current.click()}
-                >
-                    {watch("photo") ? (
-                        <Image src={watch("photo")} alt="Превью фото" boxSize="100%" objectFit="cover" />
-                    ) : (
-                        <VStack spacing={2}>
-                            <Image src={addPhoto} alt="Фотоаппарат" boxSize="2.6vw" />
-                            <Text fontSize="0.8vw" fontWeight={600} color="brown.500" textAlign="center">
-                                Добавить фото
-                            </Text>
-                        </VStack>
-                    )}
-                    <input ref={fileInputRef} type="file" accept="image/*" hidden onChange={handlePhotoChange} />
-                </Box>
-
-                <Controller
-                    name="description"
-                    control={control}
-                    render={({ field }) => (
-                        <Input
-                            {...field}
-                            placeholder="Введите описание шага"
-                            flex="1"
-                            h="7.8vw"
-                            border="2px solid brown.500"
-                            borderRadius="15px"
-                            fontSize="0.8vw"
-                        />
-                    )}
-                />
-            </HStack>
-
-            <Button onClick={addStep} variant="unstyled" display="flex">
-                <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} />
-                <Text fontSize="1.1vw" fontWeight="bold" color="orange.600">
-                    Добавить шаг
+        <form onSubmit={handleSubmit(() => { })}>
+            <VStack align="center" w="100%" spacing={4}>
+                <Text fontSize="1.6vw" fontWeight="bold" fontStyle="italic" color="brown.500">
+                    Пошаговый рецепт
                 </Text>
-            </Button>
 
-            <VStack spacing={4} align="start" w="100%" maxW="800px">
+                <HStack spacing={4} align="start" w="100%" justify="center">
+                    <Box
+                        w="7.8vw"
+                        h="7.8vw"
+                        bg={watch("photo") ? "transparent" : "grey.50"}
+                        cursor="pointer"
+                        border="2px dashed brown.500"
+                        borderRadius="15px"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                        _hover={{ bg: "beige.50" }}
+                        onClick={() => fileInputRef.current.click()}
+                    >
+                        {watch("photo") ? (
+                            <Image src={watch("photo")} alt="Превью фото" boxSize="100%" objectFit="cover" />
+                        ) : (
+                            <VStack spacing={2}>
+                                <Image src={addPhoto} alt="Фотоаппарат" boxSize="2.6vw" />
+                                <Text fontSize="0.8vw" fontWeight={600} color="brown.500" textAlign="center">
+                                    Добавить фото
+                                </Text>
+                            </VStack>
+                        )}
+                        <input ref={fileInputRef} type="file" accept="image/*" hidden onChange={handlePhotoChange} />
+                    </Box>
+
+                    <Controller
+                        name="description"
+                        control={control}
+                        render={({ field }) => (
+                            <Input
+                                {...field}
+                                placeholder="Введите описание шага"
+                                w="30vw"
+                                h="7.8vw"
+                                border="2px solid brown.500"
+                                borderRadius="15px"
+                                fontSize="0.8vw"
+                            />
+                        )}
+                    />
+                </HStack>
+
+                <Button onClick={addStep} variant="unstyled" display="flex" alignItems="center">
+                    <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} />
+                    <Text fontSize="1.1vw" fontWeight="bold" color="orange.600">
+                        Добавить шаг
+                    </Text>
+                </Button>
+            </VStack>
+
+            <VStack spacing={4} align="start" w="100%" maxW="800px" mt={4}>
                 {steps.map((step, index) => (
                     <HStack key={index} spacing={4} align="center" w="100%">
                         <Box

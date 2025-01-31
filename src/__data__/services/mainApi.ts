@@ -36,9 +36,16 @@ export const mainApi = createApi({
         }),
         getRecipeById: builder.query({
             query: ({ id }) => `recipepage-data/${id}`,
-       
+
+        }),
+        createDish: builder.mutation({
+            query: (formData) => ({
+                url: '/user/create-dish',
+                method: 'POST',
+                body: formData, // Передаем FormData
+            }),
         }),
     }),
 });
 
-export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery } = mainApi;
+export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery, useCreateDishMutation } = mainApi;

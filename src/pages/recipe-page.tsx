@@ -120,9 +120,9 @@ const RecipePage = () => {
     return (
         <>
             <VStack align="center" w="full">
-                <Title title={data?.title || "Загрузка..."} />
-                <Video src={data?.linkVideo || ""} />
-                <Tags tags={data?.tags || []} />
+                <Title title={data?.title } />
+                <Video src={data?.linkVideo } />
+                <Tags tags={data?.tags} />
                 <HStack mt="1.2vw" justify="center" align="center" mb="2.5vw">
                     <TimeCooking cookingTime={data?.timeCook || "0 мин"} />
                     <AddToMyBook />
