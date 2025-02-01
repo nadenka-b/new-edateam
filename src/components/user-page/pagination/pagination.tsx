@@ -4,11 +4,11 @@ import { DishCard } from '../dish-card'
 import { IoIosArrowBack } from "react-icons/io";
 import { useDispatch } from 'react-redux';
 import { setFavouritesPage, setRecipesPage } from '../../../__data__/slices/userDishesSlice';
-import { RootObject } from "../../../__data__/model/common"
+import { DataPage } from "../../../__data__/model/common"
 import { AppDispatch } from '../../../__data__/store';
 
 interface PaginatedListProps {
-  data: RootObject
+  data: DataPage
   flagSavedRecipes: boolean
 }
 

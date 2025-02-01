@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getConfigValue } from '@brojs/cli'
-import { FileType } from '../model/common';
+import { URLs } from '../urls';
+import { DataPage, FileType, Filters } from '../model/common';
 
-const baseUrl = getConfigValue('new-edateam.api');
-const imagesUrl = getConfigValue('new-edateam.images');
+const baseUrl = URLs.api.main;
 
 const buildQueryParams = (params = {}) => {
     const searchParams = new URLSearchParams();
@@ -26,22 +25,14 @@ export const mainApi = createApi({
         baseUrl: baseUrl,
     }),
     endpoints: (builder) => ({
-        getDishes: builder.query({
+        getDishes: builder.query<DataPage, { page: number, size: number, filters: Filters }>({
             query: ({ page, size, filters }) => {
                 const queryParams = buildQueryParams(filters);
                 const query = `dish/dishes?page=${page}&size=${size}`;
                 return queryParams ? `${query}&${queryParams}` : query;
             }
         }),
-        getImage: builder.query({
-            query: ({ path }) => ({
-                url: `${imagesUrl}${path}`,
-                method: 'GET',
-                responseType: 'blob',
-            }),
-            keepUnusedDataFor: 60 * 10,
-        }),
-        getIngredients: builder.query({
+        getIngredients: builder.query<DataPage, { value: string }>({
             query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
         }),
         getTags: builder.query<FileType[], void>({
@@ -49,19 +40,14 @@ export const mainApi = createApi({
             keepUnusedDataFor: 60 * 60 * 12,
         }),
         getRecipeById: builder.query({
-            query: ({ id }) => `recipepage-data/${id}`,
-        }),
-        getUserData: builder.query({
-            query: ({ id }) => `profile/userId?id=${id}`,
-        }),
+            query: ({ id }) => `dish/page?id=${id}`,
+        })
     }),
 });
 
 export const {
     useGetDishesQuery,
-    useGetImageQuery,
     useLazyGetIngredientsQuery,
     useGetTagsQuery,
-    useGetUserDataQuery,
     useGetRecipeByIdQuery
 } = mainApi;

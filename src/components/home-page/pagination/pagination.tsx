@@ -4,11 +4,11 @@ import { useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../../__data__/slices/mainDishesSlice';
 import { IoIosArrowBack } from "react-icons/io";
 import { DishCard } from '../dish-card'
-import { RootObject } from "../../../__data__/model/common"
+import { DataPage } from "../../../__data__/model/common"
 
 
 interface PaginatedListProps {
-  data: RootObject;
+  data: DataPage;
 }
 
 export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
@@ -27,7 +27,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
   };
 
   return (
-    <Box>
+    <Box mt="3vw">
       <HStack>
         <IconButton
           bg="transparent"

@@ -13,3 +13,6 @@ export { default as step5 } from './images/step5.jpg';
 export { default as step6 } from './images/step6.jpg';
 export { default as step7 } from './images/step7.jpg';
 export { default as step8 } from './images/step8.jpg';
+
+export { default as dataEmpty } from './animations/data-empty.json';
+export { default as animLoading } from './animations/loading.json';

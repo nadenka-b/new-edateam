@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { mainApi } from './services/mainApi';
 import { authApi } from './services/authApi';
-import { apiWithAuth } from './services/ApiWithAuth'
+import { apiWithAuth } from './services/apiWithAuth'
 import dishesReducer from './slices/mainDishesSlice'
 import userDishesReducer from './slices/userDishesSlice'
 import authReducer from './slices/authSlice'

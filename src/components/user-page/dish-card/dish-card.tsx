@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Link, IconButton, Spacer } from '@chakra-ui/react';
 import { IoCloseCircleOutline } from "react-icons/io5";
-import { useRemoveFromFavouritesMutation } from '../../../__data__/services/ApiWithAuth';
+import { useRemoveFromFavouritesMutation } from '../../../__data__/services/apiWithAuth';
 
 interface DishCardProps {
     title: string;

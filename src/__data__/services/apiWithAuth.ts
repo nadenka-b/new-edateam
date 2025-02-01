@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getConfigValue } from '@brojs/cli';
+import { URLs } from '../urls';
 import { RootState } from '../store';
+import { DataPage, User } from '../model/common';
 
-const baseUrl = getConfigValue('new-edateam.api');
+const baseUrl = URLs.api.main;
 
 const baseQueryWithAuth = fetchBaseQuery({
     baseUrl: baseUrl,
@@ -19,13 +20,16 @@ export const apiWithAuth = createApi({
     reducerPath: 'apiWithAuth',
     baseQuery: baseQueryWithAuth,
     endpoints: (builder) => ({
-        getUserFavourites: builder.query({
-            query: ({ page, size }) => `profile/favourite?page=${page}&size=${size}`,
+        getUserData: builder.query<User, { id: string }>({
+            query: ({ id }) => `profile/userId?id=${id}`,
         }),
-        getUserRecipes: builder.query({
-            query: ({ page, size }) => `profile/my-dishes?page=${page}&size=${size}`,
+        getUserFavourites: builder.query<DataPage, { page: number }>({
+            query: ({ page }) => `profile/favourite?page=${page}&size=5`,
         }),
-        removeFromFavourites: builder.mutation({
+        getUserRecipes: builder.query<DataPage, { page: number }>({
+            query: ({ page }) => `profile/my-dishes?page=${page}&size=5`,
+        }),
+        removeFromFavourites: builder.mutation<void, { dishId: number }>({
             query: ({ dishId }) => ({
                 url: `dish/delete-favourite/${dishId}`,
                 method: 'DELETE',
@@ -35,6 +39,7 @@ export const apiWithAuth = createApi({
 });
 
 export const {
+    useGetUserDataQuery,
     useGetUserFavouritesQuery,
     useGetUserRecipesQuery,
     useRemoveFromFavouritesMutation

@@ -41,7 +41,7 @@ export const Filters = () => {
     const selectedTimeFromStore = useSelector((state: RootState) => state.dishes.cookTime);
     const includeIngredientsFromStore = useSelector((state: RootState) => state.dishes.ingredientTitles);
     const excludeIngredientsFromStore = useSelector((state: RootState) => state.dishes.excludeIngredientTitles);
-    const { data, error, isLoading } = useGetTagsQuery(null);
+    const { data, error, isLoading } = useGetTagsQuery();
 
     useEffect(() => {
         setSelectedTag(selectedTagFromStore);

@@ -5,8 +5,9 @@ export type User = {
     name: string
     surname: string
     phone: string
-    image: FileType
+    image: File
     role: string
+    dateRegistration: string
 }
 
 export type UserResponse = {
@@ -20,7 +21,7 @@ export type LoginRequest = {
     password: string
 }
 
-export type RootObject = {
+export type DataPage = {
     content: Content[];
     pageable: Pageable;
     last: boolean;
@@ -43,6 +44,7 @@ export type Content = {
     tags: FileType[];
     dishIngredients: DishIngredient[];
     events: Event[];
+    isActive: boolean;
 }
 
 export type Pageable = {
@@ -81,19 +83,24 @@ export type Ingredient = {
 
 export type File = {
     id: number;
-    fileName: string;
     filePath: string;
-    type: FileType;
-    dateUploaded: string;
 }
 
 export type Type = {
     id: number;
     value: string;
-    fileTypes: FileType[];
+    types: FileType[];
 }
 
 export type FileType = {
     id: number;
     value: string;
+}
+
+export type Filters = {
+    ingredientTitles: string[];
+    excludeIngredientTitles: string[];
+    tagIds: number;
+    cookTime: number;
+    title: string;
 }

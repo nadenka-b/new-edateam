@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
 // import { PiPencilSimpleBold } from "react-icons/pi";
-import { useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/ApiWithAuth';
-import { useGetUserDataQuery } from '../__data__/services/mainApi';
-import { Link, useParams } from "react-router-dom"
+import { useGetUserDataQuery, useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/apiWithAuth';
+import { Link, useParams, useNavigate } from "react-router-dom"
 
 import { URLs } from "../__data__/urls"
 
@@ -13,27 +12,32 @@ import { DishesBlock } from '../components/user-page/dishes-block';
 import { RootState } from '../__data__/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../__data__/slices/authSlice';
+import { Loading } from '../components/loading';
 
 
 const UserPage = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [savedRecipes, setSavedRecipes] = useState(true);
 
     const favouritesPage = useSelector((state: RootState) => state.userDishes.favouritesPage);
     const recipesPage = useSelector((state: RootState) => state.userDishes.recipesPage);
-    const { data: userData, error, isLoading } = useGetUserDataQuery({ id: id });
-    const { data: userFavouritesData } = useGetUserFavouritesQuery({ page: favouritesPage, size: 5 });
-    const { data: userRecipesData } = useGetUserRecipesQuery({ page: recipesPage, size: 5 });
+    const { data: userFavouritesData, error: errorFavouritesData, isLoading: isLoadingFavouritesData } = useGetUserFavouritesQuery({ page: favouritesPage });
+    const { data: userRecipesData, error: errorRecipesData, isLoading: isLoadingRecipesData } = useGetUserRecipesQuery({ page: recipesPage });
+    const { data: userData, error: errorUserData, isLoading: isLoadingUserData } = useGetUserDataQuery({ id: id });
+
+    let nameUser = "";
+    if (userData.name && userData.surname) {
+        nameUser = `${userData.name} ${userData.surname}`;
+    }
 
     const handleLogout = () => {
-        dispatch(logout()); // Вызываем экшен logout()
-        console.log("Выход выполнен, токены удалены!");
+        dispatch(logout());
+        navigate(URLs.baseUrl);
     };
-
-
-    if (isLoading) return <div>Загрузка...</div>;
-    if (error) return <div>Ошибка загрузки</div>;
+    if (errorFavouritesData || errorRecipesData || errorUserData) return <div>Ошибка загрузки</div>;
+    if (isLoadingFavouritesData || isLoadingRecipesData || isLoadingUserData) return <Loading />;
     return (
         <>
             <Flex pl="10vw" pr="10vw" mt="1.3vw" mb="2.6vw" >
@@ -67,18 +71,34 @@ const UserPage = () => {
                     pt="2vw"
                     pb="2vw"
                 >
-                    <Image src={userData.image.filePath ? userData.image.filePath : profilePhoto} w="18.75vw" />
+                    <Image
+                        src={userData.image.filePath ? `${URLs.api.images}${userData.image.filePath.slice(1)}` : profilePhoto}
+                        w="18.75vw"
+                        maxW="18.75vw"
+                        maxH="18.75vw"
+                        borderRadius="1vw"
+                        border="0.2vw solid"
+                        borderColor="brown.500"
+                    />
                     <Text
                         fontSize="1.6vw"
                         fontWeight="900"
                         textAlign="center"
                         color="brown.500"
                     >
-                        {userData.login}
+                        {nameUser ? nameUser : userData.login}
+                    </Text>
+                    <Text
+                        fontSize="1.2vw"
+                        fontWeight="600"
+                        textAlign="center"
+                        color="brown.500"
+                    >
+                        Дата регистрации: {userData.dateRegistration}
                     </Text>
                     <Link to={URLs.ui.add_recipe.url}>
                         <Button
-                            mt="5vw"
+                            mt="4vw"
                             w="20.8vw"
                             h="3.3vw"
                             bg="rgba(126, 73, 37, 0.1)"

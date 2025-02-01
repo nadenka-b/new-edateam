@@ -21,7 +21,7 @@ module.exports = {
   },
   config: {
     "new-edateam.api": "http://5.35.81.22/api/",
-    "new-edateam.images": "http://5.35.81.22",
+    "new-edateam.images": "http://5.35.81.22/",
     "new-edateam.auth": "http://5.35.81.22/auth/api",
   },
 };

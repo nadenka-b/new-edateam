@@ -22,6 +22,8 @@ export const URLs = {
         }
     },
     api: {
-        main: getConfigValue('new-edateam.api')
+        main: getConfigValue('new-edateam.api'),
+        auth: getConfigValue('new-edateam.auth'),
+        images: getConfigValue('new-edateam.images')
     },
 }

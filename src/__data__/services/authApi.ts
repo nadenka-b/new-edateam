@@ -1,11 +1,11 @@
 import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
-import { getConfigValue } from '@brojs/cli'
+import { URLs } from '../urls';
 import { RootState } from '../store'
 import { UserResponse, LoginRequest, User } from '../model/common'
 import { setCredentials } from '../slices/authSlice';
 import { jwtDecode } from 'jwt-decode';
 
-const baseUrl = getConfigValue('new-edateam.auth');
+const baseUrl = URLs.api.auth;
 
 const baseQuery = fetchBaseQuery({
     baseUrl: baseUrl,
