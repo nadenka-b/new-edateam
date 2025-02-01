@@ -35,7 +35,7 @@ export const mainApi = createApi({
             }
         }),
         getRecipeById: builder.query({
-            query: ({ id }) => `recipepage-data/${id}`,
+            query: ({ id }) => `dish/page?id=${id}`,
         }),
         getTags: builder.query({
             query: () => `tag`,
@@ -58,7 +58,7 @@ export const mainApi = createApi({
 export const {
     useLazyGetIngredientsQuery,
     useGetDishesQuery,
-    useGetRecipeByIdQuery,
+    useGetRecipeByIdQuery,/* useCreateDishMutation,*/
     useGetTagsQuery,
     useGetUserDataQuery,
     useGetUserFavouritesQuery,

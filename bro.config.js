@@ -20,6 +20,6 @@ module.exports = {
     },
   },
   config: {
-    "new-edateam.api": "/api",
+    "new-edateam.api": "http://5.35.81.22/api",
   },
 };

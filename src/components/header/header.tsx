@@ -51,8 +51,11 @@ export const Header = () => {
                     </Text>
                 </Link>
                 {/* <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
+                </Link>
+                {/* <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
                     <RegistrationForm />
                 </Box> */}
+                {/* </Box> */} 
             </HStack>
             {
                 !isHomePage && (
