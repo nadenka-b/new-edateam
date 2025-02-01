@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Link, IconButton, Spacer } from '@chakra-ui/react';
 import { IoCloseCircleOutline } from "react-icons/io5";
-import { useRemoveFromFavouritesMutation } from '../../../__data__/services/mainApi';
+import { useRemoveFromFavouritesMutation } from '../../../__data__/services/ApiWithAuth';
 
 interface DishCardProps {
     title: string;
@@ -36,7 +36,7 @@ export const DishCard: React.FC<DishCardProps> = ({ title, idDish }) => {
                 onClick={() => handleRemoveFavourite(idDish)}
                 color="brown.500"
                 bg="transparent"
-                aria-label='Delete'
+                aria-label='Delete favourite'
                 minW="2.5vw"
                 h="2.5vw"
                 _hover={{ bg: 'transparent', opacity: 0.7 }}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Box,
     Button,
@@ -14,12 +14,59 @@ import {
     Input,
     Stack,
     useDisclosure,
-    useBoolean
+    useBoolean,
+    useToast
 } from '@chakra-ui/react';
+import { useLoginMutation } from '../../../__data__/services/authApi';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../../../__data__/slices/authSlice';
+
+import { PasswordInput } from "./password-input"
+import { LoginRequest, User } from "../../../__data__/model/common";
+import { jwtDecode } from 'jwt-decode';
 
 export const RegistrationForm = () => {
+    const dispatch = useDispatch();
+    const toast = useToast()
+
+    const [formState, setFormState] = useState<LoginRequest>({
+        loginOrEmail: '',
+        password: '',
+    })
+    const [login, { isLoading }] = useLoginMutation()
+
+    const handleChange = ({
+        target: { name, value },
+    }: React.ChangeEvent<HTMLInputElement>) =>
+        setFormState((prev) => ({ ...prev, [name]: value }))
+
+    const onLogin = async () => {
+        try {
+            const data = await login(formState).unwrap()
+            const user = jwtDecode<User>(data.accessToken)
+            dispatch(setCredentials({ user: user, accessToken: data.accessToken, refreshToken: data.refreshToken }))
+            toast({
+                title: 'Успешно!',
+                description: 'Вы успешно вошли в систему',
+                status: 'success',
+                duration: 2000,
+                isClosable: true,
+            })
+        } catch (e) {
+            toast({
+                title: 'Ошибка!',
+                description: 'Что-то пошло не так',
+                status: 'error',
+                duration: 2000,
+                isClosable: true,
+            })
+            console.log(e)
+        }
+    }
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [flag, setFlag] = useBoolean()
+
     return (
         <Box>
             <Button
@@ -67,30 +114,23 @@ export const RegistrationForm = () => {
 
                                 {/* Поле для email */}
                                 <FormControl id="email" isRequired>
-                                    <FormLabel fontSize="1.2vw">Email</FormLabel>
+                                    <FormLabel fontSize="1.2vw">Логин/email</FormLabel>
                                     <Input
+                                        onChange={handleChange}
+                                        name="loginOrEmail"
                                         borderColor="brown.500"
                                         _hover={{ opacity: 0.85, borderColor: "orange.100" }}
                                         bg="beige.200"
                                         focusBorderColor="orange.100"
                                         fontSize="1.2vw"
                                         h="3vw"
-                                        type=" email"
                                     />
                                 </FormControl>
 
                                 {/* Поле для пароля */}
                                 <FormControl id="password" isRequired>
                                     <FormLabel fontSize="1.2vw">Пароль</FormLabel>
-                                    <Input
-                                        borderColor="brown.500"
-                                        _hover={{ opacity: 0.85, borderColor: "orange.100" }}
-                                        bg="beige.200"
-                                        focusBorderColor="orange.100"
-                                        fontSize="1.2vw"
-                                        h="3vw"
-                                        type="password"
-                                    />
+                                    <PasswordInput onChange={handleChange} name="password" />
                                 </FormControl>
                             </Stack>
                         </form>
@@ -98,6 +138,7 @@ export const RegistrationForm = () => {
 
                     <ModalFooter>
                         <Button
+                            onClick={onLogin}
                             w={flag ? "10vw" : "6vw"}
                             h="3vw"
                             bg="orange.100"
@@ -105,6 +146,7 @@ export const RegistrationForm = () => {
                             fontSize="1.2vw"
                             mr="0.5vw"
                             _hover={{ opacity: 0.7, bg: "orange.100" }}
+                            isLoading={isLoading}
                         >
                             {flag ? 'Регистрация' : 'Вход'}
                         </Button>

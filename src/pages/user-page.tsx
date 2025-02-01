@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
 // import { PiPencilSimpleBold } from "react-icons/pi";
-import { useGetUserDataQuery, useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/mainApi';
-import { Link } from "react-router-dom"
+import { useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/ApiWithAuth';
+import { useGetUserDataQuery } from '../__data__/services/mainApi';
+import { Link, useParams } from "react-router-dom"
 
 import { URLs } from "../__data__/urls"
 
@@ -10,17 +11,26 @@ import { profilePhoto } from '../assets';
 import { Bookmark } from '../components/user-page/bookmark';
 import { DishesBlock } from '../components/user-page/dishes-block';
 import { RootState } from '../__data__/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../__data__/slices/authSlice';
 
 
 const UserPage = () => {
+    const { id } = useParams();
+    const dispatch = useDispatch();
     const [savedRecipes, setSavedRecipes] = useState(true);
 
     const favouritesPage = useSelector((state: RootState) => state.userDishes.favouritesPage);
     const recipesPage = useSelector((state: RootState) => state.userDishes.recipesPage);
-    const { data: userData, error, isLoading } = useGetUserDataQuery({ id: 1 });
+    const { data: userData, error, isLoading } = useGetUserDataQuery({ id: id });
     const { data: userFavouritesData } = useGetUserFavouritesQuery({ page: favouritesPage, size: 5 });
     const { data: userRecipesData } = useGetUserRecipesQuery({ page: recipesPage, size: 5 });
+
+    const handleLogout = () => {
+        dispatch(logout()); // Вызываем экшен logout()
+        console.log("Выход выполнен, токены удалены!");
+    };
+
 
     if (isLoading) return <div>Загрузка...</div>;
     if (error) return <div>Ошибка загрузки</div>;
@@ -66,14 +76,6 @@ const UserPage = () => {
                     >
                         {userData.login}
                     </Text>
-                    {/* <Text
-                        fontSize="1vw"
-                        fontWeight="600"
-                        textAlign="center"
-                        color="brown.500"
-                    >
-                        Дата регистрации: {userData.id}
-                    </Text> */}
                     <Link to={URLs.ui.add_recipe.url}>
                         <Button
                             mt="5vw"
@@ -92,6 +94,14 @@ const UserPage = () => {
                             Добавить рецепт
                         </Button>
                     </Link>
+                    <Button
+                        onClick={handleLogout}
+                        variant="link"
+                        color="brown.500"
+                        fontSize="1.3vw"
+                    >
+                        Выйти из аккаунта
+                    </Button>
                 </VStack>
             </Flex >
         </>

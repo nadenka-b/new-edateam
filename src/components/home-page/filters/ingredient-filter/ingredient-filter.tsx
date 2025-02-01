@@ -8,10 +8,13 @@ type IngredientFilterProps = {
     onIngredientSelect: (ingredient: string) => void;
 };
 
+type Ingredient = {
+    title: string;
+}
 
 export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder, title, onIngredientSelect }) => {
     const [inputValue, setInputValue] = useState("");
-    const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
+    const [filteredOptions, setFilteredOptions] = useState<Ingredient[]>([]);
     const [getIngredients, { data }] = useLazyGetIngredientsQuery();
 
     useEffect(() => {
@@ -25,7 +28,7 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
 
     useEffect(() => {
         if (data) {
-            setFilteredOptions(data);
+            setFilteredOptions(data.content);
         }
     }, [data]);
 
@@ -76,9 +79,9 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
                             key={index}
                             p="2"
                             cursor="pointer"
-                            onClick={() => handleOptionSelect(option)}
+                            onClick={() => handleOptionSelect(option.title)}
                         >
-                            <Text>{option}</Text>
+                            <Text>{option.title}</Text>
                         </ListItem>
                     ))}
                 </List>

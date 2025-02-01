@@ -1,3 +1,25 @@
+export type User = {
+    id: number;
+    login: string;
+    email: string
+    name: string
+    surname: string
+    phone: string
+    image: FileType
+    role: string
+}
+
+export type UserResponse = {
+    user: User
+    accessToken: string
+    refreshToken: string
+}
+
+export type LoginRequest = {
+    loginOrEmail: string
+    password: string
+}
+
 export type RootObject = {
     content: Content[];
     pageable: Pageable;

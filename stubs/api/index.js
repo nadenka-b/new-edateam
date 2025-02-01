@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get(`/dishes`, (req, res) => {
+router.get(`/dish/dishes`, (req, res) => {
     const { page, size } = req.query;
     res.send(require(`../json/homepage-data/dishes/${page}&${size}.json`))
 })

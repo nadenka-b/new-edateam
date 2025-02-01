@@ -5,6 +5,7 @@ import { AiOutlineHourglass } from "react-icons/ai";
 import { Link } from "react-router-dom"
 import { URLs } from "../../../__data__/urls"
 import { Tags } from "./tags"
+import { useGetImageQuery } from "../../../__data__/services/mainApi"
 
 interface DishCardProps {
   recipeId: number,
@@ -20,6 +21,10 @@ interface FileType {
 }
 
 export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags, title }) => {
+  const { data, error, isLoading } = useGetImageQuery({ path: image.slice(1) }, {
+    skip: !image,
+  });
+  console.log(typeof (data));
   function formatTime(minutes) {
     if (minutes < 60) {
       return `${minutes} мин`;
@@ -32,6 +37,8 @@ export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags,
       ? `${hours} ч ${remainingMinutes} мин`
       : `${hours} ч`;
   }
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
   return (
     <>
       <Card p="1vw" w="24vw" h="24vw" overflow="hidden" bg="beige.300" boxShadow="lg" borderRadius="0.26vw">
@@ -42,7 +49,7 @@ export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags,
                 h="16.5vw"
                 w="22vw"
                 boxShadow="sm"
-                src={image}
+                src={URL.createObjectURL(data)}
                 alt="Картинка блюда" borderRadius="0.26vw"
               />
             </Link>

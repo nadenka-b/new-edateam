@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getConfigValue } from '@brojs/cli'
+import { FileType } from '../model/common';
 
-const baseUrl = getConfigValue('new-edateam.api')
+const baseUrl = getConfigValue('new-edateam.api');
+const imagesUrl = getConfigValue('new-edateam.images');
 
 const buildQueryParams = (params = {}) => {
     const searchParams = new URLSearchParams();
@@ -24,50 +26,42 @@ export const mainApi = createApi({
         baseUrl: baseUrl,
     }),
     endpoints: (builder) => ({
-        getIngredients: builder.query({
-            query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
-        }),
         getDishes: builder.query({
             query: ({ page, size, filters }) => {
                 const queryParams = buildQueryParams(filters);
-                const query = `dishes?page=${page}&size=${size}`;
+                const query = `dish/dishes?page=${page}&size=${size}`;
                 return queryParams ? `${query}&${queryParams}` : query;
             }
+        }),
+        getImage: builder.query({
+            query: ({ path }) => ({
+                url: `${imagesUrl}${path}`,
+                method: 'GET',
+                responseType: 'blob',
+            }),
+            keepUnusedDataFor: 60 * 10,
+        }),
+        getIngredients: builder.query({
+            query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
+        }),
+        getTags: builder.query<FileType[], void>({
+            query: () => `tag`,
+            keepUnusedDataFor: 60 * 60 * 12,
         }),
         getRecipeById: builder.query({
             query: ({ id }) => `recipepage-data/${id}`,
         }),
-        getTags: builder.query({
-            query: () => `tag`,
-            keepUnusedDataFor: 60 * 60 * 12,
-        }),
-
-
         getUserData: builder.query({
             query: ({ id }) => `profile/userId?id=${id}`,
-        }),
-        getUserFavourites: builder.query({
-            query: ({ page, size }) => `profile/favourite?page=${page}&size=${size}`,
-        }),
-        getUserRecipes: builder.query({
-            query: ({ page, size }) => `profile/my-dishes?page=${page}&size=${size}`,
-        }),
-        removeFromFavourites: builder.mutation({
-            query: ({ dishId }) => ({
-                url: `dish/delete-favourite/${dishId}`,
-                method: 'DELETE',
-            }),
         }),
     }),
 });
 
 export const {
-    useLazyGetIngredientsQuery,
     useGetDishesQuery,
-    useGetRecipeByIdQuery,
+    useGetImageQuery,
+    useLazyGetIngredientsQuery,
     useGetTagsQuery,
     useGetUserDataQuery,
-    useGetUserFavouritesQuery,
-    useGetUserRecipesQuery,
-    useRemoveFromFavouritesMutation
+    useGetRecipeByIdQuery
 } = mainApi;
