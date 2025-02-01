@@ -4,7 +4,7 @@ import { plate } from "./index"
 import { FaArrowRight } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../__data__/store";
-import { setTitle, setCurrentPage } from "../../../__data__/slices/dishesSlice";
+import { setTitle, setCurrentPage } from "../../../__data__/slices/mainDishesSlice";
 
 interface GreetingsProps {
     onClick: () => void;

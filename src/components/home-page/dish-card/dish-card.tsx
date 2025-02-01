@@ -42,7 +42,7 @@ export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags,
                 h="16.5vw"
                 w="22vw"
                 boxShadow="sm"
-                src={image}
+                src={`${URLs.api.images}${image.slice(1)}`}
                 alt="Картинка блюда" borderRadius="0.26vw"
               />
             </Link>

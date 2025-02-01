@@ -1,49 +1,309 @@
 {
     "content": [
         {
-            "id": 5,
-            "title": "NEW TITLE"
+            "id": 3,
+            "title": "Моё блюдо",
+            "timeCook": 30,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 3,
+                        "value": "image/jpg"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/png"
+                    },
+                    {
+                        "id": 4,
+                        "value": "image/svg"
+                    },
+                    {
+                        "id": 1,
+                        "value": "image/jpeg"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "/home/edateam-proj-api/Images/dish-images/c3976781-091a-48df-880e-a6d0c7f6bd1c_soup.png",
+                "id": 5
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "value": "Ужин"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 3,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "курица",
+                        "measure": "гр."
+                    },
+                    "quantity": 8
+                }
+            ],
+            "events": [
+                {
+                    "id": 56,
+                    "title": "Ev2",
+                    "startDate": "2025-01-31",
+                    "endDate": "2025-01-31"
+                }
+            ]
         },
         {
-            "id": 6,
-            "title": "Проверяю что всё нормик"
+            "id": 3,
+            "title": "Моё блюдо",
+            "timeCook": 30,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 3,
+                        "value": "image/jpg"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/png"
+                    },
+                    {
+                        "id": 4,
+                        "value": "image/svg"
+                    },
+                    {
+                        "id": 1,
+                        "value": "image/jpeg"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "/home/edateam-proj-api/Images/dish-images/c3976781-091a-48df-880e-a6d0c7f6bd1c_soup.png",
+                "id": 5
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "value": "Ужин"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 3,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "курица",
+                        "measure": "гр."
+                    },
+                    "quantity": 8
+                }
+            ],
+            "events": [
+                {
+                    "id": 56,
+                    "title": "Ev2",
+                    "startDate": "2025-01-31",
+                    "endDate": "2025-01-31"
+                }
+            ]
         },
         {
-            "id": 7,
-            "title": "Нормик"
+            "id": 3,
+            "title": "Моё блюдо",
+            "timeCook": 30,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 3,
+                        "value": "image/jpg"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/png"
+                    },
+                    {
+                        "id": 4,
+                        "value": "image/svg"
+                    },
+                    {
+                        "id": 1,
+                        "value": "image/jpeg"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "/home/edateam-proj-api/Images/dish-images/c3976781-091a-48df-880e-a6d0c7f6bd1c_soup.png",
+                "id": 5
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "value": "Ужин"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 3,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "курица",
+                        "measure": "гр."
+                    },
+                    "quantity": 8
+                }
+            ],
+            "events": [
+                {
+                    "id": 56,
+                    "title": "Ev2",
+                    "startDate": "2025-01-31",
+                    "endDate": "2025-01-31"
+                }
+            ]
         },
         {
-            "id": 1,
-            "title": "Супер"
+            "id": 3,
+            "title": "Моё блюдо",
+            "timeCook": 30,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 3,
+                        "value": "image/jpg"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/png"
+                    },
+                    {
+                        "id": 4,
+                        "value": "image/svg"
+                    },
+                    {
+                        "id": 1,
+                        "value": "image/jpeg"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "/home/edateam-proj-api/Images/dish-images/c3976781-091a-48df-880e-a6d0c7f6bd1c_soup.png",
+                "id": 5
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "value": "Ужин"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 3,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "курица",
+                        "measure": "гр."
+                    },
+                    "quantity": 8
+                }
+            ],
+            "events": [
+                {
+                    "id": 56,
+                    "title": "Ev2",
+                    "startDate": "2025-01-31",
+                    "endDate": "2025-01-31"
+                }
+            ]
         },
         {
-            "id": 12,
-            "title": "Класс"
+            "id": 3,
+            "title": "Моё блюдо",
+            "timeCook": 30,
+            "type": {
+                "id": 1,
+                "value": "dish",
+                "types": [
+                    {
+                        "id": 3,
+                        "value": "image/jpg"
+                    },
+                    {
+                        "id": 2,
+                        "value": "image/png"
+                    },
+                    {
+                        "id": 4,
+                        "value": "image/svg"
+                    },
+                    {
+                        "id": 1,
+                        "value": "image/jpeg"
+                    }
+                ]
+            },
+            "file": {
+                "filePath": "/home/edateam-proj-api/Images/dish-images/c3976781-091a-48df-880e-a6d0c7f6bd1c_soup.png",
+                "id": 5
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "value": "Ужин"
+                }
+            ],
+            "dishIngredients": [
+                {
+                    "id": 3,
+                    "ingredient": {
+                        "id": 1,
+                        "title": "курица",
+                        "measure": "гр."
+                    },
+                    "quantity": 8
+                }
+            ],
+            "events": [
+                {
+                    "id": 56,
+                    "title": "Ev2",
+                    "startDate": "2025-01-31",
+                    "endDate": "2025-01-31"
+                }
+            ]
         }
     ],
     "pageable": {
         "pageNumber": 0,
         "pageSize": 10,
         "sort": {
-            "sorted": false,
             "empty": true,
+            "sorted": false,
             "unsorted": true
         },
         "offset": 0,
-        "unpaged": false,
-        "paged": true
+        "paged": true,
+        "unpaged": false
     },
-    "last": true,
+    "last": false,
     "totalPages": 1,
-    "totalElements": 5,
-    "first": true,
-    "size": 5,
+    "totalElements": 1,
+    "size": 10,
     "number": 0,
     "sort": {
-        "sorted": false,
         "empty": true,
+        "sorted": false,
         "unsorted": true
     },
-    "numberOfElements": 5,
+    "first": true,
+    "numberOfElements": 1,
     "empty": false
 }

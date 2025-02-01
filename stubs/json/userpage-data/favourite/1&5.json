@@ -2,7 +2,7 @@
     "content": [
         {
             "id": 3,
-            "title": "title",
+            "title": "Супер",
             "timeCook": 30,
             "type": {
                 "id": 1,
@@ -69,17 +69,17 @@
         "paged": true,
         "unpaged": false
     },
-    "last": false,
+    "last": true,
     "totalPages": 1,
     "totalElements": 1,
     "size": 10,
-    "number": 0,
+    "number": 1,
     "sort": {
         "empty": true,
         "sorted": false,
         "unsorted": true
     },
-    "first": true,
+    "first": false,
     "numberOfElements": 1,
     "empty": false
 }

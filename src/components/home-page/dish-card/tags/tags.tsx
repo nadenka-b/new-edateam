@@ -9,7 +9,7 @@ import {
     setExcludeIngredientsTitles,
     setTag, setCookTime,
     setTitle
-} from "../../../../__data__/slices/dishesSlice";
+} from "../../../../__data__/slices/mainDishesSlice";
 
 
 interface TagsProps {

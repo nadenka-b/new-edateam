@@ -1,69 +1,50 @@
 import React from 'react';
-import { HStack, Box, IconButton, VStack } from '@chakra-ui/react';
+import { HStack, IconButton, VStack } from '@chakra-ui/react';
 import { DishCard } from '../dish-card'
 import { IoIosArrowBack } from "react-icons/io";
+import { useDispatch } from 'react-redux';
+import { setFavouritesPage, setRecipesPage } from '../../../__data__/slices/userDishesSlice';
+import { DataPage } from "../../../__data__/model/common"
+import { AppDispatch } from '../../../__data__/store';
 
 interface PaginatedListProps {
-  data: RootObject
+  data: DataPage
+  flagSavedRecipes: boolean
 }
 
-interface RootObject {
-  content: Content[];
-  pageable: Pageable;
-  last: boolean;
-  totalPages: number;
-  totalElements: number;
-  first: boolean;
-  size: number;
-  number: number;
-  sort: Sort;
-  numberOfElements: number;
-  empty: boolean;
-}
+export const PaginatedList: React.FC<PaginatedListProps> = ({ data, flagSavedRecipes }) => {
+  const dispatch: AppDispatch = useDispatch();
 
-interface Pageable {
-  pageNumber: number;
-  pageSize: number;
-  sort: Sort;
-  offset: number;
-  unpaged: boolean;
-  paged: boolean;
-}
+  const goToNextPage = () => {
+    if (!data.last) {
+      if (flagSavedRecipes) {
+        dispatch(setFavouritesPage(data.number + 1))
+      }
+      else {
+        dispatch(setRecipesPage(data.number + 1));
+      }
+    };
+  }
 
-interface Sort {
-  sorted: boolean;
-  empty: boolean;
-  unsorted: boolean;
-}
-
-interface Content {
-  id: number;
-  title: string;
-}
-
-
-export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
-  // Обработчики переключения страниц
-  // const handleNextPage = () => {
-  //   if (currentPage < totalPages) {
-  //     setCurrentPage((prev) => prev + 1);
-  //   }
-  // };
-
-  // const handlePrevPage = () => {
-  //   if (currentPage > 1) {
-  //     setCurrentPage((prev) => prev - 1);
-  //   }
-  // };
+  const goToPreviousPage = () => {
+    if (!data.first) {
+      if (flagSavedRecipes) {
+        dispatch(setFavouritesPage(data.number - 1))
+      }
+      else {
+        dispatch(setRecipesPage(data.number - 1));
+      }
+    };
+  }
 
   return (
-    <Box>
+    <VStack position="relative" h="100%">
       <VStack gap="1.5vw" mb="1.5vw">
         {data.content.map((recipe, index) => (
-          <DishCard key={index} title={recipe.title} />
+          <DishCard key={index} title={recipe.title} idDish={recipe.id} />
         ))}
       </VStack>
-      <HStack justifyContent="center">
+      <HStack justifyContent="center" position="absolute" bottom="2vw">
         <IconButton
           bg="transparent"
           color="orange.500"
@@ -72,7 +53,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
           h="3w"
           icon={<IoIosArrowBack fontSize="3vw" />}
           aria-label='Arrow'
-          // onClick={handlePrevPage}
+          onClick={goToPreviousPage}
           isDisabled={data.first}>
         </IconButton>
         <IconButton
@@ -83,10 +64,10 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
           h="3w"
           icon={<IoIosArrowBack style={{ transform: "rotate(180deg)", display: "inline-block", fontSize: "3vw" }} />}
           aria-label='Arrow'
-          // onClick={handleNextPage}
+          onClick={goToNextPage}
           isDisabled={data.last}>
         </IconButton>
       </HStack>
-    </Box>
+    </VStack>
   );
 };
