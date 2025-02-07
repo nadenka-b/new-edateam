@@ -2,6 +2,8 @@ import React from 'react';
 import { Flex, Link, IconButton, Spacer } from '@chakra-ui/react';
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useRemoveFromFavouritesMutation } from '../../../__data__/services/apiWithAuth';
+import { Link as RouteLink } from 'react-router-dom';
+import { URLs } from '../../../__data__/urls';
 
 interface DishCardProps {
     title: string;
@@ -28,9 +30,11 @@ export const DishCard: React.FC<DishCardProps> = ({ title, idDish }) => {
             pl="2vw"
             pr="1vw"
         >
-            <Link href="/" fontSize="1.2vw" color="brown.500" textDecoration="underline" fontWeight="700">
-                {title}
-            </Link>
+            <RouteLink to={URLs.ui.recipe.getUrl(idDish)}>
+                <Link href="/" fontSize="1.2vw" color="brown.500" textDecoration="underline" fontWeight="700">
+                    {title}
+                </Link>
+            </RouteLink>
             <Spacer />
             <IconButton
                 onClick={() => handleRemoveFavourite(idDish)}
