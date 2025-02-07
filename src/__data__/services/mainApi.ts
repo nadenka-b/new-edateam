@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { URLs } from '../urls';
-import { DataPage, FileType, Filters } from '../model/common';
+import { AllIngredients, DataPage, FileType, Filters } from '../model/common';
 
 const baseUrl = URLs.api.main;
 
@@ -32,8 +32,11 @@ export const mainApi = createApi({
                 return queryParams ? `${query}&${queryParams}` : query;
             }
         }),
-        getIngredients: builder.query<DataPage, { value: string }>({
+        getUniqueIngredients: builder.query<DataPage, { value: string }>({
             query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
+        }),
+        getIngredients: builder.query<AllIngredients, { title: string }>({
+            query: ({ title }) => `/ingredient/filtered-by?title=${title}`,
         }),
         getTags: builder.query<FileType[], void>({
             query: () => `tag`,
@@ -41,13 +44,6 @@ export const mainApi = createApi({
         }),
         getRecipeById: builder.query({
             query: ({ id }) => `dish/page?id=${id}`,
-        }),
-        createDish: builder.mutation({
-            query: (formData) => ({
-                url: '/user/create-dish',
-                method: 'POST',
-                body: formData,
-            }),
         }),
         registration: builder.mutation({
             query: (formData: FormData) => ({
@@ -61,10 +57,10 @@ export const mainApi = createApi({
 });
 
 export const {
+    useLazyGetUniqueIngredientsQuery,
     useLazyGetIngredientsQuery,
     useGetDishesQuery,
     useGetRecipeByIdQuery,
-    useCreateDishMutation,
     useGetTagsQuery,
     useRegistrationMutation
 } = mainApi;

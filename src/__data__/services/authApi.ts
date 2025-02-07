@@ -35,16 +35,3 @@ export const authApi = createApi({
 });
 
 export const { useLoginMutation, useAccessTokenMutation } = authApi;
-
-
-// {
-//     token: "";
-// }
-
-
-// придет с бэка на авторизацию
-// {
-//     "type": "string",
-//     "accessToken": "string",
-//     "refreshToken": "string"
-//   }

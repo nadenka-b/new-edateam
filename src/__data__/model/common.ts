@@ -5,7 +5,7 @@ export type User = {
     name: string
     surname: string
     phone: string
-    image: File
+    image: FileDesc
     role: string
     dateRegistration: string
 }
@@ -58,7 +58,7 @@ export type Content = {
     title: string;
     timeCook: number;
     type: Type;
-    file: File;
+    file: FileDesc;
     tags: FileType[];
     dishIngredients: DishIngredient[];
     events: Event[];
@@ -99,7 +99,7 @@ export type Ingredient = {
     measure: string;
 }
 
-export type File = {
+export type FileDesc = {
     id: number;
     filePath: string;
 }
@@ -121,4 +121,55 @@ export type Filters = {
     tagIds: number;
     cookTime: number;
     title: string;
+}
+
+export type AllIngredients = {
+    content: Ingredient[];
+    pageable: Pageable;
+    last: boolean;
+    totalPages: number;
+    totalElements: number;
+    size: number;
+    number: number;
+    sort: Sort;
+    first: boolean;
+    numberOfElements: number;
+    empty: boolean;
+}
+
+export type ingredientsIds = {
+    id: number;
+    amount: number;
+}
+
+export type stepCooking = {
+    number: number;
+    value: string;
+    image: File;
+}
+
+export type FormCreateRecipe = {
+    title: string;
+    linkVideo: string;
+    hours: string;
+    minutes: string;
+    dishPhoto: File | null;
+    tags: FileType[];
+    ingredientsIds: {
+        id: string;
+        title: string;
+        amount: string;
+    }[];
+    stepsCooking: stepCooking[];
+}
+
+
+export type FormCreateRecipeRequest = {
+    title: string;
+    linkVideo: string;
+    timeCooking: string;
+    image: string;
+    tags: FileType[];
+    ingredientsIds: ingredientsIds[];
+    stepsCooking: stepCooking[];
 }

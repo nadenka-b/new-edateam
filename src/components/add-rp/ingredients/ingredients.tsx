@@ -1,29 +1,48 @@
-import React from "react";
-import { useForm, Controller, useFieldArray } from "react-hook-form";
+import React, { useEffect } from "react";
+import { useFormContext, useFieldArray } from "react-hook-form";
 import { Image, Text, VStack, HStack, Box, Input, Button, List, ListItem, IconButton } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Plus } from "./index";
+import { useLazyGetIngredientsQuery } from "../../../__data__/services/mainApi";
+
+interface FormValues {
+    ingredientsIds: {
+        id: string;
+        name: string;
+        amount: string;
+    }[];
+    newIngredientName: string;
+    newIngredientAmount: string;
+}
+
 
 export const Ingredients = () => {
-    const { control, handleSubmit, register } = useForm({
-        defaultValues: { ingredients: [] }, // Инициализируем список ингредиентов
-    });
+    const { control, register, setValue, watch } = useFormContext<FormValues>();
 
-    const { fields, append, remove } = useFieldArray({
+    const { fields, append, remove } = useFieldArray<FormValues>({
         control,
-        name: "ingredients",
+        name: "ingredientsIds",
     });
 
-    const onSubmit = (data) => console.log("Отправлено:", data);
+    const [getIngredients, { data }] = useLazyGetIngredientsQuery();
+    const newIngredientName = watch("newIngredientName");
+
+    useEffect(() => {
+        const newIngredientName = watch("newIngredientName") || "";
+        if (!newIngredientName.trim()) return;
+        const debounceTimeout = setTimeout(() => {
+            getIngredients({ title: newIngredientName });
+        }, 500);
+        return () => clearTimeout(debounceTimeout);
+    }, [newIngredientName, getIngredients]);
+
+    const suggestions = data?.content || [];
 
     return (
-        <VStack as="form" onSubmit={handleSubmit(onSubmit)} spacing={4} align="center" w="100%">
-            {/* Заголовок */}
+        <VStack spacing={4} align="center" w="100%">
             <Text fontFamily="var(--main-font)" fontSize="1.6vw" fontWeight="bold" color="brown.500" fontStyle="italic">
                 Ингредиенты
             </Text>
-
-            {/* Поле ввода ингредиента */}
             <HStack
                 w="34.3vw"
                 align="center"
@@ -42,7 +61,7 @@ export const Ingredients = () => {
                     color="brown.500"
                     h="2vw"
                     flex="3"
-                    {...register("newIngredientName")} // Используем react-hook-form
+                    {...register("newIngredientName")}
                 />
 
                 <Box w="2px" h="130%" bg="brown.500" />
@@ -56,18 +75,38 @@ export const Ingredients = () => {
                     fontSize="1.25vw"
                     color="brown.500"
                     flex="1"
-                    {...register("newIngredientQuantity")} // Используем react-hook-form
+                    {...register("newIngredientAmount")}
                 />
             </HStack>
+
+            {suggestions.length > 0 && (
+                <Box border="1px solid brown.500" borderRadius={10} bg="white" w="34.3vw" maxH="200px" overflowY="auto">
+                    {suggestions.map((item) => (
+                        <Box
+                            key={item.id}
+                            p={2}
+                            _hover={{ bg: "orange.100", cursor: "pointer" }}
+                            onClick={() => {
+                                setValue("newIngredientName", item.title);
+                            }}
+                        >
+                            {item.title}, {item.measure}
+                        </Box>
+                    ))}
+                </Box>
+            )}
+
 
             {/* Кнопка для добавления ингредиента */}
             <HStack spacing={2} align="center">
                 <Button
                     onClick={() => {
-                        const name = document.querySelector('input[name="newIngredientName"]').value;
-                        const quantity = document.querySelector('input[name="newIngredientQuantity"]').value;
-                        if (name.trim() && quantity.trim()) {
-                            append({ name, quantity }); // Добавляем ингредиент в массив
+                        const selectedIngredient = suggestions.find((item) => item.title === watch("newIngredientName"));
+                        const amount = watch("newIngredientAmount");
+                        if (selectedIngredient && amount.trim()) {
+                            append({ id: String(selectedIngredient.id), name: selectedIngredient.title, amount });
+                            setValue("newIngredientName", "");
+                            setValue("newIngredientAmount", "");
                         }
                     }}
                     variant="unstyled"
@@ -97,7 +136,7 @@ export const Ingredients = () => {
                         fontWeight="bold"
                         color="brown.500"
                     >
-                        {ingredient.name} - {ingredient.quantity}
+                        {ingredient.name} - {ingredient.amount}
                         <IconButton
                             icon={<AiOutlineClose />}
                             onClick={() => remove(index)} // Удаляем ингредиент

@@ -1,50 +1,53 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Box, VStack, Button } from "@chakra-ui/react";
-import { useCreateDishMutation } from '../__data__/services/mainApi';
+import { useCreateDishMutation } from '../__data__/services/apiWithAuth';
 
 import { TimeInput } from '../components/add-rp/time-input';
 import { DishPhoto } from '../components/add-rp/dish-photo';
 import { SelectedCategories } from '../components/add-rp/selected-categories';
 import { Ingredients } from '../components/add-rp/ingredients';
 import { StepAdding } from '../components/add-rp/step-adding';
+import { FormCreateRecipe } from "../__data__/model/common"
 
 const AddRecipePage = () => {
-    const methods = useForm({
+    const methods = useForm<FormCreateRecipe>({
         defaultValues: {
             title: '',
             linkVideo: '',
-            time: '',
-            photo: null,
-            categories: [],
-            ingredients: [{ id: '', amount: '' }],
-            steps: [{ description: '', image: null }]
+            hours: '',
+            minutes: '',
+            dishPhoto: null,
+            tags: [],
+            ingredientsIds: [],
+            stepsCooking: []
         }
     });
     const [createDish, { isLoading, isError }] = useCreateDishMutation();
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: FormCreateRecipe) => {
         const formData = new FormData();
         formData.append('title', data.title);
-        formData.append('linkVideo', data.linkVideo);
-        formData.append('timeCooking', data.time);
-        if (data.photo) formData.append('image', data.photo[0]);
+        if (data.linkVideo) formData.append('linkVideo', data.linkVideo);
+        const totalMinutes = (Number(data.hours) || 0) * 60 + (Number(data.minutes) || 0);
+        formData.append('timeCooking', String(totalMinutes));
+        if (data.dishPhoto) formData.append('image', data.dishPhoto[0]);
 
         // Добавляем шаги
-        data.steps.forEach((step, index) => {
+        data.stepsCooking.forEach((step, index) => {
             formData.append(`stepsCooking[${index}].number`, `${index + 1}`);
-            formData.append(`stepsCooking[${index}].value`, step.description);
-            if (step.image) formData.append(`stepsCooking[${index}].image`, step.image[0]);
+            formData.append(`stepsCooking[${index}].value`, step.value);
+            if (step.image instanceof File) formData.append(`stepsCooking[${index}].image`, step.image);
         });
 
         // Добавляем категории
-        data.categories.forEach((category, index) => {
-            formData.append(`tags[${index}].id`, `${category.id}`);
-            formData.append(`tags[${index}].value`, category.name);
+        data.tags.forEach((tag, index) => {
+            formData.append(`tags[${index}].id`, `${tag.id}`);
+            formData.append(`tags[${index}].value`, tag.value);
         });
 
         // Добавляем ингредиенты
-        data.ingredients.forEach((ingredient, index) => {
+        data.ingredientsIds.forEach((ingredient, index) => {
             formData.append(`ingredientsIds[${index}].id`, `${ingredient.id}`);
             formData.append(`ingredientsIds[${index}].amount`, `${ingredient.amount}`);
         });

@@ -85,6 +85,13 @@ export const apiWithAuth = createApi({
                 method: 'GET',
             }),
         }),
+        createDish: builder.mutation({
+            query: (formData: FormData) => ({
+                url: '/user/create-dish',
+                method: 'POST',
+                body: formData,
+            }),
+        }),
         removeFromFavourites: builder.mutation<void, { dishId: number }>({
             query: ({ dishId }) => ({
                 url: `dish/delete-favourite/${dishId}`,
@@ -98,5 +105,6 @@ export const {
     useGetUserDataQuery,
     useGetUserFavouritesQuery,
     useGetUserRecipesQuery,
+    useCreateDishMutation,
     useRemoveFromFavouritesMutation
 } = apiWithAuth;
