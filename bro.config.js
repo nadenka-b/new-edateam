@@ -11,7 +11,7 @@ module.exports = {
   navigations: {
     "new-edateam.main": "/new-edateam",
     "new-edateam.recipe": "/recipe",
-    "new-edateam.user": "/user/userId",
+    "new-edateam.user": "/user",
     "new-edateam.add-recipe": "/add-recipe"
   },
   features: {
@@ -20,6 +20,8 @@ module.exports = {
     },
   },
   config: {
-    "new-edateam.api": "/api",
+    "new-edateam.api": "http://5.35.81.22/api/",
+    "new-edateam.images": "http://5.35.81.22/",
+    "new-edateam.auth": "http://5.35.81.22/auth/api",
   },
 };

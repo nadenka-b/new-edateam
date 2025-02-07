@@ -4,6 +4,7 @@ import { AiOutlineHourglass } from "react-icons/ai";
 // import { FaRegBookmark /*, FaBookmark */ } from "react-icons/fa6";
 import { Link } from "react-router-dom"
 import { URLs } from "../../../__data__/urls"
+import { Tags } from "./tags"
 
 interface DishCardProps {
   recipeId: number,
@@ -19,14 +20,13 @@ interface FileType {
 }
 
 export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags, title }) => {
-  const result = tags.map(tag => tag.value).join(" - ");
   function formatTime(minutes) {
     if (minutes < 60) {
       return `${minutes} мин`;
     }
 
-    const hours = Math.floor(minutes / 60); // Целое количество часов
-    const remainingMinutes = minutes % 60; // Остаток минут
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
 
     return remainingMinutes > 0
       ? `${hours} ч ${remainingMinutes} мин`
@@ -42,7 +42,7 @@ export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags,
                 h="16.5vw"
                 w="22vw"
                 boxShadow="sm"
-                src={image}
+                src={`${URLs.api.images}${image.slice(1)}`}
                 alt="Картинка блюда" borderRadius="0.26vw"
               />
             </Link>
@@ -51,18 +51,10 @@ export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags,
               <Text fontWeight="900" fontStyle="italic" fontSize="1vw" color="brown.500">{formatTime(time)}</Text>
             </Flex>
           </Box>
-          <Text // сделать кнопкой как ссылка на фильтры
-            justifySelf="center"
-            fontSize="1vw"
-            fontWeight="800"
-            fontStyle="italic"
-            color="orange.100"
-            textDecoration="underline"
-            textDecorationThickness="0.1vw"
-            mb="0.05vw">
-            {result}
-          </Text>
-          <Flex w="100%">
+          <Flex justifySelf="center">
+            <Tags tags={tags} />
+          </Flex>
+          <Flex w="100%" mt="0.05vw">
             <Link to={URLs.ui.recipe.getUrl(recipeId)} style={{ flex: 95 }}>
               <Heading
                 fontSize="1.4vw" fontWeight="900" fontStyle="italic"

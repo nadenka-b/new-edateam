@@ -31,6 +31,7 @@ export const TimeCooking: React.FC<TimeCookingProps> = ({ value, options, onChan
                         bg={value === option.value ? "orange.200" : "beige.200"}
                         color={value === option.value ? "beige.200" : "brown.500"}
                         _hover={{ opacity: 0.85, bg: value === option.value ? "orange.200" : "beige.200" }}
+                        _active={{ bg: value === option.value ? "orange.100" : "beige.50" }}
                     >
                         {option.title}
                     </Button>

@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Input, Image, Heading, HStack, Flex } from "@chakra-ui/react";
 import { plate } from "./index"
 import { FaArrowRight } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../__data__/store";
+import { setTitle, setCurrentPage } from "../../../__data__/slices/mainDishesSlice";
 
 interface GreetingsProps {
     onClick: () => void;
 }
 
 export const Greetings: React.FC<GreetingsProps> = ({ onClick }) => {
+    const dispatch: AppDispatch = useDispatch();
+    const [inputValue, setInputValue] = useState("");
+
+    const handleSearch = () => {
+        dispatch(setTitle(inputValue));
+        dispatch(setCurrentPage(0));
+    }
     return (
         <Box position="relative" bg="orange.200" h="23vw" mt="1.8vw" px="5.2vw" pt="1.5vw">
             <Flex>
@@ -37,6 +47,7 @@ export const Greetings: React.FC<GreetingsProps> = ({ onClick }) => {
                         h="3vw"
                     >
                         <Input
+                            onChange={(e) => setInputValue(e.target.value)}
                             h="100%"
                             borderRadius="2.6vw"
                             border="none"
@@ -48,6 +59,7 @@ export const Greetings: React.FC<GreetingsProps> = ({ onClick }) => {
                             _placeholder={{ color: "#979797" }}
                         />
                         <Button
+                            onClick={handleSearch}
                             h="100%"
                             color="beige.200"
                             bg="orange.500"

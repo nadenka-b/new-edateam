@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getConfigValue } from '@brojs/cli'
+import { URLs } from '../urls';
+import { DataPage, FileType, Filters } from '../model/common';
 
-const baseUrl = getConfigValue('new-edateam.api')
+const baseUrl = URLs.api.main;
 
 const buildQueryParams = (params = {}) => {
     const searchParams = new URLSearchParams();
@@ -20,23 +21,26 @@ const buildQueryParams = (params = {}) => {
 
 export const mainApi = createApi({
     reducerPath: 'main-api',
-    baseQuery: fetchBaseQuery({ baseUrl: baseUrl, }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: baseUrl,
+    }),
     endpoints: (builder) => ({
-        getIngredients: builder.query({
-            query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
-        }),
-        getDishes: builder.query({
+        getDishes: builder.query<DataPage, { page: number, size: number, filters: Filters }>({
             query: ({ page, size, filters }) => {
-                // const queryParams = buildQueryParams(filters);
-                const query = `dishes${page}&${size}`;
-                return query;
-                // return queryParams ? `${query}&${queryParams}` : query;
-
+                const queryParams = buildQueryParams(filters);
+                const query = `dish/dishes?page=${page}&size=${size}`;
+                return queryParams ? `${query}&${queryParams}` : query;
             }
         }),
+        getIngredients: builder.query<DataPage, { value: string }>({
+            query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
+        }),
+        getTags: builder.query<FileType[], void>({
+            query: () => `tag`,
+            keepUnusedDataFor: 60 * 60 * 12,
+        }),
         getRecipeById: builder.query({
-            query: ({ id }) => `recipepage-data/${id}`,
-
+            query: ({ id }) => `dish/page?id=${id}`,
         }),
         createDish: builder.mutation({
             query: (formData) => ({
@@ -44,8 +48,14 @@ export const mainApi = createApi({
                 method: 'POST',
                 body: formData, // Передаем FormData
             }),
-        }),
+        })
     }),
 });
 
-export const { useLazyGetIngredientsQuery, useGetDishesQuery, useGetRecipeByIdQuery, useCreateDishMutation } = mainApi;
+export const {
+    useLazyGetIngredientsQuery,
+    useGetDishesQuery,
+    useGetRecipeByIdQuery,
+    useCreateDishMutation,
+    useGetTagsQuery
+} = mainApi;

@@ -8,25 +8,27 @@ type IngredientFilterProps = {
     onIngredientSelect: (ingredient: string) => void;
 };
 
+type Ingredient = {
+    title: string;
+}
 
 export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder, title, onIngredientSelect }) => {
     const [inputValue, setInputValue] = useState("");
-    const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
+    const [filteredOptions, setFilteredOptions] = useState<Ingredient[]>([]);
     const [getIngredients, { data }] = useLazyGetIngredientsQuery();
 
-    // Запрос ингредиентов с задержкой
     useEffect(() => {
         if (inputValue.trim().length > 2) {
             const timeout = setTimeout(() => {
-                getIngredients(inputValue);
-            }, 500); // Дебоунс 500 мс
+                getIngredients({ value: inputValue });
+            }, 500);
             return () => clearTimeout(timeout);
         }
     }, [inputValue, getIngredients]);
 
     useEffect(() => {
         if (data) {
-            setFilteredOptions(data);
+            setFilteredOptions(data.content);
         }
     }, [data]);
 
@@ -35,9 +37,9 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
     };
 
     const handleOptionSelect = (option: string) => {
-        onIngredientSelect(option); // ⬅ Передача в `Filters`
-        setInputValue(""); // Очищаем поле
-        setFilteredOptions([]); // Закрываем список
+        onIngredientSelect(option);
+        setInputValue("");
+        setFilteredOptions([]);
     };
 
     return (
@@ -77,9 +79,9 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
                             key={index}
                             p="2"
                             cursor="pointer"
-                            onClick={() => handleOptionSelect(option)}
+                            onClick={() => handleOptionSelect(option.title)}
                         >
-                            <Text>{option}</Text>
+                            <Text>{option.title}</Text>
                         </ListItem>
                     ))}
                 </List>

@@ -7,15 +7,17 @@ interface DishesState {
     excludeIngredientTitles: string[];
     tagIds: number;
     cookTime: number;
+    title: string;
 }
 
 const initialState: DishesState = {
-    currentPage: 0, // Начальная страница
+    currentPage: 0,
     pageSize: 3,
     ingredientTitles: [],
     excludeIngredientTitles: [],
     tagIds: 0,
-    cookTime: 0
+    cookTime: 0,
+    title: ''
 };
 
 const dishesSlice = createSlice({
@@ -23,10 +25,10 @@ const dishesSlice = createSlice({
     initialState,
     reducers: {
         setCurrentPage: (state, action: PayloadAction<number>) => {
-            state.currentPage = action.payload; // Устанавливаем номер страницы
+            state.currentPage = action.payload;
         },
         setPageSize(state, action: PayloadAction<number>) {
-            state.pageSize = action.payload; // Обновляем количество элементов на странице
+            state.pageSize = action.payload;
         },
         setIncludeIngredientsTitles: (state, action: PayloadAction<string[]>) => {
             state.ingredientTitles = action.payload;
@@ -40,9 +42,19 @@ const dishesSlice = createSlice({
         setCookTime: (state, action: PayloadAction<number>) => {
             state.cookTime = action.payload;
         },
+        setTitle: (state, action: PayloadAction<string>) => {
+            state.title = action.payload;
+        },
     }
 });
 
-export const { setCurrentPage, setPageSize, setIncludeIngredientsTitles, setExcludeIngredientsTitles, setTag, setCookTime } = dishesSlice.actions;
+export const {
+    setCurrentPage,
+    setPageSize,
+    setIncludeIngredientsTitles,
+    setExcludeIngredientsTitles,
+    setTag, setCookTime,
+    setTitle
+} = dishesSlice.actions;
 
 export default dishesSlice.reducer;

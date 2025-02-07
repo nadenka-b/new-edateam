@@ -1,94 +1,33 @@
 import React from 'react';
 import { HStack, Box, IconButton, Grid, GridItem } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { setCurrentPage } from '../../../__data__/slices/dishesSlice';
+import { setCurrentPage } from '../../../__data__/slices/mainDishesSlice';
 import { IoIosArrowBack } from "react-icons/io";
 import { DishCard } from '../dish-card'
+import { DataPage } from "../../../__data__/model/common"
+
 
 interface PaginatedListProps {
-  data: RootObject;
-  currentPage: number;
+  data: DataPage;
 }
 
-interface RootObject {
-  content: Content[];
-  last: boolean;
-  totalPages: number; //Количество страниц
-  totalElements: number; // Сколько всего элементов
-  first: boolean;
-  size: number; //сколько запрашиваю объектов на странице
-  number: number; // Номер страницы
-  numberOfElements: number; // Сколько объектов именно на этой странице
-  empty: boolean; // пусто или нет 
-}
-
-interface Content {
-  id: number;
-  title: string;
-  timeCook: number;
-  type: Type;
-  file: File;
-  tags: FileType[];
-  dishIngredients: DishIngredient[];
-  events: Event[];
-}
-
-interface Event {
-  id: number;
-  title: string;
-  startDate: Date;
-  endDate: Date;
-}
-
-interface DishIngredient {
-  id: number;
-  ingredient: Ingredient;
-  quantity: number; // количество
-}
-
-interface Ingredient {
-  id: number;
-  title: string;
-  measure: string;
-}
-
-interface File {
-  id: number;
-  fileName: string;
-  filePath: string;
-  type: FileType;
-  dateUploaded: string;
-}
-
-interface Type {
-  id: number;
-  value: string;
-  fileTypes: FileType[];
-}
-
-interface FileType {
-  id: number;
-  value: string;
-}
-
-
-export const PaginatedList: React.FC<PaginatedListProps> = ({ data, currentPage }) => {
+export const PaginatedList: React.FC<PaginatedListProps> = ({ data }) => {
   const dispatch = useDispatch();
 
   const goToNextPage = () => {
-    if (currentPage < data.totalPages) {
-      dispatch(setCurrentPage(currentPage + 1));
+    if (!data.last) {
+      dispatch(setCurrentPage(data.number + 1));
     }
   };
 
   const goToPreviousPage = () => {
-    if (currentPage > 0) {
-      dispatch(setCurrentPage(currentPage - 1));
+    if (!data.first) {
+      dispatch(setCurrentPage(data.number - 1));
     }
   };
 
   return (
-    <Box>
+    <Box mt="3vw">
       <HStack>
         <IconButton
           bg="transparent"

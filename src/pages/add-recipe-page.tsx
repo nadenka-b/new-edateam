@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Box, VStack, Button } from "@chakra-ui/react";
@@ -22,8 +21,6 @@ const AddRecipePage = () => {
             steps: [{ description: '', image: null }]
         }
     });
-    // throw new Error("Тестовая ошибка!"); // Имитация сбоя
-    // return <div>Этот код не выполнится</div>;
     const [createDish, { isLoading, isError }] = useCreateDishMutation();
 
     const onSubmit = async (data: any) => {

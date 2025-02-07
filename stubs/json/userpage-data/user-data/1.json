@@ -1,0 +1,12 @@
+{
+    "id": 2,
+    "login": "alik2",
+    "email": "som2@gmail.com",
+    "name": "Alikoslav",
+    "surname": "Krytoi",
+    "phone": "89375833245",
+    "image": {
+        "filePath": "",
+        "id": 1
+    }
+}
