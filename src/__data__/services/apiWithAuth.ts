@@ -90,6 +90,19 @@ export const apiWithAuth = createApi({
                 url: `dish/delete-favourite/${dishId}`,
                 method: 'DELETE',
             }),
+        }),
+        addFromFavourites: builder.mutation<void, {dishId: number}>({
+            query: ({dishId}) => ({
+                url: `dish/add-favourite`,
+                method: 'POST',
+                body: {"dishId": dishId}
+            })
+        }),
+        checkIsFavourite: builder.query<boolean, {dishId: number}>({
+            query: ({dishId}) => ({
+                url:`dish/check-favourite?dishId=${dishId}`,
+                method: 'GET'                
+            })
         })
     }),
 });
@@ -98,5 +111,7 @@ export const {
     useGetUserDataQuery,
     useGetUserFavouritesQuery,
     useGetUserRecipesQuery,
-    useRemoveFromFavouritesMutation
+    useRemoveFromFavouritesMutation,
+    useAddFromFavouritesMutation,
+    useCheckIsFavouriteQuery
 } = apiWithAuth;
