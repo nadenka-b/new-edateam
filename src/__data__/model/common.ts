@@ -10,8 +10,16 @@ export type User = {
     dateRegistration: string
 }
 
-export type UserResponse = {
-    user: User
+export type TokenPayload = {
+    login: string;
+    exp: number;
+    roles: string[];
+    email: string;
+    id: number;
+}
+
+export type AuthResponse = {
+    type: string
     accessToken: string
     refreshToken: string
 }
@@ -19,6 +27,16 @@ export type UserResponse = {
 export type LoginRequest = {
     loginOrEmail: string
     password: string
+}
+
+export type RegistrationRequest = {
+    login: string;
+    password: string;
+    email: string
+}
+
+export type AccessTokenRequest = {
+    token: string
 }
 
 export type DataPage = {

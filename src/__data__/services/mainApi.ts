@@ -46,8 +46,16 @@ export const mainApi = createApi({
             query: (formData) => ({
                 url: '/user/create-dish',
                 method: 'POST',
-                body: formData, // Передаем FormData
+                body: formData,
             }),
+        }),
+        registration: builder.mutation({
+            query: (formData: FormData) => ({
+                url: '/profile',
+                method: 'POST',
+                body: formData,
+            }),
+
         })
     }),
 });
@@ -57,5 +65,6 @@ export const {
     useGetDishesQuery,
     useGetRecipeByIdQuery,
     useCreateDishMutation,
-    useGetTagsQuery
+    useGetTagsQuery,
+    useRegistrationMutation
 } = mainApi;

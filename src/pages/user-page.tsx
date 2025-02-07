@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
-// import { PiPencilSimpleBold } from "react-icons/pi";
 import { useGetUserDataQuery, useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/apiWithAuth';
 import { Link, useParams, useNavigate } from "react-router-dom"
-
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../__data__/store';
+import { logout } from '../__data__/slices/authSlice';
 import { URLs } from "../__data__/urls"
 
 import { profilePhoto } from '../assets';
 import { Bookmark } from '../components/user-page/bookmark';
 import { DishesBlock } from '../components/user-page/dishes-block';
-import { RootState } from '../__data__/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../__data__/slices/authSlice';
 import { Loading } from '../components/loading';
-
 
 const UserPage = () => {
     const { id } = useParams();
@@ -73,12 +70,12 @@ const UserPage = () => {
                     pb="2vw"
                 >
                     <Image
-                        src={userData.image.filePath ? `${URLs.api.images}${userData.image.filePath.slice(1)}` : profilePhoto}
+                        src={userData.image ? `${URLs.api.images}${userData.image.filePath.slice(1)}` : profilePhoto}
                         w="18.75vw"
                         maxW="18.75vw"
                         maxH="18.75vw"
                         borderRadius="1vw"
-                        border="0.2vw solid"
+                        border={userData.image ? "0.2vw solid" : "none"}
                         borderColor="brown.500"
                     />
                     <Text

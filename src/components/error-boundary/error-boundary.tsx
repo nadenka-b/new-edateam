@@ -1,7 +1,7 @@
 import React, { Component, ReactNode } from "react";
 import Lottie from "lottie-react";
 import { Box, Button, Text } from "@chakra-ui/react";
-import errorAnimation from "../../assets/error.json";
+import { errorAnimation } from "../../assets"
 
 interface Props {
     children: ReactNode;

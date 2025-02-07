@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Text } from "@chakra-ui/react";
-import { pan } from '../../../assets';
+import { pan } from "./index"
 import { PaginatedList } from '../pagination';
 import { DataPage } from "../../../__data__/model/common";
 

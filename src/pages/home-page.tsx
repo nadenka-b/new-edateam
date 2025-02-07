@@ -1,17 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, Flex, Heading, Button, Text } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFilters } from "../__data__/selectors/dishes-list";
 import { RootState, AppDispatch } from '../__data__/store';
-import { useGetDishesQuery } from '../__data__/services/mainApi';
+import { useGetDishesQuery, useGetTagsQuery } from '../__data__/services/mainApi';
 import { setCurrentPage, setPageSize } from '../__data__/slices/mainDishesSlice';
-
-import { Greetings } from "../components/home-page/greetings"
-import { PaginatedList } from '../components/home-page/pagination'
-
+import { setTags } from "../__data__/slices/tagsSlice"
 import Lottie from 'lottie-react';
 import { dataEmpty } from "../assets";
+import { Greetings } from "../components/home-page/greetings"
+import { PaginatedList } from '../components/home-page/pagination'
 import { Loading } from '../components/loading';
+
 
 const HomePage = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -23,11 +23,20 @@ const HomePage = () => {
 
     const increasePageSize = () => {
         dispatch(setPageSize(9));
-        dispatch(setCurrentPage(0)); // Вернуться на первую страницу
+        dispatch(setCurrentPage(0));
         setIsHidden(false);
     };
 
     const { data, error, isLoading } = useGetDishesQuery({ page: currentPage, size: size, filters: filters });
+
+    const { data: dataTags, error: errorTags, isLoading: isLoadingTags } = useGetTagsQuery();
+
+    useEffect(() => {
+        if (dataTags) {
+            dispatch(setTags(dataTags));
+        }
+    }, [dataTags, dispatch]);
+
 
     const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -38,9 +47,9 @@ const HomePage = () => {
 
     return (
         <Box mb="3vw">
-            {isLoading && <Loading />}
-            {error && <div>Ошибка загрузки данных</div>}
-            {!isLoading && !error && (
+            {(isLoading || isLoadingTags) && <Loading />}
+            {(error || errorTags) && <div>Ошибка загрузки данных</div>}
+            {data && (
                 <>
                     <Greetings onClick={handleScroll} />
                     <Flex direction="column" align="center" mt="3vw">

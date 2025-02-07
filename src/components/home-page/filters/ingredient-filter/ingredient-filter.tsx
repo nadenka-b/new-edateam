@@ -76,8 +76,9 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
                 >
                     {filteredOptions.map((option, index) => (
                         <ListItem
+                            fontSize="1vw"
                             key={index}
-                            p="2"
+                            p="0.8vw"
                             cursor="pointer"
                             onClick={() => handleOptionSelect(option.title)}
                         >
