@@ -1,6 +1,6 @@
 import React from "react";
-import { useForm, Controller, useFieldArray } from "react-hook-form";
-import { Image, Text, VStack, HStack, Box, Input, Button, List, ListItem, IconButton } from "@chakra-ui/react";
+import { useForm, useFieldArray } from "react-hook-form";
+import { Image, Text, VStack, HStack, Box, Input, Button, Wrap, WrapItem, IconButton } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Plus } from "./index";
 
@@ -43,7 +43,7 @@ export const Ingredients = () => {
                     h="2vw"
                     flex="3"
                     {...register("newIngredientName")} // Используем react-hook-form
-                    
+
                 />
 
                 <Box w="2px" h="130%" bg="brown.500" />
@@ -85,32 +85,36 @@ export const Ingredients = () => {
             </HStack>
 
             {/* Список ингредиентов */}
-            <List spacing={3} w="26vw" maxW="700px">
+            <Wrap spacing="0.8vw" w="26vw" maxW="700px">
                 {fields.map((ingredient, index) => (
-                    <ListItem
-                        key={ingredient.id}
-                        border="2px solid brown.500"
-                        borderRadius="12px"
-                        p={4}
-                        bg="var(--background-color)"
-                        fontFamily="var(--main-font)"
-                        fontSize="1.3vw"
-                        fontWeight="bold"
-                        color="brown.500"
-                    >
-                        {ingredient.name} - {ingredient.quantity}
-                        <IconButton
-                            icon={<AiOutlineClose />}
-                            onClick={() => remove(index)} // Удаляем ингредиент
-                            size="sm"
-                            variant="ghost"
+                    <WrapItem key={ingredient.id}>
+                        <HStack
+                            border="2px solid"
+                            borderColor="brown.500"
+                            borderRadius="12px"
+                            p="0.8vw"
+                            bg="var(--background-color)"
+                            fontFamily="var(--main-font)"
+                            fontSize="1.3vw"
+                            fontWeight="bold"
                             color="brown.500"
-                            aria-label="Удалить ингредиент"
-                            ml={2}
-                        />
-                    </ListItem>
+                        >
+                            <Text>
+                                {ingredient.name} - {ingredient.quantity}
+                            </Text>
+                            <IconButton
+                                icon={<AiOutlineClose />}
+                                onClick={() => remove(index)}
+                                size="sm"
+                                variant="ghost"
+                                color="brown.500"
+                                aria-label="Удалить ингредиент"
+                            />
+                        </HStack>
+                    </WrapItem>
                 ))}
-            </List>
+            </Wrap>
+
         </VStack>
     );
 };
