@@ -87,11 +87,11 @@ export const Ingredients = () => {
             {/* Список ингредиентов */}
             <Wrap spacing="0.8vw" w="26vw" maxW="700px">
                 {fields.map((ingredient, index) => (
-                    <WrapItem key={ingredient.id}>
+                    <WrapItem key={ingredient.id} bg="beige.200" borderRadius="2vw">
                         <HStack
                             border="2px solid"
                             borderColor="brown.500"
-                            borderRadius="12px"
+                            borderRadius="2vw"
                             p="0.8vw"
                             bg="var(--background-color)"
                             fontFamily="var(--main-font)"

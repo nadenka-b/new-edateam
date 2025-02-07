@@ -49,6 +49,9 @@ export const mainApi = createApi({
                 body: formData, // Передаем FormData
             }),
         })
+        // getIngredients: builder.query<DataPage, { value: string }>({
+        //     query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
+        // }),
     }),
 });
 
