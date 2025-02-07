@@ -31,6 +31,12 @@ export const TimeInput = () => {
                             fontSize="2.3vw"
                             fontStyle="italic"
                             transition="all 0.3s ease-in-out"
+                            _hover={{ borderColor: "orange.300" }}
+                            _focus={{
+                                outline: "none",  // Убираем стандартную подсветку
+                                borderColor: "orange.500",
+                                boxShadow: "0 0 5px orange.500" // Меняем эффект подсветки
+                            }}
                         />
                     )}
                 />
@@ -61,6 +67,12 @@ export const TimeInput = () => {
                                 fontWeight={800}
                                 fontSize="1.4vw"
                                 type="number"
+                                _hover={{ borderColor: "orange.300" }}
+                                _focus={{
+                                    outline: "none",  // Убираем стандартную подсветку
+                                    borderColor: "orange.500",
+                                    boxShadow: "0 0 5px orange.500" // Меняем эффект подсветки
+                                }}
                             />
                         )}
                     />
@@ -88,6 +100,12 @@ export const TimeInput = () => {
                                 fontWeight={800}
                                 fontSize="1.4vw"
                                 type="number"
+                                _hover={{ borderColor: "orange.300" }}
+                                _focus={{
+                                    outline: "none",  // Убираем стандартную подсветку
+                                    borderColor: "orange.500",
+                                    boxShadow: "0 0 5px orange.500" // Меняем эффект подсветки
+                                }}
                             />
                         )}
                     />

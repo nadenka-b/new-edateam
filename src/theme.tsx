@@ -47,7 +47,13 @@ const theme = extendTheme({
     styles: {
         global: {
             // Указываем глобальные стили
+
+            "input:focus, input:active": {
+                outline: "none !important",
+                boxShadow: "none !important"
+            },
             body: {
+
                 bg: "beige.200", // Цвет фона
                 lineHeight: "base", // Межстрочный интервал
             },

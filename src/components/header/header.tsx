@@ -53,6 +53,14 @@ export const Header = () => {
                 {/* <Box display="flex" justifyContent="end" flex="1" mt="0.6vw" >
                     <RegistrationForm />
                 </Box> */}
+
+{/* const changeLanguageToRu = () => {
+                    i18n.changeLanguage('ru')
+                }
+
+  const changeLanguageToEn = () => {
+                    i18n.changeLanguage('en')
+                } */}
             </HStack>
             {
                 !isHomePage && (

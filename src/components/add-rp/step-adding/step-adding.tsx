@@ -260,17 +260,28 @@ export const StepAdding = () => {
                                 placeholder="Введите описание шага"
                                 w="30vw"
                                 h="7.8vw"
-                                border="2px solid brown.500"
+                                border="2px solid brown"
                                 borderRadius="15px"
                                 fontSize="0.8vw"
+                                transition="all 0.3s ease-in-out"
+                                _hover={{ borderColor: "orange.300" }}
+                                _focus={{
+                                    outline: "none", // Убираем стандартную обводку
+                                    borderColor: "orange.500", // Меняем цвет рамки
+                                    boxShadow: "0 0 8px orange.500" // Добавляем подсветку
+                                }}
                             />
                         )}
                     />
                 </HStack>
 
-                <Button onClick={addStep} variant="unstyled" display="flex" alignItems="center">
-                    <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} />
-                    <Text fontSize="1.1vw" fontWeight="bold" color="orange.600">
+                <Button onClick={addStep} variant="unstyled" display="flex" alignItems="center"
+                    _hover={{
+                        ".hover-effect": { color: "orange.300", filter: "brightness(1.2)" },
+                    }}
+                >
+                    <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} className="hover-effect" />
+                    <Text fontSize="1.1vw" fontWeight="bold" color="orange.600" className="hover-effect">
                         Добавить шаг
                     </Text>
                 </Button>

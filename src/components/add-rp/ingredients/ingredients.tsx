@@ -43,6 +43,7 @@ export const Ingredients = () => {
                     h="2vw"
                     flex="3"
                     {...register("newIngredientName")} // Используем react-hook-form
+                    
                 />
 
                 <Box w="2px" h="130%" bg="brown.500" />
