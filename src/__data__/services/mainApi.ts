@@ -56,5 +56,6 @@ export const {
     useLazyGetIngredientsQuery,
     useGetDishesQuery,
     useGetRecipeByIdQuery,
-    useCreateDishMutation
+    useCreateDishMutation,
+    useGetTagsQuery
 } = mainApi;

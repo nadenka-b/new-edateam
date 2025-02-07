@@ -2,7 +2,6 @@ import { getConfigValue, getNavigationsValue } from "@brojs/cli";
 import { generatePath } from "react-router-dom";
 
 const baseUrl = getNavigationsValue('new-edateam.main');
-console.log("Base URL:", baseUrl);
 
 export const URLs = {
     baseUrl,

@@ -27,17 +27,18 @@ const UserPage = () => {
     const { data: userRecipesData, error: errorRecipesData, isLoading: isLoadingRecipesData } = useGetUserRecipesQuery({ page: recipesPage });
     const { data: userData, error: errorUserData, isLoading: isLoadingUserData } = useGetUserDataQuery({ id: id });
 
-    let nameUser = "";
-    if (userData.name && userData.surname) {
-        nameUser = `${userData.name} ${userData.surname}`;
-    }
-
     const handleLogout = () => {
         dispatch(logout());
         navigate(URLs.baseUrl);
     };
     if (errorFavouritesData || errorRecipesData || errorUserData) return <div>Ошибка загрузки</div>;
     if (isLoadingFavouritesData || isLoadingRecipesData || isLoadingUserData) return <Loading />;
+
+    let nameUser = "";
+    if (userData.name && userData.surname) {
+        nameUser = `${userData.name} ${userData.surname}`;
+    }
+
     return (
         <>
             <Flex pl="10vw" pr="10vw" mt="1.3vw" mb="2.6vw" >
