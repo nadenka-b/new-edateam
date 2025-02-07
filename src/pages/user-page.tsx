@@ -53,8 +53,8 @@ const UserPage = () => {
                     </HStack>
 
                     {savedRecipes
-                        ? <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} />
-                        : <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} />
+                        ? <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} isFavourite={true}/>
+                        : <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} isFavourite={false} />
                     }
                 </VStack>
                 <Spacer />

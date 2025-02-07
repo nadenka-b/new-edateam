@@ -13,7 +13,8 @@ export const AddToMyBook = ({dishId}: AddDivProps) => {
     const [isAdded, setIsAdded] = useState(false);
     const [addToFavourites] =useAddFromFavouritesMutation();
     const [removeFromFavourites] = useRemoveFromFavouritesMutation();
-    const {data: isFavourite, refetch} = useCheckIsFavouriteQuery({dishId: dishId}, {skip:!dishId});
+    const {data: isFavourite, refetch} = useCheckIsFavouriteQuery({dishId: dishId},
+         {skip:!dishId , refetchOnMountOrArgChange: true});
     useEffect(()=>{
         if(isFavourite !== undefined){
             setIsAdded(isFavourite);

@@ -66,6 +66,7 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
 export const apiWithAuth = createApi({
     reducerPath: 'apiWithAuth',
     baseQuery: baseQueryWithReauth,
+    tagTypes: ["Favourites"],
     endpoints: (builder) => ({
         getUserData: builder.query<User, { id: string }>({
             query: ({ id }) => ({
@@ -78,18 +79,20 @@ export const apiWithAuth = createApi({
                 url: `profile/favourite?page=${page}&size=5`,
                 method: 'GET',
             }),
+            providesTags: ["Favourites"]
         }),
         getUserRecipes: builder.query<DataPage, { page: number }>({
             query: ({ page }) => ({
                 url: `profile/my-dishes?page=${page}&size=5`,
                 method: 'GET',
-            }),
+            })
         }),
         removeFromFavourites: builder.mutation<void, { dishId: number }>({
             query: ({ dishId }) => ({
                 url: `dish/delete-favourite/${dishId}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ["Favourites"]
         }),
         addFromFavourites: builder.mutation<void, {dishId: number}>({
             query: ({dishId}) => ({
