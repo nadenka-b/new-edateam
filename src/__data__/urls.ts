@@ -1,7 +1,9 @@
-import { getConfigValue, getNavigationValue } from "@brojs/cli";
+import { getConfigValue, getFeatures, getNavigationValue } from "@brojs/cli";
 import { generatePath } from "react-router-dom";
 
+
 const baseUrl = getNavigationValue('new-edateam.main');
+const getEdateamFeatures = () => getFeatures('new-edateam');
 
 export const URLs = {
     baseUrl,
@@ -26,4 +28,7 @@ export const URLs = {
         auth: getConfigValue('new-edateam.auth'),
         images: getConfigValue('new-edateam.images')
     },
+    features: {
+        filters: getEdateamFeatures()?.filters,
+    }
 }

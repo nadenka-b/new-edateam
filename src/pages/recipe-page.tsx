@@ -34,7 +34,7 @@ const RecipePage = () => {
             {(error) && <div>Ошибка загрузки данных</div>}
             <VStack align="center" w="full">
                 <Title title={data?.title} />
-                <Video src={data?.linkVideo} />
+                <Video src={data?.linkVideo} fallbackImage={data?.file.filePath} />
                 <Tags tags={data?.tags} />
                 <HStack mt="1.2vw" justify="center" align="center" mb="2.5vw">
                     <TimeCooking cookingTime={formatTime(data?.timeCook || 0)} />

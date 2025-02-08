@@ -15,9 +15,13 @@ module.exports = {
     "new-edateam.add-recipe": "/add-recipe"
   },
   features: {
-    "edateam": {
-      // add your features here in the format [featureName]: { value: string }
-    },
+    "new-edateam": {
+      "filters": {
+        "on": true,
+        "value": "true",
+        "key": "filters"
+      }
+    }
   },
   config: {
     "new-edateam.api": "http://5.35.81.22/api/",

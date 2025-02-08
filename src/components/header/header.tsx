@@ -19,7 +19,7 @@ export const Header = () => {
             <HStack w="100%" pl="4vw" pr="4vw">
                 <HStack flex="1">
                     {
-                        isHomePage && (
+                        URLs.features.filters && isHomePage && (
                             <Flex alignSelf="center" mr="0.5vw">
                                 <Filters />
                             </Flex>

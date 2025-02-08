@@ -31,7 +31,7 @@ export const StepContent: React.FC<StepsDataProps> = ({ activeStep, stepsData })
             justifyContent="center"
         >
             <Flex ml="3vw" justify="start" align="center" gap="0.4vw">
-                {step.image &&
+                {step.image.filePath &&
                     <Image
                         src={`http://5.35.81.22/${step.image?.filePath.slice(1)}`} // Image source URL
                         borderRadius="1.4vw"
