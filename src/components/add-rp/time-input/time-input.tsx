@@ -7,19 +7,21 @@ export const TimeInput = () => {
 
     return (
         <VStack >
-            {/* Название рецепта */}
             <Controller
                 name="recipeName"
                 control={control}
                 render={({ field }) => (
                     <Input
                         {...field}
+                        border="none"
+                        textAlign="center"
                         placeholder="Название рецепта"
-                        maxW="26vw"
+                        maxW="30vw"
                         fontFamily="var(--main-font)"
                         fontSize="2.3vw"
                         fontStyle="italic"
-                        transition="all 0.3s ease-in-out"
+                        color="brown.500"
+                        fontWeight="700"
                     />
                 )}
             />
@@ -40,6 +42,7 @@ export const TimeInput = () => {
                             h="2vw"
                             textAlign="right"
                             border="2px solid"
+                            color="brown.500"
                             borderColor="brown.500"
                             borderRadius="0.8vw"
                             _placeholder={{ color: "brown.500" }}
@@ -72,6 +75,7 @@ export const TimeInput = () => {
                             textAlign="right"
                             border="2px solid"
                             borderColor="brown.500"
+                            color="brown.500"
                             borderRadius="0.8vw"
                             _placeholder={{ color: "brown.500" }}
                             fontFamily="var(--main-font)"
