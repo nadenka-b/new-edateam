@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import { getConfigValue } from "@brojs/cli";
 
 interface StepsDataProps {
     activeStep: number;
@@ -33,7 +34,7 @@ export const StepContent: React.FC<StepsDataProps> = ({ activeStep, stepsData })
             <Flex ml="3vw" justify="start" align="center" gap="0.4vw">
                 {step.image.filePath &&
                     <Image
-                        src={`http://5.35.81.22/${step.image?.filePath.slice(1)}`} // Image source URL
+                        src={`${getConfigValue('new-edateam.images')}${step.image?.filePath.slice(1)}`} // Image source URL
                         borderRadius="1.4vw"
                         w="28.3vw"
                         h="18.2vw"
