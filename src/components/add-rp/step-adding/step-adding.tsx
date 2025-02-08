@@ -18,21 +18,20 @@ export const StepAdding = () => {
         }
     };
 
-    const addStep = () => {
-        const file = watch("currentFile");
-        const value = watch("currentValue");
-
-        if (file || value.trim()) {
-            setValue("stepsCooking", [
-                ...steps,
-                { image: file ? URL.createObjectURL(file) : null, value } // Создаем URL для превью
-            ]);
-            setValue("currentImage", null);
-            setValue("currentFile", null);
-            setValue("currentValue", "");
-        }
+    const addStep = () => { 
+        const file = watch("currentFile"); 
+        const value = watch("currentValue"); 
+ 
+        if (file || value.trim()) { 
+            setValue("stepsCooking", [ 
+                ...steps, 
+                { image: file ? URL.createObjectURL(file) : null, value, file } // Создаем URL для превью 
+            ]); 
+            setValue("currentImage", null); 
+            setValue("currentFile", null); 
+            setValue("currentValue", ""); 
+        } 
     };
-
     const removeStep = (index) => {
         setValue(
             "stepsCooking",

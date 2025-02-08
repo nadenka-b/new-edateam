@@ -37,7 +37,7 @@ const AddRecipePage = () => {
         data.stepsCooking.forEach((step, index) => {
             formData.append(`stepsCooking[${index}].number`, `${index + 1}`);
             formData.append(`stepsCooking[${index}].value`, step.value);
-            if (step.image instanceof File) formData.append(`stepsCooking[${index}].image`, step.image);
+            if (step.file) formData.append(`stepsCooking[${index}].image`, step.file);
         });
 
         // Добавляем категории

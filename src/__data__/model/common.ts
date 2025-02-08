@@ -148,21 +148,25 @@ export type stepCooking = {
     image: File;
 }
 
-export type FormCreateRecipe = {
-    title: string;
-    linkVideo: string;
-    hours: string;
-    minutes: string;
-    dishPhoto: File | null;
-    tags: FileType[];
-    ingredientsIds: {
-        id: string;
-        title: string;
-        amount: string;
-    }[];
-    stepsCooking: stepCooking[];
+export type FormCreateRecipe = { 
+    title: string; 
+    linkVideo: string; 
+    hours: string; 
+    minutes: string; 
+    dishPhoto: File | null; 
+    tags: FileType[]; 
+    ingredientsIds: { 
+        id: string; 
+        title: string; 
+        amount: string; 
+    }[]; 
+    stepsCooking: { 
+        number: number; 
+        value: string; 
+        image: string | null; 
+        file?: File; 
+    }[]; 
 }
-
 
 export type FormCreateRecipeRequest = {
     title: string;
