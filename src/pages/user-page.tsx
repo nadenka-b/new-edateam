@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
 import { useGetUserDataQuery, useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/apiWithAuth';
-import { Link, useParams, useNavigate } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../__data__/store';
 import { logout } from '../__data__/slices/authSlice';
@@ -17,7 +17,6 @@ import { getNavigationValue } from '@brojs/cli';
 const UserPage = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [savedRecipes, setSavedRecipes] = useState(true);
 
     const favouritesPage = useSelector((state: RootState) => state.userDishes.favouritesPage);
@@ -29,7 +28,6 @@ const UserPage = () => {
     const handleLogout = () => {
         dispatch(logout());
         dispatch(apiWithAuth.util.resetApiState());
-        navigate(URLs.baseUrl);
     };
     if (errorFavouritesData || errorRecipesData || errorUserData) return <div>Ошибка загрузки</div>;
     if (isLoadingFavouritesData || isLoadingRecipesData || isLoadingUserData) return <Loading />;
@@ -117,14 +115,16 @@ const UserPage = () => {
                             Добавить рецепт
                         </Button>
                     </Link>}
-                    <Button
-                        onClick={handleLogout}
-                        variant="link"
-                        color="brown.500"
-                        fontSize="1.3vw"
-                    >
-                        Выйти из аккаунта
-                    </Button>
+                    <Link to={URLs.baseUrl}>
+                        <Button
+                            onClick={handleLogout}
+                            variant="link"
+                            color="brown.500"
+                            fontSize="1.3vw"
+                        >
+                            Выйти из аккаунта
+                        </Button>
+                    </Link>
                 </VStack>
             </Flex >
         </>
