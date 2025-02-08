@@ -1,4 +1,4 @@
-import { getConfigValue, getNavigationsValue, getNavigationValue } from "@brojs/cli";
+import { getConfigValue, getNavigationValue } from "@brojs/cli";
 import { generatePath } from "react-router-dom";
 
 const baseUrl = getNavigationValue('new-edateam.main');

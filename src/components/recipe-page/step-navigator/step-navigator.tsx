@@ -7,9 +7,9 @@ interface StepNavigatorProps {
     setActiveStep: () => void;
 }
 interface StepData {
-    image: string;
-    title: string;
-    description: string;
+    image?: string;
+    title?: string;
+    description?: string;
 }
 
 export const StepNavigator: React.FC<StepNavigatorProps> = ({ activeStep, stepsData, setActiveStep }) => (

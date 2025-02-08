@@ -11,7 +11,7 @@ import Lottie from "lottie-react";
 
 import { notFound} from "./assets"
 import { Box } from "@chakra-ui/react";
-import { getNavigation, getNavigationValue } from "@brojs/cli";
+import { getNavigationValue } from "@brojs/cli";
 
 export const PageRoutes = () => (
     <Routes>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, Text, VStack, HStack, Box, Icon } from "@chakra-ui/react";
+import { Text, VStack, HStack, Box, Icon } from "@chakra-ui/react";
 
 import { FaRegBookmark , FaBookmark  } from "react-icons/fa6";
 import { useAddFromFavouritesMutation, useCheckIsFavouriteQuery, useRemoveFromFavouritesMutation } from "../../../__data__/services/apiWithAuth";

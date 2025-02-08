@@ -14,7 +14,7 @@ import { useGetRecipeByIdQuery } from '../__data__/services/mainApi';
 
 const RecipePage = () => {
     const { id } = useParams();
-    const { data, error, isLoading } = useGetRecipeByIdQuery({ id });
+    const { data} = useGetRecipeByIdQuery({ id });
 
     return (
         <>
