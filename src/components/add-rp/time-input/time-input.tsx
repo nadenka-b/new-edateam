@@ -7,6 +7,7 @@ export const TimeInput = () => {
 
     return (
         <VStack >
+            {/* Название рецепта */}
             <Controller
                 name="recipeName"
                 control={control}
@@ -47,13 +48,18 @@ export const TimeInput = () => {
                             fontWeight={800}
                             fontSize="1.4vw"
                             type="number"
+                            _hover={{ borderColor: "orange.300" }}
+                            _focus={{
+                                outline: "none",  // Убираем стандартную подсветку
+                                borderColor: "orange.500",
+                                boxShadow: "0 0 5px orange.500" // Меняем эффект подсветки
+                            }}
                         />
                     )}
                 />
                 <Text fontFamily="var(--main-font)" fontStyle="italic" fontWeight={800} fontSize="1.4vw" color="brown.500">
                     час(ов)
                 </Text>
-
                 <Controller
                     name="minutes"
                     control={control}
@@ -73,6 +79,12 @@ export const TimeInput = () => {
                             fontWeight={800}
                             fontSize="1.4vw"
                             type="number"
+                            _hover={{ borderColor: "orange.300" }}
+                            _focus={{
+                                outline: "none",  // Убираем стандартную подсветку
+                                borderColor: "orange.500",
+                                boxShadow: "0 0 5px orange.500" // Меняем эффект подсветки
+                            }}
                         />
                     )}
                 />

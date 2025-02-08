@@ -7,13 +7,13 @@ import { PageRoutes } from './routes'
 import { store } from './__data__/store'
 import { Provider } from 'react-redux'
 import { ScrollToTop } from './components/scroll-to-top'
-import ErrorBoundary from './components/error-boundary/error-boundary';
+// import ErrorBoundary from './components/error-boundary/error-boundary';
 
 
 const App = () => {
   return (
     <Provider store={store}>
-      <ErrorBoundary>
+      {/* <ErrorBoundary> */}
         <BrowserRouter>
           <ChakraProvider theme={theme}>
             <Fonts />
@@ -21,7 +21,7 @@ const App = () => {
             <PageRoutes />
           </ChakraProvider>
         </BrowserRouter>
-      </ErrorBoundary>
+      {/* </ErrorBoundary> */}
     </Provider>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { Box, VStack, Button } from "@chakra-ui/react";
+import { Box, VStack, Button, FormLabel, Input } from "@chakra-ui/react";
 import { useCreateDishMutation } from '../__data__/services/apiWithAuth';
 
 import { TimeInput } from '../components/add-rp/time-input';
@@ -78,12 +78,24 @@ const AddRecipePage = () => {
             >
                 <VStack spacing="1.3vw" align="center" transition="all 0.3s ease-in-out">
                     <TimeInput />
+                    <FormLabel fontSize="1.2vw" fontWeight="bold" color="brown.500">
+                        Ссылка на видео
+                    </FormLabel>
+                    <Input
+                        {...methods.register("linkVideo")}
+                        border="2px solid"
+                        borderColor="brown.500"
+                        borderRadius="15px"
+                        p={2}
+                        w="34vw"
+                        bg="white"
+                    />
                     <DishPhoto />
                     <SelectedCategories />
                     <Ingredients />
                     <StepAdding />
                     {/* <Sent /> */}
-                    <Button type="submit" colorScheme="orange" mt={4} isLoading={isLoading}>
+                    <Button type="submit" colorScheme="orange" mt={4} isLoading={isLoading} _hover={{ bg: "orange.300" }} >
                         Отправить
                     </Button>
                     {isError && <p style={{ color: 'red' }}>❌ Ошибка при отправке</p>}

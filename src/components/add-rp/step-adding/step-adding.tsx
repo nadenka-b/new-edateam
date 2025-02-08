@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useFormContext, Controller } from "react-hook-form";
-import { Image, Text, Button, HStack, VStack, Input, Box, IconButton } from "@chakra-ui/react";
+import { Image, Text, Button, HStack, VStack, Textarea, Box, IconButton } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Plus, addPhoto } from "./index";
 
@@ -78,22 +78,36 @@ export const StepAdding = () => {
                         name="currentValue"
                         control={control}
                         render={({ field }) => (
-                            <Input
+                            <Textarea
                                 {...field}
                                 placeholder="Введите описание шага"
                                 w="30vw"
                                 h="7.8vw"
-                                border="2px solid brown.500"
+                                border="2px solid brown"
                                 borderRadius="15px"
                                 fontSize="0.8vw"
+                                resize="none" // Отключаем ручное изменение размера
+                                overflowY="auto" // Включаем вертикальную прокрутку
+                                transition="all 0.3s ease-in-out"
+                                _hover={{ borderColor: "orange.300" }}
+                                _focus={{
+                                    outline: "none",
+                                    borderColor: "orange.500",
+                                    boxShadow: "0 0 8px orange.500"
+                                }}
                             />
                         )}
                     />
+
                 </HStack>
 
-                <Button onClick={addStep} variant="unstyled" display="flex" alignItems="center">
-                    <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} />
-                    <Text fontSize="1.1vw" fontWeight="bold" color="orange.600">
+                <Button onClick={addStep} variant="unstyled" display="flex" alignItems="center"
+                    _hover={{
+                        ".hover-effect": { color: "orange.300", filter: "brightness(1.2)" },
+                    }}
+                >
+                    <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} className="hover-effect" />
+                    <Text fontSize="1.1vw" fontWeight="bold" color="orange.600" className="hover-effect">
                         Добавить шаг
                     </Text>
                 </Button>

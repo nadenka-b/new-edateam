@@ -53,6 +53,9 @@ export const mainApi = createApi({
             }),
 
         })
+        // getIngredients: builder.query<DataPage, { value: string }>({
+        //     query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
+        // }),
     }),
 });
 
