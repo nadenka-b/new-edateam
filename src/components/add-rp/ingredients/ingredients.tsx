@@ -127,12 +127,11 @@ export const Ingredients = () => {
                 {fields.map((ingredient, index) => (
                     <WrapItem key={ingredient.id} bg="beige.200" borderRadius="2vw">
                         <HStack
-                            border="2px solid"
+                            border="0.1vw solid"
                             borderColor="brown.500"
-                            borderRadius="2vw"
+                            borderRadius="1vw"
                             p="0.8vw"
-                            bg="var(--background-color)"
-                            fontFamily="var(--main-font)"
+                            bg="beige.200"
                             fontSize="1.3vw"
                             fontWeight="bold"
                             color="brown.500"
@@ -143,9 +142,12 @@ export const Ingredients = () => {
                             <IconButton
                                 icon={<AiOutlineClose />}
                                 onClick={() => remove(index)}
-                                size="sm"
-                                variant="ghost"
                                 color="brown.500"
+                                fontSize="2vw"
+                                bg="transparent"
+                                minW="2vw"
+                                h="2vw"
+                                _hover={{ opacity: 0.5 }}
                                 aria-label="Удалить ингредиент"
                             />
                         </HStack>

@@ -37,13 +37,15 @@ export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags,
         <CardBody p={0}>
           <Box position="relative">
             <Link to={URLs.ui.recipe.getUrl(recipeId)} >
-              <Image
-                h="16.5vw"
-                w="22vw"
-                boxShadow="sm"
-                src={`${URLs.api.images}${image.slice(1)}`}
-                alt="Картинка блюда" borderRadius="0.26vw"
-              />
+              {image &&
+                <Image
+                  h="16.5vw"
+                  w="22vw"
+                  boxShadow="sm"
+                  src={`${URLs.api.images}${image.slice(1)}`}
+                  alt="Картинка блюда" borderRadius="0.26vw"
+                />
+              }
             </Link>
             <Flex p="0.4vw" borderRadius="1vw" alignItems="center" h="2.2vw" bg="rgba(255, 240, 218, 0.75)" position="absolute" right="0.5vw" bottom="0.5vw">
               <Box as={AiOutlineHourglass} color="brown.500" fontSize="1.6vw" />

@@ -31,15 +31,17 @@ export const StepContent: React.FC<StepsDataProps> = ({ activeStep, stepsData })
             justifyContent="center"
         >
             <Flex ml="3vw" justify="start" align="center" gap="0.4vw">
-                <Image
-                    src={`http://5.35.81.22/${step.image?.filePath.slice(1)}` || ""} // Image source URL
-                    borderRadius="1.4vw"
-                    w="28.3vw"
-                    h="18.2vw"
-                    alt={step.value} // Description as alt text
-                    borderColor="brown.500"
-                    borderWidth="0.2vw"
-                />
+                {step.image &&
+                    <Image
+                        src={`http://5.35.81.22/${step.image?.filePath.slice(1)}`} // Image source URL
+                        borderRadius="1.4vw"
+                        w="28.3vw"
+                        h="18.2vw"
+                        alt={step.value} // Description as alt text
+                        borderColor="brown.500"
+                        borderWidth="0.2vw"
+                    />
+                }
                 <Text
                     fontSize="1.8vw"
                     fontWeight="bold"

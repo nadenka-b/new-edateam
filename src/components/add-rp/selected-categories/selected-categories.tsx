@@ -118,7 +118,6 @@ export const SelectedCategories = () => {
                                         icon={<AiOutlineClose />}
                                         onClick={() => remove(index)}
                                         variant="ghost"
-                                        size="sm"
                                         color="brown.500"
                                         aria-label="Удалить категорию"
                                         fontSize="2vw"
