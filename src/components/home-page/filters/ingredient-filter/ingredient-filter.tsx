@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Input, List, ListItem, Text } from "@chakra-ui/react";
-import { useLazyGetIngredientsQuery } from "../../../../__data__/services/mainApi";
+import { useLazyGetUniqueIngredientsQuery } from "../../../../__data__/services/mainApi";
 
 type IngredientFilterProps = {
     placeholder: string;
@@ -15,7 +15,7 @@ type Ingredient = {
 export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder, title, onIngredientSelect }) => {
     const [inputValue, setInputValue] = useState("");
     const [filteredOptions, setFilteredOptions] = useState<Ingredient[]>([]);
-    const [getIngredients, { data }] = useLazyGetIngredientsQuery();
+    const [getIngredients, { data }] = useLazyGetUniqueIngredientsQuery();
 
     useEffect(() => {
         if (inputValue.trim().length > 2) {
@@ -76,8 +76,9 @@ export const IngredientFilter: React.FC<IngredientFilterProps> = ({ placeholder,
                 >
                     {filteredOptions.map((option, index) => (
                         <ListItem
+                            fontSize="1vw"
                             key={index}
-                            p="2"
+                            p="0.8vw"
                             cursor="pointer"
                             onClick={() => handleOptionSelect(option.title)}
                         >

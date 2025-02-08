@@ -1,50 +1,46 @@
 import React, { useRef } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 import { Image, Text, Button, HStack, VStack, Textarea, Box, IconButton } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Plus, addPhoto } from "./index";
 
 export const StepAdding = () => {
-    const { control, handleSubmit, setValue, watch } = useForm({
-        defaultValues: {
-            steps: [],
-            photo: null,
-            description: "",
-        },
-    });
+    const { control, setValue, watch } = useFormContext();
 
-    const steps = watch("steps"); // Следим за шагами
+    const steps = watch("stepsCooking"); // Следим за шагами
     const fileInputRef = useRef(null);
 
     const handlePhotoChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => setValue("photo", event.target.result);
-            reader.readAsDataURL(file);
+            setValue("currentFile", file);
+            setValue("currentImage", URL.createObjectURL(file));
         }
     };
 
-    const addStep = () => {
-        const photo = watch("photo");
-        const description = watch("description");
-
-        if (photo || description.trim()) {
-            setValue("steps", [...steps, { photo, description }]);
-            setValue("photo", null);
-            setValue("description", "");
-        }
+    const addStep = () => { 
+        const file = watch("currentFile"); 
+        const value = watch("currentValue"); 
+ 
+        if (file || value.trim()) { 
+            setValue("stepsCooking", [ 
+                ...steps, 
+                { image: file ? URL.createObjectURL(file) : null, value, file } // Создаем URL для превью 
+            ]); 
+            setValue("currentImage", null); 
+            setValue("currentFile", null); 
+            setValue("currentValue", ""); 
+        } 
     };
-
     const removeStep = (index) => {
         setValue(
-            "steps",
+            "stepsCooking",
             steps.filter((_, i) => i !== index)
         );
     };
 
     return (
-        <form onSubmit={handleSubmit(() => { })}>
+        <>
             <VStack align="center" w="100%" spacing={4}>
                 <Text fontSize="1.6vw" fontWeight="bold" fontStyle="italic" color="brown.500">
                     Пошаговый рецепт
@@ -54,7 +50,7 @@ export const StepAdding = () => {
                     <Box
                         w="7.8vw"
                         h="7.8vw"
-                        bg={watch("photo") ? "transparent" : "grey.50"}
+                        bg={watch("image") ? "transparent" : "grey.50"}
                         cursor="pointer"
                         border="2px dashed brown.500"
                         borderRadius="15px"
@@ -64,8 +60,8 @@ export const StepAdding = () => {
                         _hover={{ bg: "beige.50" }}
                         onClick={() => fileInputRef.current.click()}
                     >
-                        {watch("photo") ? (
-                            <Image src={watch("photo")} alt="Превью фото" boxSize="100%" objectFit="cover" />
+                        {watch("currentImage") ? (
+                            <Image src={watch("currentImage")} alt="Превью фото" boxSize="100%" objectFit="cover" />
                         ) : (
                             <VStack spacing={2}>
                                 <Image src={addPhoto} alt="Фотоаппарат" boxSize="2.6vw" />
@@ -78,7 +74,7 @@ export const StepAdding = () => {
                     </Box>
 
                     <Controller
-                        name="description"
+                        name="currentValue"
                         control={control}
                         render={({ field }) => (
                             <Textarea
@@ -130,17 +126,17 @@ export const StepAdding = () => {
                             alignItems="center"
                             border="2px solid brown.500"
                         >
-                            {step.photo ? (
-                                <Image src={step.photo} alt={`Шаг ${index + 1}`} boxSize="100%" objectFit="cover" />
+                            {step.image ? (
+                                <Image src={step.image} alt={`Шаг ${index + 1}`} boxSize="100%" objectFit="cover" />
                             ) : (
                                 <Text fontWeight="bold" color="gray.400">
-                                    Фото
+                                    Нет изображения
                                 </Text>
                             )}
                         </Box>
 
                         <Text fontSize="0.8vw" fontWeight="bold" color="brown.500" flex="1">
-                            {step.description || "Без описания"}
+                            {step.value || "Без описания"}
                         </Text>
 
                         <IconButton
@@ -154,6 +150,7 @@ export const StepAdding = () => {
                     </HStack>
                 ))}
             </VStack>
-        </form>
+        </>
+
     );
 };

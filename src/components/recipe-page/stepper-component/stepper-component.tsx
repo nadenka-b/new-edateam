@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VStack, HStack, Box, Button, Text, Image } from "@chakra-ui/react";
+import { VStack, HStack} from "@chakra-ui/react";
 import { StepNavigator } from "../step-navigator/step-navigator";
 import { NavigationButtons } from "../navigation-buttons/navigation-buttons";
 import { StepContent } from "../step-content/step-content";

@@ -5,13 +5,21 @@ export type User = {
     name: string
     surname: string
     phone: string
-    image: File
+    image: FileDesc
     role: string
     dateRegistration: string
 }
 
-export type UserResponse = {
-    user: User
+export type TokenPayload = {
+    login: string;
+    exp: number;
+    roles: string[];
+    email: string;
+    id: number;
+}
+
+export type AuthResponse = {
+    type: string
     accessToken: string
     refreshToken: string
 }
@@ -19,6 +27,16 @@ export type UserResponse = {
 export type LoginRequest = {
     loginOrEmail: string
     password: string
+}
+
+export type RegistrationRequest = {
+    login: string;
+    password: string;
+    email: string
+}
+
+export type AccessTokenRequest = {
+    token: string
 }
 
 export type DataPage = {
@@ -40,7 +58,7 @@ export type Content = {
     title: string;
     timeCook: number;
     type: Type;
-    file: File;
+    file: FileDesc;
     tags: FileType[];
     dishIngredients: DishIngredient[];
     events: Event[];
@@ -81,7 +99,7 @@ export type Ingredient = {
     measure: string;
 }
 
-export type File = {
+export type FileDesc = {
     id: number;
     filePath: string;
 }
@@ -103,4 +121,59 @@ export type Filters = {
     tagIds: number;
     cookTime: number;
     title: string;
+}
+
+export type AllIngredients = {
+    content: Ingredient[];
+    pageable: Pageable;
+    last: boolean;
+    totalPages: number;
+    totalElements: number;
+    size: number;
+    number: number;
+    sort: Sort;
+    first: boolean;
+    numberOfElements: number;
+    empty: boolean;
+}
+
+export type ingredientsIds = {
+    id: number;
+    amount: number;
+}
+
+export type stepCooking = {
+    number: number;
+    value: string;
+    image: File;
+}
+
+export type FormCreateRecipe = { 
+    title: string; 
+    linkVideo: string; 
+    hours: string; 
+    minutes: string; 
+    dishPhoto: File | null; 
+    tags: FileType[]; 
+    ingredientsIds: { 
+        id: string; 
+        title: string; 
+        amount: string; 
+    }[]; 
+    stepsCooking: { 
+        number: number; 
+        value: string; 
+        image: string | null; 
+        file?: File; 
+    }[]; 
+}
+
+export type FormCreateRecipeRequest = {
+    title: string;
+    linkVideo: string;
+    timeCooking: string;
+    image: string;
+    tags: FileType[];
+    ingredientsIds: ingredientsIds[];
+    stepsCooking: stepCooking[];
 }

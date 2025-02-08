@@ -107,47 +107,53 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Box, VStack, Button, FormLabel, Input } from "@chakra-ui/react";
-import { useCreateDishMutation } from '../__data__/services/mainApi';
+import { useCreateDishMutation } from '../__data__/services/apiWithAuth';
 
 import { TimeInput } from '../components/add-rp/time-input';
 import { DishPhoto } from '../components/add-rp/dish-photo';
 import { SelectedCategories } from '../components/add-rp/selected-categories';
 import { Ingredients } from '../components/add-rp/ingredients';
 import { StepAdding } from '../components/add-rp/step-adding';
+import { FormCreateRecipe } from "../__data__/model/common"
 
 const AddRecipePage = () => {
-    const methods = useForm({
+    const methods = useForm<FormCreateRecipe>({
         defaultValues: {
             title: '',
             linkVideo: '',
-            time: '',
-            photo: null,
-            categories: [],
-            ingredients: [{ id: '', amount: '' }],
-            steps: [{ description: '', image: null }]
+            hours: '',
+            minutes: '',
+            dishPhoto: null,
+            tags: [],
+            ingredientsIds: [],
+            stepsCooking: []
         }
     });
     const [createDish, { isLoading, isError }] = useCreateDishMutation();
 
-    const onSubmit = async (data) => {
+    const onSubmit = async (data: FormCreateRecipe) => {
         const formData = new FormData();
         formData.append('title', data.title);
-        formData.append('linkVideo', data.linkVideo);
-        formData.append('timeCooking', data.time);
-        if (data.photo) formData.append('image', data.photo[0]);
+        if (data.linkVideo) formData.append('linkVideo', data.linkVideo);
+        const totalMinutes = (Number(data.hours) || 0) * 60 + (Number(data.minutes) || 0);
+        formData.append('timeCooking', String(totalMinutes));
+        if (data.dishPhoto) formData.append('image', data.dishPhoto[0]);
 
-        data.steps.forEach((step, index) => {
+        // Добавляем шаги
+        data.stepsCooking.forEach((step, index) => {
             formData.append(`stepsCooking[${index}].number`, `${index + 1}`);
-            formData.append(`stepsCooking[${index}].value`, step.description);
-            if (step.image) formData.append(`stepsCooking[${index}].image`, step.image[0]);
+            formData.append(`stepsCooking[${index}].value`, step.value);
+            if (step.file) formData.append(`stepsCooking[${index}].image`, step.file);
         });
 
-        data.categories.forEach((category, index) => {
-            formData.append(`tags[${index}].id`, `${category.id}`);
-            formData.append(`tags[${index}].value`, category.name);
+        // Добавляем категории
+        data.tags.forEach((tag, index) => {
+            formData.append(`tags[${index}].id`, `${tag.id}`);
+            formData.append(`tags[${index}].value`, tag.value);
         });
 
-        data.ingredients.forEach((ingredient, index) => {
+        // Добавляем ингредиенты
+        data.ingredientsIds.forEach((ingredient, index) => {
             formData.append(`ingredientsIds[${index}].id`, `${ingredient.id}`);
             formData.append(`ingredientsIds[${index}].amount`, `${ingredient.amount}`);
         });
@@ -179,10 +185,9 @@ const AddRecipePage = () => {
                 <VStack spacing="1.3vw" align="center" transition="all 0.3s ease-in-out">
                     <TimeInput />
                     <FormLabel fontSize="1.2vw" fontWeight="bold" color="brown.500">
-                        Ссылка на видео (необязательно)
+                        Ссылка на видео
                     </FormLabel>
                     <Input
-                        placeholder="https://www.youtube.com/watch?v=..."
                         {...methods.register("linkVideo")}
                         border="2px solid"
                         borderColor="brown.500"

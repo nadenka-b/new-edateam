@@ -5,6 +5,7 @@ import { apiWithAuth } from './services/apiWithAuth'
 import dishesReducer from './slices/mainDishesSlice'
 import userDishesReducer from './slices/userDishesSlice'
 import authReducer from './slices/authSlice'
+import tagsReducer from './slices/tagsSlice'
 
 export const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
         [apiWithAuth.reducerPath]: apiWithAuth.reducer,
         dishes: dishesReducer,
         userDishes: userDishesReducer,
-        auth: authReducer
+        auth: authReducer,
+        tags: tagsReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(mainApi.middleware, authApi.middleware, apiWithAuth.middleware)
