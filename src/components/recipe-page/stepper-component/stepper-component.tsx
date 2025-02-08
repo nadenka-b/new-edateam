@@ -24,9 +24,6 @@ export const StepperComponent: React.FC<StepperComponentProps> = ({ steps = [] }
         return <p>Нет шагов</p>;
     }
 
-    // Получаем текущий шаг
-    const currentStep = steps[activeStep];
-
     return (
         <VStack w="100%" spacing={4}>
             <StepNavigator activeStep={activeStep} stepsData={steps} setActiveStep={setActiveStep} />
