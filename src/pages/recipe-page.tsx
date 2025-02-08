@@ -43,22 +43,15 @@ const RecipePage = () => {
                 <SectionHeader title='Пошаговый рецепт' />
 
                 <StepperComponent
-                    steps={data?.steps?.map(step => ({
-                        value: step.value,
-                        image: { filePath: step.image?.filePath || "" } // Обрабатываем случай, если image отсутствует
-                    })) || []}
-                />
-                {/* <pre>{JSON.stringify(data?.steps, null, 2)}</pre> */}
-                {/* {data.steps && data.steps.length > 0 ? (
-                    <StepperComponent
-                        steps={data.steps.map(step => ({
-                            value: step.value || "Нет описания",
+                    steps={(data?.steps ? [...data.steps] : []) 
+                        .sort((a, b) => a.number - b.number) 
+                        .map(step => ({
+                            number: step.number, 
+                            value: step.value,
                             image: { filePath: step.image?.filePath || "" }
                         }))}
-                    />
-                ) : (
-                    <div>Шаги не найдены</div>
-                )} */}
+                />
+
             </Box >
         </>
     );
