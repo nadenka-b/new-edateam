@@ -32,23 +32,39 @@ export const mainApi = createApi({
                 return queryParams ? `${query}&${queryParams}` : query;
             }
         }),
-        getRecipeById: builder.query({
-            query: ({ id }) => `dish/page?id=${id}`,
-        }),
         getIngredients: builder.query<DataPage, { value: string }>({
             query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
         }),
         getTags: builder.query<FileType[], void>({
             query: () => `tag`,
             keepUnusedDataFor: 60 * 60 * 12,
+        }),
+        getRecipeById: builder.query({
+            query: ({ id }) => `dish/page?id=${id}`,
+        }),
+        createDish: builder.mutation({
+            query: (formData) => ({
+                url: '/user/create-dish',
+                method: 'POST',
+                body: formData,
+            }),
+        }),
+        registration: builder.mutation({
+            query: (formData: FormData) => ({
+                url: '/profile',
+                method: 'POST',
+                body: formData,
+            }),
+
         })
     }),
 });
 
 export const {
-    useGetDishesQuery,
     useLazyGetIngredientsQuery,
-    useGetTagsQuery,
+    useGetDishesQuery,
     useGetRecipeByIdQuery,
-    useLazyGetRecipeByIdQuery,
+    useCreateDishMutation,
+    useGetTagsQuery,
+    useRegistrationMutation
 } = mainApi;

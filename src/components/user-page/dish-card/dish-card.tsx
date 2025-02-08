@@ -2,18 +2,20 @@ import React from 'react';
 import { Flex, Link, IconButton, Spacer } from '@chakra-ui/react';
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useRemoveFromFavouritesMutation } from '../../../__data__/services/apiWithAuth';
+import { Link as RouteLink } from 'react-router-dom';
+import { URLs } from '../../../__data__/urls';
 
 interface DishCardProps {
     title: string;
     idDish: number;
+    isFavourite: boolean;
 }
 
-export const DishCard: React.FC<DishCardProps> = ({ title, idDish }) => {
+export const DishCard: React.FC<DishCardProps> = ({ title, idDish, isFavourite }) => {
     const [removeFromFavourites] = useRemoveFromFavouritesMutation();
     const handleRemoveFavourite = async (dishId) => {
         try {
             await removeFromFavourites({ dishId }).unwrap();
-            console.log('Блюдо удалено из избранного');
         } catch (error) {
             console.error('Ошибка при удалении из избранного', error);
         }
@@ -28,11 +30,13 @@ export const DishCard: React.FC<DishCardProps> = ({ title, idDish }) => {
             pl="2vw"
             pr="1vw"
         >
-            <Link href="/" fontSize="1.2vw" color="brown.500" textDecoration="underline" fontWeight="700">
-                {title}
-            </Link>
+            <RouteLink to={URLs.ui.recipe.getUrl(idDish)}>
+                <Link href="/" fontSize="1.2vw" color="brown.500" textDecoration="underline" fontWeight="700">
+                    {title}
+                </Link>
+            </RouteLink>
             <Spacer />
-            <IconButton
+            {isFavourite && <IconButton
                 onClick={() => handleRemoveFavourite(idDish)}
                 color="brown.500"
                 bg="transparent"
@@ -41,7 +45,7 @@ export const DishCard: React.FC<DishCardProps> = ({ title, idDish }) => {
                 h="2.5vw"
                 _hover={{ bg: 'transparent', opacity: 0.7 }}
                 icon={<IoCloseCircleOutline fontSize="2.5vw" />}
-            />
+            />}
         </Flex>
     );
 };

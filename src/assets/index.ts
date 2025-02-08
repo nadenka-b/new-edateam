@@ -16,3 +16,5 @@ export { default as step8 } from './images/step8.jpg';
 
 export { default as dataEmpty } from './animations/data-empty.json';
 export { default as animLoading } from './animations/loading.json';
+export { default as errorAnimation } from './animations/error.json';
+export { default as notFound } from './animations/not-found.json';

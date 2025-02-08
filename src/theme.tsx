@@ -46,7 +46,6 @@ const theme = extendTheme({
     },
     styles: {
         global: {
-            // Указываем глобальные стили
             body: {
                 bg: "beige.200", // Цвет фона
                 lineHeight: "base", // Межстрочный интервал

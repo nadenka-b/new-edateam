@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Text, Flex, HStack, Button, VStack, Image, Spacer } from '@chakra-ui/react'
-// import { PiPencilSimpleBold } from "react-icons/pi";
 import { useGetUserDataQuery, useGetUserFavouritesQuery, useGetUserRecipesQuery } from '../__data__/services/apiWithAuth';
 import { Link, useParams, useNavigate } from "react-router-dom"
-
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../__data__/store';
+import { logout } from '../__data__/slices/authSlice';
 import { URLs } from "../__data__/urls"
 
 import { profilePhoto } from '../assets';
 import { Bookmark } from '../components/user-page/bookmark';
 import { DishesBlock } from '../components/user-page/dishes-block';
-import { RootState } from '../__data__/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../__data__/slices/authSlice';
 import { Loading } from '../components/loading';
-
+import { getNavigationValue } from '@brojs/cli';
 
 const UserPage = () => {
     const { id } = useParams();
@@ -27,6 +25,10 @@ const UserPage = () => {
     const { data: userRecipesData, error: errorRecipesData, isLoading: isLoadingRecipesData } = useGetUserRecipesQuery({ page: recipesPage });
     const { data: userData, error: errorUserData, isLoading: isLoadingUserData } = useGetUserDataQuery({ id: id });
 
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate(URLs.baseUrl);
+    };
     if (errorFavouritesData || errorRecipesData || errorUserData) return <div>Ошибка загрузки</div>;
     if (isLoadingFavouritesData || isLoadingRecipesData || isLoadingUserData) return <Loading />;
 
@@ -35,10 +37,7 @@ const UserPage = () => {
         nameUser = `${userData.name} ${userData.surname}`;
     }
 
-    const handleLogout = () => {
-        dispatch(logout());
-        navigate(URLs.baseUrl);
-    };
+    const isEnabledAddDish = getNavigationValue('new-edateam.add-recipe');
 
     return (
         <>
@@ -57,8 +56,8 @@ const UserPage = () => {
                     </HStack>
 
                     {savedRecipes
-                        ? <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} />
-                        : <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} />
+                        ? <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} isFavourite={true} />
+                        : <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} isFavourite={false} />
                     }
                 </VStack>
                 <Spacer />
@@ -74,12 +73,12 @@ const UserPage = () => {
                     pb="2vw"
                 >
                     <Image
-                        src={userData.image.filePath ? `${URLs.api.images}${userData.image.filePath.slice(1)}` : profilePhoto}
+                        src={userData.image ? `${URLs.api.images}${userData.image.filePath.slice(1)}` : profilePhoto}
                         w="18.75vw"
                         maxW="18.75vw"
                         maxH="18.75vw"
                         borderRadius="1vw"
-                        border="0.2vw solid"
+                        border={userData.image ? "0.2vw solid" : "none"}
                         borderColor="brown.500"
                     />
                     <Text
@@ -98,7 +97,7 @@ const UserPage = () => {
                     >
                         Дата регистрации: {userData.dateRegistration}
                     </Text>
-                    <Link to={URLs.ui.add_recipe.url}>
+                    {isEnabledAddDish && <Link to={URLs.ui.add_recipe.url}>
                         <Button
                             mt="4vw"
                             w="20.8vw"
@@ -115,7 +114,7 @@ const UserPage = () => {
                         >
                             Добавить рецепт
                         </Button>
-                    </Link>
+                    </Link>}
                     <Button
                         onClick={handleLogout}
                         variant="link"

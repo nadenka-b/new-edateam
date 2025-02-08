@@ -9,10 +9,11 @@ import { AppDispatch } from '../../../__data__/store';
 
 interface PaginatedListProps {
   data: DataPage
-  flagSavedRecipes: boolean
+  flagSavedRecipes: boolean;
+  isFavourite: boolean;
 }
 
-export const PaginatedList: React.FC<PaginatedListProps> = ({ data, flagSavedRecipes }) => {
+export const PaginatedList: React.FC<PaginatedListProps> = ({ data, flagSavedRecipes, isFavourite }) => {
   const dispatch: AppDispatch = useDispatch();
 
   const goToNextPage = () => {
@@ -41,7 +42,7 @@ export const PaginatedList: React.FC<PaginatedListProps> = ({ data, flagSavedRec
     <VStack position="relative" h="100%">
       <VStack gap="1.5vw" mb="1.5vw">
         {data.content.map((recipe, index) => (
-          <DishCard key={index} title={recipe.title} idDish={recipe.id} />
+          <DishCard key={index} title={recipe.title} idDish={recipe.id} isFavourite={isFavourite} />
         ))}
       </VStack>
       <HStack justifyContent="center" position="absolute" bottom="2vw">

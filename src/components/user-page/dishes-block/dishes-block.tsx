@@ -1,15 +1,16 @@
 import React from "react";
 import { Image, Text } from "@chakra-ui/react";
-import { pan } from '../../../assets';
+import { pan } from "./index"
 import { PaginatedList } from '../pagination';
 import { DataPage } from "../../../__data__/model/common";
 
 interface DishesBlockProps {
     data: DataPage;
     flagSavedRecipes: boolean;
+    isFavourite: boolean;
 }
 
-export const DishesBlock: React.FC<DishesBlockProps> = ({ data, flagSavedRecipes }) => {
+export const DishesBlock: React.FC<DishesBlockProps> = ({ data, flagSavedRecipes, isFavourite }) => {
     return (
         <>
             {data.empty
@@ -31,7 +32,7 @@ export const DishesBlock: React.FC<DishesBlockProps> = ({ data, flagSavedRecipes
                     </Text>
                 </>
                 :
-                <PaginatedList data={data} flagSavedRecipes={flagSavedRecipes} />
+                <PaginatedList data={data} flagSavedRecipes={flagSavedRecipes} isFavourite={isFavourite}/>
             }
         </>
     );
