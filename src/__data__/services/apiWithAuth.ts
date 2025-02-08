@@ -94,13 +94,6 @@ export const apiWithAuth = createApi({
                 body: formData,
             }),
         }),
-        createDish: builder.mutation({
-            query: (formData: FormData) => ({
-                url: '/user/create-dish',
-                method: 'POST',
-                body: formData,
-            }),
-        }),
         removeFromFavourites: builder.mutation<void, { dishId: number }>({
             query: ({ dishId }) => ({
                 url: `dish/delete-favourite/${dishId}`,
@@ -113,7 +106,8 @@ export const apiWithAuth = createApi({
                 url: `dish/add-favourite`,
                 method: 'POST',
                 body: { "dishId": dishId }
-            })
+            }),
+            invalidatesTags: ["Favourites"]
         }),
         checkIsFavourite: builder.query<boolean, { dishId: number }>({
             query: ({ dishId }) => ({

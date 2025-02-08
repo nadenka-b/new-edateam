@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useFormContext, useFieldArray } from "react-hook-form";
-import { Image, Text, VStack, HStack, Box, Input, Button, Wrap, WrapItem, IconButton } from "@chakra-ui/react";
+import { Text, VStack, HStack, Box, Input, Button, Wrap, WrapItem, IconButton } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
-import { Plus } from "./index";
+import { FiPlusCircle } from "react-icons/fi";
 import { useLazyGetIngredientsQuery } from "../../../__data__/services/mainApi";
-
 interface FormValues {
     ingredientsIds: {
         id: string;
@@ -44,13 +43,14 @@ export const Ingredients = () => {
                 Ингредиенты
             </Text>
             <HStack
+                h="4vw"
+                bg="beige.200"
                 w="34.3vw"
                 align="center"
                 border="2px solid"
                 borderColor="brown.500"
                 borderRadius={15}
                 p={2}
-                bg="white"
             >
                 <Input
                     placeholder="Например, курица"
@@ -59,14 +59,16 @@ export const Ingredients = () => {
                     fontWeight={700}
                     fontSize="1.25vw"
                     color="brown.500"
-                    h="2vw"
+                    h="3vw"
                     flex="3"
                     {...register("newIngredientName")}
                 />
 
-                <Box w="2px" h="130%" bg="brown.500" />
+                <Box w="0.2vw" h="130%" bg="brown.500" />
 
                 <Input
+                    h="3vw"
+                    type="number"
                     placeholder="0"
                     border="none"
                     _focus={{ outline: "none" }}
@@ -111,14 +113,12 @@ export const Ingredients = () => {
                     }}
                     variant="unstyled"
                     display="flex"
-                    _hover={{
-                        ".hover-effect": { color: "orange.300", filter: "brightness(1.2)" },
-                    }}
+                    _hover={{ opacity: 0.9, color: "orange.300" }}
+                    fontSize="1.1vw"
+                    color="orange.600"
+                    leftIcon={<FiPlusCircle fontSize="2vw" />}
                 >
-                    <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} className="hover-effect" />
-                    <Text fontFamily="var(--main-font)" fontSize="1.1vw" fontWeight="bold" color="orange.600" className="hover-effect">
-                        Добавить ингредиент
-                    </Text>
+                    Добавить ингредиент
                 </Button>
             </HStack>
 
@@ -153,6 +153,6 @@ export const Ingredients = () => {
                 ))}
             </Wrap>
 
-        </VStack>
+        </VStack >
     );
 };

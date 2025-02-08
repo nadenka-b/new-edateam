@@ -13,6 +13,7 @@ export const TimeInput = () => {
                 render={({ field }) => (
                     <Input
                         {...field}
+                        h="4vw"
                         border="none"
                         textAlign="center"
                         placeholder="Название рецепта"
@@ -51,6 +52,7 @@ export const TimeInput = () => {
                             fontWeight={800}
                             fontSize="1.4vw"
                             type="number"
+                            bg="beige.200"
                             _hover={{ borderColor: "orange.300" }}
                             _focus={{
                                 outline: "none",  // Убираем стандартную подсветку
@@ -70,6 +72,7 @@ export const TimeInput = () => {
                         <Input
                             {...field}
                             placeholder="0"
+                            bg="beige.200"
                             w="5.2vw"
                             h="2vw"
                             textAlign="right"

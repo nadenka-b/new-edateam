@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, CardBody, Text, Image, Box, Flex /*, IconButton */, Heading } from "@chakra-ui/react";
 import { AiOutlineHourglass } from "react-icons/ai";
-// import { FaRegBookmark /*, FaBookmark */ } from "react-icons/fa6";
 import { Link } from "react-router-dom"
 import { URLs } from "../../../__data__/urls"
 import { Tags } from "./tags"
@@ -63,18 +62,6 @@ export const DishCard: React.FC<DishCardProps> = ({ recipeId, image, time, tags,
                 {title}
               </Heading>
             </Link>
-            {/* <IconButton
-              alignSelf="end"
-              flex="5"
-              borderRadius="2.6vw"
-              minW="2.2vw"
-              h="2.2vw"
-              bg="transparent"
-              _hover={{ bg: "none" }}
-              color="brown.500"
-              aria-label="Bookmark"
-              icon={<FaRegBookmark fontSize='2.2vw' />}>
-            </IconButton> */}
           </Flex>
         </CardBody>
       </Card >

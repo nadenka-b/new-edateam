@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { useFormContext, Controller } from "react-hook-form";
-import { Image, Text, Button, HStack, VStack, Textarea, Box, IconButton } from "@chakra-ui/react";
+import { Image, Icon, Text, Button, HStack, VStack, Textarea, Box, IconButton } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
-import { Plus, addPhoto } from "./index";
+import { FiPlusCircle } from "react-icons/fi";
+import { MdOutlinePhotoCamera } from "react-icons/md";
 
 export const StepAdding = () => {
     const { control, setValue, watch } = useFormContext();
@@ -25,7 +26,7 @@ export const StepAdding = () => {
         if (file || value.trim()) {
             setValue("stepsCooking", [
                 ...steps,
-                { image: file ? URL.createObjectURL(file) : null, value } // Создаем URL для превью
+                { image: file ? URL.createObjectURL(file) : null, value, file } // Создаем URL для превью
             ]);
             setValue("currentImage", null);
             setValue("currentFile", null);
@@ -65,7 +66,7 @@ export const StepAdding = () => {
                             <Image src={watch("currentImage")} alt="Превью фото" boxSize="100%" objectFit="cover" />
                         ) : (
                             <VStack spacing={2}>
-                                <Image src={addPhoto} alt="Фотоаппарат" boxSize="2.6vw" />
+                                <Icon as={MdOutlinePhotoCamera} fontSize="4vw" color="brown.500" />
                                 <Text fontSize="0.8vw" fontWeight={600} color="brown.500" textAlign="center">
                                     Добавить фото
                                 </Text>
@@ -83,33 +84,33 @@ export const StepAdding = () => {
                                 placeholder="Введите описание шага"
                                 w="30vw"
                                 h="7.8vw"
-                                border="2px solid brown"
+                                bg="beige.200"
+                                border="0.2vw solid"
+                                borderColor="brown.500"
                                 borderRadius="15px"
-                                fontSize="0.8vw"
-                                resize="none" // Отключаем ручное изменение размера
-                                overflowY="auto" // Включаем вертикальную прокрутку
-                                transition="all 0.3s ease-in-out"
+                                fontSize="1vw"
+                                color="brown.500"
+                                resize="none"
+                                overflowY="auto"
                                 _hover={{ borderColor: "orange.300" }}
-                                _focus={{
-                                    outline: "none",
-                                    borderColor: "orange.500",
-                                    boxShadow: "0 0 8px orange.500"
-                                }}
+                                focusBorderColor="orange.500"
                             />
                         )}
                     />
 
                 </HStack>
 
-                <Button onClick={addStep} variant="unstyled" display="flex" alignItems="center"
-                    _hover={{
-                        ".hover-effect": { color: "orange.300", filter: "brightness(1.2)" },
-                    }}
+                <Button
+                    onClick={addStep}
+                    variant="unstyled"
+                    display="flex"
+                    alignItems="center"
+                    leftIcon={<FiPlusCircle fontSize="2vw" />}
+                    fontSize="1.1vw"
+                    color="orange.600"
+                    _hover={{ color: "orange.300", filter: "brightness(1.2)" }}
                 >
-                    <Image src={Plus} alt="Добавить" boxSize="30px" mr={2} className="hover-effect" />
-                    <Text fontSize="1.1vw" fontWeight="bold" color="orange.600" className="hover-effect">
-                        Добавить шаг
-                    </Text>
+                    Добавить шаг
                 </Button>
             </VStack>
 

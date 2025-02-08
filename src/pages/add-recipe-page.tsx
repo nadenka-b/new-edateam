@@ -37,7 +37,7 @@ const AddRecipePage = () => {
         data.stepsCooking.forEach((step, index) => {
             formData.append(`stepsCooking[${index}].number`, `${index + 1}`);
             formData.append(`stepsCooking[${index}].value`, step.value);
-            if (step.image instanceof File) formData.append(`stepsCooking[${index}].image`, step.image);
+            if (step.file) formData.append(`stepsCooking[${index}].image`, step.file);
         });
 
         // Добавляем категории
@@ -78,17 +78,26 @@ const AddRecipePage = () => {
             >
                 <VStack spacing="1.3vw" align="center" transition="all 0.3s ease-in-out">
                     <TimeInput />
-                    <FormLabel fontSize="1.2vw" fontWeight="bold" color="brown.500">
+                    <FormLabel fontSize="1.5vw" fontWeight="bold" color="brown.500">
                         Ссылка на видео
                     </FormLabel>
                     <Input
                         {...methods.register("linkVideo")}
+                        bg="beige.200"
                         border="2px solid"
                         borderColor="brown.500"
-                        borderRadius="15px"
-                        p={2}
-                        w="34vw"
-                        bg="white"
+                        borderRadius="1.5vw"
+                        color="brown.500"
+                        h="4vw"
+                        fontSize="1.2vw"
+                        fontWeight="600"
+                        w="50vw"
+                        _hover={{ borderColor: "orange.300" }}
+                        _focus={{
+                            outline: "none",  // Убираем стандартную подсветку
+                            borderColor: "orange.500",
+                            boxShadow: "0 0 5px orange.500" // Меняем эффект подсветки
+                        }}
                     />
                     <DishPhoto />
                     <SelectedCategories />

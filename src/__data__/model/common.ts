@@ -160,16 +160,10 @@ export type FormCreateRecipe = {
         title: string;
         amount: string;
     }[];
-    stepsCooking: stepCooking[];
-}
-
-
-export type FormCreateRecipeRequest = {
-    title: string;
-    linkVideo: string;
-    timeCooking: string;
-    image: string;
-    tags: FileType[];
-    ingredientsIds: ingredientsIds[];
-    stepsCooking: stepCooking[];
+    stepsCooking: {
+        number: number;
+        value: string;
+        image: string | null;
+        file?: File;
+    }[];
 }

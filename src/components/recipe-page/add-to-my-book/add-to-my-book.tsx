@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Image, Text, VStack, HStack, Box, Icon } from "@chakra-ui/react";
+import { Text, VStack, HStack, Box, Icon } from "@chakra-ui/react";
 
-import { FaRegBookmark , FaBookmark  } from "react-icons/fa6";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa6";
 import { useAddFromFavouritesMutation, useCheckIsFavouriteQuery, useRemoveFromFavouritesMutation } from "../../../__data__/services/apiWithAuth";
 
-interface AddDivProps{
+interface AddDivProps {
     dishId: number
 }
 
-export const AddToMyBook = ({dishId}: AddDivProps) => {
+export const AddToMyBook = ({ dishId }: AddDivProps) => {
     console.log(dishId)
     const [isAdded, setIsAdded] = useState(false);
-    const [addToFavourites] =useAddFromFavouritesMutation();
+    const [addToFavourites] = useAddFromFavouritesMutation();
     const [removeFromFavourites] = useRemoveFromFavouritesMutation();
-    const {data: isFavourite, refetch} = useCheckIsFavouriteQuery({dishId: dishId},
-         {skip:!dishId , refetchOnMountOrArgChange: true});
-    useEffect(()=>{
-        if(isFavourite !== undefined){
+    const { data: isFavourite, refetch } = useCheckIsFavouriteQuery({ dishId: dishId },
+        { skip: !dishId, refetchOnMountOrArgChange: true });
+    useEffect(() => {
+        if (isFavourite !== undefined) {
             setIsAdded(isFavourite);
         }
-    },[isFavourite])
+    }, [isFavourite])
     const handleClick = async () => {
         try {
             if (isAdded) {
@@ -28,7 +28,7 @@ export const AddToMyBook = ({dishId}: AddDivProps) => {
                 await addToFavourites({ dishId });
             }
             setIsAdded(!isAdded);
-            refetch(); 
+            refetch();
         } catch (e) {
             console.error(e.message);
         }
@@ -46,7 +46,7 @@ export const AddToMyBook = ({dishId}: AddDivProps) => {
                 </Text>
                 <Icon
                     as={isFavourite ? FaBookmark : FaRegBookmark}
-                    color = "brown.500"
+                    color="brown.500"
                     w="1.4vw"
                     h="1.8vw"
                 />

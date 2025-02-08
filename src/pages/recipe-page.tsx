@@ -11,19 +11,33 @@ import { ListOfIngredients } from '../components/recipe-page/list-of-ingredients
 import { StepperComponent } from '../components/recipe-page/stepper-component/stepper-component'
 import { useParams } from 'react-router-dom';
 import { useGetRecipeByIdQuery } from '../__data__/services/mainApi';
+import { Loading } from '../components/loading';
 
 const RecipePage = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useGetRecipeByIdQuery({ id });
+    function formatTime(minutes) {
+        if (minutes < 60) {
+            return `${minutes} мин`;
+        }
 
+        const hours = Math.floor(minutes / 60);
+        const remainingMinutes = minutes % 60;
+
+        return remainingMinutes > 0
+            ? `${hours} ч ${remainingMinutes} мин`
+            : `${hours} ч`;
+    }
     return (
         <>
+            {(isLoading) && <Loading />}
+            {(error) && <div>Ошибка загрузки данных</div>}
             <VStack align="center" w="full">
                 <Title title={data?.title} />
                 <Video src={data?.linkVideo} />
                 <Tags tags={data?.tags} />
                 <HStack mt="1.2vw" justify="center" align="center" mb="2.5vw">
-                    <TimeCooking cookingTime={data?.timeCook || "0 мин"} />
+                    <TimeCooking cookingTime={formatTime(data?.timeCook || 0)} />
                     <AddToMyBook dishId={data?.id} />
                 </HStack>
             </VStack>
@@ -48,17 +62,6 @@ const RecipePage = () => {
                         image: { filePath: step.image?.filePath || "" } // Обрабатываем случай, если image отсутствует
                     })) || []}
                 />
-                {/* <pre>{JSON.stringify(data?.steps, null, 2)}</pre> */}
-                {/* {data.steps && data.steps.length > 0 ? (
-                    <StepperComponent
-                        steps={data.steps.map(step => ({
-                            value: step.value || "Нет описания",
-                            image: { filePath: step.image?.filePath || "" }
-                        }))}
-                    />
-                ) : (
-                    <div>Шаги не найдены</div>
-                )} */}
             </Box >
         </>
     );

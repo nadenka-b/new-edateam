@@ -5,6 +5,7 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../__data__/store';
 import { logout } from '../__data__/slices/authSlice';
+import { apiWithAuth } from '../__data__/services/apiWithAuth'; // Импорт API
 import { URLs } from "../__data__/urls"
 
 import { profilePhoto } from '../assets';
@@ -27,6 +28,7 @@ const UserPage = () => {
 
     const handleLogout = () => {
         dispatch(logout());
+        dispatch(apiWithAuth.util.resetApiState());
         navigate(URLs.baseUrl);
     };
     if (errorFavouritesData || errorRecipesData || errorUserData) return <div>Ошибка загрузки</div>;

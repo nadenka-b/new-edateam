@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { Image, Text, VStack, Box } from "@chakra-ui/react";
+import { Image, Text, VStack, Box, Icon } from "@chakra-ui/react";
 import { useFormContext } from "react-hook-form";
-import { addPhoto } from "./index"; // Иконка фотоаппарата
+import { MdOutlinePhotoCamera } from "react-icons/md";
 
 export const DishPhoto = () => {
     const { register, setValue, watch } = useFormContext();
@@ -51,8 +51,8 @@ export const DishPhoto = () => {
                     <Image src={preview} alt="Предпросмотр" boxSize="100%" borderRadius="0.8vw" />
                 ) : (
                     <>
-                        <Image src={addPhoto} alt="Фотоаппарат" boxSize="2.6vw" mb={2} />
-                        <Text fontSize="1vw" fontWeight={600} color="brown.500" mb={2}>
+                        <Icon as={MdOutlinePhotoCamera} fontSize="5vw" color="brown.500" />
+                        <Text fontSize="1vw" fontWeight="600" color="brown.500" mb="0.5vw" >
                             {file?.[0]?.name ? `Выбран файл: ${file[0].name}` : "Нажмите, чтобы добавить фото"}
                         </Text>
                     </>

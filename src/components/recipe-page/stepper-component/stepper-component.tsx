@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VStack, HStack, Box, Button, Text, Image } from "@chakra-ui/react";
+import { VStack, HStack } from "@chakra-ui/react";
 import { StepNavigator } from "../step-navigator/step-navigator";
 import { NavigationButtons } from "../navigation-buttons/navigation-buttons";
 import { StepContent } from "../step-content/step-content";
@@ -24,13 +24,10 @@ export const StepperComponent: React.FC<StepperComponentProps> = ({ steps = [] }
         return <p>Нет шагов</p>;
     }
 
-    // Получаем текущий шаг
-    const currentStep = steps[activeStep];
-
     return (
         <VStack w="100%" spacing={4}>
             <StepNavigator activeStep={activeStep} stepsData={steps} setActiveStep={setActiveStep} />
-            
+
             <HStack spacing={6} justify="space-between" w="full" align="center">
                 <NavigationButtons
                     activeStep={activeStep}
@@ -38,7 +35,7 @@ export const StepperComponent: React.FC<StepperComponentProps> = ({ steps = [] }
                     goToPrevious={prevStep} // Используем обновленную функцию
                     position="previous"
                 />
-                
+
                 {/* Отображение текущего шага */}
                 <StepContent activeStep={activeStep} stepsData={steps} />
 

@@ -9,9 +9,9 @@ import AddRecipePage from "./pages/add-recipe-page";
 import { URLs } from "./__data__/urls";
 import Lottie from "lottie-react";
 
-import { notFound} from "./assets"
+import { notFound } from "./assets"
 import { Box } from "@chakra-ui/react";
-import { getNavigation, getNavigationValue } from "@brojs/cli";
+import { getNavigationValue } from "@brojs/cli";
 
 export const PageRoutes = () => (
     <Routes>
@@ -51,6 +51,6 @@ export const PageRoutes = () => (
             justifyContent="center"
             alignItems="center"
             h="80vh">
-            </Box>} />
+        </Box>} />
     </Routes>
 )

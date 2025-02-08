@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { URLs } from '../urls';
 import { AllIngredients, DataPage, FileType, Filters } from '../model/common';
+import { RootState } from '../store';
 
 const baseUrl = URLs.api.main;
 
@@ -23,6 +24,13 @@ export const mainApi = createApi({
     reducerPath: 'main-api',
     baseQuery: fetchBaseQuery({
         baseUrl: baseUrl,
+        prepareHeaders: (headers, { getState }) => {
+            const token = (getState() as RootState).auth?.token;
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`);
+            }
+            return headers;
+        },
     }),
     endpoints: (builder) => ({
         getDishes: builder.query<DataPage, { page: number, size: number, filters: Filters }>({
@@ -53,9 +61,6 @@ export const mainApi = createApi({
             }),
 
         })
-        // getIngredients: builder.query<DataPage, { value: string }>({
-        //     query: ({ value }) => `/ingredient/unique-titles/start-with?value=${value}`,
-        // }),
     }),
 });
 
