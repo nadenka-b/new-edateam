@@ -2,11 +2,12 @@ import React from "react";
 import { Button } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
-interface Props {
-    onSubmit: () => void
+interface SentProps {
+    onSubmit: () => void;
 }
 
-export const Sent: React.FC<Props> = ({ onSubmit }) => {
+
+export const Sent: React.FC<SentProps> = ({ onSubmit }) => {
     const { handleSubmit } = useForm();
 
     return (
