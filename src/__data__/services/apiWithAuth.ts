@@ -66,6 +66,7 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
 export const apiWithAuth = createApi({
     reducerPath: 'apiWithAuth',
     baseQuery: baseQueryWithReauth,
+    tagTypes: ["Favourites"],
     endpoints: (builder) => ({
         getUserData: builder.query<User, { id: string }>({
             query: ({ id }) => ({
@@ -78,6 +79,7 @@ export const apiWithAuth = createApi({
                 url: `profile/favourite?page=${page}&size=5`,
                 method: 'GET',
             }),
+            providesTags: ["Favourites"]
         }),
         getUserRecipes: builder.query<DataPage, { page: number }>({
             query: ({ page }) => ({
@@ -92,11 +94,32 @@ export const apiWithAuth = createApi({
                 body: formData,
             }),
         }),
+        createDish: builder.mutation({
+            query: (formData: FormData) => ({
+                url: '/user/create-dish',
+                method: 'POST',
+                body: formData,
+            }),
+        }),
         removeFromFavourites: builder.mutation<void, { dishId: number }>({
             query: ({ dishId }) => ({
                 url: `dish/delete-favourite/${dishId}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ["Favourites"]
+        }),
+        addFromFavourites: builder.mutation<void, { dishId: number }>({
+            query: ({ dishId }) => ({
+                url: `dish/add-favourite`,
+                method: 'POST',
+                body: { "dishId": dishId }
+            })
+        }),
+        checkIsFavourite: builder.query<boolean, { dishId: number }>({
+            query: ({ dishId }) => ({
+                url: `dish/check-favourite?dishId=${dishId}`,
+                method: 'GET'
+            })
         })
     }),
 });
@@ -106,5 +129,7 @@ export const {
     useGetUserFavouritesQuery,
     useGetUserRecipesQuery,
     useCreateDishMutation,
-    useRemoveFromFavouritesMutation
+    useRemoveFromFavouritesMutation,
+    useAddFromFavouritesMutation,
+    useCheckIsFavouriteQuery
 } = apiWithAuth;

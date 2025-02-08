@@ -7,7 +7,11 @@ import HomePage from "./pages/home-page";
 import Recipe from "./pages/recipe-page";
 import AddRecipePage from "./pages/add-recipe-page";
 import { URLs } from "./__data__/urls";
+import Lottie from "lottie-react";
 
+import { notFound} from "./assets"
+import { Box } from "@chakra-ui/react";
+import { getNavigation, getNavigationValue } from "@brojs/cli";
 
 export const PageRoutes = () => (
     <Routes>
@@ -32,13 +36,21 @@ export const PageRoutes = () => (
                 <Footer />
             </>
         } />
-        <Route path={URLs.ui.add_recipe.url} element={
+        {getNavigationValue('new-edateam.add-recipe') && <Route path={URLs.ui.add_recipe.url} element={
             <>
                 <Header />
                 <AddRecipePage />
                 <Footer />
             </>
-        } />
-        <Route path="*" element={<h1>Page not found</h1>} />
+        } />}
+        <Route path="*" element={<Box as={Lottie}
+            animationData={notFound}
+            mb="40vw"
+            loop={true}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            h="80vh">
+            </Box>} />
     </Routes>
 )

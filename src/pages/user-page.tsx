@@ -11,6 +11,7 @@ import { profilePhoto } from '../assets';
 import { Bookmark } from '../components/user-page/bookmark';
 import { DishesBlock } from '../components/user-page/dishes-block';
 import { Loading } from '../components/loading';
+import { getNavigationValue } from '@brojs/cli';
 
 const UserPage = () => {
     const { id } = useParams();
@@ -36,6 +37,8 @@ const UserPage = () => {
         nameUser = `${userData.name} ${userData.surname}`;
     }
 
+    const isEnabledAddDish = getNavigationValue('new-edateam.add-recipe');
+
     return (
         <>
             <Flex pl="10vw" pr="10vw" mt="1.3vw" mb="2.6vw" >
@@ -53,8 +56,8 @@ const UserPage = () => {
                     </HStack>
 
                     {savedRecipes
-                        ? <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} />
-                        : <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} />
+                        ? <DishesBlock data={userFavouritesData} flagSavedRecipes={savedRecipes} isFavourite={true} />
+                        : <DishesBlock data={userRecipesData} flagSavedRecipes={savedRecipes} isFavourite={false} />
                     }
                 </VStack>
                 <Spacer />
@@ -94,7 +97,7 @@ const UserPage = () => {
                     >
                         Дата регистрации: {userData.dateRegistration}
                     </Text>
-                    <Link to={URLs.ui.add_recipe.url}>
+                    {isEnabledAddDish && <Link to={URLs.ui.add_recipe.url}>
                         <Button
                             mt="4vw"
                             w="20.8vw"
@@ -111,7 +114,7 @@ const UserPage = () => {
                         >
                             Добавить рецепт
                         </Button>
-                    </Link>
+                    </Link>}
                     <Button
                         onClick={handleLogout}
                         variant="link"

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Box, VStack, HStack } from "@chakra-ui/react";
 
@@ -14,21 +13,18 @@ import { useParams } from 'react-router-dom';
 import { useGetRecipeByIdQuery } from '../__data__/services/mainApi';
 
 const RecipePage = () => {
-    const { id } = useParams(); // Получаем ID рецепта из URL
-    // console.log(id)
+    const { id } = useParams();
     const { data, error, isLoading } = useGetRecipeByIdQuery({ id });
-    console.log("data:", data)
 
-    console.log("Steps data:", data?.steps);
     return (
         <>
             <VStack align="center" w="full">
-                <Title title={data?.title } />
-                <Video src={data?.linkVideo } />
+                <Title title={data?.title} />
+                <Video src={data?.linkVideo} />
                 <Tags tags={data?.tags} />
                 <HStack mt="1.2vw" justify="center" align="center" mb="2.5vw">
                     <TimeCooking cookingTime={data?.timeCook || "0 мин"} />
-                    <AddToMyBook />
+                    <AddToMyBook dishId={data?.id} />
                 </HStack>
             </VStack>
             <Box
