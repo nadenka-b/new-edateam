@@ -8,7 +8,7 @@ export const TimeInput = () => {
     return (
         <VStack >
             <Controller
-                name="recipeName"
+                name="title"
                 control={control}
                 render={({ field }) => (
                     <Input

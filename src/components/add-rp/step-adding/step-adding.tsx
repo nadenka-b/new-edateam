@@ -33,7 +33,6 @@ export const StepAdding = () => {
             setValue("currentValue", "");
         }
     };
-
     const removeStep = (index) => {
         setValue(
             "stepsCooking",

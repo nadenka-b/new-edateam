@@ -26,7 +26,7 @@ export const authApi = createApi({
         }),
         accessToken: builder.mutation<AuthResponse, AccessTokenRequest>({
             query: (refreshToken) => ({
-                url: "/access", // запрос Саше на обновление accessToken
+                url: "/access", 
                 method: "POST",
                 body: refreshToken,
             }),

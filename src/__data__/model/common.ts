@@ -167,3 +167,13 @@ export type FormCreateRecipe = {
         file?: File;
     }[];
 }
+
+export type FormCreateRecipeRequest = {
+    title: string;
+    linkVideo: string;
+    timeCooking: string;
+    image: string;
+    tags: FileType[];
+    ingredientsIds: ingredientsIds[];
+    stepsCooking: stepCooking[];
+}

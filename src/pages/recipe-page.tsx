@@ -57,11 +57,15 @@ const RecipePage = () => {
                 <SectionHeader title='Пошаговый рецепт' />
 
                 <StepperComponent
-                    steps={data?.steps?.map(step => ({
-                        value: step.value,
-                        image: { filePath: step.image?.filePath || "" } // Обрабатываем случай, если image отсутствует
-                    })) || []}
+                    steps={(data?.steps ? [...data.steps] : [])
+                        .sort((a, b) => a.number - b.number)
+                        .map(step => ({
+                            number: step.number,
+                            value: step.value,
+                            image: { filePath: step.image?.filePath || "" }
+                        }))}
                 />
+
             </Box >
         </>
     );
